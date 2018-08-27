@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unsplash</title>
+  </head>
+  <body>
+    <h1>Unsplash: Random Picture Generator</h1>
+    <h3>Here, we will use the Unsplash API to grab a random picture every time we come to the page.</h3>
+    <img src="" class="random-image">
+
+    <script>
+      var randomImage = document.querySelector('.random-image');
+      console.log('randomImage:', randomImage);
+      
+      fetch('https://source.unsplash.com/random')
+        .then(function(response) {
+          if (!response.ok) {
+            console.log(response);
+            return new Error(response);
+          }
+          console.log('Response:', response);
+          return response.blob();
+        })
+        .then(function(photoBlob) {
+          console.log('My Blob:', photoBlob);
+          var objectURL = URL.createObjectURL(photoBlob);
+          console.log('Object URL:', objectURL);
+          randomImage.src = objectURL;
+          console.log('randomImage.src:', randomImage.src);
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
+    </script>
+  </body>
+</html>

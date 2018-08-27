@@ -1,0 +1,10 @@
+.jumbotron {
+  background: url('../assets/img/jumbotron.jpeg') center top;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-family: var(--font-two);
+}

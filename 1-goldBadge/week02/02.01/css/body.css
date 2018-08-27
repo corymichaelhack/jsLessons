@@ -1,0 +1,7 @@
+body {
+  background: var(--brown);
+}
+
+p {
+  font-family: var(--font-one);
+}

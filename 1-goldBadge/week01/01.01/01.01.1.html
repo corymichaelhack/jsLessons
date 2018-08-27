@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Walk Through</title>
+  </head>
+  <body>
+    <!-- 
+      JS Pretest (as they come in)
+      
+      Welcome
+
+      Check installs
+        Gmail
+        Chrome
+        Node.JS
+        npm
+        Git
+        GitHub
+        VS.Code
+          node exec
+          open-in-browser
+          live server (for start of cohort, not orientation)
+        SIS => LMS
+      
+      Folder Structure:
+        javascriptMay2018 (or whatever)
+          javascriptLibrary
+            0-prework
+              00-setup.html (from orientation)
+              15-classroom.html (new file)
+     -->
+
+     <!-- Explain meta data of HTML -->
+
+    <!-- 
+      Walk Through 1
+      Two Truths and a Lie (Again)
+      
+      Bronze: 
+      Make an H1 tag saying 'Two Truths and a Lie'
+      Make 3 H3 tags, each saying a short blurb about that option (example: 'Been to Russia')
+      Make 3 P tags (one for each H3 tag), giving a short sentence elaborating that truth/lie
+      Wrap it all in a Div tag
+
+      Silver: 
+      Using CSS: 
+      Make the H1 tag LIGHT GREEN and CENTERED
+      Make each H3 tag BLUE
+      Make each P tag RED
+      Wrap it all in a BORDER that is THICK and BLACK
+
+      Gold:
+      Curve the corners of that BORDER
+      Give it a BACKGROUND COLOR of GREY
+      Wrap each Truth/Lie in separate Divs, give them each a BORDER, curve the BORDER, and make each BACKGROUND COLOR LIGHT GREY
+      CENTER everyting in each Div
+      Line each Truth/Lie side-by-side 
+     -->
+
+
+     <style>
+     
+       h1 {
+         color: lightgreen;
+         text-align: center;
+       }
+
+       h3 {
+         color: blue;
+         font-weight: 1;
+       }
+
+       p {
+         color: red;
+       }
+
+       #truthLie {
+         border: 3px solid black;
+         border-radius: 1em;
+         background-color: grey;
+
+         padding: 0.25em; 
+         text-align: center;
+       }
+
+       .option {
+         border: 1px solid black;
+         border-radius: 1em;
+         background-color: lightgrey;
+         text-align: center;
+         width: 33%;
+         display: inline-block;
+       }
+
+     </style>
+     <div id="truthLie">
+       <h1>Two Truths and a Lie</h1>
+       <div class="option">
+          <h3>Rubik's Cube</h3>
+          <p>I can solve the Rubik's Cube</p>
+       </div>
+       <div class="option">
+         <h3>Iceland</h3>
+         <p>I have been to Iceland</p>
+       </div>
+       <div class="option">
+         <h3>Chickens</h3>
+         <p>I own 4 chickens</p>
+       </div>
+     </div>
+
+     <!-- 
+      Walk Through 2
+      Movie Rating
+      
+      Bronze: 
+      Make an H2 tag saying 'Movies!'
+      Make a TABLE with a HEADER 
+      In the header, have 4 COLUMNS with the headers reading: 'Movie Title', 'Year', 'Runtime', and 'Rating'
+      Add at least 3 movies (you can make the info up)
+
+      Silver: 
+      Using CSS: 
+      Add a BACKGROUND COLOR of LIGHT SKY BLUE
+      Put a BORDER around the table that is BLACK
+
+      Gold:
+      ITALICIZE the movie titles
+      Set the table in the CENTER 
+      -->
+
+    <style>
+    
+      table, th, td {
+        border: 1px solid black;
+        /* padding: 0.5em; */
+        background-color: lightskyblue;
+      }
+
+      th, td {
+        padding: 0.5em;
+      }
+
+      table {
+        margin: auto;
+      }
+
+      #movies {
+        text-align: center;
+      }
+
+      .title {
+        font-style: italic;
+      }
+    
+    </style>
+
+    <div id="movies">
+      <h2>MOVIES!</h2>
+      <table>
+        <tr>
+          <th>Movie Title</th>
+          <th>Year</th>
+          <th>Runtime</th>
+          <th>Rating</th>
+        </tr>
+        <tr>
+          <td class="title">A New Hope</td>
+          <td>1976</td>
+          <td>120 minutes</td>
+          <td>PG</td>
+        </tr>
+        <tr>
+          <td class="title">Field of Dreams</td>
+          <td>1990</td>
+          <td>124 minutes</td>
+          <td>PG</td>
+        </tr>
+        <tr>
+          <td class="title">Black Panther</td>
+          <td>2018</td>
+          <td>136 minutes</td>
+          <td>PG-13</td>
+        </tr>
+
+        <!-- Smiley Face Exercise -->
+
+        <!-- 
+          ASSIGNMENT 1: 
+          CSS Creature (Codepen.io) 
+          DUE TOMORROW
+        -->
+      </table>
+    </div>
+  </body>
+</html>

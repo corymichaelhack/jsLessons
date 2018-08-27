@@ -1,0 +1,12 @@
+#navbarNav {
+  margin-left: 75%;
+}
+
+#brand {
+  font-family: var(--font-three);
+  font-size: 24pt;
+}
+
+#links {
+  font-family: var(--font-two);
+}
