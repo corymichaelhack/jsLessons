@@ -3,11 +3,11 @@ WHITEBOARD 2 - FIZZ BUZZ TEAM EXERCISE (Conditionals and Loops)
 **************************/
 /*
 Challenge:
-Write a for loop;
+Write a for loop running between the numbers 0 - 100
 For multiples of 3, instead of the number, console.log "Fizz"
 For multiples of 5 console.log "Buzz";
 For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
-For any other number, console.log the value.any
+For any other number, console.log the value
 */
 
 function fizzBuzz() {  
@@ -82,12 +82,12 @@ Notice how we pull a value out of an array?  We append a [] with the index numbe
 
 /*
 Challenge:
-Go into the nested array and get 'Sherri'
-print out "Hello Sherri, you look nice today"
+Go into the nested array and get 'Iesha'
+print out "Hello Iesha, you look nice today"
 */
 
-let iesha = students[6][1];
-console.log(`Hello ${iesha}, you look nice today.`);
+let name = students[6][1];
+console.log(`Hello ${name}, you look nice today.`);
 
 // Populating/Referring
 
@@ -230,7 +230,7 @@ let spaceJam = {
     rabbit1: 'Bugs Bunny',
     rabbit2: 'Lola Bunny',
     duck: 'Daffy Duck',
-    tDevel: 'Tasmanian Devil',
+    tDevil: 'Tasmanian Devil',
     bird: 'Tweety',
     cat: 'Sylvester',
     pig: 'Porky Pig'

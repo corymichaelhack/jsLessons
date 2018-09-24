@@ -142,14 +142,17 @@ FOR IN LOOPS
 **************************/
 /*
 Great for iterating over values in an object
-
-**EXPLAIN for in loops better**
 */
 
 var student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
 for (item in student) {
   console.log(item); // name awesome degree week
   console.log(student[item]); // Peter true JavaScript 1
+}
+
+var catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
+for (cat in catArray){
+  console.log(cat);
 }
 
 /*
@@ -175,16 +178,16 @@ FOR OF LOOPS
 EXPLAIN difference between for in and for of loops
 */
 
-var catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
-
-for (cat of catArray){
-  console.log(cat, 'says meow'); // tabby, brittish shorthair, burmese, maine coon, rag doll ...says meow
+//the below doesn't work--object properties are not 'iterable'
+var student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
+for (item of student) {
+  console.log(item); // name awesome degree week
 }
 
 var catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
 
-for (var cat in catArray){
-  console.log(cat, 'says meow'); // 0, 1, 2, 3, 4 ...says meow
+for (cat of catArray){
+  console.log(cat, 'says meow'); // tabby, brittish shorthair, burmese, maine coon, rag doll ...says meow
 }
 
 /**************************
@@ -292,7 +295,7 @@ let coffee = () => {
 
 coffee();
 
-var cats = (kitten, puppy) => {console.log(`I have ${kitten} cat(s) and ${puppy} dog(s)`)}
+var cats = (kitten, puppy) => {console.log(`I have ${kitten} cat(s) and ${puppy} dog(s)`)} //does this function get hoisted?  demonstrate that it doesn't
 
 cats(1, 12);
 
@@ -301,7 +304,7 @@ cats(1, 12);
 let apples = x => console.log(`There are ${x} apples.`);
 apples(10);
 
-// Return (if you use one) is implied
+// Return (if one-line fat arrow function) is implied
 
 // Block Body
 let apples = (x) => { console.log(`There are ${x} apples.`); }

@@ -16,13 +16,18 @@ COMMENTS
   01-comments.js
 **************************/
 
+//what comments do for us:
+//1) communicate with other developers by writing in plain English
+//2) annotate certain sections of our code for our future selves
+
+
+//console output of 'yay';
 console.log('yay');
-//console.log('yay');
 
-console.log('Day 1 is great! (Single line)');
-//...because we're learning how to code!!
+//i mean, it is!  we're learning to code!  :)
+console.log('Day 1 is great!');
 
-console.log('How to plant trees (Multi-line)');
+console.log('How to plant trees below (Multi-line)');
 /*
 Get tree
 Dig hole
@@ -43,6 +48,11 @@ VARIABLES
 var a = 1; 
 var b = 2; 
 console.log(a + b); // 3
+
+//notes on variables:
+//1)  a variable must begin with a letter, underscore, or dollar sign
+//2)  numbers may follow the above characters, but cannot come first
+//3)  JavaScript is case sensitive-- 'hello' and 'HeLlo' are different variables
 
 /**************************
 DECLARATIONS
@@ -75,7 +85,7 @@ Var, Let, and Const:
 
 Var = 'old' keyword for variables
 Let = 'new' keyword for variables (introduced with ES6)
-Const = also 'new'; sets unchangeable variables
+Const = also 'new'; declares unchangeable variables
 */
 
 let today = 'great!';
@@ -97,21 +107,23 @@ TYPES
 
 // Booleans
 // What is a boolean?
-var bool = true;
-console.log(bool); // true
+var on = true;
+console.log(on); // true
 
-let noBool = false;
-console.log(noBool); // false
+let off = false;
+console.log(off); // false
+
+//boolean can represent: true/false, yes/no, on/off
 
 // Null
 /* 
-Null = no value (not 0; not undefined)
+Null = empty value (not 0; not undefined)
 
 It is like an empty container; nothing is in it, but it still exists as a space to fill
 */
 
 var empty = null;
-console.log(empty); // undefined
+console.log(empty); // null
 
 // Undefined
 /*
@@ -127,15 +139,13 @@ let grass;
 console.log(grass); // undefined
 
 /*
-Where null is an empty space, undefined has no space at all
-Both are types--no errors
-
-Undefined is like sitting at a theater, hoping your friends come to sit with you before your seats are taken, but doing nothing to save them
-Null is like throwing your sweater over the seats next to you and being that guy who says: 'sorry, these seats are taken'
+We've talked before about how every variable is basically a storage container in JavaScript
+think of variables with null and undefined as packages coming out of UPS
+null packages are packages that were intentionally packed up with nothing, but have been assembled
+undefined packages are packages that have nothing in them, but have not yet been assembled to leave UPS
 */
 
 // Numbers
-// Numbers = numbers
 var degrees = 90;
 console.log(degrees);
 
@@ -171,7 +181,7 @@ console.log(typeof second); // string
 
 /*
 What's going on here?
-Addition vs. Contcatenation
+Addition vs. Concatenation
 
 When JS sees combining two or more numbers, it adds the values together using the built-in math functionality; when it sees adding together one or more strings, it changes and the plus sign becomes an assignment operator--it smashes the values together without trying to synthesize the values
 */
@@ -182,7 +192,7 @@ console.log(third); // 1050100
 console.log(typeof third); // string
 
 /*
-When JS uses contcatenation, it does not care about he values; JS is not looking at the values with the strings and seeing numbers and then thinking 'oh, I suppose Tom wanted to add these numbers together, he just accidenteally added quotes around one of them.  Let me help him out'  NO! It doesn't care; it simply slams them together and spits out the smashed values, assuming that if you wanted to do math, you would have used numbers only.
+With the plus operator, if 1 string and 1 number are given to the plus sign, it returns a string
 */
 
 /* 
@@ -202,15 +212,15 @@ Set each variable to its respective type.
 console.log your whole address (with the space between variable).
 */
 
-let firstName = 'Tom';
-let lastName = 'McClellan';
+let firstName = 'Tyler';
+let lastName = 'Shelton';
 let houseNumber = 12175;
 let street = 'Visionary Way';
 let city = 'Fishers';
 let state = 'IN';
 let zipcode = 46038;
 
-console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Tom McClellan, 12175 Visionary Way, Fishers, IN 46038
+console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Tyler Shelton, 12175 Visionary Way, Fishers, IN 46038
 
 // Objects
 /*
