@@ -8,7 +8,7 @@ Volunteers to walk us through their creature
 */
 
 /**************************
-ASSIGNMENT 2 - STORE FRONT - DUE MONDAY
+ASSIGNMENT 2 - Tutorial Webpage - DUE MONDAY
 **************************/
 
 /*
@@ -49,7 +49,7 @@ JS has both LOCAL and GLOBAL scope
 Local = like Indianapolis
 Global = like Earth
 
-Can still be on the world when you are in Indy, but you are not necessarily in Indy when you are on the plane
+Can still be on the world when you are in Indy, but you are not necessarily in Indy when you are on the planet
 */
 
 var x = 12
@@ -58,22 +58,10 @@ function scope() {
   var x = 33
   console.log(x);
 }
-
+scope()//33
 console.log(x); //12
 
 // Which value shows?
-
-var x = 12
-
-function scope() {
-  var x = 33
-  console.log(x);
-}
-
-scope() // 33
-console.log(x); //12
-
-// What if you remove var from scope()?
 
 var x = 12
 
@@ -100,30 +88,38 @@ Remember how, since ES6, we now have three keywords for variables: var, let, and
 
 Const is pretty straight forward; it is a constant that cannot be re-expressed.
 
-Var and let seem to operate the same, right? Well, here is a difference where the two act differently
+Var and let seem to operate the same, right? Well, check out the below:
 */
 
-function varTest() {
-  var scope = 1;
-  if (true) {
-    var scope = 2;
-    console.log(scope); // 2
+var x = 12
+
+function scope() {
+  var x = 33 // HERE
+  if (true){
+    var x = 45;
+    console.log(x);
   }
-  console.log(scope); // 2
+  console.log(x);
 }
 
-varTest();
+scope() // 45, 45
+console.log(x); //12
+//what is the expected output from above?
 
-function letTest() {
-  let scope = 1;
-  if (true) {
-    let scope = 2;
-    console.log(scope); // 2
+var x = 12
+
+function scope() {
+  var x = 33 // HERE
+  if (true){
+    let x = 45;
+    console.log(x);
   }
-  console.log(scope); // 1
+  console.log(x);
 }
 
-letTest();
+scope() // 45, 33
+console.log(x); //12
+//what is the expected output from above?
 
 /*
 Why is this happening?
@@ -154,6 +150,13 @@ constTest();
 
 // We are changing a const, should we throw an error?  NO!  Const, like let, is contained within block scope
 
+/*
+    variable grammar    obeys functional scope    obeys block scope   can be mutated (changed after initialization)
+    var                 x                         o                   x
+    let                 x                         x                   x
+    const               x                         x                   o
+*/
+
 /**************************
 HOISTING
 
@@ -162,13 +165,13 @@ HOISTING
 **************************/
 
 console.log(scissors); //undefined
-scissors = 'blue';01
+scissors = 'blue';
 
 console.log(scissors); //blue
 var scissors;
 
 /*
-Hoisting does not exist--it is an allusion
+Hoisting does not exist--it is an illusion
 
 JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
 
@@ -179,10 +182,10 @@ LITERALS
   06-literals.js
 **************************/
 
-var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 console.log(days.toString()); //Monday, Tuesday, Wednesday, Thursday, Friday
 
-var tired = true;
+let tired = true;
 
 let soup = {
   a: 'chicken noodle',
@@ -191,7 +194,9 @@ let soup = {
 }
 console.log(soup.c); //beef and barley
 
-var car = 'Honda';
+let car = 'Honda';
+
+let dec = 10.2;
 
 /**************************
 ASSIGNMENT OPERATORS
@@ -200,7 +205,7 @@ ASSIGNMENT OPERATORS
   01-assignmentOperators.js
 **************************/
 // Assignment operator
-var x = 5;
+let x = 5;
 
 // Addition assignment
 x += 1; // x = x + 1
@@ -226,6 +231,8 @@ COMPARISON OPERATORS
 5-expressionsAndOperators
   02-comparisonOperators.js
 **************************/
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
+
 // Equal 
 '3' == 3;
 
@@ -278,6 +285,12 @@ if (isOn) {
   console.log('The light is on, yay!');
 };
 
+let isOff = false;
+
+if (isOff == false){
+  console.log('The light is off!');
+}
+
 
 weather = 65;
 
@@ -305,9 +318,9 @@ If it is your name, console.log 'Hello, my name is <your name>';
 If the name does not match, console.log 'Hello, what is your name?'
 */
 
-var name = 'Tom';
+var name = 'Tyler';
 
-if ('Tom' == name) {
+if ('Tyler' == name) {
   console.log('Hello, my name is', name);
 } else {
   console.log('Hello, what is your name?');
@@ -319,7 +332,7 @@ if ('Tom' == name) {
 Capitalize the FIRST LETTER of name ONLY
 */
 
-var name = 'toM';
+var name = 'tyleR';
 
 if (name[0] == name[0].toUpperCase()) {
   firstLetter = name[0] + name.slice(1).toLowerCase()
@@ -364,8 +377,8 @@ SWITCH
 var friend;
 
 switch (friend) {
-  case "Aaron":
-    console.log("Hey Aaron, when are you going rock climbing?");
+  case "Tom":
+    console.log("Hey Tom, when are you going rock climbing?");
     break;
   case "Kenn":
     console.log("Hey Kenn, wanna play Catan?");
