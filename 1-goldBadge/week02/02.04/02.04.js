@@ -1,7 +1,6 @@
 /*
 Challenge (Objects):
 
-
 Create a function that takes in an object
 
 In the function, check if the object contains a specific property and return a boolean answer

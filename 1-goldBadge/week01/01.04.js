@@ -7,7 +7,7 @@ Write a for loop;
 For multiples of 3, instead of the number, console.log "Fizz"
 For multiples of 5 console.log "Buzz";
 For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
-For any other number, console.log the value.any
+For any other number, console.log the value
 */
 
 function fizzBuzz() {  
@@ -74,7 +74,9 @@ What is an array?
 let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha']]
 
 console.log(typeof students); //object
+console.log(students instanceof Array); //true
 console.log(students[2]) //Rhys
+console.log(students[1]) //Rhys
 
 /*
 Notice how we pull a value out of an array?  We append a [] with the index number of where the value is located (remember that JS starts counting at 0, not 1)
@@ -82,8 +84,8 @@ Notice how we pull a value out of an array?  We append a [] with the index numbe
 
 /*
 Challenge:
-Go into the nested array and get 'Sherri'
-print out "Hello Sherri, you look nice today"
+Go into the nested array and get 'Amira'
+print out "Hello Amira, you look nice today"
 */
 
 let iesha = students[6][1];
@@ -139,8 +141,22 @@ let colors = ['blue','green','yellow','red','orange','purple'];
 
 // colors.forEach(c => console.log(c)) // blue green yellow red orange purple
 
-let newArray = new Array(73)
-console.log(newArray.length) // 73
+/*
+Challenge:
+First check if you are working with an array
+Then flip the values within the array (what was in index 4 is now in 0, 3 to 1, etc.)
+Using a method only, print the values of the newly arranged array
+*/
+
+//Example array:
+// let arr = [1,2,3,4,5]
+let arr = new Array(1,2,3,4,5)
+// console.log(arr)
+
+if (arr instanceof Array === true) {
+  let revArr = arr.reverse()
+  revArr.forEach(a => console.log(a))
+}
 
 /**************************
 OBJECTS
@@ -256,6 +272,7 @@ console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] =
 console.log(Object.keys(spaceJam.toonSquad).toString()); // human, rabbit1, rabbit2, ...
 
 console.log(Object.values(spaceJam.toonSquad)); // ['Michael Jordan', 'Bugs Bunny', 'Lola Bunny', ...]
+
 
 // Square Bracket Notation
 

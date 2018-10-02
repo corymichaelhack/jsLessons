@@ -1,6 +1,3 @@
-/**************************
-CODE CHALLENGE 1 - OBJECTS
-**************************/
 /*
 Talk about "Think Like a Programmer", chapters 1-3, 8
   Always have a plan
@@ -69,7 +66,7 @@ console.log(newObject, 'Changed Object');
 
 
 /**************************
-CREATE-REACT-APP
+PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP & JSX
 **************************/
 
 /*
@@ -86,29 +83,29 @@ Folder Structure:
       
       cd into 4-reactFundamentals
       
-      create-react-app my-react-app
+      create-react-app pieclient
       
 cd into my-react-app
 
 Show folder structure:
-  my-react-app
-  node_modules => explain how npm made this
-  public
-  favicon.ico => small icon on browser tab
-  index.html => only html file in app
-  manifest.json => for mobile
-  src
-  App.css => css for app.js
-  App.js
-  App.test.js => for testing (DELETE, but not yet)
-  index.css
-  index.js
-  logo.svg (DELETE, but not yet)
-  registerServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
-  .gitignore => hides from git to prevent pushing to GitHub
-  package-lock.json
-  package.json
-  README.md
+  pieclient
+    node_modules => explain how npm made this
+    public
+      favicon.ico => small icon on browser tab
+      index.html => only html file in app
+      manifest.json => for mobile
+    src
+      App.css => css for app.js
+      App.js
+      App.test.js => for testing (DELETE, but not yet)
+      index.css
+      index.js
+      logo.svg (DELETE, but not yet)
+      ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
+    .gitignore => hides from git to prevent pushing to GitHub
+    package-lock.json
+    package.json
+    README.md
   
   Explain flow of React
   
@@ -121,13 +118,13 @@ Show folder structure:
   Delete things and replace App.js with:
   return (
     <div className="app">
-      <h1>Hello World</h1>
+      <h1>PIES!</h1>
     </div>
   )
 
   Delete import of logo on top and registerServerWorker() in index.js
 
-  Run again => just plain Hello World on white
+  Run again => just plain PIES! on white
   */
 
 
@@ -144,25 +141,3 @@ Show folder structure:
 /*
 Gitbook parts 1-3
 */
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
