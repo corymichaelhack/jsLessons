@@ -201,13 +201,13 @@ export default class Home extends Component {
 
 import React, { Component } from 'react';
 
-class Pies extends Component {
+class PieTable extends Component {
 
   render() {
     return (
       <div>
         <h3>Pie List</h3>
-        <table border='1' className='Pies'>
+        <table border='1' className='pies'>
           <thead>
             <tr>
               <th>Name of Pie</th>
@@ -253,6 +253,32 @@ class Pies extends Component {
             </tr>
           </tbody>
         </table>
+      </div>
+    )
+  }
+}
+
+export default PieTable;
+
+/*
+Go to the App.css and add the following for moving the table to the middle:
+
+.pies {
+  margin: auto;
+}
+
+Now, plug it in to Pies component:
+*/
+
+import React, { Component } from 'react';
+import PieTable from './PieTable';
+
+class Pies extends Component {
+
+  render() {
+    return (
+      <div>
+        <PieTable/>
       </div>
     )
   }
