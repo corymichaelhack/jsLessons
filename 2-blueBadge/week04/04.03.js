@@ -295,4 +295,37 @@ And add the following for Login.js:
 <h6>Register <button onClick={this.props.toggleForm }>HERE</button> if you don't have an account</h6>
 
 The button should toggle between Login and Signup!
+
+Now, go to AuthForm.js:
 */
+
+// const AuthForm = (props) => { // add props
+//   return (
+//     <div>
+//       <form>
+//         <h1>{ props.formName }</h1> // new 
+//         <div className="input-group">
+//           <label htmlFor="email">Email</label>
+//           <input 
+//             type="text" 
+//             id="emailField" 
+//             name="email" 
+//             className="input-field" 
+//             onChange={ props.changeInputs } // new
+//           />
+//         </div>
+//         <div className="input-group">
+//           <label htmlFor="password">Password</label>
+//           <input 
+//             type="text"
+//             id="passwordField"
+//             name="password"
+//             className="input-field"
+//             onChange={ props.changeInputs } // new
+//           />
+//         </div>
+//         <input type="button" value="Submit"/>
+//       </form>
+//     </div>
+//   )
+// }

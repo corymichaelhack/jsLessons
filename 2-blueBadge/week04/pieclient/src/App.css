@@ -30,3 +30,53 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ba834d;
+}
+
+.nav-li {
+  float: right;
+}
+
+.home {
+  float: left;
+}
+
+.nav-li a {
+  display: block;
+  color: #2e335b;
+  text-align: center;
+  padding: 0.8em 1.2em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-li a:hover {
+  background-color: #8b010a;
+  color: white;
+}
+
+.Pies {
+  margin: auto;
+}
+
+.foot-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0.7em 50vw;
+  overflow: hidden;
+  background-color: #ba834d;
+  bottom: 0;
+  position: fixed;
+}
+
+.foot-li {
+  margin: auto;
+  color: #2e335b;
+  font-weight: bold;
+}

@@ -6,9 +6,9 @@ const AuthForm = (props) => {
       <form>
         <h1>{ props.formName }</h1>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email</label><br/>
           <input 
-            type="text" 
+            type="email" 
             id="emailField" 
             name="email" 
             className="input-field" 
@@ -16,16 +16,16 @@ const AuthForm = (props) => {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password</label><br/>
           <input 
-            type="text"
+            type="password"
             id="passwordField"
             name="password"
             className="input-field"
             onChange={ props.changeInputs }
           />
         </div>
-        <input type="button" value="Submit"/>
+        <input type="submit" value="Submit"/>
       </form>
     </div>
   )
