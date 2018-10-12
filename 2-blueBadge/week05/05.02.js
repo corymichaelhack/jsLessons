@@ -4,7 +4,7 @@ NODE CHALLENGE 1
 
 
 /**************************
-PIE API WALKTHROUGH 2
+PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
 **************************/
 /*
 RECAP:

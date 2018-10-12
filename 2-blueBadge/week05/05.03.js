@@ -4,7 +4,7 @@ REACT CHALLENGE 2
 
 
 /**************************
-PIE API WALKTHROUGH 3
+PIE API WALKTHROUGH 3 - AUTH
 **************************/
 /*
 RECAP:

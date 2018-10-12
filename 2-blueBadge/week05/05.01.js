@@ -9,7 +9,7 @@ POSTGRES AND PGADMIN INSTALL
 **************************/
 
 /**************************
-PIE API WALKTHROUGH 1
+PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
 /*
 Folder Structure:
