@@ -1,3 +1,6 @@
+Today's Notes:
+1)  Talk to Jeremy about uploading the gold badge rubric
+
 Firebase Deploy for Assignment 4
 
 firebase.google.com
@@ -24,6 +27,4 @@ git add .
 git commit -m "message"
 git push
 
-firebase deploy 
-
-Repl.it Assessment 5 - DUE BY TOMORROW MORNING
+firebase deploy
