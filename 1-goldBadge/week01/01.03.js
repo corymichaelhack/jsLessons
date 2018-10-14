@@ -247,6 +247,37 @@ Why is the second value undefined when we console.log hi() but not when we conso
 The parenths after a function IMMEDIATELY INVOKE said function.
 */
 
+/*
+Challenge:
+Create a function that, when invoked, lists out the numbers 1-10
+*/
+
+function counting() {
+  for (i = 1; i < 11; i++){
+    console.log(i)
+  }
+}
+
+counting();
+
+/*
+Challenge:
+Given the array, create a function that lists out the values individually. 
+*/
+
+let arr = ['This', 'is', 'really', 'cool'];
+
+function arrList() {
+  for (item in arr) {
+    console.log(arr[item])
+  }
+  // for (item of arr) {
+  //   console.log(item)
+  // }
+}
+
+arrList();
+
 /**************************
 PARAMETERS
 
@@ -339,7 +370,9 @@ let func = ()
 RETURN
 **************************/
 /*
-EXPLAIN return better
+Functions are like the engines of JS where they will perform a specific function and produce a desired effect.  With the return keyword, we are pulling away from using console.log to show the output of a function in the terminal, and spitting out a value that we can then grab and place in another part of your code => we can effect change on your actual website with the return keyword, where console.log would only work in the dev tools (for example).
+
+It is like Chicken Run where the people create a huge machine that takes in chickens (like a parameter) and spits out chicken pot pies.  The return keyword is the chicken pot pie.  The function is doing all of the cutting, pie making, gravy filling, etc. and the return is simply giving the pie.  We can then take the pie and put it in something else...
 */
 
 function captializeName(name) {
@@ -354,12 +387,12 @@ function captializeName(name) {
    console.log(capName) // Tom
    return capName
 }
-const name = captializeName('tom')
-
-console.log( name + ' how are you doing?') // Tom how are you doing?
 
 // console.log(capName) // Error, not defined
 
+const myName = captializeName('tom')
+
+console.log(myName + ' how are you doing?') // Tom how are you doing?
 
 /*
 Challenge:

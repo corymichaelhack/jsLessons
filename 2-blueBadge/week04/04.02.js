@@ -71,7 +71,7 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
 */
 
 /**************************
-FUNCTIONAL COMPONENTS
+PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
 **************************/
 
 /*
@@ -86,15 +86,15 @@ Flow structure
   Nest all in one div tag
   
   Explain how Functional Components are really just functions
-  */
+*/
  
  /*
  Building Functional Component
  
- Go to my-react-app and npm start
- See existing site (Hello World)
+ Go to pieclient app and npm start
+ See existing site (PIES!)
  
- Add navbar.js at same level as app.js, etc.
+ Add navbar.js inside src folder.
  Add the following:
  
  const Navbar = () => {
@@ -105,10 +105,12 @@ Flow structure
     )
   }
   
-  Explain that fun.comps. have pascal case
+Explain that fun.comps. have pascal case
   Remind them that this is the exact same as normal fat arrow function
+
 Return keyword again
-When one value, it's just return something; with JSX, wrap it in ()
+  When one value, it's just return something; with JSX, wrap it in ()
+
 JSX again
 
 In app.js, add the following
@@ -120,21 +122,19 @@ return (
     </div>
   )
 
-  import Navbar from './navbar'; at the top => explain
-  
+import Navbar from './navbar'; at the top => explain
   Run => why isn't it working??
-  
-  Add import React from 'react'; at top of navbar.js => explain linking to package.json/node_modules
-  
+
+Add import React from 'react'; at top of navbar.js => explain linking to package.json/node_modules
   Run again, still nothing!
-  
-  Add export default Navbar; at bottom of navbar.js
-  
+
+Add export default Navbar; at bottom of navbar.js
   Run => should see desired component working
-  
-  Give 30 minutes to make a good navbar
-  */
- 
+
+Give 30 minutes to make a good navbar
+  create a navbar.css file and import to the top of navbar.js
+*/
+
  /*
  Gitbook parts 4-5
  */

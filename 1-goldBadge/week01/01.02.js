@@ -536,5 +536,4 @@ Conditionals
 Ternaries
 */
 
-// Repl.it Assessment 1 - DUE BY TOMORROW MORNING - invite link below:
-// https://repl.it/classroom/invite/ZLFbwYh
+// Repl.it Assessment 1 - DUE BY THURSDAY MORNING

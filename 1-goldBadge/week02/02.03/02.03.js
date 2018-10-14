@@ -41,7 +41,7 @@ Challenge 4:
 Create an object literal called netflix.
 It will have three properties: id, name, and seasonInfo.
 Id will be an integer and name will be a string.
-SeasonInfo will be an object which whill have a property called episodeInfo, which is an array of more objects.
+SeasonInfo will be an object which will have a property called episodeInfo, which is an array of more objects.
 Those objects have an episode number property and an episodeName property.
 
 You are welcome to fabricate the data.
