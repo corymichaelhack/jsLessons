@@ -1,0 +1,72 @@
+<h1>BOOKS</h1>
+
+<form 
+  [formGroup]="createBook" 
+  (ngSubmit)= "onCreateBook()"
+>
+  <label for="nameOfBook">Name of Book</label>
+  <input 
+    type="text"
+    formControlName = "nameOfBook"
+    name = "nameOfBook"
+    required
+  >
+
+  <label for="author">Author</label>
+  <input 
+    type="text"
+    formControlName = "author"
+    name = "author"
+    required
+  >
+
+  <label for="genre">Genre</label>
+  <select
+    formControlName="genre"
+    name="genre"
+    required
+  >
+  <option
+    *ngFor="let g of genres"
+    value="{{ g }}"
+  >{{ g }}</option>
+  </select>
+
+  <label for="pubYear">Publication Year</label>
+  <input 
+    type="number"
+    formControlName = "pubYear"
+    name = "pubYear"
+    required
+  >
+
+  <label for="rating">Rating</label>
+  <select
+    formControlName="rating"
+    name="rating"
+    required
+  >
+    <option
+      *ngFor="let rating of ratings"
+      value="{{ rating.value }}"
+    >{{ rating.view }}</option>
+  </select>
+    
+  <button
+    [disabled] = "!useBtn"
+    type="submit"
+  >
+    {{ useBtn === false ? "Think About a Book" : "Add Book" }}
+  </button>
+</form>
+
+<!-- <p *ngIf="books; else #noBook">{{ books.nameOfBook }}, written by {{ books.author }}.  A {{ books.genre }} book, written in {{ books.pubYear }}.  It is {{ books.rating }}.</p>
+
+<ng-template noBook>
+  <p>No Book Created</p>
+</ng-template> -->
+
+<app-book 
+  *ngFor="let book of books" 
+  [book]="book"
+></app-book>

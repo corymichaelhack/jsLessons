@@ -119,7 +119,9 @@ const router = express.Router()
 // copy from index.js:
 app.get('/pies', (req, res) => res.send('I love pie!'))
 // change app to router
-router.get('/pies', (req, res) => res.send('I love pie!'))
+router.get('/', (req, res) => res.send('I love pie!'))
+// explain what the '/' does (localhost:3000/pies/)
+
 // and add to bottom:
 module.exports = router
 

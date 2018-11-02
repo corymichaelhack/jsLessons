@@ -96,15 +96,15 @@ Show folder structure:
       manifest.json => for mobile
     src
       App.css => css for app.js
-      App.js
+      App.js => root component
       App.test.js => for testing (DELETE, but not yet)
-      index.css
-      index.js
-      logo.svg (DELETE, but not yet)
+      index.css => styling for entire project
+      index.js => middleman between index.html and App.js
+      logo.svg => (DELETE, but not yet)
       ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
     .gitignore => hides from git to prevent pushing to GitHub
-    package-lock.json
-    package.json
+    package-lock.json => more secure and detailed package.json
+    package.json => lists dependencies in app
     README.md
   
   Explain flow of React

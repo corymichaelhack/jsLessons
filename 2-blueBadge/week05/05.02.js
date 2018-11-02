@@ -44,7 +44,7 @@ module.exports = sequelize;
 /*
 Tell them to add NAME and PASS to .env file
 
-create model folder and add pie.js file:
+create models folder and add pie.js file:
 */
 
 module.exports = (sequelize, DataTypes) => {
