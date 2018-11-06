@@ -370,3 +370,19 @@ To:
   </select>
 
 Give it a try and see if all things work!
+
+
+**************************
+THINGS COVERED: THINGS TO STUDY
+**************************
+
+Models
+Services
+@Injectable
+NgModule
+  Imports
+  Declarations
+  Providers
+  Bootstrap 
+Observables
+RXJS
