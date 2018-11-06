@@ -554,7 +554,7 @@ First, add a books variable and set it equal to an empty array at the top of the
 
 Add the following below your ngOnInit() {}:
 
-  onCreateBook() {
+  onCreateBook() : void {
     this.books.push(this.createBook.value)
   }
 
@@ -722,6 +722,10 @@ Extra Challenge:
 Instead of a string for genre, create an enum that takes in only the genres you want (i.e. fiction, mystery, scifi, memoir, etc.)
 
 And, for rating, build a range that allows only a minimum of 1 and a maximum of 5, as well as set a default value of 1 to allow a value to automatically fill in.
+
+DISCLAIMER:
+
+If you do not build the backend for this app, you will not be able to participate in the second walk through of this app.
 
 
 **************************

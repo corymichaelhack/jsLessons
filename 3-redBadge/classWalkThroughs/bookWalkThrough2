@@ -2,3 +2,371 @@
 ANGULAR WALKTHROUGH 2 - MODELS, SERVICES, INJECTABLES, RXJS
 **************************
 
+Now, assuming that people were able to build out their backend for this app, we are going to plug it in to our Angular frontend now.  If you did not build out the backend, you will have to sit tight and watch, or get the repo from a classmate.
+
+
+**************************
+MODELS
+**************************
+
+Even though you have a model of your database in the server side, Angular requires you to build a model in the frontend.  The reason for this is to be intentional with what datatype you send to the backend.  If it doesn't match Angular's model, it will not permit the data to even get to the server side.
+
+Whether we have enums or ranges in the backend, the model for Angular is only concerned with what specific data type gets to the table.
+
+So, if, for instance, you have an enum of strings, the root value that will be stored is a string.  Therefore, our model can be simple and allow us to plug in a string data type instead of the entire enum all over again.
+
+Let's manually build out the model.  In the app folder, add a models folder.  In there, add a book.model.ts file. 
+
+If you open it, you should see that it is empty.  Let's fil it in in correspondance to the server's model.  Add the following:
+
+  export interface Book {
+    nameOfBook: string,
+    author: string,
+    genre: string,
+    pubYear: number,
+    rating: number
+  }
+
+Simple as that.  Let's keep going.
+
+
+**************************
+GET - CREATEBOOKCOMPONENT
+**************************
+
+First, let's display the books from a GET method from our backend!  They will ultimately fall within our DisplayBooksComponent, however, much of the logic will land within the CreateBookComponent.
+
+Let's go into our create-book.component.ts file and look down at the onCreateBook() method:
+
+  onCreateBook() : void {
+    this.books.push(this.createBook.value)
+    console.log(this.books)
+  }
+
+If we remember, this method grabs data from the form that we type in and pushes it into a books array.  That array is then passed on to the DisplayBooksComponent.  
+
+We are going to parse this out into two different methods.
+
+We are first going to display the books from the backend.  To do this, we are going to have the logic in this file and then use the setup that we already built out to have it pass to the DisplayBooksComponent.  
+
+Fist, we need to make another method:
+
+  findBooks() : void {
+
+  }
+
+And then we are going to invoke it with the ngOnInit() method.  So, under the createBook instantiation, add:
+
+  this.findBooks()
+
+Now, we are going to link this method to the backend!
+
+We do this with a service.
+
+
+**************************
+SERVICES
+**************************
+
+Services are basically the middleman between front and backend.  They can hold the fetching functionality so that we can simply outsource the fetches to a specified file.
+
+Let's create a server with the help of AngularCLI.  In the terminal, type:
+
+  ng g s services/database
+
+You should see, in your app folder, a new folder called services with database.service.ts and database.service.spec.ts inside.
+
+If you open it, you should see:
+
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DatabaseService {
+
+    constructor() { }
+  }
+
+We are going to add, first of all, the url of our database (make sure your server is running).  Add the following at the top of your DatabaseService class:
+
+  private dbUrl = 'http://localhost:3000/books'
+
+Note: This only works if the controller is the same as mine (that the route is books to get to the bookcontroller.js file)
+
+We now need to import HttpClient.  In the contructor() method, type inside the parentheses:
+
+  constructor(private http: HttpClient) { }
+
+(TIP: When typing HttpClient, hit tab and vs.code will autocomplete the path for you => from @angular/common/http)
+
+Where previously we have been using fetch(), we are going to use HttpClient, which is a built-in for Angular.
+
+To make it work, we need to import it into app.module.ts. Add the following (hitting tab, each time you type it out to allow vs.code to autocomplete for you):
+
+  import { DatabaseService } from './services/database.service';
+  import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+  @NgModule({
+  declarations: [
+    AppComponent,
+    DisplayBooksComponent,
+    CreateBookComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+  ],
+  providers: [DatabaseService, HttpClient],
+  bootstrap: [AppComponent]
+})
+
+Note that we also have to bring our service into the providers section as well.
+
+In the service file, add:
+
+  import { Book } from '../models/book.model'
+
+Now, under the contructor, add the following:
+
+  getBooks(): Observable<Book[]>{
+    return this.http.get<Book[]>(this.dbUrl)
+  }
+
+Note that Observable has to be imported as well:
+
+  import { Observable } from 'rxjs';
+
+
+**************************
+GET - CREATEBOOKCOMPONENT, PART 2
+**************************
+
+Now, go back to create-book.component.ts and, in findBooks(), add the following:
+
+  import { DatabaseService } from '../services/database.service';
+
+  ...
+
+  constructor(private fb: FormBuilder, private dbService: DatabaseService) {
+    ...
+  }
+
+  ...
+
+  findBooks() : void {
+    this.dbService.getBooks().subscribe(Book => {
+      this.books = Book
+      this.books.reverse()
+    })
+  }
+
+Run it!  You should now see the books from the db get and display in your app!  
+
+Notice also that, with the reverse() method, we are seeing the last entry at the top! 
+
+
+**************************
+GET - DISPLAYBOOKSCOMPONENT
+**************************
+
+If we, now, look at the display-books.component.ts file, we will see:
+
+  import { Component, Input } from '@angular/core'
+
+  @Component({
+    selector: 'app-display-books',
+    // template: `
+    //   <h1>This Display Books component is working!</h1>
+    // `
+    templateUrl: './display-books.component.html',
+    styleUrls: ['./display-books.component.css']
+  })
+
+  export class DisplayBooksComponent {
+    public _book = {}
+
+    @Input()
+    set book(book: any) {
+      this._book = (book)
+    }
+
+    get book(): any {
+      return this._book
+    }
+  }
+
+Following the path of the database to display, we see this:
+
+bookApi (books table) => database.service.ts (getBooks()) => createBook.component.ts (findBooks() => books array) => createBook.component.html (*ngFor="let book of books" => [book]="book") => display-books.component.ts (@Input set book => _book array) => display-books.component.html ({{ _book.rating }})
+
+The data has moved a lot of places!  But what if I want to see stars instead of the number value (4 => ⭐⭐⭐⭐)?
+
+In the display-books.component.ts file, let's add a ratings array at the top of your class:
+
+  ratings = ['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐']
+
+Next, we need to do some conversion while this component is rendering.  So we need an OnInit lifecycle hook in this component as well.  Under the ratins array, add:
+
+  ngOnInit() {
+
+  }
+
+Note that we need it to be included in the import at the top, also importing from @angular/core.
+
+Likewise, we need to adjust our class.  We need to change:
+
+  export class DisplayBooksComponent {
+    ...
+  }
+
+To:
+
+  export class DisplayBooksComponent implements OnInit {
+    ...
+  }
+
+Now in the ngOnInit() lifecycle hook, add:
+
+  ngOnInit() {
+    this._book['rating'] = this.ratings[this._book['rating'] -1]
+  }
+
+What is this doing?  It is grabbing the value of the rating within the _book array and setting the value to equal the index number of the ratings array.
+
+
+**************************
+POST - CREATEBOOKCOMPONENT, PART 1
+**************************
+
+Go back to create-book.component.ts and look back at the onCreateBook() method.  Again, it currently has:
+
+  onCreateBook() : void {
+    this.books.push(this.createBook.value)
+    console.log(this.books)
+  }
+
+Notice that the books array has a .push() method appended to it.  This will put the content to the bottom of the array and, considering we have a .reverse() method with the GET, we will see most-recent, down, and then the new entry at the bottom--confusing.
+
+So, if we change the .push() method to .unshift(), we will add a new entry to the top of the array.  This will help us grab the entry when we POST to the db.
+
+Now add the following:
+
+  onCreateBook() : void {
+    this.books.unshift(this.createBook.value)
+    this.dbService.makeBook(this.books[0]).subscribe(Book => this.books[0] = Book)
+  }
+
+We are now grabbing the first entry in the books array, which is good now that we changed to the .unshift() method.  Now let's go to the service file again.
+
+
+**************************
+DATABASESERVICE
+**************************
+
+Now we need to make a makeBook() method.  Add the following:
+
+  makeBook(book: Book) : Observable<Book[]>{
+    return this.http.post<Book[]>(this.dbUrl, book)
+  }
+
+The structure is slightly different (you can find this more in the Angular.io docs for HttpClient under the post() method).
+
+This, however, won't work because of CORS.  So, we need to implement a header.  Above the class, add:
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+Make sure to import it under @angular/common/http.  Now, in the makeBook() method, add one last thing.  Add httpOptions after book in the parameters of the post method:
+
+  makeBook(book: Book) : Observable<Book[]>{
+    return this.http.post<Book[]>(this.dbUrl, book, httpOptions)
+  }
+
+Run it and see if you can post a new book to the db and have it, thus, display in your site! (You might need to change the dropdowns to allow for the enum in the backend)
+
+
+**************************
+POST - CREATEBOOKCOMPONENT, PART 2
+**************************
+
+Now that this works, we want to adjust how we input data.  Currently, our dropdowns are not corresponding with the backend fully.  Rather than put all the options in the html directly, let's approach it a bit more Angular-y.  
+
+Back in the create-book.component.ts file, add the following above your constructor:
+
+  genres = [
+    'Biography', 'Childrens', 'Classic Literature', 'Comics/Graphic Novels', 'Cookbook', 'Crime/Detective', 'Drama', 'Essay', 'Fable', 'Fairy Tale', 'Fan Fiction', 'Fantasy', 'Folklore', 'Historical Fiction', 'History', 'Horror', 'Humor', 'Journal', 'Lab Report', 'Legend', 'Magical Realism', 'Memoir', 'Meta Fiction', 'Mystery', 'Mythology', 'Mythopeia', 'Narrative NonFiction/Personal Narrative', 'Owner\'s Manual', 'Realistic Fiction', 'Reference Book', 'Religion/Spiritual', 'Science Fiction', 'Self Help', 'Short Story', 'Speech', 'Suspence/Thriller', 'Swashbuckler', 'Tall Tale', 'Textbook', 'Western', 'Young Adult'
+  ]
+  ratings = [
+    { value: 1, view: '⭐'},
+    { value: 2, view: '⭐⭐'},
+    { value: 3, view: '⭐⭐⭐'},
+    { value: 4, view: '⭐⭐⭐⭐'},
+    { value: 5, view: '⭐⭐⭐⭐⭐'}
+  ]
+
+This array of genres corresponds with the enum in the server.  Notice also that the ratings array now has objects with both values and views.  We will use that in the html file.
+
+In the html file, change the following:
+
+  <label for="genre">Genre</label>
+  <select
+    name="genre"
+    formControlName="genre"
+    required
+  >
+    <option>Fiction</option>
+    <option>Nonfiction</option>
+    <option>Comic</option>
+    <option>Cookbook</option>
+  </select>
+
+To:
+
+  <label for="genre">Genre</label>
+  <select
+    formControlName="genre"
+    name="genre"
+    required
+  >
+    <option
+      *ngFor="let g of genres"
+      value="{{ g }}"
+    >{{ g }}</option>
+  </select>
+
+And change:
+
+  <label for="rating">Rating</label>
+  <select
+    name="rating"
+    formControlName="rating"
+    required
+  >
+    <option>1 stars</option>
+    <option>2 stars</option>
+    <option>3 stars</option>
+    <option>4 stars</option>
+    <option>5 stars</option>
+  </select>
+
+To:
+
+  <label for="rating">Rating</label>
+  <select
+    formControlName="rating"
+    name="rating"
+    required
+  >
+    <option
+      *ngFor="let rating of ratings"
+      value="{{ rating.value }}"
+    >{{ rating.view }}</option>
+  </select>
+
+Give it a try and see if all things work!
