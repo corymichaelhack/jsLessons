@@ -60,8 +60,7 @@ function scope() {
 }
 scope()//33
 console.log(x); //12
-
-// Which value shows?
+ 
 
 var x = 12
 
