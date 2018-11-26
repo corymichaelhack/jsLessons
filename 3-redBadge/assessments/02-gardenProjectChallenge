@@ -13,4 +13,12 @@ Use Angular to create the site
 Use git to push to a single repo on GitHub
 Make it look nice
 
-Presentations for the 'client' will be tomorrow before lunch
+Presentations for the 'client' will be tomorrow after lunch
+
+Credentials:
+Products: https://efa-gardenapp-backend.herokuapp.com/api/product
+Admin: https://efa-gardenapp-backend.herokuapp.com/api/auth/login
+Admin Username: wer@odikepki.pr
+Admin Password: test
+
+This does not need to be deployed.

@@ -19,8 +19,8 @@ export class DisplayBooksComponent implements OnInit {
   }
 
   @Input()
-  set book(book: any) {
-    this._book = (book)
+  set libro(script: any) {
+    this._book = (script)
   }
 
   get book(): any {
