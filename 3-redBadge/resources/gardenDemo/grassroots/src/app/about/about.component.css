@@ -1,0 +1,18 @@
+.aboutSection {
+  height: 94.1vh;
+  /* width: 150%; */
+  background: url('https://images.unsplash.com/photo-1526071280296-b941175cec92?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6442d09d8526142efc34c5da10fdcb7c&auto=format&fit=crop&w=934&q=80') fixed bottom center;
+  background-size: cover;
+}
+
+div.aboutContent {
+  text-align: center;
+  margin: auto;
+  margin-top: 5em;
+  color: #502f13;
+  border: 2px solid #fff;
+  border-radius: 0.4em;
+  padding: 2em;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0.6px;
+}
