@@ -1,0 +1,48 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.title {
+  color: rgb(211, 49, 211);
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 9em;
+}
+
+.app-btn {
+  width: 10em;
+  height: 2em;
+  margin: 1em;
+  background-color: rgb(104, 104, 104);
+  color: white;
+  border-radius: 3px;
+  border-color: rgb(110, 110, 110) ;
+}
+
+.app-btn:hover {
+  color: rgb(211, 49, 211)
+}
+
+.data-display {
+  position: absolute;
+  top: 12em;
+  left: 1em;
+}
+
+.character-display {
+  background-color: rgb(211, 49, 211);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 1em;
+  max-width: 40em;
+}
+
+.character-display p, h6 {
+  color: white;
+}

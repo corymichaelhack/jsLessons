@@ -1,0 +1,12 @@
+Errors & Fixes
+
+1.  App.js : 3 - Attempting to import Main from the same level as App
+2. Main.js : 1 - Only React is being imported - can be solved with either imported Component or extending React.Component
+3. Main.js : 41 - removed key from .map() - can be solved by setting key = {index}
+4. Main.js : 34 - data is capitalized(Data) should be undercased
+5. Main.js: 58 - function is componentDidMount() should be render();
+6. Main.js : 23 - trying to await this.state = 'villain' - should be refactored to look like the toggleHero() method
+7. App.js : 9 - style prop is wrapped in quotes instead of curly braces 
+8. Main.js : 47 - Extra div being returned
+9. HeroButton.js : 3 - not passing in props
+10. VillainButton.js : 10 - removed 'export default VillainButton'
