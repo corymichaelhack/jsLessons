@@ -1,0 +1,17 @@
+Adding onto challenge One,
+Students need to make a section of the react application that links from the main page ( add another bullet )
+
+They then need got reach out to SWAPI using a fetch() and get data for both starsips and planets. Then return that data into the application, and render it to the page.
+
+There needs to be a button to toggle between starship and planet data.
+
+Students also need to make use of the style prop
+
+const divStyles = {
+    borderRadius: '1em',
+    // whatEver: whatever
+}
+
+ex <div style={divStyles} ></div>
+
+Note:: SWAPI buckled during the initial run, so planets.js and starships.js contain JSON formats of the information return by SWAPI -- just in case.
