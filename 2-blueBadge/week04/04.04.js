@@ -1,319 +1,147 @@
 /**************************
-CODE CHALLENGE 4
+CODE CHALLENGE 2 - ARRAYS
 **************************/
+
+/*
+Given 2 arrays:
+[10,20,30,40,50,70]
+[5,3,2,5]
+
+Create a function that multiplies 'like' indexes (0 with 0, 1 with 1, etc.) together then place the value in a new array. 
+
+The function you create should return [50, 60, 60, 200] based on the arrays above.
+
+Make sure the values given to the function are an array type and they have data inside of them.
+
+If the first array has more values than the second, return that same number
+*/
+
+const tensArray = [10,20,30,40,50,70];
+const onesArray = [5,3,2,5];
+
+const multiplyValues = (arr1 = [], arr2 = []) => {
+  // is an expression that checks the value and type of the arr1 given, then puts that value in that param
+  arr1 = typeof arr1 == 'object' && arr1 instanceof Array && arr1.length > 0 ? arr1: false;
+  arr2 = typeof arr2 == 'object' && arr2 instanceof Array && arr2.length > 0 ? arr2: false;
+  
+  let newArray = [];
+  
+  if (arr1 && arr1) {
+    // loop over the first array
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr2[i] == undefined) {
+        newArray.push(arr1[i] * 1)
+      } else {
+        newArray.push(arr1[i] * arr2[i])
+      }
+    }
+    return newArray
+  } else {
+    return 'Error: Please provide valid arrays'
+  }
+}
+
+let funArr = multiplyValues(tensArray, onesArray);
+console.log(funArr)
+
+/*
+Typeof vs Instanceof
+What does typeof do again?  What do you think instanceof does?  Are both necessary?  No, but it is better safe than sorry to include them.  Typeof sets it to 'object'; why?  If arrays and objects both give the same typeof answer, including instanceof helps solidify that we are looking for an array.  
+
+Instance of checks the prototype property of a constructor => here, it shows us that we are testing that we have an Array.  The capital 'A' Array is a constructor.  We can append classes to them (like we did with Object.assign() yesterday).  These constructors, at their root, simply give the type that they are working with--Array means that we can ONLY work with arrays.
+
+So by including both typeof and instanceof, we are checking the type to make sure it is nothing other than an array in multiple ways.  Again, is this necessary?  No, but helpful.
+*/
+
+console.log([] instanceof Array); //true
+console.log(typeof []); // object
+
+console.log({} instanceof Object); //true
+console.log(typeof {}); // object
+
+/*
+Ternary operators (recap) 
+arr1 = typeof arr1 == 'object' && arr1 instanceof Array && arr1.length > 0 ? arr1: false;
+
+same as
+
+if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) {
+  ...
+}
+*/
 
 /**************************
-PIE CLIENT WALKTHROUGH 4 - ROUTER
+PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
 **************************/
-/*
-Recap differences between functional and class components
-
-Quickly recap what state and props are
-
-npm install react-router-dom
-
-Make new files:
-
-components
-  layout
-    AuthForm.js
-    Footer.js
-    Home.js (new)
-    Main.js (new)
-    Navbar.js
-    Pies.js (new)
-
-Go to index.js:
-*/
-
-import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'; // new
-import './index.css';
-import App from './App';
-
-render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root'));
 
 /*
-Talk about why we would add BrowserRouter here (links to whole site)
+Explain React basics again
+Flow structure
+  App.js
+  Return keyword => packages and spits out data (one piece of data)
 
-Go to Main.js:
-*/
-
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Pies from './Pies';
-
-const Main = () => (
-  <main>
-    <Switch>
-      <Route exact path='/' component={ Home }/>
-      <Route path='/pies' component={ Pies }/>
-    </Switch>
-  </main>
-)
-
-export default Main;
-
-// Now, go to App.js:
-
-import Main from './components/layout/Main'
-// Code omitted
-{ this.authViewShow() }
-<Main/> // new
-
-// In Home.js:
-
-import React, { Component } from 'react'
-import Login from '../auth/Login'
-import Signup from '../auth/Signup'
-
-class Home extends Component {
+  Briefly explain JSX
+  Like HTML
+  className, not class; why?
+  Nest all in one div tag
   
-
-  render() {
-    return (
-      <div>
-
-      </div>
+  Explain how Functional Components are really just functions
+*/
+ 
+ /*
+ Building Functional Component
+ 
+ Go to pieclient app and npm start
+ See existing site (PIES!)
+ 
+ Add navbar.js inside src folder.
+ Add the following:
+ 
+ const Navbar = () => {
+   return (
+     <div className="navbar">
+     something
+     </div>
     )
   }
-}
+  
+Explain that fun.comps. have pascal case
+  Remind them that this is the exact same as normal fat arrow function
 
-export default Home;
+Return keyword again
+  When one value, it's just return something; with JSX, wrap it in ()
 
-/*
-Now go to App.js and cut the following out and paste in Home.js:
-*/
+JSX again
 
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-// import Login from './components/auth/Login'; // DELETE
-// import Signup from './components/auth/Signup'; // DELETE
-import Main from './components/layout/Main'
+In app.js, add the following
 
-class App extends Component {
-  // CUT content below
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
-
-  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        <Login toggleForm={ this.changeUserStatus }/>
-      )
-    } else {
-      return (
-        <Signup toggleForm={ this.changeUserStatus }/>
-      )
-    }
-  }
-  // CUT content above
-
-  render() {
-    return (
-      <div className="App">
-        <Navbar/>
-        <Main/>
-        {/* { this.authViewShow() } => CUT */}
-        <Footer/>
-      </div>
-    );
-  }
-}
-
-export default App;
-
-// App.js should now look like:
-
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import Main from './components/layout/Main'
-
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <Navbar/>
-        <Main/>
-        <Footer/>
-      </div>
-    );
-  }
-}
-
-export default App;
-
-// And Home.js should now look like:
-
-import React, { Component } from 'react';
-import Login from '../auth/Login';
-import Signup from '../auth/Signup';
-
-export default class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
-
-  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        <Login toggleForm={ this.changeUserStatus }/>
-      )
-    } else {
-      return (
-        <Signup toggleForm={ this.changeUserStatus }/>
-      )
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        { this.authViewShow() }
-      </div>
-    );
-  }
-}
-
-// Now, add the following to Pies.js:
-
-import React, { Component } from 'react';
-
-class PieTable extends Component {
-
-  render() {
-    return (
-      <div>
-        <h3>Pie List</h3>
-        <table border='1' className='pies'>
-          <thead>
-            <tr>
-              <th>Name of Pie</th>
-              <th>Base of Pie</th>
-              <th>Crust</th>
-              <th>Time to Bake</th>
-              <th>Servings</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Apple</td>
-              <td>Fruit</td>
-              <td>Sourdough</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Peach</td>
-              <td>Fruit</td>
-              <td>Sourdough</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Chocolate Cream</td>
-              <td>Cream</td>
-              <td>Oreo</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Chicken Pot Pie</td>
-              <td>Gravy</td>
-              <td>Hot Water Crust</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-}
-
-export default PieTable;
-
-/*
-Go to the App.css and add the following for moving the table to the middle:
-
-.pies {
-  margin: auto;
-}
-
-Now, plug it in to Pies component:
-*/
-
-import React, { Component } from 'react';
-import PieTable from './PieTable';
-
-class Pies extends Component {
-
-  render() {
-    return (
-      <div>
-        <PieTable/>
-      </div>
-    )
-  }
-}
-
-export default Pies;
-
-/*
-Run it and see what happens when you adjust the link from localhost:3000 to localhost:3000/pies
-
-Discuss what routing is doing
-
-Now, go to Navbar.js; change a tags to Link tags and add necessary 'to' links:
-*/
-
-import React from 'react';
-import { Link } from 'react-router-dom'; // new
-
-const Navbar = () => {
-  return (
-    <div className="navbar">
-      <nav>
-        <ul className="nav-ul">
-          <li className="nav-li home"><Link to='/pies'>PIES</Link></li>
-          <li className="nav-li"><Link to='/'>Sign Up/Login</Link></li>
-        </ul>
-      </nav>
+return (
+  <div className="app">
+    + <Navbar />
+    <h1>Hello World</h1>
     </div>
   )
-}
 
-export default Navbar
+import Navbar from './navbar'; at the top => explain
+  Run => why isn't it working??
 
-/*
-Discuss how css styling still is the same even though we now have Link tags instead of a tags => react-router-dom holds to the basic structure of a tags for this attribute
+Add import React from 'react'; at top of navbar.js => explain linking to package.json/node_modules
+  Run again, still nothing!
 
-Run it and link to other pages based on navbar clicks
+Add export default Navbar; at bottom of navbar.js
+  Run => should see desired component working
+
+Give 30 minutes to make a good navbar
+  create a navbar.css file and import to the top of navbar.js
 */
+
+ /*
+ Gitbook parts 4-5
+ */
+
+
+/**************************
+BOOK
+**************************/
+
+// Assign chs. 4-6, 8 of "Think Like a Programmer"

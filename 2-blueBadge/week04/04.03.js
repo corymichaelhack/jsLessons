@@ -1,331 +1,238 @@
+/*
+Talk about "Think Like a Programmer", chapters 1-3, 8
+  Always have a plan
+  Restate the problem
+  Divide the problem
+  Start with what you know
+  Reduce the problem
+  Look for analogies
+  Experiment
+  Don't get frustrated
+*/
+
 /**************************
-CODE CHALLENGE 3 - STRINGS
+CODE CHALLENGE 1 - OBJECTS
 **************************/
 
 /*
-Given the string -> 'Welcome to eleven fifty'
-
-Create a function that accepts a string. 
-    
-In the function check to see if the value of the string is: 
-- of type string
-- has a length greater than zero
-- has a length less than 30
-
-If any of these are invalid send it to the else condition and show the message -> 'String must not be empty, null, or exceed 30 characters'
-
-If the string is valid, change the string so that the 'e' and the first 'f' in 'eleven fifty' is capitalized
-
-Make sure that trailing whitespace is trimmed off of the string. 
-
-If finished, add a second param to the function for a callback function and instead of returning the data, place it inside of the callback arguments
+Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
+Your function may have 3 parameters, the original object, property1, property2
 */
 
-const stringCheck = '    Welcome to eleven fifty     ';
-
-const findTheCompany = (str, callback) => {
-  str = typeof (str) == 'string' && str.trim().length > 0 && str.trim().length < 30 ? str.trim() : false;
-  
-  if (str) {
-    str = str.replace('eleven fifty', 'Eleven Fifty');
-    return callback(false, str);
-  } else {
-    return callback(true, 'Error: String must not be empty and must be a string type');
-  }
+// Option 1 (Not Quite Right)
+const person = {
+  fName: 'Tom',
+  lName: 'McClellan'
 }
 
-const fixedString = findTheCompany(stringCheck, (err, message) => {
-  if (!err && message) {
-    return message;
-  } else {
-    return {
-      error: err,
-      message: message
-    }
-  }
-})
-
-console.log(fixedString);
-
-
-/**************************
-PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
-**************************/
-
-/*
-Run through making a functional component for a footer (recap) => make with functional keyword instead of fat arrow for variety
-
-Discuss differences between functional components and class components => class discussion on which is better
-
-Change folder structure (change paths accordingly):
-  src
-    components
-      layout
-        AuthForm.js (new file)
-        Footer.js
-        Navbar.js
-      auth
-        Login.js (new file)
-        Signup.js (new file)
-    ...
+function changePerson(obj, param1, param2) {
   
-Talk about making login/signup form
-*/
+  let temp = obj.param1;
+  obj.param1 = obj.param2;
+  obj.param2 = temp;
+
+  return obj
+}
+
+newObj = changePerson(person, 'fName', 'lName');
+
+console.log(newObj);
+
+// Option 2 (Better)
+const person = {
+  fName: 'Tom',
+  lName: 'McClellan'
+}
+
+const food = {
+  food1: 'Steak',
+  food2: 'Tacos'
+}
+
+const changePerson = (obj, prop1, prop2) => {
+  let newObj = Object.assign({}, obj);
+  // let newObj = obj;
+
+  let temp = newObj[prop1];
+  newObj[prop1] = newObj[prop2];
+  newObj[prop2] = temp;
+
+  return newObj;
+}
+const newObject = changePerson(food, 'food1', 'food2');
+console.log(food, "Unchanged Object");
+console.log(newObject, 'Changed Object');
+
+/*********************
+PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
+*********************/
+
+//start by showing them the pieclient and start the pie server so they know where we're headed
 
 /*
-Go to layout/AuthForm.js 
- 
-Add the following:
-*/
+npm install -g create-react-app
+
+Folder Structure:
+  javascriptDec2018
+    javascriptLibrary
+      0-preWork
+      1-jsFundamentals
+      2-domFundamentals
+      3-apiFundamentals
+      4-reactFundamentals (new folder)
+
+cd into 4-reactFundamentals
+
+create-react-app pieclient
+cd into pieclient
+
+Show folder structure:
+  pieclient
+    node_modules => explain how npm made this
+    public
+      favicon.ico => small icon on browser tab
+      index.html => only html file in app
+      manifest.json => for mobile
+    src
+      App.css => css for app.js
+      App.js => root component
+      App.test.js => for testing (DELETE, but not yet)
+      index.css => styling for entire project
+      index.js => middleman between index.html and App.js
+      logo.svg => (DELETE, but not yet)
+      ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
+    .gitignore => hides from git to prevent pushing to GitHub
+    package-lock.json => more secure and detailed package.json
+    package.json => lists dependencies in app
+    README.md
+
+  Explain flow of React
+  
+  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
+  
+  FAST!!
+
+  Run app => npm start
+
+  Delete things and replace App.js with:
+  return (
+    <div className="app">
+      <h1>PIES!</h1>
+    </div>
+  )
+
+Delete import of logo on top and registerServerWorker() in index.js
+
+Run again => just plain PIES! on white
+
+Setup files and folders for Navbar:
+  components
+    Navbar
+      Navbar.js
+      Navbar.css
+      Logout
+        Logout.js
+        Logout.css
+
+//in Navbar.js:
 
 import React from 'react';
 
-const AuthForm = (props) => {
-  return (
-    <div>
-      <form>
-        {/* <h1>{ props.formName }</h1> */}
-        <h1>Sign Up</h1>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input 
-            type="text" 
-            id="emailField" 
-            name="email" 
-            className="input-field" 
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input 
-            type="text"
-            id="passwordField"
-            name="password"
-            className="input-field"
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <input type="button" value="Submit"/>
-      </form>
-    </div>
+import './Navbar.css';
+
+const Navbar = (props) => {
+  return(
+    <nav>
+      <h1>This is a Navbar!</h1>
+    </nav>
   )
 }
 
-export default AuthForm;
+export default Navbar;
 
-/*
-Now, go to App.js and add the following:
-*/
+//explain that importing React allows us to do lots of things, chiefly using JSX
+//css import is same as gold badge
+//functional component shows properties passed to the component, which can be used inside
+//every component will return some JSX, which looks like HTML and gets rendered to the page as HTML
 
-import AuthForm from './components/layout/AuthForm';
+//lets add assets to project:
+source
+  assets
+    logout.jpg
+    pie.jpg
 
-// render() {
-//   return (
-//     <div className="App">
-//       <Navbar/>
-//       <AuthForm/> {/* New file here */}
-//       <Footer/>
-//     </div>
-//   );
-// }
+//lets update Navbar.css:
+nav{
+  margin: 0;
+  background-color: purple;
+  color: orange;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
 
-// Run your code and see the form
-// Notice that it only works for Sign Up.  Let's change that
+nav img{
+  height: 100%;
+}
 
-/*
-Add following in App.js file:
-
-Add constructor and super and state:
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
-
-Explain what this is doing
-  Constructor not necessary, but common for OOP classes => contains and, well, constructs the class => if constructor only has super(), you will get a warning telling you that you have a useless constructor
-
-  super() is something that brings data in from the parent component => do not go too deep
-
-  state is something that all browsers have (the only thing without is HTTP requests => statelessness [rest]). It is like setting data that the whole site can use => remember in NYT app, nav.style.display = 'none' set that the app would start off as hiding its navbar?  State is like this on a grander level.
-  
-  https://daveceddia.com/why-not-modify-react-state-directly/?utm_campaign=0601modify
-*/
-
-/*
-Get rid of the AuthForm import.  Add to App.js:
-
-  import Login from './components/auth/Login';
-  import Signup from './components/auth/Signup';
-
-  ...
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        Login
-      )
-    } else {
-      return (
-        Signup
-      )
-    }
-  }
-
-  ...
-
-  <Navbar/> 
-    { this.authViewShow() }
-    (Get rid of <AuthForm />)
-  <Footer/>
-
-BRIEFLY explain 'this'.
-
-Explain what we are doing.
-*/
-
-// Go to Signup.js and add the following:
-
+//lets use our css & assets in Navbar.js:
 import React from 'react';
-import AuthForm from '../layout/AuthForm';
 
-class Signup extends React.Component {
+import './Navbar.css';
+import piePic from '../../assets/pie.jpeg'; *new*
 
-  handleChange = (e) => {
-    console.log(e)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
-      </div>
-    )
-  }
+const Navbar = (props) => {
+  return(
+    <nav>
+      <img src={piePic} alt="Pie Picture" /> *new*
+    </nav>
+  )
 }
 
-export default Signup;
+export default Navbar;
 
-// Explain what we are doing
-// Now, go to Login.js:
+//lets create a logout component:
+components
+  Navbar
+    Navbar.js
+    Navbar.css
+    Logout
+      Logout.js
+      Logout.css
 
-import React, { Component } from 'react';
-import AuthForm from '../layout/AuthForm';
+//inside Logout.js:
+import React from 'react';
 
-export default class Login extends Component {
+import './Logout.css';
+import logoutPic from '../../../assets/logout.png';
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
-      </div>
-    )
-  }
+const Logout = (props) => {
+  return(
+    <img className="Logout" src={logoutPic} alt="Logout" onClick={props.logout}/>
+  )
 }
+
+export default Logout;
+
+//update Logout.css:
+.Logout{
+  height: 100%;
+}
+
+//add a logout picture to assets
+*/
 
 /*
-Explain the difference with Component and export default 
-
-Now add the following in Login.js:
+  Assign gitbook on LMS
+  
+  clone repo and show how to add to folder:
+  
+  4-reactFundamentals
+    (clone here)
+    my-react-app
 */
 
-// render() {
-//   return (
-//     <div>
-//       <AuthForm
-//         formName="Login" {/* New */}
-//         changeInputs={ this.handleChange }
-//       />
-//     </div>
-//   )
-// }
-
-// Add the same for Signup (with "Sign Up" instead of "Login")
-
-// Add the following to App.js:
-
-changeUserStatus = () => this.setState({ isUser: !this.state.isUser }) // New
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login/> // New
-    )
-  } else {
-    return (
-      <Signup/> // New
-    )
-  }
-}
-
-// Change the state of isUser from false to true and you should see it go between Sign Up and Login
-
-// Now let's toggle between both forms!
-// Change the state back to where isUser is false
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login toggleForm={ this.changeUserStatus }/> // New
-    )
-  } else {
-    return (
-      <Signup toggleForm={ this.changeUserStatus }/> // New
-    )
-  }
-}
-
-/* Now go to Signup.js and add the following under the <AuthForm/>:
-
-<h6>Login <button onClick={ this.props.toggleForm }>HERE</button> if you have an account</h6>
-
-And add the following for Login.js:
-
-<h6>Register <button onClick={this.props.toggleForm }>HERE</button> if you don't have an account</h6>
-
-The button should toggle between Login and Signup!
-
-Now, go to AuthForm.js:
+/*
+Gitbook parts 1-3, or continuing to move forward in the gitbook if past Ch 3
 */
-
-// const AuthForm = (props) => { // add props
-//   return (
-//     <div>
-//       <form>
-//         <h1>{ props.formName }</h1> // new 
-//         <div className="input-group">
-//           <label htmlFor="email">Email</label>
-//           <input 
-//             type="text" 
-//             id="emailField" 
-//             name="email" 
-//             className="input-field" 
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label htmlFor="password">Password</label>
-//           <input 
-//             type="text"
-//             id="passwordField"
-//             name="password"
-//             className="input-field"
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <input type="button" value="Submit"/>
-//       </form>
-//     </div>
-//   )
-// }

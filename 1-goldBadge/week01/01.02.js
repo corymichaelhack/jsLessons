@@ -8,7 +8,7 @@ Volunteers to walk us through their creature
 */
 
 /**************************
-ASSIGNMENT 2 - Tutorial Webpage - DUE MONDAY
+ASSIGNMENT 2 - STATIC SITE - DUE MONDAY
 **************************/
 
 /*
@@ -147,15 +147,6 @@ function constTest() {
 }
 
 constTest();
-
-// We are changing a const, should we throw an error?  NO!  Const, like let, is contained within block scope
-
-/*
-    variable declar.   obeys functional scope    obeys block scope   can be mutated (changed after initialization)
-    var                 x                         o                   x
-    let                 x                         x                   x
-    const               x                         x                   o
-*/
 
 /**************************
 HOISTING

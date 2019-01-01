@@ -78,8 +78,8 @@ const PieTable = (props) => {
         {
           props.pies.map((pie, id) => {
             return (
-            <tbody>
-              <tr key={ id }>
+            <tbody key={ id }>
+              <tr>
                 <td>{ pie.nameOfPie }</td>
                 <td>{ pie.baseOfPie }</td>
                 <td>{ pie.crust }</td>

@@ -1,221 +1,136 @@
 /**************************
-NODE CHALLENGE 1
+REACT CHALLENGE 1
 **************************/
+
 
 
 /**************************
-PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
+POSTGRES AND PGADMIN INSTALL
+**************************/
+
+/**************************
+PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
 /*
-RECAP:
-npm
-package.json/package.lock.json/node_modules
-nodemon
-express (node index.js, npm run dev, nodemon)
-how internet works
-.env file
-.gitignore file
-ran a server (express)
-ran on Postman
-parsed into controller file
-*/
-/*
-In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented)
+Folder Structure:
+  pieApi
+    client
+    server
 
-npm install sequelize (explain => link between server and db)
-npm install pg (explain => for access to postgres)
-npm install body-parser (explain => allows us to use req.body)
+Navigate to server
 
-Create db.js file and add:
-*/
+npm init => explain what package.json is doing 
 
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
-  host: 'localhost', 
-  dialect: 'postgres'
-})
-
-sequelize.authenticate() 
-  .then(() => console.log('postgres db is connected'))
-  .catch(err => console.log(err))
-
-module.exports = sequelize;
-
-/*
-Tell them to add NAME and PASS to .env file
-
-create model folder and add pie.js file:
-*/
-
-module.exports = (sequelize, DataTypes) => {
-  const Pie = sequelize.define('pie', {
-    nameOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    baseOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    crust: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    timeToBake: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    servings: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
-  })
-
-  return Pie;
-}
-
-/*
-Explain how model is structure for table
-
-Now go to index.js and add the following:
-*/
-
-const sequelize = require('./db');
-const bodyParser = require('body-parser')
-
-sequelize.sync();
-// sequelize.sync({ force: true }); // explain use here
-app.use(bodyParser.json())
-
-/*
-Go to piecontroller.js
-*/
-
-//Change this:
-const express = require('express');
-const router = express.Router();
-// to
-const router = require('express').Router();
-
-// and add:
-const sequelize = require('../db')
-const Pie = sequelize.import('../models/pie')
-// and then change to
-const Pie = require('../db').import('../models/pie');
-
-//-----------------
-
-// SO you should ONLY see:
-const router = require('express').Router();
-const Pie = require('../db').import('../models/pie');
-
-// comment out the existing router.gets and add the following:
-router.get('/', (req, res) => {
-  Pie.findAll()
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
-})
-
-/*
-Explain how the GET works; note that if you run it, you should see only an empty array ([])
-
-Now build out the POST:
-*/
-
-router.post('/', (req, res) => {
-  if (!req.errors) {
-    const pieFromRequest = {
-      nameOfPie: req.body.nameOfPie,
-      baseOfPie: req.body.baseOfPie,
-      crust: req.body.crust,
-      timeToBake: req.body.timeToBake,
-      servings: req.body.servings,
-      rating: req.body.rating
-    }
-
-    Pie.create(pieFromRequest)
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
-
-/*
-Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
-
-We then use the .create() to build a new instance from the model
-
-Run and use the post and in the body section of Postman, type out:
-
+Will see this in package.json (add start and dev to scripts): 
 {
-	"nameOfPie":"peach",
-	"baseOfPie":"fruit",
-	"crust": "graham",
-	"timeToBake": 50,
-	"servings": 8,
-	"rating": 5
+  "name": "pieapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    // New code below
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC"
 }
 
-It should show in the output and persist in PGAdmin
+Explain what start script does (npm start) and what dev does (nodemon)
 
-If you then run the GET, you should see it show up there as well.
+Go ahead and npm install --save-dev nodemon  (will create a devDependencies key with nodemon inside)
 
-Have the students build out multiple pies
+Explain what nodemon does 
+
+npm install express
+
+Explain difference between opening a file path vs. running a server
+  Server has hot reloading
+  
+  More importantly:
+    Explain how the internet works
+      client <=> server <=> db
+      req and res (recall API interaction)
+
+Create index.js file at root level of server
 */
 
-/**************************
-PIE API DEBUGGING CHALLENGE
-**************************/
+const express = require('express')
+const app = express()
 
-// Broken code:
-// router.get('/name', (req, res) => {
-//   Pie.findone({ where: { nameOfPie: req.params.nameOfPie }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.status(500).json({ error: err}))
-// })
+app.listen(3000, () => console.log('App is listening on 3000'))
 
-// router.put('/:id', (req, res) => {
-// if (!req.errors) {
-//   pie.update(req.body, { where: { id: req.body.id }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.json(req.errors))
-// } else {
-//     res.status(500).json(req.errors)
-//   }
-// })
+/*
+Now create .env file and add PORT = 3000
 
-// Good code:
-router.get('/:name', (req, res) => {
-  Pie.findOne({ where: { nameOfPie: req.params.name }})
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err}))
-})
+npm install dotenv
 
-router.put('/:id', (req, res) => {
-  if (!req.errors) {
-    Pie.update(req.body, { where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
+Change index.js to following
+*/
+require('dotenv').config()
 
-/**************************
-PIE API DELETE CHALLENGE
-**************************/
-// Challenge students to add DELETE functionality:
-router.delete('/:id', (req, res) => {
-  if (!req.errors) {
-    Pie.destroy({ where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
+app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
+
+/*
+Create .gitignore file and add following:
+  node_modules/
+  *.env
+
+Build out own server
+
+Add the following to the folder structure:
+server
+  public
+    index.html
+
+In index.html, add:
+<h1>This is working with a web server!</h1>
+
+In index.js, add:
+*/
+
+app.use(express.static(__dirname + '/public'))
+console.log(__dirname)
+
+app.get('/', (req, res) => res.render('index'))
+
+/*
+Open index.html in both local path and server (npm run dev)
+
+In Postman, run to see html in output section
+
+In index.js, add:
+*/
+
+app.get('/pies', (req, res) => res.send('I love pie!'))
+
+/*
+Run in Postman
+
+Now add a controllers folder with piecontroller.js
+
+In piecontroller.js add:
+*/
+
+const express = require('express')
+const router = express.Router()
+
+// copy from index.js:
+app.get('/pies', (req, res) => res.send('I love pie!'))
+// change app to router
+router.get('/', (req, res) => res.send('I love pie!'))
+// explain what the '/' does (localhost:3000/pies/)
+
+// and add to bottom:
+module.exports = router
+
+//In index.js, change: 
+
+app.get('/pies', (req, res) => res.send('I love pie!'))
+// to
+app.use('/pies', pies)
+// add add at time of index.js:
+const pies = require('./controllers/piecontroller')
+
+// Run in postman

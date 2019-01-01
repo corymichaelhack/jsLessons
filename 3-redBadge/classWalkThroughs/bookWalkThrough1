@@ -1,0 +1,760 @@
+**************************
+ANGULAR WALKTHROUGH 1 - STRUCTURE, COMPONENTS, BINDING, DIRECTIVES, FORMS, DECORATORS
+**************************
+
+(Should already have it)
+npm install -g @angular/cli
+
+Folder Structure:
+  7-angular
+    books (new)
+      bookApi (new empty folder)
+      bookClient (new Angular app here)
+    tourOfHeroes
+
+Under books directory, type:
+ng new bookClient
+  no to routing
+  CSS only
+
+cd bookClient
+ng serve -o
+
+**************************
+FOLDER WALKTHROUGH
+**************************
+
+bookClient
+  e2e => e2e = End to End testing (using Protractor and Jasmine) => Angular CLI comes with testing built-in
+    src
+      app.e2e-spec.ts => actually tests the app using Jasmine
+      app.po.ts => hold the higher overview of the app to test
+    protractor.config.js => holds the configuration of the test
+    tsconfig.e2e.json => the json that holds the data for the config file
+  node_modules
+  src
+    app => all components for app should go in this directory
+      app.component.css => styling for app.component
+      app.component.html => html for app.component
+      app.component.spec.ts => test file for app.component (Jasmine)
+      app.component.ts => typescript file for app.component
+      app.module.ts => holds all the data of dependencies being imported and used => compiles all components, services, modules, etc into this one file
+    assets
+      .gitkeep => allows you to specifically keep to push to GitHub
+    environments
+      environment.prod.ts => allows a user to set which environment to be used (local or deployed), specifically for production
+      environment.ts => environment file, usually used outside of production
+    browserlist => helps "polyfill" CSS to older browsers
+    favicon.ico => holds the icon that is used in the tab of browser
+    index.html => the one html file that everything flows thorugh
+    karma.config.js => the config file for all testing
+    main.ts => the middle man between html and app.module.ts
+    polyfills.ts => gives info on upholding material for older browsers
+    style.css => styling for entire project
+    test.ts => testing file that bases off of the karma.config file
+    tsconfig.app.json => the json of data for ts to js in app
+    tsconfig.spec.json => the testing file for the ts to js config in app
+    tslint.json => linting for typescript
+  .editorconfig => gives info on how the editor should respond to Angular
+  .gitignore
+  angular.json => json for specifically Angular library
+  package-lock.json 
+  package.json 
+  README.md 
+  tsconfig.json => config for typescript to javascript for entire project
+  tslint.json => typescript linting for entire project
+
+
+**************************
+COMPARISON BETWEEN REACT AND ANGULAR
+**************************
+
+REACT
+Browser <= index.html <= index.js <= App.js <= all other components
+
+ANGULAR
+Browser <= index.html <= main.ts <= app.module.ts <= app.component.ts <= all other components
+
+
+With both React and Angular (any dynamic application), the whole app flows through the index.html--browsers will only read the html file.  And, like React, it all funnels through from a single js (or ts) file, gets converted, and the pushed into one div on the html file.
+
+Look to the index.html file.  You will see:
+<app-root></app-root>
+
+That is the div that the whole Angular app flows through (similar to the React file where the index.html has a div with the id of 'root').
+
+In React, the app is converted from a dynamic component (App.js) to the div through the index.js file, where you see:
+ReactDOM.render(<App/>, document.getElementById('root'))
+
+Look to your main.ts file:
+platformBrowserDynamic().bootstrapModule(AppModule)
+
+The term 'bootstrap' is different from the bootstrap that we know.  It is not a CDN that we have been working with in the past; instead it is a term that Angular uses to differentiate which module to invoke with start up.
+
+Look, now to app.module.ts:
+bootstrap: [AppComponent]
+
+Here, we then bootstrap to our app.component.ts file, showing that we are immediately triggering the AppComponent upon start up.  And, if we look at our app.component.ts file, we see in our selector: 'app-root'.  Where have we seen that before?  In the index.html!  
+
+So, Angular is taking the app.component, triggering it via the app.module, which is triggered by the main.ts, plugging it into the index.html file, which is then rendered by the browser to be see online.  Phew!  But understanding the path, helps us see that the app.module is the big daddy that we will import everything into and that the app.component is the root component that everything has to funnel through (similar to the App.js of React).
+
+
+Go to app.component.html file and delete everything except the following:
+
+  <div style="text-align: center">
+    <h1>{{ title }}</h1>
+  </div>
+
+Now go to app.component.ts and see:
+
+  title = 'bookClient';
+
+
+**************************
+BINDING 1: INTERPOLATION {{}}
+**************************
+
+Explain what interpolation is => pulling data from class in the ts file into the html file of the same component.
+
+
+**************************
+ BINDING 2: TWO-WAY BINDING [()]
+**************************
+
+Now, add the following:
+
+  <div style="text-align: center">
+    <h1>{{ title }}</h1>
+    <input type="text" [(ngModel)]="name">
+    <p>{{ name }}</p>
+  </div>
+
+And then go to app.component.ts and add under the title:
+
+  name = ''
+
+Last, go to app.module.ts and add FormsModule to imports.  Make sure you import it at the top from @angular/forms
+
+Run it and type in the input to see it show up right below it as you type.
+
+Explain what two-way binding is => simultaneously pulling data from the html input, expressing it as a variable in the ts file, and then pulling from the ts file and using interpolation to display the data immediately.
+
+
+**************************
+COMPONENTS 1: WITHOUT CLI
+**************************
+
+Under app directory, create a folder called display-books.  Under it, add: 
+  display-books.component.ts
+  display-books.component.html 
+  display-books.component.css
+
+In your display-books.component.ts file, notice that it is blank.  Add the following:
+
+  export class DisplayBooksComponent {}
+
+Is this all we need?  No.  We need to import stuff too!  At the top:
+
+  import { Component } from '@angular/core'
+
+  @Component({
+    selector: 'app-display-books'
+  })
+
+Explain what a selector is doing => is the html tag that allows you to plug this component in anywhere!  
+
+But first, we need to bring it into app.module.ts (notice how everything has to go through there?).
+
+In the declarations section, add DisplayBooksComponent.  Vs.code should auto import the location of your component.
+
+
+So, let's plug it in!  In your app.component.html, cut everything inside the first div and add:
+
+  <div style="text-align: center">
+    <app-display-books></app-display-books>
+  </div>
+
+Under selector, add:
+
+  template: `
+    <h1>This Display Books component is working!</h1>
+  `
+
+This allows us to put html directly into our ts file (if it is more than 3 lines, this is not what we want to do => we will explain soon).
+
+If we run this, will this work?  No!  We need to import it into our app.module.ts file!
+
+Go there and add your DisplayBooksComponent under declarations.  Vs.code should auto-import for you!  
+
+Now, you should see your h1 tag display in your browser.  But what if we have more than 3 lines of html?  We can directly link an html file into our ts file.  Change the following:
+
+  @Component({
+    selector: 'app-display-books',
+
+     // From:
+    template: `
+      <h1>This Display Books component is working!</h1>
+    
+     // To:
+    templateUrl: './display-books.component.html
+  })
+
+We can also link our styling with either styles (for direcly implementing CSS) or styleUrls (to link to a CSS file).  Add under templateUrl:
+
+  styleUrls: ['./display-books.component.css']
+
+You should now see:
+
+  import { Component } from '@angular/core'
+
+  @Component({
+    selector: 'app-display-books',
+    templateUrl: './display-books.component.html,
+    styleUrls: ['./display-books.component.css']
+  })
+
+  export class DisplayBooksComponent {}
+
+In your display-books.component.html, add:
+
+  <h1>Books are Cool!</h1>
+
+Run it and you should see it in your browser
+
+
+**************************
+COMPONENTS 2: WITH ANGULAR CLI
+**************************
+
+Staying in the root folder (where, when you dir or ls, you see package.json), type:
+
+  ng generate component createBook
+
+or
+
+  ng g c createBook
+
+Notice that when we type out camelcase, it comes back with lowercase, separated with dashes.
+
+Why don't you need to get to the app folder to run this command?  Angular CLI defaults at placing your new component in the app folder.
+
+If you want to nest your components, you simply put the folder in the command (example):
+
+  ng g c display-books/pages
+
+You will now see a pages component inside the display-books component.
+
+Go to app.module.ts and see that it is also automatically imported!
+
+But what if you dont want that component?  Let's say you don't want the pages component.  You can simply delete the pages folder and, in the app.module.ts, you cut the import of the pages component. And you're done!
+
+Now, open the createBook component.  You will see this:
+  create-book.component.css
+  create-book.component.html 
+  create-book.component.spec.ts 
+  create-book.component.ts 
+
+That's what we made manually, plus a spec file (which is for testing).
+
+Open your create-book.component.ts file.  You should see:
+
+  import { Component, OnInit } from '@angular/core';
+
+  @Component({
+    selector: 'app-create-book',
+    templateUrl: './create-book.component.html',
+    styleUrls: ['./create-book.component.css']
+  })
+
+  export class CreateBookComponent implements OnInit {
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+  }
+
+Notice that it comes with a lot!
+
+**************************
+BINDING 3: PROPERTY BINDING []
+**************************
+
+First thing, we need to be able to see it.  Change the following in the app.component.html file:
+
+  // From 
+  <div style="text-align: center">
+    <app-display-books></app-display-books>
+  </div
+
+  // To
+  <div style="text-align: center">
+    <app-create-book></app-create-book>
+  </div>
+
+In create-book.component.html, add the following:
+
+  <h1>BOOKS</h1>
+  
+  <form>
+    <label for="nameOfBook">Name of Book</label>
+    <input 
+      type="text"
+      name = "nameOfBook"
+      required
+    >
+  
+    <label for="author">Author</label>
+    <input 
+      type="text"
+      name = "author"
+      required
+    >
+  
+    <label for="genre">Genre</label>
+    <select
+      name="genre"
+      required
+    >
+    <option>Fiction</option>
+    <option>Nonfiction</option>
+    <option>Comic</option>
+    <option>Cookbook</option>
+    </select>
+  
+    <label for="pubYear">Publication Year</label>
+    <input 
+      type="number"
+      name = "pubYear"
+      required
+    >
+  
+    <label for="rating">Rating</label>
+    <select
+      name="rating"
+      required
+    >
+      <option>1 stars</option>
+      <option>2 stars</option>
+      <option>3 stars</option>
+      <option>4 stars</option>
+      <option>5 stars</option>
+    </select>
+      
+    <button
+      [disabled] = "!useBtn"
+      type="submit"
+    >
+      Add Book
+    </button>
+  </form>
+
+Notice the [disabled] property binding to the button.  Disabled is a property to that particular tag; with binding, you link the property to the class in your ts file.
+
+Go to your create-book.component.ts file and add:
+
+  export class CreateBookComponent implements OnInit {
+    useBtn = false
+
+    constructor() {
+      setTimeout(() => {
+        this.useBtn = true
+      }, 3000)
+    }
+
+    ngOnInit() {
+    }
+
+  }
+
+What are we doing here?  We are disabling the button for 3 seconds and then allowing it to be clickable.  
+
+How is this working?  We are binding the property of the button to the variable that then is changed from false to true with the help of the constructor.  
+
+What do constructors do again?
+
+Let's add some more to our property binding with interpolations.
+
+Change:
+
+  // From
+  <button
+    [disabled] = "!useBtn"
+    type="submit"
+  >
+    Add Book
+  </button>
+
+  // To
+  <button
+    [disabled] = "!useBtn"
+    type="submit"
+  >
+    {{ useBtn === false ? "Think About a Book" : "Add Book" }}
+  </button>
+
+And, yes, you can add ternaries inside interpolation!  No other conditional will work, however.
+
+
+**************************
+FORMS: REACTIVE FORMS, FORMCONTROL, FORMBUILDER, FORMGROUP
+**************************
+
+Let's make this form work now!
+
+There are two methods to incorporate forms with Angular: Template-Driven Forms and Reactive Forms.  
+
+Template-Driven Forms heavily use two-way binding and grabbing the event (with the use of $event).  
+
+Reactive Forms allow for you to grab the data with the built-in dependencies that come with them; the three that we will use are: FormControl, FormBuilder, and FormGroup.
+
+For more info, go here: 
+  https://angular.io/guide/forms-overview
+
+In your create-book.component.ts file, import the following:
+
+  import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+
+Now go to app.module.ts and add ReactiveFormsModule under FormsModule into the imports section; vs.code should auto import them, so you should see:
+
+  import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+For each of the inputs of your create-book.component.html, add formControlName="<name>":
+
+  <form>
+    <label for="nameOfBook">Name of Book</label>
+    <input 
+      type="text"
+      formControlName = "nameOfBook"
+      name = "nameOfBook"
+      required
+    >
+  
+    <label for="author">Author</label>
+    <input 
+      type="text"
+      formControlName = "author"
+      name = "author"
+      required
+    >
+  
+    <label for="genre">Genre</label>
+    <select
+      formControlName="genre"
+      name="genre"
+      required
+    >
+      <option>Fiction</option>
+      <option>Nonfiction</option>
+      <option>Comic</option>
+      <option>Cookbook</option>
+    </select>
+  
+    <label for="pubYear">Publication Year</label>
+    <input 
+      type="number"
+      formControlName = "pubYear"
+      name = "pubYear"
+      required
+    >
+  
+    <label for="rating">Rating</label>
+    <select
+      formControlName="rating"
+      name="rating"
+      required
+    >
+      <option>1 stars</option>
+      <option>2 stars</option>
+      <option>3 stars</option>
+      <option>4 stars</option>
+      <option>5 stars</option>
+    </select>
+      
+    <button
+      [disabled]="!useBtn"
+      type="submit"
+    >
+      {{ useBtn === false ? "Think About a Book" : "Add Book" }}
+    </button>
+  </form>
+
+Now, at the top, in the form tag, add a property binder for formGroup and set it equal to 'createBook':
+
+  <form [formGroup]="createBook" >
+    ...
+  </form>
+
+This will bind the entire form to the FormGroup feature of Reactive Forms.
+
+In the ts file, in the parentheses of the constructor, set the FormBuilder as a private variable:
+
+  constructor(private fb : FormBuilder) {
+    ...
+  }
+
+This allows us to use FormBuilder without affecting it directly (immutibility).
+
+Now in your ngOnInit lifecycle hook, add the following:
+
+  ngOnInit() {
+    this.createBook = this.fb.group({
+      nameOfBook: new FormControl(),
+      author: new FormControl(),
+      genre: new FormControl(),
+      pubYear: new FormControl(),
+      rating: new FormControl()
+    })
+  }
+
+Now make sure you bring createBook up at the top of the class:
+
+  createBook: FormGroup
+
+This uses the .group() method which creates a new instance of the FormBuilder and then grabs the values of each input via the formControlName attribute in the html tags.  
+
+It then sets the value to the FormGroup of the entire form.
+
+Take some time to research exactly what these do.
+
+Also research: Template-Driven Forms
+
+
+**************************
+BINDING 4: EVENT BINDING ()
+**************************
+
+Now, let's go back to the html file and add a submit feature.  Remember the difference between click and submit events?
+
+Here, since we are using a form, we want to grab the values of said form, hence, we will use submit; not click.  
+
+How did we trigger a submit in html in the past?
+
+onsubmit=onCreateBook()
+
+With Angular, we use the last binder, Event Binding.
+
+Event binding is connoted by () and it binds the event to be used in the class of the ts file; if we simply used the event attributes inherant with html, it would not know to go to the class.
+
+Add the following inside the form tag:
+
+  <form 
+    [formGroup]="createBook" 
+    (ngSubmit)= "onCreateBook()"
+  >
+
+Notice that we are using ngSubmit.  What does that do for us?
+
+Let's now go back to the ts file and create the onCreateBook() method.
+
+First, add a books variable and set it equal to an empty array at the top of the class, as well as setting createBook to equal FormGroup:
+
+  books = []
+
+Add the following below your ngOnInit() {}:
+
+  onCreateBook() : void {
+    this.books.push(this.createBook.value)
+  }
+
+Let's have something displayed now.  Keep in mind, the form won't work just yet (we will get to that in a second).
+
+  <div>
+     <p>Books and stuff</p>
+  </div>
+
+The problem is that this is showing even if we don't click the Add Book button.  How do we change that?
+
+
+**************************
+ DIRECTIVES 1: *NGIF, LOCAL VARIABLES, NG-TEMPLATE
+**************************
+
+This is where directives come in handy.  *ngIf allows us to essentially create an if statement within our html.
+
+In the div encapsulating the p tag, add:
+
+  <div *ngIf="books.length !== 0">
+     <p>Books and stuff</p>
+  </div>
+
+This will only display the data if the books array has been fully pushed into (on submit)
+
+What if we want to display that no book was created until we actually create one?  We can use local variables and ng-template to basically create the else part of this statement.
+
+Within the quotes of the *ngIf, add the else statement: 
+
+  *ngIf="books.length !== 0; else noBook"
+
+Under the div, add:
+
+  <ng-template #noBook>
+    <p>No Book Created</p>
+  </ng-template>
+
+The # allows Angular to look for that keyword within that html file, which we can then add an ng-template tag, displaying this code only if the local variable has been triggered.
+
+You should now see No Book Created until you submit your form, then, and only then, you will see your book.
+
+
+**************************
+DIRECTIVES 2: *NGFOR
+**************************
+
+Let's now display the data!  We can do this with the help of another directive, *ngFor, which is basically a for loop inside your html.
+
+Change the following:
+
+  //From
+  <div *ngIf="books.length !== 0; else noBook">
+    <p>Books and stuff</p>
+  </div>
+
+  // To
+  <div *ngIf="books.length !== 0; else noBook">
+    <p *ngFor="let book of books">{{ book.nameOfBook}}, by {{ book.author }}.  A {{ book.genre }} book, written in {{ book.pubYear }}.  It is {{ book.rating }}.</p>
+  </div>
+
+Lets display the data from our form in a separate component!
+
+We will keep the form in the create-book component, but it will be displayed in the display-books component.
+
+First thing will be to loop through the books array to grab the individual object containing the info we typed in (this will be more important when we get from the database).
+
+
+Cut the p tag with the *ngIf as well as the ng-template. 
+
+In its place, bring in the display-books component and add an *ngFor that loops through the books array:
+
+  <app-display-books *ngFor="let book of books"></app-display-books>
+
+Notice how it looks like we are creating a for of loop?
+
+
+**************************
+DECORATORS: @INPUT
+**************************
+
+We now need to grab that data so we can pass it from one component to the next.  We do this with property binding.
+
+After the *ngFor, add:
+
+  <app-display-books 
+    *ngFor="let book of books"
+    [book]="book"
+  ></app-display-books>
+
+Now that we have the data, we need to pass it.
+
+Go to the display-books.component.ts file.
+
+At the top, include in the import for @angular/core Input.  Next add the following in the class:
+
+  public _book = {};
+
+  @Input()
+  set book(book: any) {
+    this._book = (book)
+  }
+
+  get book(): any {
+    return this._book
+  }  
+
+Instead of simply showing it in a p tag, let's display it as a card!  In the html file, remove the h1 tag and add:
+
+  <div class="deck">
+    <div class="card">
+      <div class="cardContainer">
+        <h1><i>{{ _book.nameOfBook }}</i></h1>
+        <h3>{{ _book.author }}</h3>
+        <p>{{ _book.genre }}</p>
+        <p>{{ _book.pubYear }}</p>
+        <p>{{ _book.rating }}</p>
+      </div>
+    </div>
+  </div>
+
+Let's add some styling to this as well!  In the css file. add:
+
+  .deck {
+    display: inline-block;
+  }
+
+  .card {
+    box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30vw;
+    text-align: center;
+  }
+
+  .card:hover {
+    box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.2);
+  }
+
+  .cardContainer {
+    padding: 1em 2em;
+  }
+
+Give it a try!  See what it does!
+
+
+**************************
+DB CHALLENGE: BOOKAPI
+**************************
+
+Create a DB called bookApi
+In that DB, create a table called books
+
+Format the books table to have the following columns:
+  nameOfBook - string
+  author - string
+  genre - string
+  pubYear - integer
+  rating - integer
+
+Create full CRUD for this table and test it on Postman to see if it persists in PGAdmin
+
+
+Extra Challenge:
+
+Instead of a string for genre, create an enum that takes in only the genres you want (i.e. fiction, mystery, scifi, memoir, etc.)
+
+And, for rating, build a range that allows only a minimum of 1 and a maximum of 5, as well as set a default value of 1 to allow a value to automatically fill in.
+
+DISCLAIMER:
+
+If you do not build the backend for this app, you will not be able to participate in the second walk through of this app.
+
+
+**************************
+THINGS COVERED: THINGS TO STUDY
+**************************
+
+Angular CLI
+Angular Structure
+Components
+Lifecycle Hooks
+  ngOnInit()
+  Constructor()
+Binding
+  Interpolation {{}}
+  Event Binding ()
+  Property Binding []
+  Two-Way Binding [()]
+Directives
+  *ngFor
+  *ngIf
+    Local variables (#)
+    ng-template
+Forms
+  Reactive Forms
+    FormGroup
+    FormControl
+    FormBuilder
+      .group()
+  Template-Driven Forms
+Decorators
+  @Input
+  @Output

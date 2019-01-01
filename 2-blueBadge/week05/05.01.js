@@ -1,134 +1,358 @@
 /**************************
-REACT CHALLENGE 1
+CODE CHALLENGE 4
 **************************/
 
+/* 
+  Write a function that takes an object as input.  The function should return the total length of 
+  all the characters in the keys of the object by alternately adding and subtracting the length of
+  each key.
+  
+  For example:
+    Given: {
+      keya: 'Tyler',
+      keybee: 'Alecx',
+      keyceeeee: 'Dave'
+    }
+    Output from function: +4 (keya) -6 (keybee) +9 (keyceeeee) => 7
+    
+    or
 
+    Given: {
+      test: 'react',
+      testingYourPatience: 'node',
+      testing: 'angular'
+    }
+    Output from function: +4(test) -19(testingYourPatience) +7(testing) => -8
+*/
 
-/**************************
-POSTGRES AND PGADMIN INSTALL
-**************************/
-
-/**************************
-PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
-**************************/
-/*
-Folder Structure:
-  pieApi
-    client
-    server
-
-Navigate to server
-
-npm init => explain what package.json is doing 
-
-Will see this in package.json (add start and dev to scripts): 
-{
-  "name": "pieapi",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    // New code below
-    "start": "node index.js",
-    "dev": "nodemon"
-  },
-  "author": "",
-  "license": "ISC"
+let testObj = {
+  test: 'react',
+  testingYourPatience: 'node',
+  testing: 'angular'
 }
 
-Explain what start script does (npm start) and what dev does (nodemon)
+testFunc = (obj) => {
+  let keyArr = Object.keys(obj);
+  console.log(keyArr);
+  return keyArr.reduce((agg, el, i) => {
+    return i % 2 === 0 ? agg + el.length : agg - el.length;
+  }, 0)
+}
 
-Go ahead and npm install --save-dev nodemon  (will create a devDependencies key with nodemon inside)
+console.log(testFunc(testObj));
 
-Explain what nodemon does 
+/**************************
+PIE CLIENT WALKTHROUGH 4 - ROUTER
+**************************/
+/*
+Recap differences between functional and class components
 
-npm install express
+Quickly recap what state and props are
 
-Explain difference between opening a file path vs. running a server
-  Server has hot reloading
+npm install react-router-dom
+
+Make new files:
+
+components
+  layout
+    AuthForm.js
+    Footer.js
+    Home.js (new)
+    Main.js (new)
+    Navbar.js
+    Pies.js (new)
+
+Go to index.js:
+*/
+
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'; // new
+import './index.css';
+import App from './App';
+
+render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'));
+
+/*
+Talk about why we would add BrowserRouter here (links to whole site)
+
+Go to Main.js:
+*/
+
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import Pies from './Pies';
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={ Home }/>
+      <Route path='/pies' component={ Pies }/>
+    </Switch>
+  </main>
+)
+
+export default Main;
+
+// Now, go to App.js:
+
+import Main from './components/layout/Main'
+// Code omitted
+{ this.authViewShow() }
+<Main/> // new
+
+// In Home.js:
+
+import React, { Component } from 'react'
+import Login from '../auth/Login'
+import Signup from '../auth/Signup'
+
+class Home extends Component {
   
-  More importantly:
-    Explain how the internet works
-      client <=> server <=> db
-      req and res (recall API interaction)
 
-Create index.js file at root level of server
-*/
+  render() {
+    return (
+      <div>
 
-const express = require('express')
-const app = express()
+      </div>
+    )
+  }
+}
 
-app.listen(3000, () => console.log('App is listening on 3000'))
-
-/*
-Now create .env file and add PORT = 3000
-
-npm install dotenv
-
-Change index.js to following
-*/
-require('dotenv').config()
-
-app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
+export default Home;
 
 /*
-Create .gitignore file and add following:
-  node_modules/
-  *.env
-
-Build out own server
-
-Add the following to the folder structure:
-server
-  public
-    index.html
-
-In index.html, add:
-<h1>This is working with a web server!</h1>
-
-In index.js, add:
+Now go to App.js and cut the following out and paste in Home.js:
 */
 
-app.use(express.static(__dirname + '/public'))
-console.log(__dirname)
+import React, { Component } from 'react';
+import './App.css';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+// import Login from './components/auth/Login'; // DELETE
+// import Signup from './components/auth/Signup'; // DELETE
+import Main from './components/layout/Main'
 
-app.get('/', (req, res) => res.render('index'))
+class App extends Component {
+  // CUT content below
+  constructor() {
+    super();
+    this.state = {
+      isUser: false
+    }
+  }
+
+  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
+
+  authViewShow = () => {
+    if (this.state.isUser) {
+      return (
+        <Login toggleForm={ this.changeUserStatus }/>
+      )
+    } else {
+      return (
+        <Signup toggleForm={ this.changeUserStatus }/>
+      )
+    }
+  }
+  // CUT content above
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar/>
+        <Main/>
+        {/* { this.authViewShow() } => CUT */}
+        <Footer/>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+// App.js should now look like:
+
+import React, { Component } from 'react';
+import './App.css';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Main from './components/layout/Main'
+
+class App extends Component {
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar/>
+        <Main/>
+        <Footer/>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+// And Home.js should now look like:
+
+import React, { Component } from 'react';
+import Login from '../auth/Login';
+import Signup from '../auth/Signup';
+
+export default class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isUser: false
+    }
+  }
+
+  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
+
+  authViewShow = () => {
+    if (this.state.isUser) {
+      return (
+        <Login toggleForm={ this.changeUserStatus }/>
+      )
+    } else {
+      return (
+        <Signup toggleForm={ this.changeUserStatus }/>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        { this.authViewShow() }
+      </div>
+    );
+  }
+}
+
+// Now, add the following to Pies.js:
+
+import React, { Component } from 'react';
+
+class PieTable extends Component {
+
+  render() {
+    return (
+      <div>
+        <h3>Pie List</h3>
+        <table border='1' className='pies'>
+          <thead>
+            <tr>
+              <th>Name of Pie</th>
+              <th>Base of Pie</th>
+              <th>Crust</th>
+              <th>Time to Bake</th>
+              <th>Servings</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apple</td>
+              <td>Fruit</td>
+              <td>Sourdough</td>
+              <td>50 min</td>
+              <td>8</td>
+              <td>5 stars</td>
+            </tr>
+            <tr>
+              <td>Peach</td>
+              <td>Fruit</td>
+              <td>Sourdough</td>
+              <td>50 min</td>
+              <td>8</td>
+              <td>5 stars</td>
+            </tr>
+            <tr>
+              <td>Chocolate Cream</td>
+              <td>Cream</td>
+              <td>Oreo</td>
+              <td>50 min</td>
+              <td>8</td>
+              <td>5 stars</td>
+            </tr>
+            <tr>
+              <td>Chicken Pot Pie</td>
+              <td>Gravy</td>
+              <td>Hot Water Crust</td>
+              <td>50 min</td>
+              <td>8</td>
+              <td>5 stars</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+}
+
+export default PieTable;
 
 /*
-Open index.html in both local path and server (npm run dev)
+Go to the App.css and add the following for moving the table to the middle:
 
-In Postman, run to see html in output section
+.pies {
+  margin: auto;
+}
 
-In index.js, add:
+Now, plug it in to Pies component:
 */
 
-app.get('/pies', (req, res) => res.send('I love pie!'))
+import React, { Component } from 'react';
+import PieTable from './PieTable';
+
+class Pies extends Component {
+
+  render() {
+    return (
+      <div>
+        <PieTable/>
+      </div>
+    )
+  }
+}
+
+export default Pies;
 
 /*
-Run in Postman
+Run it and see what happens when you adjust the link from localhost:3000 to localhost:3000/pies
 
-Now add a controllers folder with piecontroller.js
+Discuss what routing is doing
 
-In piecontroller.js add:
+Now, go to Navbar.js; change a tags to Link tags and add necessary 'to' links:
 */
 
-const express = require('express')
-const router = express.Router()
+import React from 'react';
+import { Link } from 'react-router-dom'; // new
 
-// copy from index.js:
-app.get('/pies', (req, res) => res.send('I love pie!'))
-// change app to router
-router.get('/pies', (req, res) => res.send('I love pie!'))
-// and add to bottom:
-module.exports = router
+const Navbar = () => {
+  return (
+    <div className="navbar">
+      <nav>
+        <ul className="nav-ul">
+          <li className="nav-li home"><Link to='/pies'>PIES</Link></li>
+          <li className="nav-li"><Link to='/'>Sign Up/Login</Link></li>
+        </ul>
+      </nav>
+    </div>
+  )
+}
 
-//In index.js, change: 
+export default Navbar
 
-app.get('/pies', (req, res) => res.send('I love pie!'))
-// to
-app.use('/pies', pies)
-// add add at time of index.js:
-const pies = require('./controllers/piecontroller')
+/*
+Discuss how css styling still is the same even though we now have Link tags instead of a tags => react-router-dom holds to the basic structure of a tags for this attribute
 
-// Run in postman
+Run it and link to other pages based on navbar clicks
+*/
