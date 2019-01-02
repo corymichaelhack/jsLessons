@@ -8,10 +8,25 @@ Volunteers to walk us through their creature
 */
 
 /**************************
-ASSIGNMENT 2 - Tutorial Webpage - DUE MONDAY
+ASSIGNMENT 2 - Tutorial Webpage - 
+
 **************************/
 
 /*
+Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
+theyre speaking basically when things are and arent accessible in your code.
+
+Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis,
+which could be considerd our local scope. Just because someone lives on earth does not mean they live 
+in indianapolis, but residents of indianapolis are on planet earth. 
+
+Open Cmd Prompt
+DIR to see where you are
+CD into your folder
+
+
+
+
 Folder Structure:
   javascriptMay2018
     javascriptLibrary
@@ -25,13 +40,19 @@ GIT LESSON
 
 javascriptLibrary
   1-jsFundamentals (git repo here)
+ 
+  GitHub- signup if you havent yet
+  Make a repo, copy repo
+
 **************************/
 
 /*
 git init
 git status
-git add .
+git add 
 git commit -m "<message>"
+git remote add origin *paste repo here*
+git push -u origin master
 */
 
 /**************************
@@ -69,15 +90,17 @@ function scope() {
   console.log(x);
 }
 
-scope() // 33
-console.log(x); //33
+scope() 
+console.log(x);
 
 /*
 Why did this happen?
 
 When you have the keyword var inside scope(), you are declaring a completely new variable; it just happens to have the same name of x.
 
-However, when you remove var, you are no longer declaring another x variable, but you are EXPRESSING it with a new value; therefore, after that point, x no longer equals 12, but 33.
+However, when you remove var, you are no longer declaring another x variable, but you are EXPRESSING it with a new value; 
+
+ therefore, after that point, x no longer equals 12, but 33.
 */
 
 /*
@@ -93,7 +116,7 @@ Var and let seem to operate the same, right? Well, check out the below:
 var x = 12
 
 function scope() {
-  var x = 33 // HERE
+  var x = 33
   if (true){
     var x = 45;
     console.log(x);
@@ -101,14 +124,14 @@ function scope() {
   console.log(x);
 }
 
-scope() // 45, 45
-console.log(x); //12
+scope() 
+console.log(x); 
 //what is the expected output from above?
 
 var x = 12
 
 function scope() {
-  var x = 33 // HERE
+  // var x = 33 // HERE
   if (true){
     let x = 45;
     console.log(x);
@@ -127,9 +150,13 @@ This is a question of BLOCK SCOPE.
 
 What is block scope?  A BLOCK, simply put, is the part between {} in a function or conditional; inside a block is local scope.
 
-Var does NOT have block scope built in.  It is not locked into only operating within those curly brackets, and can therefore bleed into a parent scope.  
+Var does NOT have block scope built in.  It is not locked into only operating within those curly brackets, 
 
-Notice, here, we are nested within two blocks: varTest() or letTest() and the if statement.  If var is run, it can bleed from the if block into the varTest() block.  In effect, we cannot be too sure where var has access--elusive. 
+and can therefore bleed into a parent scope.  
+
+Notice, here, we are nested within two blocks: varTest() or letTest() and the if statement.  
+
+If var is run, it can bleed from the if block into the varTest() block.  In effect, we cannot be too sure where var has access--elusive. 
 
 Let DOES have block scope.  It is locked into which block it is located and cannot escape from those curly brackets.  This is particularly helpful when you want to run the variable only in that particular block without the danger of having it affect any other code.
 
@@ -164,15 +191,29 @@ HOISTING
 **************************/
 
 console.log(scissors); //undefined
+
 scissors = 'blue';
 
-console.log(scissors); //blue
+console.log(scissors);
 var scissors;
 
 /*
 Hoisting does not exist--it is an illusion
 
-JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
+JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations.
+Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
+JS DOES grab things like functions */
+
+b();
+console.log(a)
+
+function b(){
+  console.log('This is all hoisted!')
+}
+var a = 'This is not hoisted'
+
+
+
 
 /**************************
 LITERALS
@@ -181,17 +222,38 @@ LITERALS
   06-literals.js
 **************************/
 
+/*
+  Literals are fixed values in javascript. You are literally providing them to your JS
+
+  Literals include Arrays(Lists),
+   Integer(Numbers), Booleans(True or false), 
+   Objects(key:value pairs),
+   String(chars between quotation marks)
+  
+  Literals feel tricky, but really theyre just values that you yourself have added to the code. 
+*/
+
 let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 console.log(days.toString()); //Monday, Tuesday, Wednesday, Thursday, Friday
+console.log(days.length)
+//this is a method that comes built into javascript to help us separate an array into strings
+
 
 let tired = true;
+//A value of truth or false
 
 let soup = {
   a: 'chicken noodle',
   b: 'tomato',
   c: 'beef and barley'
 }
+/*
+objects are key value pairs, which just means in an object there are keys(what the name of this part of the object is), 
+and a value for that key. 
+
+*/
 console.log(soup.c); //beef and barley
+//this is dot notation for an object. This is a way we can dig through an object and get the data we want back
 
 let car = 'Honda';
 
@@ -230,19 +292,21 @@ COMPARISON OPERATORS
 5-expressionsAndOperators
   02-comparisonOperators.js
 **************************/
-//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' These are values that are considered not true or just not
 
 // Equal 
 '3' == 3;
+/*JavaScript does a nice thing called coersion, where it assumes that when youre comparing the integer 3 and the string '3', 
+you must think theyre supposed to be the same thing  */
 
-// Strict equal
+// Strict equal- This overrides javascripts coersion
 3 === 3;
 
 // Not equal
-'3' != 4;
+console.log('3' != 3);
 
-// Strict not equal
-'3' !== 3;
+// Strict not equal3
+'3' !== 4;
 
 // Greater than
 3 > 2;
@@ -251,7 +315,7 @@ COMPARISON OPERATORS
 2 < 3;
 
 // Greater than or equal to
-3 >= 2; // Not to be confused with => (explain why)
+3 >= 2; // Not to be confused with => (fat arrow functions, which we will dig into later)
 
 // Less than or equal to
 2 <= 3;
@@ -317,9 +381,9 @@ If it is your name, console.log 'Hello, my name is <your name>';
 If the name does not match, console.log 'Hello, what is your name?'
 */
 
-var name = 'Tyler';
+var name = 'Autumn';
 
-if ('Tyler' == name) {
+if ('Autumn' == name) {
   console.log('Hello, my name is', name);
 } else {
   console.log('Hello, what is your name?');
@@ -356,7 +420,7 @@ If the age is at least 21, console.log 'Yay! You can drink!'
 If the age is at least 25, console.log 'Yay! You can rent a car!'
 */
 
-var age = 30;
+let age = 30;
 
 if (age >= 25) {
 	console.log("Yay! You can rent a car!");
@@ -371,23 +435,33 @@ if (age >= 25) {
 
 /**************************
 SWITCH
+Switch statements helps us choose between several options for a variable and a default
+Four main parts to a switch statement
+switch, the argument being evaluated 
+case, one of the options for the variable to be
+break, this breaks us out of the switch statement once we hit our case
+default, the default if we dont hit one of our cases, not neccesary 
+
 **************************/
 
-var friend;
+var friend="Bob";
 
 switch (friend) {
-  case "Tom":
-    console.log("Hey Tom, when are you going rock climbing?");
+  case "Autumn":
+    console.log("Hey Autumn, when are you going rock climbing?");
     break;
-  case "Kenn":
-    console.log("Hey Kenn, wanna play Catan?");
+  case "Dave":
+    console.log("Hey Dave, how is Cooper?");
     break;
-  case "Carolyn":
-    console.log("Hey Carolyn, when are we playing DnD?");
+  case "Alecx":
+    console.log("Hey Alecx, when are we playing DnD?");
     break;
   default:
     console.log(`I'm sorry, ${friend}, but do I know you?`); // EXPLAIN STRING INTERPOLATION
 }
+
+//The last switch is a default statement, which is selected when the vairable passed 
+// doesnt match any of the options given. 
 
 /*
 Challenge:
@@ -416,7 +490,7 @@ switch (dessert) {
 
 // Switches with multiple conditions:
 
-var yep = -8;
+let yep = -8;
 
 switch (true) {
   case (yep < 0 && yep > -10): 
@@ -437,9 +511,10 @@ TERNARIES
   03-ternaries.js
 **************************/
 
-//What is a ternary?
+//What is a ternary? A great way to write a single line for an if/ if else statement
 
-var x = 6;
+
+let x = 6;
 
 //Ternary:
 
@@ -447,11 +522,8 @@ var x = 6;
 
 // Instead of:
 
-if (x > 0) {
-  console.log('yes');
-} else {
-  console.log('no');
-}
+
+
 
 
 //Conditional statements
@@ -512,7 +584,8 @@ let yep = -8;
 (yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('did\'t work');
 
 /*
-Ternaries, unlike conditionals, require the default/else catch all.  Where an if/else statement can go without the else, and a switch can go without a default, ternaries need that catch all at the end; otherwise it will throw an error.
+Ternaries, unlike conditionals, require the default/else catch all. 
+ Where an if/else statement can go without the else, and a switch can go without a default, ternaries need that catch all at the end; otherwise it will throw an error.
 */
 
 /**************************
@@ -527,6 +600,8 @@ RECAP
 Git
 Scope
 Hoisting
+
+
 Literals
 Assignment Operators
 Comparison Operators

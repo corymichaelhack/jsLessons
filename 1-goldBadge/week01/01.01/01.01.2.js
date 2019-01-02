@@ -44,15 +44,29 @@ VARIABLES
 1-grammarAndTypes
   02-declarations.js
 **************************/
-// What is a variable?
-var a = 1; 
-var b = 2; 
+/* What is a variable?  Variables are named containers for storing data values. */
+var a = 2;
+
+  var   b    =    1; 
+/*(1)  (2)  (3)  (4)     
+
+1- Keyword
+2- Variable name 
+3- Assignment Opperator
+4- Variable value
+
+*/
 console.log(a + b); // 3
 
-//notes on variables:
-//1)  a variable must begin with a letter, underscore, or dollar sign
-//2)  numbers may follow the above characters, but cannot come first
+
+/*notes on variables:
+//1)  A variable name must begin with a letter, underscore, or dollar sign
+//2)  Numbers may follow the above characters, but cannot come first
 //3)  JavaScript is case sensitive-- 'hello' and 'HeLlo' are different variables
+//4)  No spaces are allowed in variable names
+//5)  camelCase is the best practice for naming variables. 
+This is good practice because it helps keep variables readable--  var myName = 'Autumn'; 
+*/
 
 /**************************
 DECLARATIONS
@@ -84,7 +98,7 @@ console.log('Both:',x, y); // Both: 33 hello
 Var, Let, and Const:
 
 Var = 'old' keyword for variables
-Let = 'new' keyword for variables (introduced with ES6)
+Let = 'new' keyword for variables (introduced with ES6 *new version of JavaScript)
 Const = also 'new'; declares unchangeable variables
 */
 
@@ -102,18 +116,17 @@ console.log(today, elevenFifty); // ERROR
 TYPES
 
 1-grammarAndTypes
-  05-types.js
+  03-types.js
 **************************/
 
 // Booleans
-// What is a boolean?
+// What is a boolean? Boolean can represent: true/false, yes/no, on/off
 var on = true;
 console.log(on); // true
 
 let off = false;
 console.log(off); // false
-
-//boolean can represent: true/false, yes/no, on/off
+ 
 
 // Null
 /* 
@@ -164,7 +177,9 @@ console.log(numbersAreHard); // 0.3
 // Quickly discuss number objects (in GitBook Javascript Fundies 6.1)
 
 // Strings
-// Strings = any value within quotes; JS spits out value within the quotes
+/* Strings are Datatypes used to represent text and are wrapped in either a single or double quote
+   Strings are Primative Datatype. This also includes Numbers, Booleans, Null, Undefined and others 
+*/
 let stringOne = "double quotes";
 let stringTwo = 'single quotes';
 console.log(stringOne, stringTwo); // double quotes single quotes
