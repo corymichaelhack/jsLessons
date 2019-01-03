@@ -53,279 +53,134 @@ PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
 **************************/
 
 /*
-Run through making a functional component for a footer (recap) => make with functional keyword instead of fat arrow for variety
+//let's begin by further building out our folder structure:
+components
+  Auth
+  Navbar
+  Pies
+    Pies.js
+    Pies.css
+    Pie
+      Pie.js
+      Pie.css
 
-Discuss differences between functional components and class components => class discussion on which is better
+//next, let's add the following code to our Pies.js:
+import React, {Component} from 'react';
 
-Change folder structure (change paths accordingly):
-  src
-    components
-      layout
-        AuthForm.js (new file)
-        Footer.js
-        Navbar.js
-      auth
-        Login.js (new file)
-        Signup.js (new file)
-    ...
-  
-Talk about making login/signup form
-*/
+import Pie from './Pie/Pie';
+import './Pies.css';
 
-/*
-Go to layout/AuthForm.js 
- 
-Add the following:
-*/
+class Pies extends Component {
+  testData = [
+    {
+      nameOfPie: 'Name of Pie',
+      baseOfPie: 'Base of Pie',
+      crust: 'Crust',
+      timeToBake: 'Time to Bake',
+      servings: 'Servings',
+      rating: 'Rating'
+    },
+    {
+      nameOfPie: 'Cherry',
+      baseOfPie: 'Fruit Filling',
+      crust: 'Pastry',
+      timeToBake: '30 mins',
+      servings: 97,
+      rating: 5 stars
+    }, 
+    {
+      nameOfPie: 'Pecan',
+      baseOfPie: 'Sugary Goodness',
+      crust: 'Graham Cracker',
+      timeToBake: '40 mins',
+      servings: 2,
+      rating: 3 stars
+    }
+  ]
 
+  render(){
+    let pieRows = testData.map(pie => {
+      return (
+        <Pie key={pie.nameOfPie} pie={pie} />
+      )
+    })
+    return(
+      <table>
+        <tbody>
+          {pieRows}
+        </tbody>
+      </table>
+    )
+  }
+}
+
+export default Pies;
+
+//reiterate what React, {Component} imports are doing at top of file
+//observe that we're pulling in another component, Pie, and a CSS file
+//draw their attention to the fact that we're using a class component rather than a function component ->
+//we will eventually have this component changing information internally (fetch through componentDidMount)
+//explain use of dummy data
+//explain pieRows use of .map() inside render method--take every el from the array, output value to new array
+//explain how React needs a key to correctly update components
+//discuss how {} allow React to read any JavaScript expression as long as it is output as JSX
+
+//let's build out Pie.js as follows:
 import React from 'react';
 
-const AuthForm = (props) => {
-  return (
-    <div>
-      <form>
-        {/* <h1>{ props.formName }</h1> */}
-        <h1>Sign Up</h1>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input 
-            type="text" 
-            id="emailField" 
-            name="email" 
-            className="input-field" 
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input 
-            type="text"
-            id="passwordField"
-            name="password"
-            className="input-field"
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <input type="button" value="Submit"/>
-      </form>
-    </div>
+const Pie = (props) => {
+  return(
+    <tr>
+      <td>{props.pie.nameOfPie}</td>
+      <td>{props.pie.baseOfPie}</td>
+      <td>{props.pie.crust}</td>
+      <td>{props.pie.timeToBake}</td>
+      <td>{props.pie.servings}</td>
+      <td>{props.pie.rating}</td>
+    </tr>
   )
 }
 
-export default AuthForm;
+export default Pie;
 
-/*
-Now, go to App.js and add the following:
-*/
+//discuss our use of props--the prop comes from the JSX attributes in the component call, hence, key & pie are props
+//we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie.whatev in Pie.js
+//and get a data value back
+//draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
+//this can be demonstrated with the React extension
 
-import AuthForm from './components/layout/AuthForm';
+//let's add the following to our Pies.css:
+table, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
-// render() {
-//   return (
-//     <div className="App">
-//       <Navbar/>
-//       <AuthForm/> {/* New file here */}
-//       <Footer/>
-//     </div>
-//   );
-// }
+table{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%)
+}
 
-// Run your code and see the form
-// Notice that it only works for Sign Up.  Let's change that
+//finally, let's update App.js to look like the following:
+//add Pies import to top of file:
+import Pies from './components/Pies/Pies';
 
-/*
-Add following in App.js file:
-
-Add constructor and super and state:
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
+//fill in inside of App component:
+  state = {
+    sessionToken: undefined
   }
 
-Explain what this is doing
-  Constructor not necessary, but common for OOP classes => contains and, well, constructs the class => if constructor only has super(), you will get a warning telling you that you have a useless constructor
-
-  super() is something that brings data in from the parent component => do not go too deep
-
-  state is something that all browsers have (the only thing without is HTTP requests => statelessness [rest]). It is like setting data that the whole site can use => remember in NYT app, nav.style.display = 'none' set that the app would start off as hiding its navbar?  State is like this on a grander level.
-  
-  https://daveceddia.com/why-not-modify-react-state-directly/?utm_campaign=0601modify
-*/
-
-/*
-Get rid of the AuthForm import.  Add to App.js:
-
-  import Login from './components/auth/Login';
-  import Signup from './components/auth/Signup';
-
-  ...
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        Login
-      )
-    } else {
-      return (
-        Signup
-      )
-    }
+  viewConductor(){
+    return this.state.sessionToken !== undefined ? <Pies/> : <Auth tokenHandler={this.storeSessionToken}/>
   }
 
-  ...
-
-  <Navbar/> 
-    { this.authViewShow() }
-    (Get rid of <AuthForm />)
-  <Footer/>
-
-BRIEFLY explain 'this'.
-
-Explain what we are doing.
-*/
-
-// Go to Signup.js and add the following:
-
-import React from 'react';
-import AuthForm from '../layout/AuthForm';
-
-class Signup extends React.Component {
-
-  handleChange = (e) => {
-    console.log(e)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
+  render(){
+    return(
+      <div className="App">
+        <Navbar logout={this.removeSessionToken}/>
+        {this.viewConductor()}
       </div>
     )
   }
-}
-
-export default Signup;
-
-// Explain what we are doing
-// Now, go to Login.js:
-
-import React, { Component } from 'react';
-import AuthForm from '../layout/AuthForm';
-
-export default class Login extends Component {
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
-      </div>
-    )
-  }
-}
-
-/*
-Explain the difference with Component and export default 
-
-Now add the following in Login.js:
 */
-
-// render() {
-//   return (
-//     <div>
-//       <AuthForm
-//         formName="Login" {/* New */}
-//         changeInputs={ this.handleChange }
-//       />
-//     </div>
-//   )
-// }
-
-// Add the same for Signup (with "Sign Up" instead of "Login")
-
-// Add the following to App.js:
-
-changeUserStatus = () => this.setState({ isUser: !this.state.isUser }) // New
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login/> // New
-    )
-  } else {
-    return (
-      <Signup/> // New
-    )
-  }
-}
-
-// Change the state of isUser from false to true and you should see it go between Sign Up and Login
-
-// Now let's toggle between both forms!
-// Change the state back to where isUser is false
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login toggleForm={ this.changeUserStatus }/> // New
-    )
-  } else {
-    return (
-      <Signup toggleForm={ this.changeUserStatus }/> // New
-    )
-  }
-}
-
-/* Now go to Signup.js and add the following under the <AuthForm/>:
-
-<h6>Login <button onClick={ this.props.toggleForm }>HERE</button> if you have an account</h6>
-
-And add the following for Login.js:
-
-<h6>Register <button onClick={this.props.toggleForm }>HERE</button> if you don't have an account</h6>
-
-The button should toggle between Login and Signup!
-
-Now, go to AuthForm.js:
-*/
-
-// const AuthForm = (props) => { // add props
-//   return (
-//     <div>
-//       <form>
-//         <h1>{ props.formName }</h1> // new 
-//         <div className="input-group">
-//           <label htmlFor="email">Email</label>
-//           <input 
-//             type="text" 
-//             id="emailField" 
-//             name="email" 
-//             className="input-field" 
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label htmlFor="password">Password</label>
-//           <input 
-//             type="text"
-//             id="passwordField"
-//             name="password"
-//             className="input-field"
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <input type="button" value="Submit"/>
-//       </form>
-//     </div>
-//   )
-// }

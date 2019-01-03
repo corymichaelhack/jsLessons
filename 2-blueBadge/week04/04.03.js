@@ -1,14 +1,32 @@
-/*
-Talk about "Think Like a Programmer", chapters 1-3, 8
-  Always have a plan
-  Restate the problem
-  Divide the problem
-  Start with what you know
-  Reduce the problem
-  Look for analogies
-  Experiment
-  Don't get frustrated
+/* 
+Welcome students to blue badge--talk about the goals of the badge, the project,
+and what their learning experience will look like
+
+Slack them the blue badge calendar:
+https://docs.google.com/document/d/1dNe60jfaVmE5hifylH1GIfhRGJvbK3iy4KcZk1RSw_w/edit?usp=sharing
 */
+
+let swapper = (obj, prop1, prop2) => {
+  let temp = {};
+  for (let enumerable in obj){
+    // console.log(iterable)
+    temp[enumerable] = obj[enumerable];
+  }
+  let placeholder = temp[prop2];
+  temp[prop2] = temp[prop1];
+  temp[prop1] = placeholder;
+
+  return temp;
+}
+
+obj = {
+  keya: '1',
+  keyb: 2,
+  keyc: false
+}
+
+console.log(swapper(obj, 'keya', 'keyb'));
+
 
 /**************************
 CODE CHALLENGE 1 - OBJECTS

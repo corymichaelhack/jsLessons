@@ -74,7 +74,12 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
 PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
 **************************/
 /*
-//review data flow in React, cd into pieclient
+//review data flow in React, 
+//talk about how App.js is essentially an entire webpage,
+//circle and discuss how smaller, more granular parts of the site
+//are component 'leaves' in our folder 'tree'--App.js is our 'stem'
+
+cd into pieclient
 //add to project folder structure as below:
 components
   Auth
@@ -104,7 +109,11 @@ class Auth extends Component {
 
 export default Auth;
 
-//discuss Component import, class benefits over functional component (dynamic vs static), empty onClick handlers
+//discuss Component import, 
+//class benefits over functional component (dynamic vs static), 
+//empty onClick handlers,
+//review labels and inputs
+//draw their attention to the fact that JSX again looks like HTML
 
 //let's import and use this in App.js, just render the component below the Navbar
 
@@ -115,6 +124,7 @@ export default Auth;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+//discuss what absolute position is doing, top, left, and transform
 
 //let's update Auth to toggle login/signup:
 //add to Auth.js class
