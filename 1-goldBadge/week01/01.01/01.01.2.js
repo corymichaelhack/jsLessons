@@ -165,7 +165,7 @@ console.log(degrees);
 var precise = 999999999999999; // 15 9's
 console.log(precise); // 999999999999999
 
-var rounded = 9999999999999999; // (One more 9)
+var rounded = 9999999999999999; // (One more 9) JS is 
 console.log(rounded); // 10000000000000000
 
 var notQuite = 0.2 + 0.1;
