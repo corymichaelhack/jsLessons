@@ -1,14 +1,3 @@
-/*
-Talk about "Think Like a Programmer", chapters 1-3, 8
-  Always have a plan
-  Restate the problem
-  Divide the problem
-  Start with what you know
-  Reduce the problem
-  Look for analogies
-  Experiment
-  Don't get frustrated
-*/
 
 
 /**************************

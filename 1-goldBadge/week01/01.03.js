@@ -6,7 +6,7 @@ let numberExample = 0;
 let boolExample = true;
 let conditionExample = 0;
 
-//If else statement solution
+
 if (typeof conditionExample === 'string') {
   console.log('Yep, A is A.')
 } else if (typeof conditionExample === 'number') {
@@ -33,6 +33,8 @@ var day3 = (typeof conditionExample == 'string') ? "Good thing he was just a red
 
 console.log(day3)
 
+
+
 /**************************
 WHITEBOARD 1 - FIZZ BUZZ (Conditionals Only)
 **************************/
@@ -45,6 +47,7 @@ Prints out "Buzz" if the number is divisible by 5
 Prints out "Fizz Buzz" if the number is divisible by BOTH 3 and 5
 */
 
+
 var FB = 15;
 
 if (FB % 3 === 0 && FB % 5 === 0) {
@@ -55,7 +58,13 @@ if (FB % 3 === 0 && FB % 5 === 0) {
   console.log('Fizz');
 }
 
+
+
+
 var FB = 30;
+
+
+
 
 switch (true) {
   case (FB % 3 === 0 && FB % 5 === 0):
@@ -73,13 +82,27 @@ var FB = 30;
 
 (FB % 3 === 0 && FB % 5 === 0) ? console.log('Fizz Buzz') : (FB % 5 === 0) ? console.log('Buzz') : (FB % 3 === 0) ? console.log('Fizz') : FB;
 
+
+/*
+Overview for Today
+******************
+Fizz Buzz ING
+Loops
+Functions Basics
+Parameters
+Fat Arrow Functions Adam
+Return Adam
+Git Recap Adam
+*/
+
+
 /**************************
 LOOPS
 
 3-loops
   01-forLoops.js, 02-forInLoops.js, 03-forOfLoops.js
 **************************/
-
+//ADAM
 /**************************
 FOR LOOPS
 **************************/
@@ -193,6 +216,10 @@ for (cat of catArray){
 /**************************
 FUNCTIONS
 
+From MDN Functions are a set of statements that perform a task or calculates a value. 
+
+
+
 4-functions
   01-declarations.js, 02-expressions.js, 03-callingFunctions.js
 **************************/
@@ -218,13 +245,14 @@ Difference between declaration and expression:
 Declaration gets hoisted
 Expression does not
 */
-
+ 
 /**************************
 CALLING FUNCTIONS
 **************************/
 
 function hi() {
-  console.log('HI')
+  console.log('HI');
+  return "Hi";
 }
 
 hi // nothing
@@ -233,9 +261,11 @@ console.log(hi); // [function = hi]
 console.log(hi()); // HI    undefined
 
 /*
-Why is the second value undefined when we console.log hi() but not when we console.log hi?  What are the parentheses doing?
+Why is the second value undefined when we console.log hi() but not when we console.log hi? 
+What are the parentheses doing?
 
 The parenths after a function IMMEDIATELY INVOKE said function.
+
 */
 
 /*
@@ -259,12 +289,12 @@ Given the array, create a function that lists out the values individually.
 let arr = ['This', 'is', 'really', 'cool'];
 
 function arrList() {
+  // for (item in arr) {
+  //   console.log(arr[item])
+  // }
   for (item in arr) {
     console.log(arr[item])
   }
-  // for (item of arr) {
-  //   console.log(item)
-  // }
 }
 
 arrList();
@@ -277,7 +307,8 @@ PARAMETERS
 **************************/
 
 /*
-Parameters are like empty storage boxes that we can name whatever we want. It only matters what the name is when you are calling the paramter within the function => they have to match
+Parameters are like empty storage boxes that we can name whatever we want. 
+It only matters what the name is when you are calling the paramter within the function => they have to match
 
 You can have multiple parameters for a single function
 
@@ -301,7 +332,7 @@ Call your function
 */
 
 function myName(fName, lName) {
-  let fullName = fName + ' ' + lName;
+  let fullName = fName + ' ' + lName; 
   console.log(`Hello my name is ${fullName}.`);
 }
 

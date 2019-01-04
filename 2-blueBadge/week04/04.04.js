@@ -1,6 +1,25 @@
 /**************************
 CODE CHALLENGE 4
+
+
+Challenge: 
+
+Given this object( create nexflix object here), 
+Sort through and display the information as shown here:
+{Name of Show}
+  {image}
+{episode number}{episode name}
+  {episode synopsis}
+
+
+
 **************************/
+
+
+
+
+
+
 
 /**************************
 PIE CLIENT WALKTHROUGH 4 - ROUTER

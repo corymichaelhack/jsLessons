@@ -42,7 +42,7 @@ if (fb % 15 == 0) {
 }
 
 /**************************
-GIT REVIEW
+GIT REVIEW - Why git? 
 **************************/
 /*
 Git init
@@ -50,6 +50,17 @@ Git status
 Git add .
 Git commit -m "<message>"
 */
+
+/*
+Overviews for today
+********************
+Arrays - Ing
+Objects
+Git with GitHub
+*/
+
+
+
 
 /**************************
 ARRAYS
@@ -113,7 +124,7 @@ food.forEach(f => { console.log(f); }) // Pecan pie, Bananas, Sweet Potato Pie, 
 food.forEach((food, number) => { console.log(number); console.log(food) }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
 
 /*
-Challenge:
+Challenge (Go look at MDN docs to remind you):
 Create a list (with an array) of movies
 Use .forEach() to list your movies
 Add another movie at the end 

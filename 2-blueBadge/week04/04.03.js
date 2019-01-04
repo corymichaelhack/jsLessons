@@ -145,11 +145,15 @@ Add constructor and super and state:
   }
 
 Explain what this is doing
-  Constructor not necessary, but common for OOP classes => contains and, well, constructs the class => if constructor only has super(), you will get a warning telling you that you have a useless constructor
+  Constructor not necessary, but common for OOP classes => contains and, well, constructs the class => 
+  if constructor only has super(), you will get a warning telling you that you have a useless constructor
 
   super() is something that brings data in from the parent component => do not go too deep
 
-  state is something that all browsers have (the only thing without is HTTP requests => statelessness [rest]). It is like setting data that the whole site can use => remember in NYT app, nav.style.display = 'none' set that the app would start off as hiding its navbar?  State is like this on a grander level.
+  state is something that all browsers have (the only thing without is HTTP requests => 
+    statelessness [rest]). It is like setting data that the whole site can use => 
+    remember in NYT app, nav.style.display = 'none' set that the app would start off as hiding its navbar?  
+    State is like this on a grander level.
   
   https://daveceddia.com/why-not-modify-react-state-directly/?utm_campaign=0601modify
 */
@@ -329,3 +333,7 @@ Now, go to AuthForm.js:
 //     </div>
 //   )
 // }
+//
+
+
+// Hey look to tomorrow teacher! Make new netflix object

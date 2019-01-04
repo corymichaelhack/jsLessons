@@ -1,15 +1,23 @@
 /*
 Challenge (Strings):
-Pig Latin:
+Pascal Case:
 
 Create a function that takes in strings
-In the function, translate a phrase into pig latin and print both the original and pig latin version to the console.
+In the function, translate the string to Pascal Casing, which means the first letter of 
+each word in a string is capitalized. 
 
-If able to do so, return the value into another variable and print that variable
-
-What is Pig Latin?
-    * If the word begins with a consonant, remove the consonant to the first vowel, place it at the end of the word, and add an 'ay' to the end (i.e. Pig Latin => IgPay Atinlay)
-    * If the word begins with a vowel, simply add an 'ay' at the end of the word
+Lets walk through some first steps to solving this problem. 
+1. What is the problem we need to solve? 
+    We need to take in a string, and give back another string that capitalizes the first letter of 
+    each word. 
+2. What tools will we need? 
+    We need tools that address three main issues: 
+    A) Separate words in a string
+    B) Capitolize each one of those words
+    C) Join that string back together and return the string
+3. Where do we start to solve this problem? 
+    Starting is the simplest part, we know we need a function and we know that function needs 
+    to take in a parameter
 */
 
 /*

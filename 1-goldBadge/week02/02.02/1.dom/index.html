@@ -7,10 +7,12 @@
     <title>DOM Stuff</title>
   </head>
   <body>
+    <!-- In this lesson were going to go into how html and js files interact with one another -->
     <!-- 1 - Test -->
     <!-- <h1>Hello World</h1> -->
 
     <!-- 2 -->
+    <!-- If were linking a js file to our html, unlike a link tag, we use a script tag -->
     <p id="testParagraph">Sample Text</p>
 
     <!-- 3 -->
@@ -21,7 +23,7 @@
 
     <!-- 5 -->
     <label for="nameInput">Enter Your Name:</label>
-    <input type="text" id="nameInput" placeholder="Brandon Coflin">
+    <input type="text" id="nameInput" placeholder="Your name here">
 
     <script>
       // 1 - Test
@@ -50,7 +52,7 @@
       document.getElementById('clickThisButton').addEventListener('click', (details) => {
         if (details.target.style.backgroundColor == 'red') {
           details.target.style.backgroundColor = 'blue';
-        } else {
+         } else {
         details.target.style.backgroundColor = 'red';
         }
       });
@@ -67,6 +69,6 @@
           document.getElementsByTagName('p')[1].innerText = `Everyone, say hello to ${e.target.value} right now!`;
         }
       });
-    </script>
+     </script>
   </body>
 </html>
