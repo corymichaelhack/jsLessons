@@ -82,13 +82,27 @@ var FB = 30;
 
 (FB % 3 === 0 && FB % 5 === 0) ? console.log('Fizz Buzz') : (FB % 5 === 0) ? console.log('Buzz') : (FB % 3 === 0) ? console.log('Fizz') : FB;
 
+
+/*
+Overview for Today
+******************
+Fizz Buzz
+Loops
+Functions Basics
+Parameters
+Fat Arrow Functions
+Return
+Git Recap
+*/
+
+
 /**************************
 LOOPS
 
 3-loops
   01-forLoops.js, 02-forInLoops.js, 03-forOfLoops.js
 **************************/
-
+//ADAM
 /**************************
 FOR LOOPS
 **************************/

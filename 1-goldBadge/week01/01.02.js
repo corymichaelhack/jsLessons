@@ -3,16 +3,33 @@ ASSIGNMENT 1 PRESENTATIONS
 **************************/
 /*
 CSS Creature presentations:
-Submit through LMS
+Submit through Google Sheet https://docs.google.com/spreadsheets/d/1iU9MweMTh2Tuz8GTvG9Eig5d7C0BIQKt2u_XjCdkqQ8/edit?usp=sharing
 Volunteers to walk us through their creature
 */
 
 /**************************
-ASSIGNMENT 2 - Tutorial Webpage - 
+ASSIGNMENT 2 - Tutorial Webpage - https://docs.google.com/document/d/1ah0z5vubgaG2Fb0nrERABXvnlG31DMJ7Zk-KRABWzXM/edit?usp=sharing
 
 **************************/
 
 /*
+Overviews for Today
+******************
+Git
+Scope
+Hoisting
+Literals
+Assignment Operators
+Comparison Operators
+Conditionals
+Ternaries
+*/
+
+
+
+/*
+Adam assisting
+
 Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
 theyre speaking basically when things are and arent accessible in your code.
 
@@ -391,8 +408,10 @@ if ('Autumn' == name) {
 
 
 /*
- Challenge: 
+ Walthrough with MDN Docs: 
 Capitalize the FIRST LETTER of name ONLY
+We need to manipulate the data in this string, we need methods, start gathering tools
+
 */
 
 var name = 'tyleR';
@@ -588,9 +607,10 @@ Ternaries, unlike conditionals, require the default/else catch all.
  Where an if/else statement can go without the else, and a switch can go without a default, ternaries need that catch all at the end; otherwise it will throw an error.
 */
 
-/**************************
-REPL.IT ASSESSMENT 1
-**************************/
+
+
+
+
 
 /**************************
 RECAP
@@ -609,4 +629,4 @@ Conditionals
 Ternaries
 */
 
-// Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+// Challenge Assessment 1 - DUE BY THURSDAY MORNING (Set up git repo, with correct files)

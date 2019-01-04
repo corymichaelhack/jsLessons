@@ -1,11 +1,22 @@
 // (HTML FIRST)
 
+//Overview for Today
+// HTML
+// CSS
+// Comments
+// Variables
+// Declarations
+// Datatypes
+
+
+
+
 /*
 Folder Structure:
   javascriptMay2018
     javascriptLibrary
       0-prework
-      1-jsFundamentals (new folder - **use terminal to cd, ls/dir, and mkdir**)
+      1-jsFundamentals (new folder - **use terminal to cd, ls/dir, and mkdir, do tree cmd to show tree**)
         1-grammarAndTypes (new folder)
 */
 
@@ -19,6 +30,7 @@ COMMENTS
 //what comments do for us:
 //1) communicate with other developers by writing in plain English
 //2) annotate certain sections of our code for our future selves
+//3)
 
 
 //console output of 'yay';
@@ -44,11 +56,13 @@ VARIABLES
 1-grammarAndTypes
   02-declarations.js
 **************************/
-/* What is a variable?  Variables are named containers for storing data values. */
-var a = 2;
+/* What is a variable?  Variables are named containers for storing data values. 
+  We name the variables so that we can refer to this data again.
+*/
+  var a = 2;
 
-  var   b    =    1; 
-/*(1)  (2)  (3)  (4)     
+  var     b      =      1; 
+/*(1)    (2)    (3)    (4)     
 
 1- Keyword
 2- Variable name 
@@ -102,11 +116,11 @@ Let = 'new' keyword for variables (introduced with ES6 *new version of JavaScrip
 Const = also 'new'; declares unchangeable variables
 */
 
-let today = 'great!';
+let today = 'Great!';
 const elevenFifty = 'Wonderful!';
 console.log(today, elevenFifty); // great! Wonderful!
 
-today = 'lovely!'
+today = 'Lovely!'
 console.log(today, elevenFifty); // lovely! Wonderful!
 
 // elevenFifty = 'Super'
@@ -119,8 +133,12 @@ TYPES
   03-types.js
 **************************/
 
-// Booleans
-// What is a boolean? Boolean can represent: true/false, yes/no, on/off
+/* 
+Booleans
+******************
+What is a boolean? Boolean can represent: true/false, yes/no, on/off
+*/ 
+
 var on = true;
 console.log(on); // true
 
@@ -128,58 +146,75 @@ let off = false;
 console.log(off); // false
  
 
-// Null
 /* 
+Null
+******************
 Null = empty value (not 0; not undefined)
-
 It is like an empty container; nothing is in it, but it still exists as a space to fill
 */
 
 var empty = null;
 console.log(empty); // null
 
-// Undefined
 /*
+Undefined
+******************
 Undefined = no value assigned (not even an empty container)
 
 UNDEFINED IS NOT AN ERROR
 */
 
-var undef = undefined;
+var undef = undefined;// never do this
 console.log(undef); // undefined
 
 let grass;
 console.log(grass); // undefined
 
 /*
+Null vs. Undefined 
+******************
+Null is like a container with nothing in it
+Undefined is when a variable has never been set, or hasnt been created yet. 
+
+
+
 We've talked before about how every variable is basically a storage container in JavaScript
 think of variables with null and undefined as packages coming out of UPS
-null packages are packages that were intentionally packed up with nothing, but have been assembled
-undefined packages are packages that have nothing in them, but have not yet been assembled to leave UPS
+Null packages are packages that were intentionally packed up with nothing, but have been assembled
+Undefined packages are packages that have nothing in them, but have not yet been assembled to leave UPS
 */
 
-// Numbers
+/* 
+Numbers
+**********
+Numbers are exactly what they sounds like, numbers. In JS, you dont need anything special to write them. 
+*/
 var degrees = 90;
 console.log(degrees);
 
 var precise = 999999999999999; // 15 9's
 console.log(precise); // 999999999999999
 
-var rounded = 9999999999999999; // (One more 9) JS is 
+var rounded = 9999999999999999; // (One more 9) JS gives you space for 15 9s before it rounds up to 10
 console.log(rounded); // 10000000000000000
 
 var notQuite = 0.2 + 0.1;
-console.log(notQuite); // 0.30000000000000004
+console.log(notQuite); // 0.30000000000000004// js rounds out at a certain number
 
 var numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
 console.log(numbersAreHard); // 0.3
 
-// Quickly discuss number objects (in GitBook Javascript Fundies 6.1)
+// Quick Discussion : var a = Number('123'), turns strings into numbers. 
 
-// Strings
-/* Strings are Datatypes used to represent text and are wrapped in either a single or double quote
-   Strings are Primative Datatype. This also includes Numbers, Booleans, Null, Undefined and others 
+
+
+/*
+Strings
+*********
+Strings are Datatypes used to represent text and are wrapped in either a single or double quote
+Strings are Primative Datatype. This also includes Numbers, Booleans, Null, Undefined and others 
 */
+
 let stringOne = "double quotes";
 let stringTwo = 'single quotes';
 console.log(stringOne, stringTwo); // double quotes single quotes
@@ -195,12 +230,14 @@ console.log(typeof first); // number
 console.log(typeof second); // string
 
 /*
-What's going on here?
+
 Addition vs. Concatenation
-
-When JS sees combining two or more numbers, it adds the values together using the built-in math functionality; when it sees adding together one or more strings, it changes and the plus sign becomes an assignment operator--it smashes the values together without trying to synthesize the values
+**************************
+When JS sees combining two or more numbers, it adds the values together using the built-in math functionality;
+ when it sees adding together one or more strings, it changes and the plus sign becomes an assignment operator-
+ -it smashes the values together without trying to synthesize the values
 */
-
+  
 let third = 1050 + '100';
 
 console.log(third); // 1050100
@@ -237,16 +274,33 @@ let zipcode = 46038;
 
 console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Tyler Shelton, 12175 Visionary Way, Fishers, IN 46038
 
-// Objects
 /*
-What is an object?
+Strings - Properties
+********************
+Properties are qualities associated with a datatype. 
+Strings have properties, or the qualities associated with that string.
+The length of a string is a property.  
+ */ 
 
-A container that can hold multiple datatypes
+let myName = "Autumn";
+console.log(myName.length)
 
-Denoted by {}
-Has keys and values (color (key): 'blue' (value)), separated with a colon
-Each key separated with a comma
+/*Methods
+************
+Methods are like tool that can help us manipulate our data. 
+.Property and .Methods() *no parenthesis for properties*
+
 */
+let myName = "Autumn";
+console.log(myName.toUpperCase())
+
+/*
+Objects
+*************
+An object is a data type that constists of key/value pairs. 
+*/
+
+
 let burritosNow = {
   size: 'large',
   quantity: 4,
@@ -256,9 +310,11 @@ let burritosNow = {
 console.log(burritosNow); // { size: 'large', quantity: 4, now: true }
 console.log(typeof burritosNow); // object
 
-// Arrays => DANGER - DIFFICULT TO TEACH
+// Arrays => DANGER - DIFFICULT TO TEACH (ING)
 /*
-Arrays are great for lists
+Arrays
+************
+Arrays are containers that hold lists of items
 
 Denoted by []
 Has values ('blue', 'green', 'yellow'), separated with commas
@@ -275,11 +331,14 @@ WHAT?? Why is typeof coming back with an object, and not array??
 What is the definition of objects again? A container that can hold multiple datatypes
 
 Notice that arrays, too, are a container that can hold multiple datatypes.  Therefore, JS has classified arrays as objects and not a datatype of their own
+
+
 */
 
+
 /**************************
-RECAP
-**************************/
+ RECAP
+ **************************/
 
 /*
 HTML
@@ -289,5 +348,8 @@ Variables
 Declarations
 Datatypes
 
-REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
 */
+/* Switch to CSS Creature intro, Ing makes small example, shows some tools of css
+    REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
+
+*/ 
