@@ -69,7 +69,7 @@ git status
 git add 
 git commit -m "<message>"
 git remote add origin *paste repo here*
-git push -u origin master
+
 */
 
 /**************************
@@ -190,15 +190,6 @@ function constTest() {
 }
 
 constTest();
-
-// We are changing a const, should we throw an error?  NO!  Const, like let, is contained within block scope
-
-/*
-    variable grammar    obeys functional scope    obeys block scope   can be mutated (changed after initialization)
-    var                 x                         o                   x
-    let                 x                         x                   x
-    const               x                         x                   o
-*/
 
 /**************************
 HOISTING
@@ -629,4 +620,4 @@ Conditionals
 Ternaries
 */
 
-// Challenge Assessment 1 - DUE BY THURSDAY MORNING (Set up git repo, with correct files)
+// Challenge Assessment 1 - DUE BY THURSDAY MORNING (Set up git repo, with correct files)*move to morning*

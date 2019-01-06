@@ -54,7 +54,7 @@ Git commit -m "<message>"
 /*
 Overviews for today
 ********************
-Arrays
+Arrays - Ing
 Objects
 Git with GitHub
 */

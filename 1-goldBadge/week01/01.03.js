@@ -86,13 +86,13 @@ var FB = 30;
 /*
 Overview for Today
 ******************
-Fizz Buzz
+Fizz Buzz ING
 Loops
 Functions Basics
 Parameters
-Fat Arrow Functions
-Return
-Git Recap
+Fat Arrow Functions Adam
+Return Adam
+Git Recap Adam
 */
 
 

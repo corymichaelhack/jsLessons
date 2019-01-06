@@ -9,7 +9,20 @@
 // Datatypes
 
 
+/*
+ING Leads until lunch
+Smiley GitBook
+****************
+  Lunch
+****************
+Switch to CSS Creature intro, Ing makes small example, shows some tools of css
+    REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
+************
+By 3!
+************
+JS
 
+*/ 
 
 /*
 Folder Structure:
@@ -30,7 +43,7 @@ COMMENTS
 //what comments do for us:
 //1) communicate with other developers by writing in plain English
 //2) annotate certain sections of our code for our future selves
-//3)
+
 
 
 //console output of 'yay';
@@ -349,7 +362,3 @@ Declarations
 Datatypes
 
 */
-/* Switch to CSS Creature intro, Ing makes small example, shows some tools of css
-    REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
-
-*/ 
