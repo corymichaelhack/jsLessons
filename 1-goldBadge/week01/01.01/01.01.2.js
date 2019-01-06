@@ -3,6 +3,12 @@
 //Overview for Today
 // HTML
 // CSS
+/* ING
+CSS Walthrough
+Intro to CodePen
+Intro to Smiley Gitbook
+Give out CSS Creature Assignment
+ */
 // Comments
 // Variables
 // Declarations
@@ -137,6 +143,12 @@ TYPES
 Booleans
 ******************
 What is a boolean? Boolean can represent: true/false, yes/no, on/off
+
+var x = true;
+
+var y = false;
+        (1)
+1-Keyword for boolean - no quotation marks
 */ 
 
 var on = true;
@@ -298,23 +310,43 @@ console.log(myName.toUpperCase())
 Objects
 *************
 An object is a data type that constists of key/value pairs. 
+
+let name = {
+    (1)    (2)
+  key   :   'value';
+  (3)  (4)    (5)
+}
+1- Name of the object, how its identified
+2- All of the data for an object is contained in curly braces
+3- this is the name of the specific data inside the object
+4- The data name and value are separated by a colon
+5- The value of the data. Each key/value pairing ends with a comma 
+
 */
 
 
-let burritosNow = {
-  size: 'large',
-  quantity: 4,
-  now: true
+let car1 = {
+  color: 'red',
+  tires: 4,
+  extras: 'A/C and Radio',
+  cool: true
 };
 
-console.log(burritosNow); // { size: 'large', quantity: 4, now: true }
-console.log(typeof burritosNow); // object
+console.log(car1); // { size: 'large', quantity: 4, now: true }
+console.log(typeof car1); // object
 
 // Arrays => DANGER - DIFFICULT TO TEACH (ING)
 /*
 Arrays
 ************
 Arrays are containers that hold lists of items
+
+let list =  [  'item1',   'item2',    'item3'];
+    (1)    (2)   (3)
+
+1- name of the Array, or list; 
+2- The Array is inside of these square brackets
+3- each item, regardless of datatype, is separated by commas
 
 Denoted by []
 Has values ('blue', 'green', 'yellow'), separated with commas

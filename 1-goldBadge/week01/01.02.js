@@ -80,7 +80,9 @@ SCOPE
 **************************/
 
 /*
-What is scope?
+Scope
+*********
+Refers to where a variable is defined and accessable. Variables defined out
 
 JS has both LOCAL and GLOBAL scope
 
