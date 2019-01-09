@@ -68,6 +68,26 @@ Example output:
   [4 (from +4 -4 +4), 7 (from +6 -6 +7), 9 (from +7 -8 +10)]
 */
 
+let arrOfObjs = [
+  {
+    name1: 'Tyler',
+    name2: 'David',
+    name3: 'Alecx'
+  },
+  {
+    firstKey: '',
+    secondKey: '',
+    thirdKey: ''
+  },
+  {
+    what: '',
+    whatev: '',
+    whatever: ''
+  }
+]
+
+const arrReducer
+
 /********************
 FINISHING PIE CLIENT
 ********************/
