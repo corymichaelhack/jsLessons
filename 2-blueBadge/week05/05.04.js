@@ -1,7 +1,31 @@
 /**************************
-REACT CHALLENGE 2
+DAY THREE REACT CHALLENGE
 **************************/
 
+/*  BRONZE CHALLENGE
+
+  Use the DayThreeComp to build a component that lets the user type into an input field.
+  Make sure that your input field's value is stored in state, and that state shows the value
+  in the input field (2-way data binding).  Include an image of your choice above the input
+  field.  Style this component however you would like.
+
+    SILVER CHALLENGE
+  
+  Do the Bronze Challenge, but add a second input field.  Make sure that its value is also
+  managed by state using 2-way binding.  Make an h1 tag below these input fields that shows
+  the value of the input field which has the longer text.  Your page may look like the below:
+
+  [this is some text]
+  [this is some longer text]
+  <h1>this is some longer text</h1>
+
+    GOLD CHALLENGE
+  
+  Do the Silver Challenge, but make the image from the bronze challenge display through a 
+  functional component.  Pass the image to be displayed to the functional component as a prop
+  (containing a url, meaning that the picture isn't saved locally).  Every time the user types 
+  into one of the input fields, make the image change in this functional component.
+*/
 
 /**************************
 PIE API WALKTHROUGH 3 - AUTH
@@ -57,7 +81,6 @@ app.use('/auth', user)
 
 /* 
 If you run it, it will throw an error because userconroller is empty
-
 Create models folder with headers.js inside:
 */
 
@@ -100,12 +123,9 @@ module.exports = router
 
 /*
 In .env file, add JWT_SECRET
-
 npm install bcrypt (might have to install bcryptjs)
 npm install jsonwebtoken
-
 Run code and see if you add a user to your db
-
 In usercontroller.js (above module.exports = router): 
 */
 const bcrypt = require('bcryptjs') // or bcrypt (whichever you installed)
