@@ -54,7 +54,7 @@ Git commit -m "<message>"
 /*
 Overviews for today
 ********************
-Arrays - Ing
+Arrays
 Objects
 Git with GitHub
 */
@@ -69,8 +69,22 @@ ARRAYS
   02-populating&Referring.js, 03-length.js, 04-iterating.js, 05-methods.js
 **************************/
 /*
-(IF DISCUSSED DURING DATA TYPES):
-Remember what happens when I call a 'typeof' for arrays?  What comes back?  Object.
+/*
+Arrays
+************
+Arrays are containers that hold lists of items
+
+let list =  [  'item1',   'item2',    'item3'];
+    (1)    (2)   (3)
+
+1- name of the Array, or list; 
+2- The Array is inside of these square brackets
+3- each item, regardless of datatype, is separated by commas
+
+Denoted by []
+Has values ('blue', 'green', 'yellow'), separated with commas
+
+console.log(typeof list);
 
 Why is that?  The definition of an object is a container that can hold multiple datatypes.  Arrays fit under that category.
 
@@ -80,9 +94,13 @@ What is an array?
   Great for listing 
 */
 
+let list = ['orange', 'banana', 'oreos']
+
+console.log(list[1])
+
 // Overview/Calling
 
-let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha']]
+let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha', 'Amira']]
 
 console.log(typeof students); //object
 console.log(students instanceof Array); //true
@@ -99,14 +117,14 @@ Go into the nested array and get 'Amira'
 print out "Hello Amira, you look nice today"
 */
 
-let name = students[6][1];
+let name = students[6][2];
 console.log(`Hello ${name}, you look nice today.`);
 
 // Populating/Referring
 
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
-for (f in food) {
+for (f in food) { 
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
 }
 food.push('Pizza'); // Appends Pizza to end of array
@@ -171,6 +189,23 @@ if (arr instanceof Array === true) {
 
 /**************************
 OBJECTS
+***********************
+An object is a data type that constists of key/value pairs. 
+
+let name = {
+    (1)    (2)
+  key   :   'value';
+  (3)  (4)    (5)
+}
+1- Name of the object, how its identified
+2- All of the data for an object is contained in curly braces
+3- this is the name of the specific data inside the object
+4- The data name and value are separated by a colon
+5- The value of the data. Each key/value pairing ends with a comma 
+
+
+
+
 
 11-objects
 **************************/

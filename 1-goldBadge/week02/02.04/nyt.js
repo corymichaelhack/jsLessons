@@ -1,5 +1,7 @@
-// Group 1
-const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+// Group 4
+//Dont forget to make comments! They will help alot!
+// Control/Cmd + ? to comment!
+const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'b2e02612e179494c9f1f57577b582a0a';
 let url;
 
@@ -50,7 +52,7 @@ function fetchResults(e) {
     })
 }
 
-// Group 2
+// Group 5
 function displayResults(json) {
   // console.log('Display Results', json);
   // console.log(json.response.docs);
@@ -82,7 +84,7 @@ function displayResults(json) {
 
       para.textContent = 'Keywords: ';
 
-      // Group 3
+      // Group 6
       for (let j = 0; j < current.keywords.length; j++) {
         let span = document.createElement('span');
         span.textContent += current.keywords[j].value + ' ';

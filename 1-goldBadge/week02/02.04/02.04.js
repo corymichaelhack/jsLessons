@@ -16,7 +16,25 @@ exampleObj = {
 checks for color has the value of 'green'
 
 output: true
+
+
 */
+exampleObj = {
+  color: 'green',
+  smashes: true,
+  name: 'Hulk'
+}
+
+function checker(obj){
+  let list = Object.keys(exampleObj);
+  for(l in list){
+    if(l == "color"){
+      if(obj.color == 'green'){
+        return true;
+      }
+    }
+  }
+}
 
 /*
 NYT Walk Through

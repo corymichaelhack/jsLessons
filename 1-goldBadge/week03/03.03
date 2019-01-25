@@ -6,6 +6,9 @@ firebase.google.com
   Add project name => explain how unique name gets no characters at end
     Accept the terms
     Create project
+    Click project
+    Go to Hosting on SideBar
+    Click 'Get Started' 
   Explain what you can do with Firebase => better than GitHub Pages
 
 npm install -g firebase-tools
@@ -23,6 +26,8 @@ Show two files added in app
 git add .
 git commit -m "message"
 git push
+
+firebase use --add
 
 firebase deploy 
 

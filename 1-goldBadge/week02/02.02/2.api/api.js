@@ -6,12 +6,14 @@ const spaceShips = document.querySelector('ul');
 searchForm.addEventListener('submit', fetchSpace);
 
 // Explain APIs
+//Application Programming Interface
 
 function fetchSpace(e) {
   e.preventDefault();
   // console.log(e);
 
   // Explain Fetch and Async Programming
+
   fetch(baseURL)
 
     // Explain promises

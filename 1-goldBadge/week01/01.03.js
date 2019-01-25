@@ -226,15 +226,42 @@ From MDN Functions are a set of statements that perform a task or calculates a v
 
 /**************************
 DECLARATIONS
-**************************/
+*************************
+
+Functions 
+******************
+A chunk of code that performs a set action when called, or 'invoked'.
+
+function  hi()   {
+  (1)      (2)  (3)
+  console.log('HI')
+}
+1- Keyword 
+2- Name of the function, and parenthesis for parameter
+3- Curly Brace, where the opperations of our function happens
+
+
+*/
 
 function hi() {
   console.log('HI')
 }
 
-/**************************
+/************************
+
+
+
 EXPRESSIONS
-**************************/
+****************
+var hey = function hi() {
+  (1)
+  console.log('HI')
+}
+
+1- The variable 'hey' is now representative of the function 'hi()'
+
+
+*/
 
 var hi = function hi() {
   console.log('HI')
@@ -248,7 +275,18 @@ Expression does not
  
 /**************************
 CALLING FUNCTIONS
-**************************/
+*************************
+function hi() {
+  console.log('HI');
+}
+
+hi();
+(1);
+
+1- This is how we call, or 'invoke' our function
+
+
+*/
 
 function hi() {
   console.log('HI');
@@ -301,6 +339,20 @@ arrList();
 
 /**************************
 PARAMETERS
+***********************
+
+function hi(name){
+            (1)
+  console.log(`Hi ${name}`)
+                    (2)
+}
+
+hi('Autumn');
+      (3)
+
+1- The parameter(s) we need to take into the function
+2- Using string interpolation, we can refer to the parameter we passed
+3- This is where we define what the parameter's value will be
 
 4-functions
   05-parameters.js
@@ -340,6 +392,26 @@ myName('Ray', 'Hancock');
 
 /**************************
 FAT ARROW FUNCTIONS
+*********************
+let hi = ()   => {
+      (1)     (2)
+  console.log('hi')
+};
+
+1- We need to set the fat arrow function to a variable
+2- We use the 'fat arrow' to signify its a function
+
+
+Consice
+*********************
+let hi = () => console.log('hi');
+
+Block Body
+*********************
+let hi = () => {
+  console.log('hi')
+}
+
 
 4-functions
   09-arrowFunctions.js
@@ -390,9 +462,28 @@ let func = ()
 
 /**************************
 RETURN
-**************************/
+***************
+
+let hi = () => {
+  return 'hi';
+    (1)
+};
+
+let newName = hi();
+      (2)      (3)
+
+console.log(newName)
+
+1- The keyword that brings our data out of our function
+2- We need a new variable to hold the value of the return
+3- When called, the function becomes the value of the return
+
+
+
+***********/
 /*
-Functions are like the engines of JS where they will perform a specific function and produce a desired effect.  With the return keyword, we are pulling away from using console.log to show the output of a function in the terminal, and spitting out a value that we can then grab and place in another part of your code => we can effect change on your actual website with the return keyword, where console.log would only work in the dev tools (for example).
+Functions are like the engines of JS where they will perform a specific function and produce a desired effect.
+  With the return keyword, we are pulling away from using console.log to show the output of a function in the terminal, and spitting out a value that we can then grab and place in another part of your code => we can effect change on your actual website with the return keyword, where console.log would only work in the dev tools (for example).
 
 It is like Chicken Run where the people create a huge machine that takes in chickens (like a parameter) and spits out chicken pot pies.  The return keyword is the chicken pot pie.  The function is doing all of the cutting, pie making, gravy filling, etc. and the return is simply giving the pie.  We can then take the pie and put it in something else...
 */
@@ -449,3 +540,13 @@ Fat Arrow Functions
 Return
 Git Recap
 */
+
+function checker (str){
+  let str = str.toLowerCase();
+  let rev = str.split('').reverse().join('').toLowerCase();
+  if(str == rev) {
+    console.log("It's a palindrome")
+  } else {
+    console.log(`${str} is not a palindrome`)
+  }
+}

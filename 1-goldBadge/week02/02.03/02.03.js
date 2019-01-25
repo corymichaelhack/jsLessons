@@ -123,6 +123,11 @@ let netflix = {
 
 /**************************
 API RECAP
+// Application Programming Interface- Basically a set of standards and methods by which we can access certain data
+// 
+JSON- JavaScript Object Notation
+
+
 **************************/
 
 /**************************
@@ -141,6 +146,7 @@ It is similar to ordering concert tickets.  I am promised that I can go to the c
 // Callbacks
 /*
 Functions executed by other functions.
+Can also be considered a function that is passed as a parameter to another function
 
 You can have nested functions or call a separate function within another.
 */
