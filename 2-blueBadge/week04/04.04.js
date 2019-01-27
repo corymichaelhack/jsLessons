@@ -1,199 +1,207 @@
-/**************************
-CODE CHALLENGE 2 - ARRAYS
-**************************/
+/*********************
+ICE BREAKER CHALLENGE
+*********************/
+//pair students to solve the below challenge.  random pairs will present their solutions
 
-/*
-Given 2 arrays:
-[10,20,30,40,50,70]
-[5,3,2,5]
-
-Create a function that multiplies 'like' indexes (0 with 0, 1 with 1, etc.) together then place the value in a new array. 
-
-The function you create should return [50, 60, 60, 200] based on the arrays above.
-
-Make sure the values given to the function are an array type and they have data inside of them.
-
-If the first array has more values than the second, return that same number
-*/
-
-const tensArray = [10,20,30,40,50,70];
-const onesArray = [5,3,2,5];
-
-const multiplyValues = (arr1 = [], arr2 = []) => {
-  // is an expression that checks the value and type of the arr1 given, then puts that value in that param
-  arr1 = typeof arr1 == 'object' && arr1 instanceof Array && arr1.length > 0 ? arr1: false;
-  arr2 = typeof arr2 == 'object' && arr2 instanceof Array && arr2.length > 0 ? arr2: false;
+/* 
+  Write a function that takes an object as input.  The function should return the total length of 
+  all the characters in the keys of the object by alternately adding and subtracting the length of
+  each key.  Don't mutate(change) the original object.
   
-  let newArray = [];
-  
-  if (arr1 && arr1) {
-    // loop over the first array
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr2[i] == undefined) {
-        newArray.push(arr1[i] * 1)
-      } else {
-        newArray.push(arr1[i] * arr2[i])
-      }
+  For example:
+    Given: {
+      keya: 'Tyler',
+      keybee: 'Alecx',
+      keyceeeee: 'Dave'
     }
-    return newArray
-  } else {
-    return 'Error: Please provide valid arrays'
+    Output from function: +4 (keya) -6 (keybee) +9 (keyceeeee) => 7
+    
+    or
+    Given: {
+      test: 'react',
+      testingYourPatience: 'node',
+      testing: 'angular'
+    }
+    Output from function: +4(test) -19(testingYourPatience) +7(testing) => -8
+*/
+
+let testObj = {
+  test: 'react',
+  testingYourPatience: 'node',
+  testing: 'angular'
+}
+
+testFunc = (obj) => {
+  let keyArr = Object.keys(obj);
+  console.log(keyArr);
+  return keyArr.reduce((agg, el, i) => {
+    return i % 2 === 0 ? agg + el.length : agg - el.length;
+  }, 0)
+}
+
+console.log(testFunc(testObj));
+
+/* If you have managed to complete the above, see if you can refactor your code so that
+the function takes an array of objects as input, and returns an array of the alternately added/subtracted
+key lengths in an array.
+
+Example input:
+[
+  {
+    keya: '',
+    keyb: '',
+    keyc: '',
+  },
+  {
+    keyOne: 'test',
+    keyTwo: 'test',
+    keyThree: 'test'
+  },
+  {
+    keyheya: 'what',
+    keyhello: 'what',
+    keywhatevs: 'what'
   }
-}
+]
 
-let funArr = multiplyValues(tensArray, onesArray);
-console.log(funArr)
-
-/*
-Typeof vs Instanceof
-What does typeof do again?  What do you think instanceof does?  Are both necessary?  No, but it is better safe than sorry to include them.  Typeof sets it to 'object'; why?  If arrays and objects both give the same typeof answer, including instanceof helps solidify that we are looking for an array.  
-
-Instance of checks the prototype property of a constructor => here, it shows us that we are testing that we have an Array.  The capital 'A' Array is a constructor.  We can append classes to them (like we did with Object.assign() yesterday).  These constructors, at their root, simply give the type that they are working with--Array means that we can ONLY work with arrays.
-
-So by including both typeof and instanceof, we are checking the type to make sure it is nothing other than an array in multiple ways.  Again, is this necessary?  No, but helpful.
+Example output: 
+  [4 (from +4 -4 +4), 7 (from +6 -6 +7), 9 (from +7 -8 +10)]
 */
 
-console.log([] instanceof Array); //true
-console.log(typeof []); // object
+let arrOfObjs = [
+  {
+    name1: 'Tyler',
+    name2: 'David',
+    name3: 'Alecx'
+  },
+  {
+    firstKey: '',
+    secondKey: '',
+    thirdKey: ''
+  },
+  {
+    what: '',
+    whatev: '',
+    whatever: ''
+  }
+]
 
-console.log({} instanceof Object); //true
-console.log(typeof {}); // object
+const arrReducer
 
+/********************
+FINISHING PIE CLIENT
+********************/
 /*
-Ternary operators (recap) 
-arr1 = typeof arr1 == 'object' && arr1 instanceof Array && arr1.length > 0 ? arr1: false;
-
-same as
-
-if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) {
-  ...
-}
-*/
-
-/**************************
-PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
-**************************/
-/*
-//review data flow in React, 
-//talk about how App.js is essentially an entire webpage,
-//circle and discuss how smaller, more granular parts of the site
-//are component 'leaves' in our folder 'tree'--App.js is our 'stem'
-
-cd into pieclient
-//add to project folder structure as below:
-components
-  Auth
-    Auth.js
-    Auth.css
-
-//lets add the following inside Auth.js:
-import React, {Component} from 'react';
-
-import './Auth.css';
-
-class Auth extends Component {
-    render(){
+//finally, let's update App.js to look like the following:
+//add Pies import to top of file:
+import Pies from './components/Pies/Pies';
+//fill in inside of App component:
+  state = {
+    sessionToken: undefined
+  }
+  viewConductor(){
+    return this.state.sessionToken !== undefined ? <Pies/> : <Auth tokenHandler={this.storeSessionToken}/>
+  }
+  render(){
     return(
-      <form className="cardLike" onSubmit={this.handleSubmit}>
-        <h1>Sign in!</h1>
-        <label htmlFor="email">Email:</label><br/>
-        <input type="text" id="email" /><br/>
-        <label htmlFor="password">Password:</label><br/>
-        <input type="password" id="password" /><br/>
-        <button onClick={this.loginToggle}>Login/Signup Toggle</button><br/>
-        <button type="submit">Submit User Data</button>
-      </form>
+      <div className="App">
+        <Navbar logout={this.removeSessionToken}/>
+        {this.viewConductor()}
+      </div>
     )
   }
-}
 
-export default Auth;
-
-//discuss Component import, 
-//class benefits over functional component (dynamic vs static), 
-//empty onClick handlers,
-//review labels and inputs
-//draw their attention to the fact that JSX again looks like HTML
-
-//let's import and use this in App.js, just render the component below the Navbar
-
-//let's add to Auth.css:
-.cardLike{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-//discuss what absolute position is doing, top, left, and transform
-
-//let's update Auth to toggle login/signup:
-//add to Auth.js class
-state = {
-    login: true
-  }
-//add this just inside render
-let title = this.state.login ? "Login" : "Signup";
-let signupFields = !this.state.login 
-  ? (
-    <>
-      <label htmlFor="firstName">First Name:</label><br/>
-      <input type="text" id="firstName" /><br/>
-      <label htmlFor="lastName">Last Name:</label><br/>
-      <input type="text" id="lastName" /><br/>
-    </>
-  ) 
-  : null
-
-//replaced Sign In! h1 with the below:
-<h1>{title}</h1>
-//add signupFields below password input:
-{signupFields}
-
-//show that by changing the login value in state, Auth will conditionally render content
-
-
-//discuss 2-way binding, and add the following inside of state:
-firstName:'',
-lastName: '',
-email: '',
-password: '',
-
-//let's have every input tag grab the value from state.  add the following to each <input/>:
-value={this.state.whatever}
-
-//show students that now the inputs are locked.  why is this?
-
-//let's add a changeHandler method inside the class:
-handleChange = (event) => {
-  this.setState({[event.target.id]: event.target.value})
-}
-
-//and let's add our onChange handler to each input:
-onChange={this.handleChange}
-
-//reiterate what's happening here: a change is detected, state is updated, that updated state is reflected in the DOM
-
-//finally, let's add our loginToggle method and use it:
-
-loginToggle = (event) => {
-  event.preventDefault();
-  const login = this.state.login;
-  this.setState({
-    login: !login,
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
-  })
-}
-
-//inside the login/signup toggle button:
-onClick={this.loginToggle}
-
-//recap what's been built out, and how dynamic content can be created with React
-//mention to students that the data submission depends upon a server, which has yet to be built out
+//take some time to discuss the flow of the app overall--keep things topical
 */
 
- /*
- Gitbook parts 4-5
- */
+/*********************
+COMPONENT LIFECYCLE DEMO
+*********************/
+/*
+//create-react-app lifecycle-demo in the following location:
+javaScriptLibrary
+  4-ReactFundamentals
+    pieclient
+    react-gitbook
+    lifecycle-demo
+
+//let's go ahead and take out App.js code
+//let's make our render() method look like the following:
+render() {
+    console.log('[App.js] inside render()')
+    return (
+      <div className="App">
+      </div>
+    );
+  }
+//reiterate the job of render
+
+//let's make our constructor look like the following:
+constructor(props){
+  console.log('[App.js] inside constructor()')
+  super(props);
+  this.state = {
+    name: 'Alecx Moritz',
+    swapiPeople: {}
+  }
+}
+
+//reiterate the role of the constructor, discuss how we now have 2 lifecycle methods we're using
+
+//run npm start on the app, discuss the console.logs we see
+
+//let's next add a componentDidMount() lifecycle method:
+componentDidMount(){
+  console.log('[App.js] inside componentDidMount()');
+  fetch('https://swapi.co/api/people')
+    .then(res => res.json())
+    .then(json => this.setState({swapiPeople: json.results}, () => console.log(this.state)))
+    .catch(err => console.log(err));
+}
+
+//discuss the purpose of fetch, how we handle the results.  touch on promises
+//mention again that setState allows us to update a single value inside our state object,
+//we don't have to update everything.
+//tell them about how setState allows a callback function, ask them to find the callback function
+//break the swapi url we use to connect so they can see .catch in action
+
+//let's finish by adding the below inside our componentDidMount():
+setInterval(() => console.log('this output is from our interval'), 10000)
+//discuss how this is created on the window object, and is thus not monitored by react
+//that means that if the App component is no longer mounted, the timer continues to run
+//we need to account for this to avoid memory leaks!
+
+//let's add the following inside our render:
+<button onClick={this.changeName}>Name Changer</button>
+
+//let's build out a changeName method:
+changeName = () => {
+  let currentName = this.state.name;
+  currentName = this.state.name === 'Alecx Moritz' ? 'David Whitt' : 'Alecx Moritz';
+  this.setState({name: currentName}, () => console.log(this.state))
+}
+//discuss how this method works
+//have them pay attention to the fact that render() fires every time the changeName method works
+//why is that?
+
+//finally, have them build out shouldComponentUpdate():
+shouldComponentUpdate(){
+  console.log('[App.js] inside shouldComponentUpdate()');
+  return true;
+}
+
+//have them pay attention to the fact that constructor() and componentDidMount() are no longer firing
+//in the console.  we're alternating between shouldComponentUpdate() and render().
+//build out componentWillUnmount() to clear intervals:
+
+componentWillUnmount(){
+  console.log('[App.js] inside componentWillUnmount()')
+  clearInterval();
+}
+
+/****************
+GITBOOK ASSIGNMENT: CH 8 (especially the NYT app)
+****************/
+
+/* standups after lunch */
+

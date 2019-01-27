@@ -1,256 +1,186 @@
-/* 
-Welcome students to blue badge--talk about the goals of the badge, the project,
-and what their learning experience will look like
-
-Slack them the blue badge calendar:
-https://docs.google.com/document/d/1dNe60jfaVmE5hifylH1GIfhRGJvbK3iy4KcZk1RSw_w/edit?usp=sharing
-*/
-
-let swapper = (obj, prop1, prop2) => {
-  let temp = {};
-  for (let enumerable in obj){
-    // console.log(iterable)
-    temp[enumerable] = obj[enumerable];
-  }
-  let placeholder = temp[prop2];
-  temp[prop2] = temp[prop1];
-  temp[prop1] = placeholder;
-
-  return temp;
-}
-
-obj = {
-  keya: '1',
-  keyb: 2,
-  keyc: false
-}
-
-console.log(swapper(obj, 'keya', 'keyb'));
-
-
 /**************************
-CODE CHALLENGE 1 - OBJECTS
+CODE CHALLENGE 3 - STRINGS
 **************************/
 
 /*
-Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
-Your function may have 3 parameters, the original object, property1, property2
+Given the string -> 'Welcome to eleven fifty'
+
+Create a function that accepts a string. 
+    
+In the function check to see if the value of the string is: 
+- of type string
+- has a length greater than zero
+- has a length less than 30
+
+If any of these are invalid send it to the else condition and show the message -> 'String must not be empty, null, or exceed 30 characters'
+
+If the string is valid, change the string so that the 'e' and the first 'f' in 'eleven fifty' is capitalized
+
+Make sure that trailing whitespace is trimmed off of the string. 
+
+If finished, add a second param to the function for a callback function and instead of returning the data, place it inside of the callback arguments
 */
 
-// Option 1 (Not Quite Right)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
+const stringCheck = '    Welcome to eleven fifty     ';
 
-function changePerson(obj, param1, param2) {
+const findTheCompany = (str, callback) => {
+  str = typeof (str) == 'string' && str.trim().length > 0 && str.trim().length < 30 ? str.trim() : false;
   
-  let temp = obj.param1;
-  obj.param1 = obj.param2;
-  obj.param2 = temp;
-
-  return obj
+  if (str) {
+    str = str.replace('eleven fifty', 'Eleven Fifty');
+    return callback(false, str);
+  } else {
+    return callback(true, 'Error: String must not be empty and must be a string type');
+  }
 }
 
-newObj = changePerson(person, 'fName', 'lName');
+const fixedString = findTheCompany(stringCheck, (err, message) => {
+  if (!err && message) {
+    return message;
+  } else {
+    return {
+      error: err,
+      message: message
+    }
+  }
+})
 
-console.log(newObj);
+console.log(fixedString);
 
-// Option 2 (Better)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
 
-const food = {
-  food1: 'Steak',
-  food2: 'Tacos'
-}
-
-const changePerson = (obj, prop1, prop2) => {
-  let newObj = Object.assign({}, obj);
-  // let newObj = obj;
-
-  let temp = newObj[prop1];
-  newObj[prop1] = newObj[prop2];
-  newObj[prop2] = temp;
-
-  return newObj;
-}
-const newObject = changePerson(food, 'food1', 'food2');
-console.log(food, "Unchanged Object");
-console.log(newObject, 'Changed Object');
-
-/*********************
-PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
-*********************/
-
-//start by showing them the pieclient and start the pie server so they know where we're headed
+/**************************
+PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
+**************************/
 
 /*
-npm install -g create-react-app
-
-Folder Structure:
-  javascriptDec2018
-    javascriptLibrary
-      0-preWork
-      1-jsFundamentals
-      2-domFundamentals
-      3-apiFundamentals
-      4-reactFundamentals (new folder)
-
-cd into 4-reactFundamentals
-
-create-react-app pieclient
-cd into pieclient
-
-Show folder structure:
-  pieclient
-    node_modules => explain how npm made this
-    public
-      favicon.ico => small icon on browser tab
-      index.html => only html file in app
-      manifest.json => for mobile
-    src
-      App.css => css for app.js
-      App.js => root component
-      App.test.js => for testing (DELETE, but not yet)
-      index.css => styling for entire project
-      index.js => middleman between index.html and App.js
-      logo.svg => (DELETE, but not yet)
-      ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
-    .gitignore => hides from git to prevent pushing to GitHub
-    package-lock.json => more secure and detailed package.json
-    package.json => lists dependencies in app
-    README.md
-
-  Explain flow of React
-  
-  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
-  
-  FAST!!
-
-  Run app => npm start
-
-  Delete things and replace App.js with:
-  return (
-    <div className="app">
-      <h1>PIES!</h1>
-    </div>
-  )
-
-Delete import of logo on top and registerServerWorker() in index.js
-
-Run again => just plain PIES! on white
-
-Setup files and folders for Navbar:
-  components
-    Navbar
-      Navbar.js
-      Navbar.css
-      Logout
-        Logout.js
-        Logout.css
-
-//in Navbar.js:
-
-import React from 'react';
-
-import './Navbar.css';
-
-const Navbar = (props) => {
-  return(
-    <nav>
-      <h1>This is a Navbar!</h1>
-    </nav>
-  )
-}
-
-export default Navbar;
-
-//explain that importing React allows us to do lots of things, chiefly using JSX
-//css import is same as gold badge
-//functional component shows properties passed to the component, which can be used inside
-//every component will return some JSX, which looks like HTML and gets rendered to the page as HTML
-
-//lets add assets to project:
-source
-  assets
-    logout.jpg
-    pie.jpg
-
-//lets update Navbar.css:
-nav{
-  margin: 0;
-  background-color: purple;
-  color: orange;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
-}
-
-nav img{
-  height: 100%;
-}
-
-//lets use our css & assets in Navbar.js:
-import React from 'react';
-
-import './Navbar.css';
-import piePic from '../../assets/pie.jpeg'; *new*
-
-const Navbar = (props) => {
-  return(
-    <nav>
-      <img src={piePic} alt="Pie Picture" /> *new*
-    </nav>
-  )
-}
-
-export default Navbar;
-
-//lets create a logout component:
+//let's begin by further building out our folder structure:
 components
+  Auth
   Navbar
-    Navbar.js
-    Navbar.css
-    Logout
-      Logout.js
-      Logout.css
+  Pies
+    Pies.js
+    Pies.css
+    Pie
+      Pie.js
+      Pie.css
 
-//inside Logout.js:
+//next, let's add the following code to our Pies.js:
+import React, {Component} from 'react';
+
+import Pie from './Pie/Pie';
+import './Pies.css';
+
+class Pies extends Component {
+  testData = [
+    {
+      nameOfPie: 'Name of Pie',
+      baseOfPie: 'Base of Pie',
+      crust: 'Crust',
+      timeToBake: 'Time to Bake',
+      servings: 'Servings',
+      rating: 'Rating'
+    },
+    {
+      nameOfPie: 'Cherry',
+      baseOfPie: 'Fruit Filling',
+      crust: 'Pastry',
+      timeToBake: '30 mins',
+      servings: 97,
+      rating: 5 stars
+    }, 
+    {
+      nameOfPie: 'Pecan',
+      baseOfPie: 'Sugary Goodness',
+      crust: 'Graham Cracker',
+      timeToBake: '40 mins',
+      servings: 2,
+      rating: 3 stars
+    }
+  ]
+
+  render(){
+    let pieRows = testData.map(pie => {
+      return (
+        <Pie key={pie.nameOfPie} pie={pie} />
+      )
+    })
+    return(
+      <table>
+        <tbody>
+          {pieRows}
+        </tbody>
+      </table>
+    )
+  }
+}
+
+export default Pies;
+
+//reiterate what React, {Component} imports are doing at top of file
+//observe that we're pulling in another component, Pie, and a CSS file
+//draw their attention to the fact that we're using a class component rather than a function component ->
+//we will eventually have this component changing information internally (fetch through componentDidMount)
+//explain use of dummy data
+//explain pieRows use of .map() inside render method--take every el from the array, output value to new array
+//explain how React needs a key to correctly update components
+//discuss how {} allow React to read any JavaScript expression as long as it is output as JSX
+
+//let's build out Pie.js as follows:
 import React from 'react';
 
-import './Logout.css';
-import logoutPic from '../../../assets/logout.png';
-
-const Logout = (props) => {
+const Pie = (props) => {
   return(
-    <img className="Logout" src={logoutPic} alt="Logout" onClick={props.logout}/>
+    <tr>
+      <td>{props.pie.nameOfPie}</td>
+      <td>{props.pie.baseOfPie}</td>
+      <td>{props.pie.crust}</td>
+      <td>{props.pie.timeToBake}</td>
+      <td>{props.pie.servings}</td>
+      <td>{props.pie.rating}</td>
+    </tr>
   )
 }
 
-export default Logout;
+export default Pie;
 
-//update Logout.css:
-.Logout{
-  height: 100%;
+//discuss our use of props--the prop comes from the JSX attributes in the component call, hence, key & pie are props
+//we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie.whatev in Pie.js
+//and get a data value back
+//draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
+//this can be demonstrated with the React extension
+
+//let's add the following to our Pies.css:
+table, td{
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
-//add a logout picture to assets
-*/
+table{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%)
+}
 
-/*
-  Assign gitbook on LMS
-  
-  clone repo and show how to add to folder:
-  
-  4-reactFundamentals
-    (clone here)
-    my-react-app
-*/
+//finally, let's update App.js to look like the following:
+//add Pies import to top of file:
+import Pies from './components/Pies/Pies';
 
-/*
-Gitbook parts 1-3, or continuing to move forward in the gitbook if past Ch 3
+//fill in inside of App component:
+  state = {
+    sessionToken: undefined
+  }
+
+  viewConductor(){
+    return this.state.sessionToken !== undefined ? <Pies/> : <Auth tokenHandler={this.storeSessionToken}/>
+  }
+
+  render(){
+    return(
+      <div className="App">
+        <Navbar logout={this.removeSessionToken}/>
+        {this.viewConductor()}
+      </div>
+    )
+  }
 */
