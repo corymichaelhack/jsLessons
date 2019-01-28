@@ -301,14 +301,14 @@ In create-book.component.html, add the following:
     <label for="nameOfBook">Name of Book</label>
     <input 
       type="text"
-      name = "nameOfBook"
+      name="nameOfBook"
       required
     >
   
     <label for="author">Author</label>
     <input 
       type="text"
-      name = "author"
+      name="author"
       required
     >
   
@@ -326,7 +326,7 @@ In create-book.component.html, add the following:
     <label for="pubYear">Publication Year</label>
     <input 
       type="number"
-      name = "pubYear"
+      name="pubYear"
       required
     >
   
@@ -343,7 +343,7 @@ In create-book.component.html, add the following:
     </select>
       
     <button
-      [disabled] = "!useBtn"
+      [disabled]="!useBtn"
       type="submit"
     >
       Add Book
@@ -655,7 +655,7 @@ At the top, include in the import for @angular/core Input.  Next add the followi
 
   @Input()
   set book(book: any) {
-    this._book = (book)
+    this._book = book
   }
 
   get book(): any {

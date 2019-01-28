@@ -1,4 +1,4 @@
-const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'b2e02612e179494c9f1f57577b582a0a';
 let url;
 

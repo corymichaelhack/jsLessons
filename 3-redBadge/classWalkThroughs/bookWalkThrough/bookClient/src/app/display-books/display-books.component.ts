@@ -10,9 +10,9 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 
 export class DisplayBooksComponent implements OnInit {
-  ratings = ['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐']
+  ratings: string[] = ['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐']
 
-  public _book = {}
+  public _book: object = {}
 
   ngOnInit() {
     this._book['rating'] = this.ratings[this._book['rating'] - 1]

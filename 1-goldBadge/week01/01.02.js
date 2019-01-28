@@ -320,7 +320,7 @@ if ('Tyler' == name) {
 
 /*
  Challenge: 
-Capitalize the FIRST LETTER of name ONLY
+ Capitalize the FIRST LETTER of name ONLY
 */
 
 var name = 'tyleR';
