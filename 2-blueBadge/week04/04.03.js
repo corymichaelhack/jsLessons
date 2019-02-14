@@ -21,6 +21,9 @@ Make sure that trailing whitespace is trimmed off of the string.
 If finished, add a second param to the function for a callback function and instead of returning the data, place it inside of the callback arguments
 */
 
+// Create a function that takes in a string. Using the splice or slice method, check to see
+// if 
+
 const stringCheck = '    Welcome to eleven fifty     ';
 
 const findTheCompany = (str, callback) => {

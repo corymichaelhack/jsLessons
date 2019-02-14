@@ -18,7 +18,8 @@ Node.js / npm
 
 Check install success with terminal => node -v / npm -v
 
-Explain that node was created to run JS locally (not just online) and npm is instalation tool for third party packages
+Explain that node was created to run JS locally (not just online) and npm(node package manager) is instalation tool for third party packages
+*node helps us compile js on our machine to mach.lang. send it to the internet and back into js to be read online* look into this
 */
 
 /*
@@ -27,6 +28,7 @@ Git
 Check install success with terminal => git --version
 
 Explain that git packages code to send to GitHub (git and GitHub ARE DIFFERENT)
+git is how we keep track of different versions of our code on our machine with the ability to send that code to other places
 */
 
 // GitHub setup

@@ -1,28 +1,26 @@
-// (HTML FIRST)
+/*(HTML FIRST)
 
-//Overview for Today
-// HTML
-// CSS
-/* ING
+Overview for Today
+ HTML
+ CSS
 CSS Walthrough
 Intro to CodePen
 Intro to Smiley Gitbook
 Give out CSS Creature Assignment
- */
-// Comments
-// Variables
-// Declarations
-// Datatypes
-
+ 
+ Comments
+ Variables
+ Declarations
+ Datatypes
+*/
 
 /*
-ING Leads until lunch
+
 Smiley GitBook
 ****************
   Lunch
 ****************
-Switch to CSS Creature intro, Ing makes small example, shows some tools of css
-    REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
+CSS Mini Lesson
 ************
 By 3!
 ************
