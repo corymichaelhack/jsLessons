@@ -321,6 +321,9 @@ console.log(Object.values(spaceJam.toonSquad)); // ['Michael Jordan', 'Bugs Bunn
 
 
 // Square Bracket Notation
+//Square bracket notation can help us be able to find a value in an object. This way can be 
+//handy if we need to set a key to a variable and then use that variable to parse through an object
+//It works simply bc of the fact that all property keys( before the colon) are strings
 
 let garden = {
   vegetable: 'zucchini',
@@ -332,17 +335,23 @@ let garden = {
 };
 
 console.log(garden.vegetable); // 'zucchini'
+//This is standard dot notation for parsing through an object. with this way, we are assuming that there is a key named vegitables
 
-let x = 'vegetable';
+let x = 'vegetable';// what if we have a variable that contains our 'supposed key'? 
+//can we use square brackets to reach into our object to find this data!
 
 console.log(garden.x, garden[x]); // undefined 'zucchini'
 
 let baking = {};
 baking['zucchini'] = 'better make some bread!';
+//we can also set a key/value pairing with square brackets, just like we can with dot 
 
 // console.log(baking.garden.vegetable);
+// Will this work? No, bc were assuming that there is an a key called vegetable inside of an obj called garden inside of an obj called baking. 
 
 console.log(baking[garden['vegetable']]); // 'better make some bread!'
+// Using square brackets is a good idea when you may not be able to directly dot notate through the obj, and we can use variables or a string instead
+
 
 
 
@@ -353,7 +362,8 @@ Object.keys(garden).forEach(g => {
   if (key === g) {
     console.log(garden[key]); // true
   }
-})
+});
+//great example of needing to use a variable to substitute for a different key, search for that key, and then, using square bracket notation bc its a variable and not part of the object, console.log it
 
 /**************************
 GIT PUSH

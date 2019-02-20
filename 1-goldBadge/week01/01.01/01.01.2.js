@@ -47,7 +47,7 @@ COMMENTS
 //what comments do for us:
 //1) communicate with other developers by writing in plain English
 //2) annotate certain sections of our code for our future selves
-
+// Comments may feel unnecessary but the best way to understand code is to make a quick comment 
 
 
 //console output of 'yay';
@@ -56,15 +56,15 @@ console.log('yay');
 //i mean, it is!  we're learning to code!  :)
 console.log('Day 1 is great!');
 
-console.log('How to plant trees below (Multi-line)');
+console.log('How to bake bread below (Multi-line)');
 /*
-Get tree
-Dig hole
-Remove tree from planter
-Place tree in hole
-Fill hole with soil, fertilizer, and mulch
-Water
-Enjoy tree
+Get Flour
+Get Eggs
+Mix Ingredients
+Knead Dough
+Let Dough Rise
+Bake
+Enjoy Bread
 */
 
 /**************************
@@ -76,9 +76,9 @@ VARIABLES
 /* What is a variable?  Variables are named containers for storing data values. 
   We name the variables so that we can refer to this data again.
 */
-  var a = 2;
+  let a = 2;
 
-  var     b      =      1; 
+  let     b      =      1; 
 /*(1)    (2)    (3)    (4)     
 
 1- Keyword
@@ -99,6 +99,14 @@ console.log(a + b); // 3
 This is good practice because it helps keep variables readable--  var myName = 'Autumn'; 
 */
 
+/*
+Var, Let, and Const:
+
+Var = 'old' keyword for variables ** We wont be using this as often. If you have prior coding expirience and used var in the past, thats okay, but we want to try to stay in let
+Let = 'new' keyword for variables (introduced with ES6 *new version of JavaScript) For now best practice is to learn to use let 
+Const = also 'new'; declares unchangeable variables
+*/
+
 /**************************
 DECLARATIONS
 **************************/
@@ -113,7 +121,7 @@ Initializations are the RIGHT SIDE of a variable
   It incorporates the variable name (x), the assignment operator (=), and the value (10) => x = 10
 */
 
-var x;
+let x;
 console.log('Declaration:', x); // Declaration: undefined
 
 x = 10;
@@ -122,22 +130,19 @@ console.log('Initialization 1:', x); // Initialization 1: 10
 x = 33;
 console.log('Initialization 2:', x); // Initialization 2: 33
 
-var y = 'Hello';
+let y = 'Hello';
 console.log('Both:',x, y); // Both: 33 hello
 
-/*
-Var, Let, and Const:
 
-Var = 'old' keyword for variables
-Let = 'new' keyword for variables (introduced with ES6 *new version of JavaScript)
-Const = also 'new'; declares unchangeable variables
-*/
+/****************************** 
+ * Const = also 'new'; declares variables meant to remain unchanged
+ */
 
 let today = 'Great!';
 const elevenFifty = 'Wonderful!';
 console.log(today, elevenFifty); // great! Wonderful!
 
-today = 'Lovely!'
+today = 'Lovely!';
 console.log(today, elevenFifty); // lovely! Wonderful!
 
 // elevenFifty = 'Super'
@@ -154,15 +159,15 @@ TYPES
 Booleans
 ******************
 What is a boolean? Boolean can represent: true/false, yes/no, on/off
-
-var x = true;
-
-var y = false;
-        (1)
-1-Keyword for boolean - no quotation marks
 */ 
 
-var on = true;
+let i = true;
+
+let j = false;
+/*        (1)
+1-Keyword for boolean - no quotation marks
+
+let on = true;
 console.log(on); // true
 
 let off = false;
@@ -176,7 +181,7 @@ Null = empty value (not 0; not undefined)
 It is like an empty container; nothing is in it, but it still exists as a space to fill
 */
 
-var empty = null;
+let empty = null;
 console.log(empty); // null
 
 /*
@@ -187,7 +192,7 @@ Undefined = no value assigned (not even an empty container)
 UNDEFINED IS NOT AN ERROR
 */
 
-var undef = undefined;// never do this
+let undef = undefined;// never do this
 console.log(undef); // undefined
 
 let grass;
@@ -212,22 +217,22 @@ Numbers
 **********
 Numbers are exactly what they sounds like, numbers. In JS, you dont need anything special to write them. 
 */
-var degrees = 90;
+let degrees = 90;
 console.log(degrees);
 
-var precise = 999999999999999; // 15 9's
+let precise = 999999999999999; // 15 9's
 console.log(precise); // 999999999999999
 
-var rounded = 9999999999999999; // (One more 9) JS gives you space for 15 9s before it rounds up to 10
+let rounded = 9999999999999999; // (One more 9) JS gives you space for 15 9s before it rounds up to 10
 console.log(rounded); // 10000000000000000
 
-var notQuite = 0.2 + 0.1;
-console.log(notQuite); // 0.30000000000000004// js rounds out at a certain number
+let notQuite = 0.2 + 0.1;
+console.log(notQuite); // 0.30000000000000004// js rounds out at a certain number, so if math is needed, be aware
 
-var numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
+let numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
 console.log(numbersAreHard); // 0.3
 
-// Quick Discussion : var a = Number('123'), turns strings into numbers. 
+// Quick Discussion : let a = Number('123'), turns strings into numbers. 
 
 
 
@@ -240,6 +245,7 @@ Strings are Primative Datatype. This also includes Numbers, Booleans, Null, Unde
 
 let stringOne = "double quotes";
 let stringTwo = 'single quotes';
+
 console.log(stringOne, stringTwo); // double quotes single quotes
 
 // Numbers vs. Strings
@@ -251,6 +257,56 @@ console.log(second); // 1050100
 
 console.log(typeof first); // number
 console.log(typeof second); // string
+
+
+/*
+Objects
+*************
+
+*/
+
+
+let car1 = {
+  color: 'red',
+  tires: 4,
+  extras: 'A/C and Radio',
+  cool: true
+};
+
+console.log(car1); // { size: 'large', quantity: 4, now: true }
+console.log(typeof car1); // object
+
+
+/*
+Arrays
+************
+Arrays are containers that hold lists of items
+
+let list =  [  'item1',   'item2',    'item3'];
+    (1)    (2)   (3)
+
+1- name of the Array, or list; 
+2- The Array is inside of these square brackets
+3- each item, regardless of datatype, is separated by commas
+
+Denoted by []
+Has values ('blue', 'green', 'yellow'), separated with commas
+*/
+
+var burritos = ['large', 4, true];
+console.log(burritos); // ['large', 4, true]
+
+console.log(typeof burritos); // OBJECT
+
+/*
+WHAT?? Why is typeof coming back with an object, and not array??
+
+What is the definition of objects again? A container that can hold multiple datatypes
+
+Notice that arrays, too, are a container that can hold multiple datatypes.  Therefore, JS has classified arrays as objects and not a datatype of their own
+
+
+*/
 
 /*
 
@@ -287,15 +343,15 @@ Set each variable to its respective type.
 console.log your whole address (with the space between variable).
 */
 
-let firstName = 'Tyler';
-let lastName = 'Shelton';
+let firstName = 'Autumn';
+let lastName = 'Henderson';
 let houseNumber = 12175;
 let street = 'Visionary Way';
 let city = 'Fishers';
 let state = 'IN';
 let zipcode = 46038;
 
-console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Tyler Shelton, 12175 Visionary Way, Fishers, IN 46038
+console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Autumn Henderson, 12175 Visionary Way, Fishers, IN 46038
 
 /*
 Strings - Properties
@@ -306,7 +362,7 @@ The length of a string is a property.
  */ 
 
 let myName = "Autumn";
-console.log(myName.length)
+console.log(myName.length);
 
 /*Methods
 ************
@@ -314,27 +370,17 @@ Methods are like tool that can help us manipulate our data.
 .Property and .Methods() *no parenthesis for properties*
 
 */
-let myName = "Autumn";
-console.log(myName.toUpperCase())
+let myNameIs = "Autumn";
+console.log(myNameIs.toUpperCase()); // method that changes a string to uppercase. 
 
-/*
-Objects
-*************
-x`
-*/
+let home = 'My home is indianapolis'; 
+console.log(home.includes('indianapolis')); // method that checks if a certain string is included in another string
+
+// Challenge: Use google, find MDN documentation for Strings, research and use the split method to get an array back from this string
+
+let sent = 'This sentence will be split into individual parts ';
 
 
-let car1 = {
-  color: 'red',
-  tires: 4,
-  extras: 'A/C and Radio',
-  cool: true
-};
-
-console.log(car1); // { size: 'large', quantity: 4, now: true }
-console.log(typeof car1); // object
-
-// Arrays => DANGER - DIFFICULT TO TEACH (ING)
 /*
 Arrays
 ************
@@ -365,6 +411,49 @@ Notice that arrays, too, are a container that can hold multiple datatypes.  Ther
 
 
 */
+
+/**
+ * Data Type Cheat Sheet 
+ * *********************
+ * Boolean
+ * *******
+ * Uses true or false, no quotes
+ * let yes = true;
+ * 
+ * Null
+ * ********
+ * Has no value but exists
+ * let isnt = null;
+ * 
+ * Undefined
+ * **********
+ * Does not exist yet
+ * let wont = undefined; 
+ * 
+ * Numbers
+ * *******
+ * Uses numbers only, no quotes or letters
+ * let nums = 15; 
+ * 
+ * String
+ * *******
+ * Can use double or single quotes
+ * let name = 'Mine';
+ * let hey = "Hi";
+ * 
+ * Object
+ * *******
+ * Uses curly braces, and key:value pairings
+ * let obj = {
+ * isObj: true, 
+ * name: "Autumn", 
+ * age:28
+ * };
+ * 
+ * let arr = ['Arrays', 'are', 'also','objects']; 
+ * 
+ */
+
 
 
 /**************************
