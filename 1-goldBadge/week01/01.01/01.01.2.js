@@ -381,36 +381,6 @@ console.log(home.includes('indianapolis')); // method that checks if a certain s
 let sent = 'This sentence will be split into individual parts ';
 
 
-/*
-Arrays
-************
-Arrays are containers that hold lists of items
-
-let list =  [  'item1',   'item2',    'item3'];
-    (1)    (2)   (3)
-
-1- name of the Array, or list; 
-2- The Array is inside of these square brackets
-3- each item, regardless of datatype, is separated by commas
-
-Denoted by []
-Has values ('blue', 'green', 'yellow'), separated with commas
-*/
-
-var burritos = ['large', 4, true];
-console.log(burritos); // ['large', 4, true]
-
-console.log(typeof burritos); // OBJECT
-
-/*
-WHAT?? Why is typeof coming back with an object, and not array??
-
-What is the definition of objects again? A container that can hold multiple datatypes
-
-Notice that arrays, too, are a container that can hold multiple datatypes.  Therefore, JS has classified arrays as objects and not a datatype of their own
-
-
-*/
 
 /**
  * Data Type Cheat Sheet 

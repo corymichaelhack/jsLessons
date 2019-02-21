@@ -25,7 +25,7 @@ function fetchSpace(e) {
       // console.log(json);
 
       // Explain callbacks
-      displayRockets(json)
+      displayRockets(json);
     })
 }
 

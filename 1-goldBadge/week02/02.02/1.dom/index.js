@@ -1,0 +1,71 @@
+// Print out negative nums in red
+let num1 = document.getElementById('number1');
+let num2 = document.getElementById('number2');
+let num3 = document.getElementById('number3');
+
+let b1 = document.getElementById('btn1'); 
+let b2 = document.getElementById('btn2'); 
+let b3 = document.getElementById('btn3'); 
+let b4 = document.getElementById('btn4'); 
+let b5 = document.getElementById('enter');
+let bigDiv = document.getElementsByClassName('divider');
+
+bigDiv.style.textAlign = 'center';
+
+let opp;
+
+b1.addEventListener('click', () => {
+    b1.style.backgroundColor = 'blue';
+    b2.style.backgroundColor = 'lightgrey';
+    b3.style.backgroundColor = 'lightgrey';
+    b4.style.backgroundColor = 'lightgrey';
+ opp = '+';
+});
+
+b2.addEventListener('click', () => {
+    b2.style.backgroundColor = 'blue';
+    b1.style.backgroundColor = 'lightgrey';
+    b3.style.backgroundColor = 'lightgrey';
+    b4.style.backgroundColor = 'lightgrey';
+     opp = '-';
+});
+
+b3.addEventListener('click', () => {
+    b3.style.backgroundColor = 'blue';
+    b1.style.backgroundColor = 'lightgrey';
+    b2.style.backgroundColor = 'lightgrey';
+    b4.style.backgroundColor = 'lightgrey';
+     opp = '*';
+});
+
+b4.addEventListener('click', () => {
+    b4.style.backgroundColor = 'blue';
+    b1.style.backgroundColor = 'lightgrey';
+    b2.style.backgroundColor= 'lightgrey';
+    b3.style.backgroundColor = 'lightgrey';
+     opp = '/';
+    });
+
+   
+b5.addEventListener('click', () => {
+    switch (opp) {
+        case '+':
+        num3.innerText = Number(num1.value) + Number(num2.value);
+            break;
+        case '-':
+        num3.innerText = Number(num1.value) - Number(num2.value);
+            break;
+        case '*':
+        num3.innerText = Number(num1.value) * Number(num2.value);
+            break;
+        case '/':
+        num3.innerText = Number(num1.value) / Number(num2.value);
+            break;
+    
+        default:
+            break;
+    }
+});
+
+
+

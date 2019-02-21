@@ -1,6 +1,0 @@
-let movies = ['Phantom Menance*','Attack of the Clones','Revenge of the Sith','Solo','Rogue One','A New Hope','The Empire Strikes Back','Return of the Jedi'];
-
-movies.push('Force Awakens')
-movies.splice(3,1,'Obi Wan')
-
-movies.forEach(f => { console.log(f) })

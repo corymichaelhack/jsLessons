@@ -28,10 +28,9 @@ Ternaries
 
 
 /*
-Adam assisting
 
 Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
-theyre speaking basically when things are and arent accessible in your code.
+theyre speaking basically when variables are and arent accessible in your code.
 
 Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis,
 which could be considerd our local scope. Just because someone lives on earth does not mean they live 
@@ -90,66 +89,73 @@ Local = like Indianapolis
 Global = like Earth
 
 Can still be on the world when you are in Indy, but you are not necessarily in Indy when you are on the planet
+
+NO CODING - JUST WATCH PLEASE!
 */
 
-var x = 12
 
+var x = 12;
+// This is something we havent seen before. This is a function. Pay attention to the curly {} braces, this is what decides whats inside and outside of our function
 function scope() {
-  var x = 33
+  var x = 33;
   console.log(x);
 }
-scope()//33
+scope();//33
 console.log(x); //12
  
 
-var x = 12
+var y = 12;
 
 function scope() {
-  x = 33 // HERE
-  console.log(x);
+  y = 33; // HERE
+  console.log(y);
 }
 
-scope() 
-console.log(x);
+scope() ;
+console.log(y);
 
 /*
 Why did this happen?
 
-When you have the keyword var inside scope(), you are declaring a completely new variable; it just happens to have the same name of x.
+In the first example, we initialize and declare a variable x. Then inside the function, we declare and initialize a NEW variable. Same name, but it technically becomes a different variable. Just like my name is Autumn, but I am not the only Autumn in the world. 
 
-However, when you remove var, you are no longer declaring another x variable, but you are EXPRESSING it with a new value; 
-
- therefore, after that point, x no longer equals 12, but 33.
+In the second example, we initialize and declare a variable y. Then inside the function we are re-initializing the SAME variable! Were giving the variable a new value, so even when we leave the scope of the function, the value of the variable has been changed. Before 1990, if someone mentioned beyonce, we wouldnt know who they were talking about. Now when I say Beyonce, you all assume I am talking about Beyonce the Singer, not any other Beyonce. Because we havent protected our variable values, they can be reassigned without us meaning to. Therefore, after that point, x no longer equals 12, but 33.
 */
 
-/*
+/*  
 Var vs. Let:
 
 Remember how, since ES6, we now have three keywords for variables: var, let, and const?
 
 Const is pretty straight forward; it is a constant that cannot be re-expressed.
 
-Var and let seem to operate the same, right? Well, check out the below:
+Var and let seem to operate the same, right? So why do we insist on using let excusively? Well, check out the below:
+
+NOTE:  We have not seen functions before, we will go in depth tomorrow. WATCH, DONT CODE!
 */
 
-var x = 12
+var x = 12;
 
-function scope() {
-  var x = 33
-  if (true){
+function varTest() {
+  var x = 33;
+  if (1 == 1){
     var x = 45;
-    console.log(x);
+    // console.log(x);//45
+    console.group(x);
   }
-  console.log(x);
+  // console.log(x);//45
+  console.group(x);
 }
 
-scope() 
-console.log(x); 
-//what is the expected output from above?
+varTest();
+// console.log(x); //12
+console.group(x);
 
-var x = 12
+//what is the expected output from above? Global scope for x is 12. Inside the function code block ( curly {} braces) a new variable(again, same name, different variable) is declared and initialized (var key word). Inside of the function something we havent seen before, called a conditional statement. We will go more into depth later but understand for now if the statement inside the parenthesis are true, we go inside the block. Since this statement is true, inside the block, we declare and initialize the variable AGAIN. Inside this block, when we console.log() x, JS assumes were refering to the x inside the block with us. 
 
-function scope() {
+var x = 12;
+
+function letTest() {
   // var x = 33 // HERE
   if (true){
     let x = 45;
@@ -158,7 +164,7 @@ function scope() {
   console.log(x);
 }
 
-scope() // 45, 33
+letTest(); // 45, 33
 console.log(x); //12
 //what is the expected output from above?
 
@@ -171,7 +177,7 @@ What is block scope?  A BLOCK, simply put, is the part between {} in a function 
 
 Var does NOT have block scope built in.  It is not locked into only operating within those curly brackets, 
 
-and can therefore bleed into a parent scope.  
+and can therefore bleed into a parent scope.  It can be refered outside of those scopes. 
 
 Notice, here, we are nested within two blocks: varTest() or letTest() and the if statement.  
 
@@ -210,17 +216,21 @@ var scissors;
 /*
 Hoisting does not exist--it is an illusion
 
-JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations.
+JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. We call it 'hoisting'  because js keeps those variables stored in memory, for qiucker reference  later. 
 Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
 JS DOES grab things like functions */
 
+/** We can think of it as entering a party. We might look across the room and see some people we know, and we make a mental note 'Talk to James. Some of those people we might already know exactly what our conversation will be about, but for some people, we know their name but we dont know what the conversaton will be about.  */
+
 b();
-console.log(a)
+console.log(a);
 
 function b(){
-  console.log('This is all hoisted!')
+  console.log('This is all hoisted!');
 }
-var a = 'This is not hoisted'
+var a = 'This is not hoisted';
+
+// In this scenario, the function is 'hoisted' and remembered the first time javascript passes over, its keeping the entire function stored in memory. So even though its being called before the function is actually declared.
 
 
 
@@ -233,7 +243,7 @@ LITERALS
 **************************/
 
 /*
-  Literals are fixed values in javascript. You are literally providing them to your JS
+  A Literal is a value written exactly as it’s meant to be interpreted. You are literally providing them to your JS. 
 
   Literals include Arrays(Lists),
    Integer(Numbers), Booleans(True or false), 
@@ -245,8 +255,9 @@ LITERALS
 
 let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 console.log(days.toString()); //Monday, Tuesday, Wednesday, Thursday, Friday
-console.log(days.length)
 //this is a method that comes built into javascript to help us separate an array into strings
+console.log(days.length);
+//this is a property of arrays. Properties are things that already belong to an object
 
 
 let tired = true;
@@ -256,7 +267,7 @@ let soup = {
   a: 'chicken noodle',
   b: 'tomato',
   c: 'beef and barley'
-}
+};
 /*
 objects are key value pairs, which just means in an object there are keys(what the name of this part of the object is), 
 and a value for that key. 
@@ -276,25 +287,25 @@ ASSIGNMENT OPERATORS
   01-assignmentOperators.js
 **************************/
 // Assignment operator
-let x = 5;
+let r = 5;
 
 // Addition assignment
-x += 1; // x = x + 1
+r += 1; // r = r + 1
 
 // Subtraction assignment
-x -= 1; // x = x - 1
+r -= 1; // r = r - 1
 
 // Multiplication assignment 
-x *= 1; // x = x * 1
+r *= 1; // r = r * 1
 
 // Division assignment
-x /= 1; // x = x / 1
+r /= 1; // r = r / 1
 
 // Remainder (or Modulus) assignment
-x %= 1; // x = x % 1;
+r %= 1; // r = r % 1;
 
 // Exponential assignment 
-x **= 1; // x = x ** 1
+r **= 1; // r = r ** 1
 
 /**************************
 COMPARISON OPERATORS
@@ -402,6 +413,7 @@ if ('Autumn' == name) {
 
 /*
  Walthrough with MDN Docs: 
+ 
 Capitalize the FIRST LETTER of name ONLY
 We need to manipulate the data in this string, we need methods, start gathering tools
 
@@ -526,11 +538,11 @@ TERNARIES
 //What is a ternary? A great way to write a single line for an if/ if else statement
 
 
-let x = 6;
+let w = 6;
 
 //Ternary:
 
-(x > 0) ? console.log('yes') : console.log('no');
+(w > 0) ? console.log('yes') : console.log('no');
 
 // Instead of:
 
@@ -539,16 +551,16 @@ let x = 6;
 
 
 //Conditional statements
-if (x == 0) {
+if (w == 0) {
   console.log("hello");
-} else if (x < 0) {
+} else if (w < 0) {
   console.log("hi");
 } else {
   console.log("goodbye");
 }
 
 //Ternary operators
-(x == 0) ? console.log("hello") : (x < 0) ? console.log("hi") : console.log("goodbye")
+(w == 0) ? console.log("hello") : (w < 0) ? console.log("hi") : console.log("goodbye")
 
 /* Challenge:
 Write a ternary that does the same thing as the age challenge
@@ -569,21 +581,21 @@ if (age >= 25) {
 
 */
 
-var age = 10;
+var myAge = 10;
 
 
-(age >= 25) ? console.log('Yay! You can rent a car!') : (age >= 21) ? console.log('Yay! You can drink!') : (age >= 18 ) ? console.log('Yay! You can vote!') : console.log("Sorry, you're too young to do anything fun.");
+(myAge >= 25) ? console.log('Yay! You can rent a car!') : (myAge >= 21) ? console.log('Yay! You can drink!') : (myAge >= 18 ) ? console.log('Yay! You can vote!') : console.log("Sorry, you're too young to do anything fun.");
 
 
 // And with multiple conditions (like the switch statement):
 
-var yep = -8;
+var yes = -8;
 
 switch (true) {
-  case (yep < 0 && yep > -10): 
+  case (yes < 0 && yes > -10): 
     console.log('worked');
     break;
-  case (yep > 0): 
+  case (yes > 0): 
     console.log('worked!');
     break;
   default: 
@@ -591,9 +603,8 @@ switch (true) {
 }
 
 
-let yep = -8;
 
-(yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('did\'t work');
+(yes < 0 && yes > -10) ? console.log('worked') : (yes > 0) ? console.log('worked!') : console.log('did\'t work');
 
 /*
 Ternaries, unlike conditionals, require the default/else catch all. 
