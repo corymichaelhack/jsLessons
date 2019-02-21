@@ -397,23 +397,30 @@ if (weather < 70) {
 
 /*
 Challenge: 
+Bronze: 
 Write an if else statement that checks your name; 
-If it is your name, console.log 'Hello, my name is <your name>'; 
+If it is your name, console log '<name>'
 If the name does not match, console.log 'Hello, what is your name?'
+
+Silver:
+If It is your name, console log 'Hello, my name is <name>'
+
+Gold:
+If it is not your name, console log 'Hello, is your name <name here> ?'
 */
 
-var name = 'Autumn';
+var name = 'Jenny';
 
 if ('Autumn' == name) {
   console.log('Hello, my name is', name);
 } else {
-  console.log('Hello, what is your name?');
+  console.log('Hello, is your name',name);
 }
 
 
 /*
  Walthrough with MDN Docs: 
- 
+
 Capitalize the FIRST LETTER of name ONLY
 We need to manipulate the data in this string, we need methods, start gathering tools
 
