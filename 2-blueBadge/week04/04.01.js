@@ -81,6 +81,27 @@ const newObject = changePerson(food, 'food1', 'food2');
 console.log(food, "Unchanged Object");
 console.log(newObject, 'Changed Object');
 
+//
+const sampleObj = {
+  firstName: 'Quinn',
+  lastName: 'Crabtree'
+}
+
+const objKeySwap = (obj, prop1, prop2) => {
+  const outputObj = {};
+
+  for (let key in obj){
+    outputObj[key] = obj[key];
+  }
+
+  outputObj[prop2] = obj[prop1];
+  outputObj[prop1] = obj[prop2];
+
+  return outputObj;
+}
+
+console.log(objKeySwap(sampleObj, 'firstName', 'lastName'));
+
 /*********************
 PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 *********************/

@@ -17,7 +17,21 @@ If the first array has more values than the second, return that same number
 */
 
 const tensArray = [10,20,30,40,50,70];
-const onesArray = [5,3,2,5];
+const onesArray = 55;
+
+const arrayMult = (arr1, arr2) => {
+  let greaterLength = arr1.length >= arr2.length ? arr1.length : arr2.length;
+  let newArr = [];
+
+  for (let i = 0; i < greaterLength; i++){
+    let newVal = arr1[i] * arr2[i] || arr1[i] || arr2[i]
+    newArr.push(newVal);
+  }
+
+  return newArr;
+}
+
+console.log(arrayMult(onesArray, tensArray));
 
 const multiplyValues = (arr1 = [], arr2 = []) => {
   // is an expression that checks the value and type of the arr1 given, then puts that value in that param

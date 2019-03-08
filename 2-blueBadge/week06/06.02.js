@@ -9,7 +9,7 @@ animal.js (models)
 index.js
 animal-controller (controllers)
 
-make sure students have deleted old uses from the database, created new, and tested login
+make sure students have deleted old users from the database, created new, and tested login
 
 make sure validate-session works by testing the dummy /animal/test-route endpoint
 */

@@ -528,3 +528,6 @@ Ternaries
 */
 
 // Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+
+let test = 5;
+console.log(test.toString());
