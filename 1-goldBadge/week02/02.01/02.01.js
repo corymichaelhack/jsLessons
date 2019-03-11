@@ -11,7 +11,7 @@ What is Pig Latin?
     * If the word begins with a consonant, remove the consonant to the first vowel, place it at the end of the word, and add an 'ay' to the end (i.e. Pig Latin => IgPay Atinlay)
     * If the word begins with a vowel, simply add an 'ay' at the end of the word
 */
-let sampleString = '     i will marry amy marie baker        ';
+let sampleString = '     eleven fifty is looking for a new building        ';
 
 function pigLatin(str) {
     let wordsArray = str.trim().split(' ');

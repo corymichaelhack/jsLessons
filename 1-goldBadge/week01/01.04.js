@@ -1,35 +1,4 @@
 /**************************
-WHITEBOARD 2 - FIZZ BUZZ TEAM EXERCISE (Conditionals and Loops)
-**************************/
-/*
-Challenge:
-Write a for loop running between the numbers 0 - 100
-For multiples of 3, instead of the number, console.log "Fizz"
-For multiples of 5 console.log "Buzz";
-For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
-For any other number, console.log the value
-*/
-
-function fizzBuzz() {
-  for (var i = 0; i <= 100; i++) {
-    if (i % 15 == 0) {
-      console.log('FizzBuzz');
-    }
-    else if (i % 3 == 0) {
-      console.log('Fizz');
-    }
-    else if (i % 5 == 0) {
-      console.log('Buzz');
-    }
-    else {
-      console.log(i);
-    }
-  }
-}
-
-fizzBuzz();
-
-/**************************
 GIT REVIEW
 **************************/
 /*
@@ -71,12 +40,10 @@ Notice how we pull a value out of an array?  We append a [] with the index numbe
 */
 
 /*
-Challenge:
-Go into the nested array and get 'Amira'
-print out "Hello Amira, you look nice today"
+Let's go into the nested array and pull 'Iesha' out of the array
 */
 
-let name = students[6][1];
+let name = students[6][2];
 console.log(`Hello ${name}, you look nice today.`);
 
 // Populating/Referring
@@ -86,6 +53,8 @@ let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 for (f of food) {
   console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
 }
+
+//array methodss
 food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
 food.splice(2, 0, 'Sweet Potato Pie') //Adds Sweet Potato Pie in position 2 but doesn't remove anything
@@ -95,42 +64,37 @@ for (f of food) {
   console.log(f)
 }
 
-// Iterating
+food = food.slice(2, 4); //returns a trimmed portion of the array
+console.log(food);
 
-food.forEach(f => { console.log(f); }) // Pecan pie, Bananas, Sweet Potato Pie, Quesadilla, Cheesecake, Hotdog
-food.forEach((food, number) => { console.log(number); console.log(food) }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
+// Iterating can be done with for-of, but forEach can give us more to information to work with as we iterate
+
+food.forEach(f => console.log(f)) // Pecan pie, Bananas, Sweet Potato Pie, Quesadilla, Cheesecake, Hotdog
+food.forEach((food, number) => { 
+  console.log(number); 
+  console.log(food) 
+}) // 0 Pecan pie 1 bananas 2 sweet potato pie...
 
 /*
-Challenge:
-Create a list (with an array) of movies
-Use .forEach() to list your movies
-Add another movie at the end 
-And replace one of your existing movies with another one 
+Let's build an array of movies.  Let's add a movie title to the end of this array,
+add a movie to the middle of the array, then log through this array and console.log
+the values
 */
 
-let movies = ['Phantom Menance', 'Attack of the Clones', 'Revenge of the Sith', 'Solo', 'Rogue One', 'A New Hope', 'The Empire Strikes Back', 'Return of the Jedi'];
+let movies = ['300', 'Snow White', 'The Phantom Menace', 'The Watchmen', 'The Sound of Music'];
 
 movies.push('Force Awakens')
-movies.splice(3, 1, 'Obi Wan')
+movies.splice(3, 1, 'The League of Extraordinary Gentlemen');
 
-movies.forEach(f => { console.log(f) })
+movies.forEach(f => console.log(f))
 
-// Length and others
+// Length
 
 let long = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 console.log(long.length); // 10
 
-let colors = ['blue', 'green', 'yellow', 'red', 'orange', 'purple'];
-// console.log(colors.length) // 6
-// console.log(colors.toString()) // blue, green, yellow, red, orange, purple
-
-// console.log(typeof colors) // object
-// console.log(typeof colors.toString()) // string
-
-// colors.forEach(c => console.log(c)) // blue green yellow red orange purple
-
 /*
-Challenge:
+let's do the following with an array:
 First check if you are working with an array
 Then flip the values within the array (what was in index 4 is now in 0, 3 to 1, etc.)
 Using a method only, print the values of the newly arranged array
@@ -286,8 +250,6 @@ baking['zucchini'] = 'better make some bread!';
 
 console.log(baking[garden['vegetable']]); // 'better make some bread!'
 
-
-
 let key = 'water';
 
 Object.keys(garden).forEach(g => {
@@ -306,22 +268,10 @@ Git commit -m "message"
 Set up repo in GitHub
 Copy both lines and paste in terminal => run code
 Refresh page
-
-DEPLOY - GitHub Pages
 */
 
 /*
 Explain why GitHub is important
-*/
-
-/*
-Create local and remote repo for Store Front App
-
-Folder Structure:
-  javascriptMay2018
-    javascriptLibrary
-    projects
-      storeFront (Git repo here)
 */
 
 /**************************
@@ -333,12 +283,9 @@ RECAP
 **************************/
 
 /*
-Fizz Buzz Team Exercise
 Arrays
 Objects
 Git with GitHub
 */
 
-//Repl.it Assessment 2 - DUE BY TOMORROW MORNING
-
-// Lab time
+//Repl.it Assessment 2

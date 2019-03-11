@@ -1,9 +1,6 @@
+let movies = ['300', 'Snow White', 'The Phantom Menace', 'The Watchmen', 'The Sound of Music'];
 
-let func = () => 'hi'; // ok
+movies.push('Force Awakens')
+movies.splice(3, 1, 'The League of Extraordinary Gentlemen');
 
-let secondFunc = () 
-=> 
-'hi';
-
-console.log(func());
-console.log(secondFunc());
+movies.forEach(f => console.log(f))
