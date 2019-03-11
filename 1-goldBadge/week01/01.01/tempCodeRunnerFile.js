@@ -1,7 +1,8 @@
-let obj = {
-  test: function(i){
-    console.log('hello' + i);
-  }
+let hulk = {
+  color: 'green',
+  age: 42,
+  isStrong: true
 }
 
-obj.test(5)
+console.log(hulk);
+console.log(typeof hulk);

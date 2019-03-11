@@ -13,30 +13,41 @@ Folder Structure:
 COMMENTS
 
 1-grammarAndTypes
-  01-comments.js
+  01-comments-and-console.js
 **************************/
 
 //what comments do for us:
-//1) communicate with other developers by writing in plain English
-//2) annotate certain sections of our code for our future selves
+//communicate to anyone reading our code
 
+//types of comments:
+//1)  single-line comments
 
-//console output of 'yay';
-console.log('yay');
-
-//i mean, it is!  we're learning to code!  :)
-console.log('Day 1 is great!');
-
-console.log('How to plant trees below (Multi-line)');
 /*
-Get tree
-Dig hole
-Remove tree from planter
-Place tree in hole
-Fill hole with soil, fertilizer, and mulch
-Water
-Enjoy tree
+2)  multi-line comments
 */
+
+//console.log
+//what a console.log does for us--outputs some message to the console
+console.log('this is a console.log message!');
+
+console.log('you can separate parts of a console message with commas', ', just like this');
+
+//console.log and debugging
+//console.log messages allow us to debug in 2 big ways:
+//1) we can check the status of some javascript 'thing'
+//2) we can check a process we have built with repeated console.log messages
+
+//example 1:
+var sampleName = 'Tyler';
+console.log(sampleName);
+
+//example 2:
+var sampleNum = 1;
+console.log(sampleNum);
+sampleNum++;
+console.log(sampleNum);
+sampleNum++;
+console.log(sampleNum);
 
 /**************************
 VARIABLES
@@ -55,30 +66,34 @@ console.log(a + b); // 3
 //3)  JavaScript is case sensitive-- 'hello' and 'HeLlo' are different variables
 
 /**************************
-DECLARATIONS
+DECLARATIONS, INITIALIZATIONS, ASSIGNMENT
 **************************/
 
 /*
-Declarations are the LEFT SIDE of a variable
-  It is simply the var x
-  It is on the left side of the assignment operator (=)
+Declarations refer to when we 'declare' a variable
 
-Initializations are the RIGHT SIDE of a variable
-  It sets the value of the variable
-  It incorporates the variable name (x), the assignment operator (=), and the value (10) => x = 10
+Initializations refer to when a variable is assigned a value
+
+Assignment refers to giving a variable a value.  This can be after the initialization.
 */
 
 var x;
-console.log('Declaration:', x); // Declaration: undefined
+console.log('Declaration 1:', x); // Declaration: undefined
 
 x = 10;
 console.log('Initialization 1:', x); // Initialization 1: 10
 
 x = 33;
-console.log('Initialization 2:', x); // Initialization 2: 33
+console.log('Assignment 1:', x); // Assignment 1: 33
 
-var y = 'Hello';
-console.log('Both:',x, y); // Both: 33 hello
+var y;
+console.log('Declaration 2:', y);
+
+y = 'hello';
+console.log('Initialization 2:', y);
+
+y = 'you are my fren';
+console.log('Assignment 2:', y);
 
 /*
 Var, Let, and Const:
@@ -88,15 +103,15 @@ Let = 'new' keyword for variables (introduced with ES6)
 Const = also 'new'; declares unchangeable variables
 */
 
-let today = 'great!';
-const elevenFifty = 'Wonderful!';
-console.log(today, elevenFifty); // great! Wonderful!
+let tonight = 'great!';
+const elevenFifty = 'Amazing!';
+console.log(tonight, elevenFifty); // great! Wonderful!
 
-today = 'lovely!'
-console.log(today, elevenFifty); // lovely! Wonderful!
+tonight = 'lovely!'
+console.log(tonight, elevenFifty); // lovely! Wonderful!
 
 // elevenFifty = 'Super'
-console.log(today, elevenFifty); // ERROR
+console.log(tonight, elevenFifty); // ERROR
 
 /**************************
 TYPES
@@ -115,39 +130,34 @@ console.log(off); // false
 
 //boolean can represent: true/false, yes/no, on/off
 
+// Undefined
+/*
+Undefined usually means a variable has been declared, but it's not been assigned a value
+*/
+
+let grass;
+console.log(grass); // undefined
+
+var undef = undefined;
+console.log(undef); // undefined
+
 // Null
 /* 
-Null = empty value (not 0; not undefined)
-
-It is like an empty container; nothing is in it, but it still exists as a space to fill
+Null means a variable has been declared and assigned a value of null
 */
 
 var empty = null;
 console.log(empty); // null
 
-// Undefined
 /*
-Undefined = no value assigned (not even an empty container)
-
-UNDEFINED IS NOT AN ERROR
-*/
-
-var undef = undefined;
-console.log(undef); // undefined
-
-let grass;
-console.log(grass); // undefined
-
-/*
-We've talked before about how every variable is basically a storage container in JavaScript
-think of variables with null and undefined as packages coming out of UPS
-null packages are packages that were intentionally packed up with nothing, but have been assembled
-undefined packages are packages that have nothing in them, but have not yet been assembled to leave UPS
+Null and undefined both represent variables with no value inside.  Think of it this way--null values
+are for gag gifts that are boxes intentionally given with nothing inside (because that's the gag).  Undefined
+values are gifts given when the person giving the gift has forgotten to put the gift inside (oops!).
 */
 
 // Numbers
-var degrees = 90;
-console.log(degrees);
+var myLiteralAge = 90;
+console.log(myLiteralAge);
 
 var precise = 999999999999999; // 15 9's
 console.log(precise); // 999999999999999
@@ -161,15 +171,13 @@ console.log(notQuite); // 0.30000000000000004
 var numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
 console.log(numbersAreHard); // 0.3
 
-// Quickly discuss number objects (in GitBook Javascript Fundies 6.1)
-
 // Strings
 // Strings = any value within quotes; JS spits out value within the quotes
 let stringOne = "double quotes";
 let stringTwo = 'single quotes';
 console.log(stringOne, stringTwo); // double quotes single quotes
 
-// Numbers vs. Strings
+// Concatenation vs. Addition
 let first = 1050 + 100; 
 let second = '1050' + '100';
 
@@ -179,71 +187,45 @@ console.log(second); // 1050100
 console.log(typeof first); // number
 console.log(typeof second); // string
 
-/*
-What's going on here?
-Addition vs. Concatenation
-
-When JS sees combining two or more numbers, it adds the values together using the built-in math functionality; when it sees adding together one or more strings, it changes and the plus sign becomes an assignment operator--it smashes the values together without trying to synthesize the values
-*/
+// JS evaluates with the + operator according to the values on either side of the + sign
 
 let third = 1050 + '100';
 
 console.log(third); // 1050100
 console.log(typeof third); // string
 
-/*
-With the plus operator, if 1 string and 1 number are given to the plus sign, it returns a string
-*/
+// Interpolation
+//interpolation lets you use strings with dynamic content (they require backticks)
 
-/* 
-Challenge: 
-Set 7 (or 8) variables:
-firstName
-lastName
-houseNumber
-aptNumber (if applicable)
-street
-city
-state
-zipcode
-
-Set each variable to its respective type.
-
-console.log your whole address (with the space between variable).
-*/
-
-let firstName = 'Tyler';
-let lastName = 'Shelton';
-let houseNumber = 12175;
-let street = 'Visionary Way';
-let city = 'Fishers';
-let state = 'IN';
-let zipcode = 46038;
-
-console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', state, zipcode); // Tyler Shelton, 12175 Visionary Way, Fishers, IN 46038
+//example 1:
+let age = 32;
+let string = `my age is: ${age}`
+console.log(string);
 
 // Objects
 /*
 What is an object?
 
-A container that can hold multiple datatypes
+An object is a container that stores property names and their values 
+(it can hold multiple data types)
 
 Denoted by {}
 Has keys and values (color (key): 'blue' (value)), separated with a colon
 Each key separated with a comma
 */
-let burritosNow = {
-  size: 'large',
-  quantity: 4,
-  now: true
-};
+let hulk = {
+  color: 'green',
+  age: 42,
+  isStrong: true
+}
 
-console.log(burritosNow); // { size: 'large', quantity: 4, now: true }
-console.log(typeof burritosNow); // object
+console.log(hulk);
+console.log(hulk.age);
+console.log(typeof hulk);
 
-// Arrays => DANGER - DIFFICULT TO TEACH
+// Arrays
 /*
-Arrays are great for lists
+Arrays store multiple values in an ordered way.  They too hold multiple data types
 
 Denoted by []
 Has values ('blue', 'green', 'yellow'), separated with commas
@@ -251,28 +233,9 @@ Has values ('blue', 'green', 'yellow'), separated with commas
 
 var burritos = ['large', 4, true];
 console.log(burritos); // ['large', 4, true]
-
+console.log(burritos[0]);
 console.log(typeof burritos); // OBJECT
 
 /*
 WHAT?? Why is typeof coming back with an object, and not array??
-
-What is the definition of objects again? A container that can hold multiple datatypes
-
-Notice that arrays, too, are a container that can hold multiple datatypes.  Therefore, JS has classified arrays as objects and not a datatype of their own
-*/
-
-/**************************
-RECAP
-**************************/
-
-/*
-HTML
-CSS
-Comments
-Variables
-Declarations
-Datatypes
-
-REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
 */
