@@ -1,0 +1,15 @@
+First challenge:
+Using async/await, write a function that fetches a star wars character using the url:
+'https://swapi.co/api/people/<number here>'.  It should console.log the results of the fetch
+before console.logging a message saying 'this should print last'.
+
+Second challenge:
+Design a function that takes three inputs, which are the 3 side lengths of a triangle.  Use the (Converse
+of the) Pythagorean Theorem to see if the triangle is a right triangle.  Return 'yes!' if it is, and 'no!'
+if it isn't.
+
+Third challenge:
+Write a function which uses a custom-built promise inside.  If Date.now() has an even number of
+millisecondes, the promise should resolve.  If Date.now() has an odd number of milliseconds, the promise
+should reject.  In either case, use .then & .catch to handle the resolved or rejected promise and print
+a message.

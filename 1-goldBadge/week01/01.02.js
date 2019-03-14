@@ -182,7 +182,13 @@ scissors = 'blue';
 console.log(scissors); //blue
 var scissors;
 
+function hoistTest(){
+  console.log(testVar);
+  var testVar = 10;
+  console.log(testVar);
+}
 
+hoistTest();
 /*
 Hoisting does not exist--it is an illusion
 
@@ -228,7 +234,7 @@ ASSIGNMENT OPERATORS
   01-assignmentOperators.js
 **************************/
 // Assignment operator
-let x = 5;
+let x = 20;
 
 // Addition assignment
 x += 1; // x = x + 1
@@ -385,7 +391,7 @@ switch (friend) {
   case "Kenn":
     console.log("Hey Kenn, do you own a wolf in your backyard?");
     break;
-  case "Carolyn":
+  case "Alecx":
     console.log("Hey Alecx, how many Magic cards do you own?");
     break;
   default:

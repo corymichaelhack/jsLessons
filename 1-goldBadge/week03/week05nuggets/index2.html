@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Unwrap Elements</title>
+</head>
+<body>
+  <div>
+    <h1>Coolest Avengers:</h1>
+    <p>Hulk</p>
+    <p>Thor</p>
+    <p>War Machine</p>
+    <p>Scarlet Witch</p>
+  </div>
+  <script>
+    let div = document.querySelector('div');
+    let body = document.querySelector('body');
+    console.log(body)
+    while (div.hasChildNodes()){
+      let node2Move = div.firstChild;
+      body.insertBefore(node2Move, div);
+    }
+    console.log(body);
+  </script>
+</body>
+</html>

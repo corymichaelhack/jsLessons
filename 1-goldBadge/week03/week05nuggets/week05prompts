@@ -1,0 +1,56 @@
+First challenge:
+Make 2 functions.  Each function accepts an array of strings and returns that array of strings after we
+operate on that array.  The first function removes any elements from the input array that have 'q' or 'p'
+in them (uppcase or lowercase).  The second function capitalizes the first letter of each string and leaves
+the rest of the string untouched.
+
+Here is a test with its output:
+
+input-
+let inputArr = ['tyler Michael shelton', 'LAINEY', '1150 academy', 'quietly tiptoe', 'this is a thing'];
+console.log(qOrPRemover(capitalFirst(inputArr)));
+
+output-
+[ 'Tyler Michael Shelton',
+  'LAINEY',
+  '1150 Academy',
+  'This Is A Thing' ]
+
+Second challenge:
+Write an html page with a div.  Inside the div, put an h1 tag with the title 'Coolest Avengers:'.
+After the h1 tag, use p tags to list each of your favorite Avengers characters.  
+
+Using a script tag, write JavaScript that will move all of the children nodes (the h1 and p tags) from
+the div tag and into the body.  The content shouldn't change, but the placement of the h1 and p tags
+will be different in the html.  Below is an example of the before and after:
+
+<body>
+  <div>
+    <h1>Coolest Avengers:</h1>
+    <p>Hulk</p>
+    <p>Thor</p>
+    <p>War Machine</p>
+    <p>Scarlet Witch</p>
+  </div>
+  <script>
+    ...
+  </script>
+</body>
+
+<body>
+  <h1>Coolest Avengers:</h1>
+  <p>Hulk</p>
+  <p>Thor</p>
+  <p>War Machine</p>
+  <p>Scarlet Witch</p>
+  <div></div>
+  <script>
+    ...
+  </script>
+</body>
+
+Third challenge:
+Write some sample JavaScript that shows the following things about var, let, and const:
+a)  let, const not hoisted
+b)  var doesn't obey block scope, let, const do
+c)  var, let, const all obey functional scope

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img src="http://mtdata.ru/u9/photoC0C3/20946788164-0/original.png" alt="mona lisa selfie"/>
+  <script>
+    let body = document.querySelector('body');
+    let pic = document.querySelector('img');
+    pic.addEventListener('mouseover', () => {
+      let p = document.createElement('p');
+      p.innerText = 'You entered the picture!';
+      body.appendChild(p);
+    });
+    pic.addEventListener('mouseleave', () => {
+      let p = document.createElement('p');
+      p.innerText = 'You left the picture!';
+      body.appendChild(p);
+    });
+  </script>
+</body>
+</html>

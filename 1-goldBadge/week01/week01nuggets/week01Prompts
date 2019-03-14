@@ -1,0 +1,63 @@
+First challenge:
+
+Using an html file, write a webpage that asks the user for input on a store, a quantity, and a product.
+Save the user input in 3 separate variables.  Once the user has input their information, your webpage should
+console.log a sentence using those 3 variables.  For example: 'I shopped at *Target* for *5* *apples*' may be
+output to the console.  
+
+Finally, ask for more input from the user that requests an array.  Save this array in a variable and
+console.log that variable.  If you console.log(typeof <your array here>), what does the console show?
+What does that teach you?
+
+Need to knows for this challenge:
+1)  Using JavaScript, window.prompt('<you message here>') lets you grab typed input from the user
+2)  You can write JavaScript in an html file by using <script> tags.  Here's an example below:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('this JavaScript works inside the HTML file!');
+  </script>
+</body>
+</html>
+
+Second challenge:
+Write a conditional that will check the value of one property in an object and console.log a message
+based upon the type of the property.  
+
+For instance, if sampleObject.sampleKey is a string, it will console.log 'the value is a string'.  If
+sampleObject.sampleKey is a number, it will console.log 'the value is a number'.  Make sure your conditional
+works for objects too!
+
+If you have successfully solved this challenge with if-elseif statement, try it with a ternary.
+
+Third challenge:
+Submit a text response that explains the below for the sample JavaScript code provided:
+1)  Why does the first console.log in the function output 'a' for first, but 'middleName' for second?
+2)  Why does the final console.log in the function output 'middleName' for second, but '3' for third?
+3)  Why does the first console.log in the function output 'undefined' for third?
+
+const first = 'firstName';
+let second = 'middleName';
+var third = 'lastName';
+
+function play(){
+  const first = 'a';
+  console.log(first, second, third);
+  if (5 > 4){
+    const first = 1;
+    let second = 2;
+    var third = 3;
+    console.log(first, second, third);
+  }
+  console.log(first, second, third);
+}
+
+play();
+console.log(first, second, third);

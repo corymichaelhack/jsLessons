@@ -1,0 +1,33 @@
+First challenge:
+Write an html page that, upon mousehover over an image, adds a p tag to 
+the bottom of the page that says: 'You entered the picture!'.  On mouseleave of
+the image, add a p tag that says: 'You left the picture!'.
+
+Second challenge:
+Let's use the Rick and Morty API to grab character names and display them to the screen.
+We want to focus on fetching and displaying content to the screen, so I'll share starter code with you.
+The API states that we can grab character data using this baseURl:
+'https://rickandmortyapi.com/api/character/' with a number at the end.  Let's make our form
+submit the character number we want to find and display that character's name in an h1 tag.  Remember
+that you'll need to use a 'fetch' in order to access the Rick and Morty API.  Here's your starter code:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rick & Morty Challenge</title>
+</head>
+<body>
+  <form>
+      <input type="text"/><br/>
+      <button type="submit">Click for Search!</button>
+  </form>
+  <script>
+    let form = document.querySelector('form');
+    let input = document.querySelector('input');
+    let body = document.querySelector('body');
+  </script>
+</body>
+</html>
