@@ -8,11 +8,11 @@ let conditionExample = 0;
 
 
 if (typeof conditionExample === 'string') {
-  console.log('Yep, A is A.')
+  console.log('Yep, A is A.');
 } else if (typeof conditionExample === 'number') {
-  console.log('Numbers are cool.')
+  console.log('Numbers are cool.');
 } else if (typeof conditionExample === 'boolean') {
-  console.log('Truthiness')
+  console.log('Truthiness');
 }
 
 //Switch solution
@@ -80,19 +80,19 @@ switch (true) {
 
 var FB = 30;
 
-(FB % 3 === 0 && FB % 5 === 0) ? console.log('Fizz Buzz') : (FB % 5 === 0) ? console.log('Buzz') : (FB % 3 === 0) ? console.log('Fizz') : FB;
+(FB % 3 === 0 && FB % 5 === 0) ? console.log('Fizz Buzz') : (FB % 5 === 0) ? console.log('Buzz') : (FB % 3 === 0) ? console.log('Fizz') : console.log(FB);
 
 
 /*
 Overview for Today
 ******************
-Fizz Buzz ING
+Fizz Buzz
 Loops
 Functions Basics
 Parameters
-Fat Arrow Functions Adam
-Return Adam
-Git Recap Adam
+Fat Arrow Functions 
+Return 
+Git Recap 
 */
 
 
@@ -102,7 +102,7 @@ LOOPS
 3-loops
   01-forLoops.js, 02-forInLoops.js, 03-forOfLoops.js
 **************************/
-//ADAM
+
 /**************************
 FOR LOOPS
 **************************/
@@ -119,11 +119,18 @@ There are many different kinds of loops but they all do roughly the same thing:
   For in statement
   For of statement
 
-NOTE: There is a danger of infinite loops => explain
+NOTE: There is a danger of infinite loops. There are three main parts to a loop. 
+1) The 'for' keyword
+2) A variable initialization and declaration. 
+3) The condition that needs to be met in order to end the loop.
+4) This is where the number is going to update. This one is saying each time this loop runs, update i by one. 
+5) Inside of the code block for the loop, refers to the current value of the variable for that loop 
 */
 
-for (var i = 0; i < 10; i++) {
-	console.log(i); // 0 1 2 3 4 5 6 7 8 9
+  for (var i = 0; i < 10; i++) {
+//(1)     (2)    (3)     (4)
+  console.log(i); // 0 1 2 3 4 5 6 7 8 9
+//           (5)
 }
 
 //Challenge: using a for loop, count to 20, by 2's
@@ -147,7 +154,10 @@ var name = "Kenn";
 for (var i = 0; i < name.length; i++) {
 	console.log(name[i]); // K e n n
 }
-
+ 
+for( n of name){
+  console.log(n);
+}
 /*
 Challenge: 
 Make a for loop where you add up all the numbers from 1 to 50 (should equal 1275)
@@ -158,13 +168,14 @@ for (var i = 1; i <= 50; i++) {
    sum += i;
 }
 
-console.log(sum) //1275
+console.log(sum); //1275
 
 /**************************
 FOR IN LOOPS
 **************************/
 /*
 Great for iterating over values in an object
+for in loops can "enumerable" which in our situation means able to be able to access these directly within an ordering schema
 */
 
 var student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
@@ -187,7 +198,7 @@ var studentName = 'pAul';
 var capName;
 for (var n in studentName) {
   if (n == 0) {
-    capName = studentName[n].toUpperCase();
+    capName += studentName[n].toUpperCase();
   } else {
     capName += studentName[n].toLowerCase();
   }
@@ -199,6 +210,7 @@ FOR OF LOOPS
 **************************/
 /*
 EXPLAIN difference between for in and for of loops
+"iterable" meaning able to parse through with numbers
 */
 
 //the below doesn't work--object properties are not 'iterable'
@@ -353,7 +365,7 @@ hi('Autumn');
 1- The parameter(s) we need to take into the function
 2- Using string interpolation, we can refer to the parameter we passed
 3- This is where we define what the parameter's value will be
-
+*/ /*
 4-functions
   05-parameters.js
 **************************/

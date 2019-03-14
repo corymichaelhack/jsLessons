@@ -29,13 +29,6 @@ Ternaries
 
 /*
 
-Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
-theyre speaking basically when variables are and arent accessible in your code.
-
-Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis,
-which could be considerd our local scope. Just because someone lives on earth does not mean they live 
-in indianapolis, but residents of indianapolis are on planet earth. 
-
 Open Cmd Prompt
 DIR to see where you are
 CD into your folder
@@ -62,6 +55,7 @@ javascriptLibrary
 
 **************************/
 
+
 /*
 git init
 git status
@@ -81,6 +75,14 @@ SCOPE
 /*
 Scope
 *********
+
+Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
+theyre speaking basically when variables are and arent accessible in your code.
+
+Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis,
+which could be considerd our local scope. Just because someone lives on earth does not mean they live 
+in indianapolis, but residents of indianapolis are on planet earth. 
+
 Refers to where a variable is defined and accessable. Variables defined out
 
 JS has both LOCAL and GLOBAL scope
@@ -238,8 +240,6 @@ var a = 'This is not hoisted';
 /**************************
 LITERALS
 
-1-grammarAndTypes
-  06-literals.js
 **************************/
 
 /*
@@ -313,7 +313,7 @@ COMPARISON OPERATORS
 5-expressionsAndOperators
   02-comparisonOperators.js
 **************************/
-//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' These are values that are considered not true or just not
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' These are values that are considered not true or just not, but they are not technically the same as false
 
 // Equal 
 '3' == 3;
@@ -397,6 +397,8 @@ if (weather < 70) {
 
 /*
 Challenge: 
+
+
 Bronze: 
 Write an if else statement that checks your name; 
 If it is your name, console log '<name>'
@@ -419,20 +421,31 @@ if ('Autumn' == name) {
 
 
 /*
- Walthrough with MDN Docs: 
+Challenge: 
+**********
+Use this string - let name = 'aUTuMN';
 
-Capitalize the FIRST LETTER of name ONLY
-We need to manipulate the data in this string, we need methods, start gathering tools
+Bronze: 
+Write an if else statement that looks at the first letter of a string. If it is uppercase, console.log the string; 
+If it is not console.log 'hey its not written correctly' 
+
+Silver:
+If the first letter of a string is uppercase, only console.log that letter
+if it is not, console.log the rest of the string Without the first letter, and change them to lowercase 
+
+Gold: 
+If the first letter of a string is uppercase, console.log that that first letter of a string  plus the rest of the string to lowercase
+If it is not, console.log the first letter of the string to uppercase plus the rest of the string to lowercase
 
 */
 
 var name = 'tyleR';
 
 if (name[0] == name[0].toUpperCase()) {
-  firstLetter = name[0] + name.slice(1).toLowerCase()
+  firstLetter = name[0] + name.slice(1).toLowerCase();
 	console.log(firstLetter);
 } else {
-  otherLetters = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+  otherLetters = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 	console.log(otherLetters);
 }
 
@@ -443,6 +456,8 @@ ELSE IF
 
 /* 
 Challenge:
+Look up the format for an Else If statement
+
 Set a variable age and give it an age of your choice
 Set an else if statement that convey the following:
 If the age is 17 or younger, console.log 'Sorry, you're too young to do anything.'
@@ -492,7 +507,9 @@ switch (friend) {
 }
 
 //The last switch is a default statement, which is selected when the vairable passed 
-// doesnt match any of the options given. 
+// doesnt match any of the options given. This is optional, not necessary. 
+
+
 
 /*
 Challenge:
@@ -534,6 +551,9 @@ switch (true) {
     console.log('didnt work');
 }
 
+//Self Practice:
+//Try to rewrite the age challenge from earlier with a switch
+
 
 /**************************
 TERNARIES
@@ -552,7 +572,11 @@ let w = 6;
 (w > 0) ? console.log('yes') : console.log('no');
 
 // Instead of:
-
+if(w>0){
+  console.log('Yes');
+}else{
+  console.log('No');
+}
 
 
 
@@ -639,5 +663,3 @@ Comparison Operators
 Conditionals
 Ternaries
 */
-
-// Challenge Assessment 1 - DUE BY THURSDAY MORNING (Set up git repo, with correct files)*move to morning*

@@ -1,7 +1,13 @@
-var name = 'Jenny';
+function checker(){
+let str = 'bob';
+let rev = str.split('').reverse().join('');
 
-if ('Autumn' == name) {
-  console.log('Hello, my name is', name);
-} else {
-  console.log('Hello, is your name',name);
+console.log(rev);
+
+  if(str == rev){
+    console.log(true);
+  } else {
+    console.log(false);
+  }
 }
+checker();

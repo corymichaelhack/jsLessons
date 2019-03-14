@@ -41,6 +41,24 @@ if (fb % 15 == 0) {
   console.log('nothing');
 }
 
+for(let FB = 0; FB<=100;FB++){
+
+  switch (true) {
+    case (FB % 3 === 0 && FB % 5 === 0):
+    console.log('Fizz Buzz');
+    break;
+    case (FB % 5 === 0):
+    console.log('Buzz');
+    break;
+    case (FB % 3 === 0):
+    console.log('Fizz');
+    break; 
+    default :
+    console.log(FB); 
+  }
+  
+}
+
 /**************************
 GIT REVIEW - Why git? 
 **************************/
@@ -286,32 +304,7 @@ var json = {
 
 // Object.keys() and Object.values()
 
-let spaceJam = {
-  toonSquad: {
-    human: 'Michael Jordan',
-    rabbit1: 'Bugs Bunny',
-    rabbit2: 'Lola Bunny',
-    duck: 'Daffy Duck',
-    tDevil: 'Tasmanian Devil',
-    bird: 'Tweety',
-    cat: 'Sylvester',
-    pig: 'Porky Pig'
-  },
-  monstars: {
-    0: 'Bupkus',
-    1: 'Bang',
-    2: 'Nawt',
-    3: 'Pound',
-    4: 'Blanko'
-  },
-  nbaPlayers: {
-    phoenixSuns: 'Charles Barkley',
-    newJerseyNets: 'Shawn Bradley',
-    newYorkNicks: 'Patrick Ewing',
-    charlotteHornets1: 'Larry Johnson',
-    charlotteHornets2: 'Muggsy Bogues'
-  }
-}
+spa
 
 console.log(Object.keys(spaceJam.toonSquad)); // ['human', 'rabbit1', 'rabbit2', ...]
 console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] => (Just gives the index numbers of 'Daffy Duck')
@@ -329,12 +322,12 @@ let garden = {
   vegetable: 'zucchini',
   flower: 'sun flower',
   fruit: 'grape',
-  water: true,
+  "water": true,
   sun: true,
   size: 10
 };
 
-console.log(garden.vegetable); // 'zucchini'
+console.log(garden.water); // 'zucchini'
 //This is standard dot notation for parsing through an object. with this way, we are assuming that there is a key named vegitables
 
 let x = 'vegetable';// what if we have a variable that contains our 'supposed key'? 

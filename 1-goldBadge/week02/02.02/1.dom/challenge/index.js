@@ -8,25 +8,23 @@ let b2 = document.getElementById('btn2');
 let b3 = document.getElementById('btn3'); 
 let b4 = document.getElementById('btn4'); 
 let b5 = document.getElementById('enter');
-let bigDiv = document.getElementsByClassName('divider');
 
-bigDiv.style.textAlign = 'center';
 
 let opp;
 
-b1.addEventListener('click', () => {
-    b1.style.backgroundColor = 'blue';
-    b2.style.backgroundColor = 'lightgrey';
-    b3.style.backgroundColor = 'lightgrey';
-    b4.style.backgroundColor = 'lightgrey';
+b1.addEventListener('click', (e) => {
+   e.target.style.backgroundColor = 'blue';
+   b2.style.backgroundColor = 'lightgrey' ;
+   b3.style.backgroundColor = 'lightgrey';
+   b4.style.backgroundColor = 'lightgrey' ;
  opp = '+';
 });
 
 b2.addEventListener('click', () => {
     b2.style.backgroundColor = 'blue';
-    b1.style.backgroundColor = 'lightgrey';
+    b1.style.backgroundColor = 'lightgrey' ;
     b3.style.backgroundColor = 'lightgrey';
-    b4.style.backgroundColor = 'lightgrey';
+    b4.style.backgroundColor = 'lightgrey' ;
      opp = '-';
 });
 
@@ -41,7 +39,7 @@ b3.addEventListener('click', () => {
 b4.addEventListener('click', () => {
     b4.style.backgroundColor = 'blue';
     b1.style.backgroundColor = 'lightgrey';
-    b2.style.backgroundColor= 'lightgrey';
+    b2.style.backgroundColor = 'lightgrey';
     b3.style.backgroundColor = 'lightgrey';
      opp = '/';
     });
@@ -65,7 +63,14 @@ b5.addEventListener('click', () => {
         default:
             break;
     }
-});
+    if(num3.innerText <= 0){
+        num3.style.color = 'red';
+    } else {
+        num3.style.color = 'blue';
+    }
+},
+)
+;
 
 
 

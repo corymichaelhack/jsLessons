@@ -8,7 +8,7 @@ Talk about "Think Like a Programmer", chapters 1-3, 8
     is being asked and what is needed. Rubberducking
   Divide the problem
     - Break the problem up into smaller sections, this can help with the mental block that may come 
-    from how large a problem may seem. You may not know how to get from A to C, bu  t you can walk 
+    from how large a problem may seem. You may not know how to get from A to C, but you can walk 
     from A to B, then from B to C
   Start with what you know
     -Once the problem is in smaller pieces, you might be able to solve one of those smaller problems. 
@@ -30,46 +30,26 @@ Talk about "Think Like a Programmer", chapters 1-3, 8
     progress
 
 
-    Write a function that checks to see if all characters in a string are unique
+    Write a function that checks to see if a word is a palindrome. A palindrome is a word that is spelled the same backwards and foward
 
     Tools:
-    Function with a parameter
-    For Loops
-    Conditional 
-    split()
-
-
+    function 
+    if statement
+    method reverse for arrays
+    .split('') to turn string into array
+    might need one more tool to mush array back together... 
+    need to give a boolean value
+    
 */
+function checker(palidrome){
+let rev = palidrome.split('').reverse().join('');
 
-let x = "String";
-let y = "racecar";
+console.log(rev);
 
-// let check = (checking) => {
-//   let broken = checking.split("");
-//   for (item in broken) {
-//     for (item2 in broken) {
-//       // console.log(item, item2);
-//       if (broken[item] === broken[item2] && item !== item2) {
-//          console.log("Not unique");
-//       }
-//     }
-//   }
-// }
-
-// for (item in y.split("")) {
-//   console.log(y[item]);
-// }
-// check(y);
-
-let orArr = [1,2,3,4,5,6,7,8,9,10];
-let eArr = [];
-
-
-
-for (let i = 0; i < orArr.length; i++) {
-    if ( orArr[i] % 2 == 0) {
-        console.log(orArr[i]); 
-        (eArr.push(i));
-    } 
-    } 
-    console.log(eArr);
+  if(palindrome == rev){
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+checker('bob');
