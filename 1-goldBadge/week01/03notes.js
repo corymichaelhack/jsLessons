@@ -40,3 +40,9 @@ of these musicians.
 Using the same array you built for musicians, use .map to iterate through every musician and add 'the best!'
 to the name of the musician.  Console.log the result of this .map
 */
+
+/*
+Github project pull and discuss.  Have students work in groups of 3.  In 20 minute intervals, have them
+dissect the code and discuss what's going on.
+https://github.com/ElevenfiftyAcademy/jsLessons/tree/tyler-hybrid
+*/
