@@ -1,6 +1,7 @@
 /*********************
 ICE BREAKER CHALLENGE
 *********************/
+// * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
 //pair students to solve the below challenge.  random pairs will present their solutions
 
 /* 
@@ -87,3 +88,7 @@ let arrOfObjs = [
 ]
 
 const arrReducer
+
+// * React Concept Talk Four ( Class Components and State )
+
+// * Pie Client Walkthrough Part Four

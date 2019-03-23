@@ -1,10 +1,14 @@
 /* 
+* 9:00 AM -- Welcome and Set Pace
+
 Welcome students to blue badge--talk about the goals of the badge, the project,
 and what their learning experience will look like
 
 Slack them the blue badge calendar:
 https://docs.google.com/document/d/1wVNLfg-n0DsS6sI-rgsIOOjTMO_D83OrnDXX0mAKs20/edit?usp=sharing
 */
+
+
 
 let swapper = (obj, prop1, prop2) => {
   let temp = {};
@@ -31,13 +35,22 @@ console.log(swapper(obj, 'keya', 'keyb'));
 /**************************
 CODE CHALLENGE 1 - OBJECTS
 **************************/
+// * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
 
 /*
 Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
 Your function may have 3 parameters, the original object, property1, property2
+
+Example Object : 
+
+const person = {
+  fName: 'Tom',
+  lName: 'McClellan'
+}
+
 */
 
-// Option 1 (Not Quite Right)
+// * Option 1 (Not Quite Right)
 const person = {
   fName: 'Tom',
   lName: 'McClellan'
@@ -56,7 +69,7 @@ newObj = changePerson(person, 'fName', 'lName');
 
 console.log(newObj);
 
-// Option 2 (Better)
+// * Option 2 (Better)
 const person = {
   fName: 'Tom',
   lName: 'McClellan'
@@ -81,7 +94,6 @@ const newObject = changePerson(food, 'food1', 'food2');
 console.log(food, "Unchanged Object");
 console.log(newObject, 'Changed Object');
 
-//
 const sampleObj = {
   firstName: 'Quinn',
   lastName: 'Crabtree'
@@ -102,6 +114,6 @@ const objKeySwap = (obj, prop1, prop2) => {
 
 console.log(objKeySwap(sampleObj, 'firstName', 'lastName'));
 
-// React Concept Talk One ( Intro to React )
+// * Following Challenge React Concept Talk One ( Intro to React )
 
-// Pie Client Walkthrough After Lunch
+// * Pie Client Walkthrough After Lunch

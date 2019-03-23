@@ -1,7 +1,7 @@
 /**************************
 CODE CHALLENGE 2 - ARRAYS
 **************************/
-
+// * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
 /*
 Given 2 arrays:
 [10,20,30,40,50,70]
@@ -83,3 +83,7 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
   ...
 }
 */
+
+// * React Concept Talk Two ( JSX & Create React App )
+
+// * Pie Client Walkthrough Part Two

@@ -1,7 +1,7 @@
 /**************************
 CODE CHALLENGE 3 - STRINGS
 **************************/
-
+// * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
 /*
 Given the string -> 'Welcome to eleven fifty'
 
@@ -46,3 +46,7 @@ const fixedString = findTheCompany(stringCheck, (err, message) => {
 })
 
 console.log(fixedString);
+
+// * React Concept Talk Three ( Functional Component )
+
+// * Pie Client Walkthrough Part Three
