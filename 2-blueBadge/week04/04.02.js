@@ -17,7 +17,21 @@ If the first array has more values than the second, return that same number
 */
 
 const tensArray = [10,20,30,40,50,70];
-const onesArray = [5,3,2,5];
+const onesArray = 55;
+
+const arrayMult = (arr1, arr2) => {
+  let greaterLength = arr1.length >= arr2.length ? arr1.length : arr2.length;
+  let newArr = [];
+
+  for (let i = 0; i < greaterLength; i++){
+    let newVal = arr1[i] * arr2[i] || arr1[i] || arr2[i]
+    newArr.push(newVal);
+  }
+
+  return newArr;
+}
+
+console.log(arrayMult(onesArray, tensArray));
 
 const multiplyValues = (arr1 = [], arr2 = []) => {
   // is an expression that checks the value and type of the arr1 given, then puts that value in that param
@@ -73,75 +87,127 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
 /**************************
 PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
 **************************/
-
 /*
-Explain React basics again
-Flow structure
-  App.js
-  Return keyword => packages and spits out data (one piece of data)
+//review data flow in React, 
+//talk about how App.js is essentially an entire webpage,
+//circle and discuss how smaller, more granular parts of the site
+//are component 'leaves' in our folder 'tree'--App.js is our 'stem'
 
-  Briefly explain JSX
-  Like HTML
-  className, not class; why?
-  Nest all in one div tag
-  
-  Explain how Functional Components are really just functions
-*/
- 
- /*
- Building Functional Component
- 
- Go to pieclient app and npm start
- See existing site (PIES!)
- 
- Add navbar.js inside src folder.
- Add the following:
- 
- const Navbar = () => {
-   return (
-     <div className="navbar">
-     something
-     </div>
+cd into pieclient
+//add to project folder structure as below:
+components
+  Auth
+    Auth.js
+    Auth.css
+
+//lets add the following inside Auth.js:
+import React, {Component} from 'react';
+
+import './Auth.css';
+
+class Auth extends Component {
+    render(){
+    return(
+      <form className="cardLike" onSubmit={this.handleSubmit}>
+        <h1>Sign in!</h1>
+        <label htmlFor="email">Email:</label><br/>
+        <input type="text" id="email" /><br/>
+        <label htmlFor="password">Password:</label><br/>
+        <input type="password" id="password" /><br/>
+        <button onClick={this.loginToggle}>Login/Signup Toggle</button><br/>
+        <button type="submit">Submit User Data</button>
+      </form>
     )
   }
-  
-Explain that fun.comps. have pascal case
-  Remind them that this is the exact same as normal fat arrow function
+}
 
-Return keyword again
-  When one value, it's just return something; with JSX, wrap it in ()
+export default Auth;
 
-JSX again
+//discuss Component import, 
+//class benefits over functional component (dynamic vs static), 
+//empty onClick handlers,
+//review labels and inputs
+//draw their attention to the fact that JSX again looks like HTML
 
-In app.js, add the following
+//let's import and use this in App.js, just render the component below the Navbar
 
-return (
-  <div className="app">
-    + <Navbar />
-    <h1>Hello World</h1>
-    </div>
-  )
+//let's add to Auth.css:
+.cardLike{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+//discuss what absolute position is doing, top, left, and transform
 
-import Navbar from './navbar'; at the top => explain
-  Run => why isn't it working??
+//let's update Auth to toggle login/signup:
+//add to Auth.js class
+state = {
+    login: true
+  }
+//add this just inside render
+let title = this.state.login ? "Login" : "Signup";
+let signupFields = !this.state.login 
+  ? (
+    <>
+      <label htmlFor="firstName">First Name:</label><br/>
+      <input type="text" id="firstName" /><br/>
+      <label htmlFor="lastName">Last Name:</label><br/>
+      <input type="text" id="lastName" /><br/>
+    </>
+  ) 
+  : null
 
-Add import React from 'react'; at top of navbar.js => explain linking to package.json/node_modules
-  Run again, still nothing!
+//replaced Sign In! h1 with the below:
+<h1>{title}</h1>
+//add signupFields below password input:
+{signupFields}
 
-Add export default Navbar; at bottom of navbar.js
-  Run => should see desired component working
+//show that by changing the login value in state, Auth will conditionally render content
 
-Give 30 minutes to make a good navbar
-  create a navbar.css file and import to the top of navbar.js
+
+//discuss 2-way binding, and add the following inside of state:
+firstName:'',
+lastName: '',
+email: '',
+password: '',
+
+//let's have every input tag grab the value from state.  add the following to each <input/>:
+value={this.state.whatever}
+
+//show students that now the inputs are locked.  why is this?
+
+//let's add a changeHandler method inside the class:
+handleChange = (event) => {
+  this.setState({[event.target.id]: event.target.value})
+}
+
+//and let's add our onChange handler to each input:
+onChange={this.handleChange}
+
+//reiterate what's happening here: a change is detected, state is updated, that updated state is reflected in the DOM
+
+//finally, let's add our loginToggle method and use it:
+
+loginToggle = (event) => {
+  event.preventDefault();
+  const login = this.state.login;
+  this.setState({
+    login: !login,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  })
+}
+
+//inside the login/signup toggle button:
+onClick={this.loginToggle}
+
+//recap what's been built out, and how dynamic content can be created with React
+//mention to students that the data submission depends upon a server, which has yet to be built out
 */
 
  /*
  Gitbook parts 4-5
  */
-
-
-/**************************
-BOOK
-**************************/
-
-// Assign chs. 4-6, 8 of "Think Like a Programmer"

@@ -12,7 +12,9 @@ router.post('/login', async (req, res) => {
 
     
         const loggedInUser = await User.findOne({ where: { email: req.body.email } })
+        console.log(loggedInUser);
         const isUser = await bcrypt.compare(req.body.password, loggedInUser.password)
+        console.log(isUser);
 
         if (isUser) {
             return res.status(200).send( {

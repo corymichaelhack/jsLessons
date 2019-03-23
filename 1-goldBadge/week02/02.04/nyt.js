@@ -13,11 +13,10 @@ const previousBtn = document.querySelector('.prev');
 const nav = document.querySelector('nav');
 const section = document.querySelector('section');
 
-nav.style.display = 'none';
+nav.style.display = 'none'; //
 
 let pageNumber = 0;
-// console.log('PageNumber:', pageNumber);
-let displayNav = false;
+// console.log('PageNumber:', pageNumber); 
 
 searchForm.addEventListener('submit', fetchResults);
 nextBtn.addEventListener('click', nextPage);
@@ -81,7 +80,6 @@ function displayResults(json) {
       link.textContent = current.headline.main;
 
       para.textContent = 'Keywords: ';
-
       // Group 3
       for (let j = 0; j < current.keywords.length; j++) {
         let span = document.createElement('span');

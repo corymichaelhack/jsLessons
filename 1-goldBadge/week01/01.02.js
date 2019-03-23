@@ -222,7 +222,6 @@ COMPARISON OPERATORS
 5-expressionsAndOperators
   02-comparisonOperators.js
 **************************/
-//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
 
 // Equal 
 '3' == 3;
@@ -266,6 +265,8 @@ CONDITIONALS
 IF
 **************************/
 
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
+
 let isOn = true;
 
 if (isOn == true) {
@@ -276,9 +277,9 @@ if (isOn) {
   console.log('The light is on, yay!');
 };
 
-let isOff = false;
+let isOn = false;
 
-if (isOff == false){
+if (isOn == false){
   console.log('The light is off!');
 }
 
@@ -311,7 +312,7 @@ If the name does not match, console.log 'Hello, what is your name?'
 
 var name = 'Tyler';
 
-if ('Tyler' == name) {
+if (name == 'Tyler') {
   console.log('Hello, my name is', name);
 } else {
   console.log('Hello, what is your name?');
@@ -501,7 +502,7 @@ switch (true) {
 
 let yep = -8;
 
-(yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('did\'t work');
+(yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('didn\'t work');
 
 /*
 Ternaries, unlike conditionals, require the default/else catch all.  Where an if/else statement can go without the else, and a switch can go without a default, ternaries need that catch all at the end; otherwise it will throw an error.
@@ -527,3 +528,6 @@ Ternaries
 */
 
 // Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+
+let test = 5;
+console.log(test.toString());

@@ -1,4 +1,6 @@
 /*
+Submit tutorial page to LMS
+
 Challenge (Arrays):
 Color List:
 
@@ -10,6 +12,17 @@ In the function, filter through both arrays and print out the placement and the 
 
 Not to make it too hard on yourself, you can stop the count at ten
 */
+
+let colorArr = ['red', 'blue', 'green', 'yellow', 'purple', 'white', 'black', 'orange', 'teal', 'brown'];
+let suffArr = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th'];
+
+function colorPlacement(colors, suffixes){
+  colors.forEach((element, index) => {
+    console.log(`${index+1}${suffixes[index]} is ` + `${colors[index]}`);
+  });
+}
+
+colorPlacement(colorArr, suffArr);
 
 /*
 DOM Walk Through 

@@ -1,3 +1,11 @@
+/*
+PROJECTS TUTORIAL
+*/
+//show students their folder structure 
+//JavaScriptSept2018
+//  javascriptLibrary
+//  projects
+
 /**************************
 RECAP
 **************************/
@@ -209,7 +217,8 @@ function hi() {
 EXPRESSIONS
 **************************/
 
-var hi = function hi() {
+
+let hi = function hi() {
   console.log('HI')
 }
 
@@ -296,7 +305,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
-console.log 'Hello, my name is Tom McClellan'
+console.log 'Hello, my name is Tyler Shelton'
 Call your function 
 */
 
