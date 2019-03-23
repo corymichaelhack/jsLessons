@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>Functional Components</title>
+    <link rel="stylesheet" href="../lib/css/reveal.css">
+    <link rel="stylesheet" href="../lib/css/black.css">
+    <link rel="stylesheet" href="../lib/css/styles.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--title slide  -->
+            <section>
+                <h1>Functional Components</h1>
+                <hr />
+            </section>
+            <section>
+                <section>
+                    <h2>What is a functional component?</h2>
+                    <hr />
+                    <p>A functional component, also known as a display component. Is simple a function, that returns some JSX for React to render into our Apps. Functional components are capable for logic, however they can't use state, so they usually leave the logic to stateful components. </p>
+                </section>
+                <section>
+                    <h2>Creating Functional Components</h2>
+                    <hr />
+                    <pre><code>
+    const FunctionalComponent = (props) => {
+        return (
+                &lt;div&gt;
+                &lt;/div&gt;
+                )
+            }
+                    </code></pre>
+                    <p>The basic skeleton for a functional component is just an arrow function. Since it's just a function, it can take <code>props</code> as an argument.</p>
+                </section>
+                <section>
+                    <h2>Using Props</h2>
+                    <hr />
+                    <pre><code>
+    const FunctionalComponent = (props) => {
+        return (
+                &lt;div&gt;
+                    &lt;h2&gt;{ props.title }&lt;/h2&gt;
+                &lt;/div&gt;
+                )
+            }
+                    </code></pre>
+                    <p>Since we can pass in <code>props</code> as an argument, this functional component gets access to the <code>props</code> object, and we are free to use those values here.</p>
+                </section>
+                <section>
+                    <h2>Using Logic</h2>
+                    <hr />
+                    <pre><code>
+    const FunctionalComponent = (props) => {
+        const title = props.title ? props.title : 'Hello React';
+        return (
+                &lt;div&gt;
+                    &lt;h2&gt;{ title }&lt;/h2&gt;
+                &lt;/div&gt;
+                )
+            }
+                    </code></pre>
+                    <p>Functional Components can still contain logic, however you usually won't see any functions being defined. We can define values above the return, and use them in the JSX we return.</p>
+                </section>
+                <section>
+                    <iframe src="https://stackblitz.com/edit/am-functionalcomponents?embed=1&file=index.js" height="95%" width="100%"></iframe>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="../lib/reveal.js"></script>
+    <script>
+        
+        Reveal.initialize();
+    </script>
+</body>
+</html>
