@@ -116,6 +116,16 @@ console.log(objKeySwap(sampleObj, 'firstName', 'lastName'));
 
 // * React Concept Talk One ( Intro to React )
 
-// *  React Concept Talk Two ( JSX & Create React App )
+// * Assign GitBook 
 
-// * Pie Client Walkthrough After Lunch
+/*
+  Slack out to instructor code - pin to channel
+  
+  clone repo and show how to add to folder:
+  
+  4-reactFundamentals
+*   (clone here)
+    my-react-app
+*/
+
+// * GitBook parts 1-3, or continuing to move forward in the GitBook if past Ch 3

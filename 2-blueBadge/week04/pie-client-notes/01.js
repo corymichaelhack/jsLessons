@@ -148,7 +148,8 @@ import './Navbar.css';
 const Navbar = (props) => {
   return(
     <nav>
-*      <img className="nav-img"  src={piePic} alt="Pie" />
+*     <img className="nav-img"  src={piePic} alt="Pie" />
+      <h1>Pie Client</h1>
     </nav>
   )
 }
@@ -203,6 +204,19 @@ components
 */
 
 // * Add Logout to Navbar
+
+/*
+  const Navbar = (props) => {
+  return(
+    <nav>
+      <img className="nav-img"  src={piePic} alt="Pie" />
+      <h1>Pie Client</h1>
+*     <Logout />
+      </nav>
+
+  )
+}
+*/
 
 // * Explain how this Logout component is attempting to access a logout method thats being passed as a prop - it will not work yet - more on this later
 

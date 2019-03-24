@@ -84,8 +84,8 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
 }
 */
 
-// * React Concept Talk Three ( Functional Components )
 
-// * React Concept Talk Four ( Class Components and State )
+
+// * React Concept Talk Two ( JSX & Create React App )
 
 // * Pie Client Walkthrough Part Two

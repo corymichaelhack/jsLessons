@@ -47,4 +47,8 @@ const fixedString = findTheCompany(stringCheck, (err, message) => {
 
 console.log(fixedString);
 
+// * React Concept Talk Three ( Functional Components )
+
+// * React Concept Talk Four ( Class Components and State )
+
 // * Pie Client Walkthrough Part Three
