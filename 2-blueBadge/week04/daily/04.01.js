@@ -17,10 +17,10 @@ Your function may have 3 parameters, the original object, property1, property2
 
 Example Object : 
 
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
+const testObj = {
+  language : 'JavaScript',
+  library : 'React'
+};
 
 */
 
