@@ -9,7 +9,7 @@ PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
  App js is the Trunk of the tree
  Components connecting to App.js are branches
  And Components connecting to our 'branch' components are leaves
- 
+
  And everything is rendered through App.js, and bootrapped to the browser
  */
 
@@ -35,14 +35,14 @@ import './Auth.css';
 class Auth extends Component {
     render(){
     return(
-      <form className="cardLike" onSubmit={this.handleSubmit}>
-        <h1>Sign in!</h1>
-        <label htmlFor="email">Email:</label><br/>
-        <input type="text" id="email" /><br/>
-        <label htmlFor="password">Password:</label><br/>
-        <input type="password" id="password" /><br/>
-        <button onClick={this.loginToggle}>Login/Signup Toggle</button><br/>
-        <button type="submit">Submit User Data</button>
+      <form className="card-like" onSubmit={this.handleSubmit} >
+        <h1>Sign In</h1>
+        <label className="display-block" htmlFor="email">Email:</label>
+        <input className="display-block" type="text" name="email" />
+        <label className="display-block" htmlFor="password">Password:</label>
+        <input className="display-block" type="password" name="password" />
+        <button onClick={this.loginToggle}>Login/Signup</button>
+        <button type="submit">Submit</button>
       </form>
     )
   }
@@ -54,78 +54,86 @@ export default Auth;
 // * Build out Auth CSS
 
 /*
-    .cardLike{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
+    .card-like {
+        padding : 1em;
+        background-color : whitesmoke;
+        border-radius : 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform : translate(-50%, -50%);
+    }
+
+    .display-block {
+        display : block;
+    }
+
   * discuss what absolute position is doing, top, left, and transform
 */
 
 // * Adding Auth to the App
 
+// * Talk about differences between Class and Functional Components & some benefits of reach
+
+// ! Note - The app won't do anything yet since the click handles are don't exist - Apps will refresh when buttons are clicked - that is expected
+
+// * Update Auth to toggle login / sign up
 /*
+  * add to Auth.js class - right before declaration
 
-* discuss Component imports and exports 
-
-
-class benefits over functional component (dynamic vs static), 
-empty onClick handlers,
-review labels and inputs
-
-
-
-
-let's update Auth to toggle login/signup:
-add to Auth.js class
-state = {
+  state = {
     login: true
   }
-add this just inside render
-let title = this.state.login ? "Login" : "Signup";
-let signupFields = !this.state.login 
+
+  * add this just inside render
+
+  let title = this.state.login ? "Login" : "Signup";
+let signupFields = !this.state.login
   ? (
     <>
       <label htmlFor="firstName">First Name:</label><br/>
-      <input type="text" id="firstName" /><br/>
+      <input type="text" name="firstName" /><br/>
       <label htmlFor="lastName">Last Name:</label><br/>
-      <input type="text" id="lastName" /><br/>
+      <input type="text" name="lastName" /><br/>
     </>
-  ) 
+  )
   : null
 
-replaced Sign In! h1 with the below:
+* replaced Sign In! h1 with the below:
 <h1>{title}</h1>
-add signupFields below password input:
+
+* add signupFields below password input:
 {signupFields}
 
-show that by changing the login value in state, Auth will conditionally render content
+? What happens if we change login to false?
 
-
-discuss 2-way binding, and add the following inside of state:
+* discuss 2-way binding, and add the following inside of state:
 firstName:'',
 lastName: '',
 email: '',
 password: '',
 
-let's have every input tag grab the value from state.  add the following to each <input/>:
+let's have every input tag grab the value from state.  
+
+* add the following to each <input/>:
 value={this.state.whatever}
 
-show students that now the inputs are locked.  why is this?
+? why are the inputs locked?
 
-let's add a changeHandler method inside the class:
+
+* let's add a changeHandler method inside the class so we can change the values in our state
 handleChange = (event) => {
   this.setState({[event.target.id]: event.target.value})
 }
 
-and let's add our onChange handler to each input:
+* and let's add our onChange handler to each input:
 onChange={this.handleChange}
 
-reiterate what's happening here: a change is detected, state is updated, that updated state is reflected in the DOM
+* reiterate what's happening here: 
 
-finally, let's add our loginToggle method and use it:
+user input (change) => state updated => Dom changes  
+
+* finally add loginToggle method and use it:
 
 loginToggle = (event) => {
   event.preventDefault();
@@ -139,13 +147,12 @@ loginToggle = (event) => {
   })
 }
 
-inside the login/signup toggle button:
-onClick={this.loginToggle}
+? What are we doing here by setting all the strings to empty strings?
+? What is the !login doing?
+
 
 recap what's been built out, and how dynamic content can be created with React
 mention to students that the data submission depends upon a server, which has yet to be built out
 */
 
- /*
- Gitbook parts 4-5
- */
+// * GitBook Chapters 4 - 5

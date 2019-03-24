@@ -24,7 +24,7 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 // * Show folder structure
 
 /*
- pieclient
+ pie-client
  node_modules => explain how npm made this
  public
        favicon.ico => small icon on browser tab
@@ -148,15 +148,20 @@ import './Navbar.css';
 const Navbar = (props) => {
   return(
     <nav>
-*      <img src={piePic} alt="Pie Picture" />
+*      <img className="nav-img"  src={piePic} alt="Pie Picture" />
     </nav>
   )
 }
 
 export default Navbar;
+
+* Draw attention to 'className' in JSX vs. 'class' in normal HTML
+
 */
 
 // * Add Navbar to App.js - Should display a plain navbar with a pie in the top left corner and 'Pie Client' on far right
+
+// * Discuss Component imports and exports
 
 // * Create Logout Component Folder Structure
 
@@ -188,7 +193,7 @@ components
     export default Logout;
 */
 
-// * Update Logout CSS
+// * Flesh out Logout CSS
 
   /*
     .logout-img {
@@ -198,6 +203,8 @@ components
 */
 
 // * Add Logout to Navbar
+
+// * Explain how this Logout component is attempting to access a logout method thats being passed as a prop - it will not work yet - more on this later
 
 // * Assign GitBook 
 
