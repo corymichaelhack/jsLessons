@@ -89,6 +89,4 @@ let arrOfObjs = [
 
 const arrReducer
 
-// * React Concept Talk Four ( Class Components and State )
-
 // * Pie Client Walkthrough Part Four

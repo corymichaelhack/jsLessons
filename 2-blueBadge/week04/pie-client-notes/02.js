@@ -1,20 +1,33 @@
 /**************************
 PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
 **************************/
+
+// * Review React path to browser,
+// * Explain how React Apps can be thought of as 'trees'
+
 /*
-// review data flow in React, 
-//talk about how App.js is essentially an entire webpage,
-//circle and discuss how smaller, more granular parts of the site
-//are component 'leaves' in our folder 'tree'--App.js is our 'stem'
+ App js is the Trunk of the tree
+ Components connecting to App.js are branches
+ And Components connecting to our 'branch' components are leaves
+ 
+ And everything is rendered through App.js, and bootrapped to the browser
+ */
 
-cd into pieclient
-//add to project folder structure as below:
+// * cd into pie-client
+// * npm start
+
+// * Add Auth directory and files to pie-client
+
+/*
 components
-  Auth
-    Auth.js
-    Auth.css
+* Auth
+*   Auth.js
+*   Auth.css
+*/
 
-//lets add the following inside Auth.js:
+// * Build out Auth.js
+
+/*
 import React, {Component} from 'react';
 
 import './Auth.css';
@@ -34,32 +47,36 @@ class Auth extends Component {
     )
   }
 }
+*/
 
+// * ???
+
+/*
 export default Auth;
 
-//discuss Component import, 
-//class benefits over functional component (dynamic vs static), 
-//empty onClick handlers,
-//review labels and inputs
-//draw their attention to the fact that JSX again looks like HTML
+discuss Component import, 
+class benefits over functional component (dynamic vs static), 
+empty onClick handlers,
+review labels and inputs
+draw their attention to the fact that JSX again looks like HTML
 
-//let's import and use this in App.js, just render the component below the Navbar
+let's import and use this in App.js, just render the component below the Navbar
 
-//let's add to Auth.css:
+let's add to Auth.css:
 .cardLike{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-//discuss what absolute position is doing, top, left, and transform
+discuss what absolute position is doing, top, left, and transform
 
-//let's update Auth to toggle login/signup:
-//add to Auth.js class
+let's update Auth to toggle login/signup:
+add to Auth.js class
 state = {
     login: true
   }
-//add this just inside render
+add this just inside render
 let title = this.state.login ? "Login" : "Signup";
 let signupFields = !this.state.login 
   ? (
@@ -72,36 +89,36 @@ let signupFields = !this.state.login
   ) 
   : null
 
-//replaced Sign In! h1 with the below:
+replaced Sign In! h1 with the below:
 <h1>{title}</h1>
-//add signupFields below password input:
+add signupFields below password input:
 {signupFields}
 
-//show that by changing the login value in state, Auth will conditionally render content
+show that by changing the login value in state, Auth will conditionally render content
 
 
-//discuss 2-way binding, and add the following inside of state:
+discuss 2-way binding, and add the following inside of state:
 firstName:'',
 lastName: '',
 email: '',
 password: '',
 
-//let's have every input tag grab the value from state.  add the following to each <input/>:
+let's have every input tag grab the value from state.  add the following to each <input/>:
 value={this.state.whatever}
 
-//show students that now the inputs are locked.  why is this?
+show students that now the inputs are locked.  why is this?
 
-//let's add a changeHandler method inside the class:
+let's add a changeHandler method inside the class:
 handleChange = (event) => {
   this.setState({[event.target.id]: event.target.value})
 }
 
-//and let's add our onChange handler to each input:
+and let's add our onChange handler to each input:
 onChange={this.handleChange}
 
-//reiterate what's happening here: a change is detected, state is updated, that updated state is reflected in the DOM
+reiterate what's happening here: a change is detected, state is updated, that updated state is reflected in the DOM
 
-//finally, let's add our loginToggle method and use it:
+finally, let's add our loginToggle method and use it:
 
 loginToggle = (event) => {
   event.preventDefault();
@@ -115,11 +132,11 @@ loginToggle = (event) => {
   })
 }
 
-//inside the login/signup toggle button:
+inside the login/signup toggle button:
 onClick={this.loginToggle}
 
-//recap what's been built out, and how dynamic content can be created with React
-//mention to students that the data submission depends upon a server, which has yet to be built out
+recap what's been built out, and how dynamic content can be created with React
+mention to students that the data submission depends upon a server, which has yet to be built out
 */
 
  /*

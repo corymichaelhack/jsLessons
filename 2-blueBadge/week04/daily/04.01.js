@@ -35,7 +35,7 @@ console.log(swapper(obj, 'keya', 'keyb'));
 /**************************
 CODE CHALLENGE 1 - OBJECTS
 **************************/
-// * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
+// * Give Students about 30/40 minutes to work -  then go over solutions - Get students to Slack their own solutions after giving instructor solution
 
 /*
 Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
@@ -114,6 +114,8 @@ const objKeySwap = (obj, prop1, prop2) => {
 
 console.log(objKeySwap(sampleObj, 'firstName', 'lastName'));
 
-// * Following Challenge React Concept Talk One ( Intro to React )
+// * React Concept Talk One ( Intro to React )
+
+// *  React Concept Talk Two ( JSX & Create React App )
 
 // * Pie Client Walkthrough After Lunch

@@ -2,33 +2,35 @@
 PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 *********************/
 
-//start by showing them the pieclient and start the pie server so they know where we're headed
+// * Set up Project Folder Structure
 
 /*
-npm install -g create-react-app
 
-Folder Structure:
-  javascriptDec2018
-    javascriptLibrary
-      0-preWork
-      1-jsFundamentals
-      2-domFundamentals
-      3-apiFundamentals
-      4-reactFundamentals (new folder)
+  Inside javaScriptPrework add new folder
 
-cd into 4-reactFundamentals
+  4-react-fundamentals
 
-create-react-app pieclient
-cd into pieclient
+  Inside the terminal, in the 4-react-fundamentals directory
 
-Show folder structure:
-  pieclient
-    node_modules => explain how npm made this
-    public
-      favicon.ico => small icon on browser tab
-      index.html => only html file in app
+  create-react-app pie-client
+
+     cd intro pie-client and
+
+    code .
+
+    npm start
+*/
+
+// * Show folder structure
+
+/*
+ pieclient
+ node_modules => explain how npm made this
+ public
+       favicon.ico => small icon on browser tab
+       index.html => only html file in app
       manifest.json => for mobile
-    src
+      src
       App.css => css for app.js
       App.js => root component
       App.test.js => for testing (DELETE, but not yet)
@@ -40,35 +42,45 @@ Show folder structure:
     package-lock.json => more secure and detailed package.json
     package.json => lists dependencies in app
     README.md
+*/
 
-  Explain flow of React
-  
-  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
-  
-  FAST!!
+// * Explain React flow to browser
 
-  Run app => npm start
+//  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
 
-  Delete things and replace App.js with:
-  return (
-    <div className="app">
-      <h1>PIES!</h1>
-    </div>
-  )
+// * Tear our boiler App.js
+// Delete the import of logo in App.js
 
-Delete import of logo on top and registerServerWorker() in index.js
+// * Add new JSX to Return
 
-Run again => just plain PIES! on white
+/*
+Add this in the return
+*    return (
+    *       <div className="app">
+    *          <h1>PIES!</h1>
+    *        </div>
+      )
 
-Setup files and folders for Navbar:
+? Ask class about JSX - Check understanding and fill in gaps
+
+* Tear out more boiler plate in Index.js
+
+Delete import of service worker and registerServiceWorker() in index.js
+
+*/
+
+
+// * Setup files and folders for Navbar:
+/*
   components
-    Navbar
-      Navbar.js
-      Navbar.css
-      Logout
-        Logout.js
-        Logout.css
+*   Navbar
+*     Navbar.js
+*     Navbar.css
+*/
 
+// * Build NavBar Component
+
+/*
 in Navbar.js:
 
 import React from 'react';
@@ -85,89 +97,116 @@ const Navbar = (props) => {
 
 export default Navbar;
 
-explain that importing React allows us to do lots of things, chiefly using JSX
-css import is same as gold badge
-functional component shows properties passed to the component, which can be used inside
-every component will return some JSX, which looks like HTML and gets rendered to the page as HTML
+* Explain that we can apply styling to JSX with 'CSS in JS'
+* Explain we can also import assets like they were JavaScript
+* All components need to return JSX
+* Explain that since functional components are simply components, we can pass props as a parameter
+
+? Ask students about Prop - Check understanding and fill gaps
+*/
+
+// * Set up Assets
+/*
 
 lets add assets to project:
 source
-  assets
-    logout.jpg
-    pie.jpg
+*  assets
+*    logout.jpg
+*    pie.jpg
 
-lets update Navbar.css:
-nav{
-  margin: 0;
-  background-color: purple;
-  color: orange;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
+*/
+
+// * Update Navbar.css:
+
+/*
+
+nav {
+    margin: 0;
+    background-color: purple;
+    color: orange;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
 }
 
-nav img{
-  height: 100%;
+nav-img {
+    height: 100%;
 }
 
-lets use our css & assets in Navbar.js:
+*/
+
+// * Spruce up the Navbar
+
+/*
+
 import React from 'react';
 
 import './Navbar.css';
-import piePic from '../../assets/pie.jpeg'; *new*
+* import piePic from '../../assets/pie.jpeg'; *new*
 
 const Navbar = (props) => {
   return(
     <nav>
-      <img src={piePic} alt="Pie Picture" /> *new*
+*      <img src={piePic} alt="Pie Picture" /> *new*
     </nav>
   )
 }
 
 export default Navbar;
+*/
 
-lets create a logout component:
+// * Create Logout Component Folder Structure
+
+/*
 components
   Navbar
     Navbar.js
     Navbar.css
-    Logout
-      Logout.js
-      Logout.css
-
-inside Logout.js:
-import React from 'react';
-
-import './Logout.css';
-import logoutPic from '../../../assets/logout.png';
-
-const Logout = (props) => {
-  return(
-    <img className="Logout" src={logoutPic} alt="Logout" onClick={props.logout}/>
-  )
-}
-
-export default Logout;
-
-update Logout.css:
-.Logout{
-  height: 100%;
-}
-
-add a logout picture to assets
+*   Logout
+*     Logout.js
+*     Logout.css
 */
 
+// * add a logout picture to assets
+
+// * Build Logout Component
+
 /*
-  Assign gitbook on LMS
+    inside Logout.js:
+    import React from 'react';
+
+    import './Logout.css';
+    import logoutPic from '../../../assets/logout.png';
+
+    const Logout = (props) => {
+      return(
+        <img className="Logout" src={logoutPic} alt="Logout" onClick={props.logout}/>
+      )
+    }
+
+    export default Logout;
+*/
+
+// * Update Logout CSS
+
+  /*
+    .Logout{
+      height: 100%;
+    }
+
+*/
+
+// * Assign GitBook 
+
+/*
+  Slack out to instructor code - pin to channel
   
   clone repo and show how to add to folder:
   
   4-reactFundamentals
-    (clone here)
+*   (clone here)
     my-react-app
 */
 
-/*
-Gitbook parts 1-3, or continuing to move forward in the gitbook if past Ch 3
-*/
+// * GitBook parts 1-3, or continuing to move forward in the GitBook if past Ch 3
