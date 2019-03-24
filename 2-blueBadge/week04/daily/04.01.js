@@ -5,33 +5,7 @@ Welcome students to blue badge--talk about the goals of the badge, the project,
 and what their learning experience will look like
 
 Slack them the blue badge calendar:
-https://docs.google.com/document/d/1wVNLfg-n0DsS6sI-rgsIOOjTMO_D83OrnDXX0mAKs20/edit?usp=sharing
 */
-
-
-
-let swapper = (obj, prop1, prop2) => {
-  let temp = {};
-  for (let enumerable in obj){
-    // console.log(iterable)
-    temp[enumerable] = obj[enumerable];
-  }
-  let placeholder = temp[prop2];
-  temp[prop2] = temp[prop1];
-  temp[prop1] = placeholder;
-
-  return temp;
-}
-
-obj = {
-  keya: '1',
-  keyb: 2,
-  keyc: false
-}
-
-console.log(swapper(obj, 'keya', 'keyb'));
-
-
 /**************************
 CODE CHALLENGE 1 - OBJECTS
 **************************/
@@ -50,73 +24,28 @@ const person = {
 
 */
 
-// * Option 1 (Not Quite Right)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
+const testObj = {
+  language : 'JavaScript',
+  library : 'React'
+};
 
-function changePerson(obj, param1, param2) {
+const propSwap = (obj, propOne, propTwo) => {
+  let newObj = Object.assign({});
+
+  newObj[propOne] = obj[propTwo];
+  newObj[propTwo] = obj[propOne];
   
-  let temp = obj.param1;
-  obj.param1 = obj.param2;
-  obj.param2 = temp;
-
-  return obj
-}
-
-newObj = changePerson(person, 'fName', 'lName');
-
-console.log(newObj);
-
-// * Option 2 (Better)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
-
-const food = {
-  food1: 'Steak',
-  food2: 'Tacos'
-}
-
-const changePerson = (obj, prop1, prop2) => {
-  let newObj = Object.assign({}, obj);
-  // let newObj = obj;
-
-  let temp = newObj[prop1];
-  newObj[prop1] = newObj[prop2];
-  newObj[prop2] = temp;
-
   return newObj;
-}
-const newObject = changePerson(food, 'food1', 'food2');
-console.log(food, "Unchanged Object");
-console.log(newObject, 'Changed Object');
+};
 
-const sampleObj = {
-  firstName: 'Quinn',
-  lastName: 'Crabtree'
-}
-
-const objKeySwap = (obj, prop1, prop2) => {
-  const outputObj = {};
-
-  for (let key in obj){
-    outputObj[key] = obj[key];
-  }
-
-  outputObj[prop2] = obj[prop1];
-  outputObj[prop1] = obj[prop2];
-
-  return outputObj;
-}
-
-console.log(objKeySwap(sampleObj, 'firstName', 'lastName'));
+let obj = propSwap(testObj, 'language', 'library');
+console.log(obj);
+console.log(testObj);
 
 // * React Concept Talk One ( Intro to React )
 
 // * Assign GitBook 
+// https://eleven-fifty-academy.gitbook.io/javascript-301-reactfundamentals/
 
 /*
   Slack out to instructor code - pin to channel
