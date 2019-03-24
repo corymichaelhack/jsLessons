@@ -148,7 +148,7 @@ import './Navbar.css';
 const Navbar = (props) => {
   return(
     <nav>
-*      <img className="nav-img"  src={piePic} alt="Pie Picture" />
+*      <img className="nav-img"  src={piePic} alt="Pie" />
     </nav>
   )
 }
@@ -186,7 +186,7 @@ components
 
     const Logout = (props) => {
     return (
-        <img className="logout-img" src={LogoutPic} alt="Logout Picture" onClick={props.logout} />
+        <img className="logout-img" src={LogoutPic} alt="Logout" onClick={props.logout} />
     );
 };
 
