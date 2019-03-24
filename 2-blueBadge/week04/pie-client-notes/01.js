@@ -57,7 +57,7 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 Add this in the return
 *    return (
     *       <div className="app">
-    *          <h1>PIES!</h1>
+    *          <h1>Pies</h1>
     *        </div>
       )
 
@@ -72,7 +72,7 @@ Delete import of service worker and registerServiceWorker() in index.js
 
 // * Setup files and folders for Navbar:
 /*
-  components
+*  Components
 *   Navbar
 *     Navbar.js
 *     Navbar.css
@@ -90,7 +90,7 @@ import './Navbar.css';
 const Navbar = (props) => {
   return(
     <nav>
-      <h1>This is a Navbar!</h1>
+      <h1>Pie Client</h1>
     </nav>
   )
 }
@@ -102,7 +102,7 @@ export default Navbar;
 * All components need to return JSX
 * Explain that since functional components are simply components, we can pass props as a parameter
 
-? Ask students about Prop - Check understanding and fill gaps
+? Ask students about Props - Check understanding and fill gaps
 */
 
 // * Set up Assets
@@ -110,7 +110,7 @@ export default Navbar;
 
 lets add assets to project:
 source
-*  assets
+*  Assets
 *    logout.jpg
 *    pie.jpg
 
@@ -121,17 +121,17 @@ source
 /*
 
 nav {
-    margin: 0;
-    background-color: purple;
-    color: orange;
-    height: 50px;
-    display: flex;
+    margin : 0;
+    background-color: whitesmoke;
+    color : cadetblue;
+    height : 10vh;
+    display : flex;
     flex-direction: row;
     justify-content: space-between
 }
 
-nav-img {
-    height: 100%;
+.nav-img {
+    height : 100%;
 }
 
 */
@@ -143,18 +143,20 @@ nav-img {
 import React from 'react';
 
 import './Navbar.css';
-* import piePic from '../../assets/pie.jpeg'; *new*
+* import piePic from '../../assets/pie.jpeg';
 
 const Navbar = (props) => {
   return(
     <nav>
-*      <img src={piePic} alt="Pie Picture" /> *new*
+*      <img src={piePic} alt="Pie Picture" />
     </nav>
   )
 }
 
 export default Navbar;
 */
+
+// * Add Navbar to App.js - Should display a plain navbar with a pie in the top left corner and 'Pie Client' on far right
 
 // * Create Logout Component Folder Structure
 
@@ -168,8 +170,6 @@ components
 *     Logout.css
 */
 
-// * add a logout picture to assets
-
 // * Build Logout Component
 
 /*
@@ -180,10 +180,10 @@ components
     import logoutPic from '../../../assets/logout.png';
 
     const Logout = (props) => {
-      return(
-        <img className="Logout" src={logoutPic} alt="Logout" onClick={props.logout}/>
-      )
-    }
+    return (
+        <img className="logout-img" src={LogoutPic} alt="Logout Picture" onClick={props.logout} />
+    );
+};
 
     export default Logout;
 */
@@ -191,11 +191,13 @@ components
 // * Update Logout CSS
 
   /*
-    .Logout{
-      height: 100%;
-    }
+    .logout-img {
+    height : 100%;
+  }
 
 */
+
+// * Add Logout to Navbar
 
 // * Assign GitBook 
 

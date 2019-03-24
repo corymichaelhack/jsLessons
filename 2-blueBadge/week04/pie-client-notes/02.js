@@ -47,29 +47,36 @@ class Auth extends Component {
     )
   }
 }
+
+export default Auth;
 */
 
-// * ???
+// * Build out Auth CSS
 
 /*
-export default Auth;
+    .cardLike{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  * discuss what absolute position is doing, top, left, and transform
+*/
 
-discuss Component import, 
+// * Adding Auth to the App
+
+/*
+
+* discuss Component imports and exports 
+
+
 class benefits over functional component (dynamic vs static), 
 empty onClick handlers,
 review labels and inputs
-draw their attention to the fact that JSX again looks like HTML
 
-let's import and use this in App.js, just render the component below the Navbar
 
-let's add to Auth.css:
-.cardLike{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-discuss what absolute position is doing, top, left, and transform
+
 
 let's update Auth to toggle login/signup:
 add to Auth.js class
