@@ -30,7 +30,7 @@ const testObj = {
 };
 
 const propSwap = (obj, propOne, propTwo) => {
-  let newObj = Object.assign({});
+  let newObj = {};
 
   newObj[propOne] = obj[propTwo];
   newObj[propTwo] = obj[propOne];
@@ -41,6 +41,15 @@ const propSwap = (obj, propOne, propTwo) => {
 let obj = propSwap(testObj, 'language', 'library');
 console.log(obj);
 console.log(testObj);
+
+// let str = 'hello';
+// const stringEdit = (str) => {
+//   str = 'testing';
+//   console.log(str)
+// }
+
+// stringEdit(str);
+// console.log(str);
 
 // * React Concept Talk One ( Intro to React )
 
