@@ -20,12 +20,12 @@ import './Pies.css';
 
 const testData = [
   {
-    nameOfPie: 'Name of Pie',
-    baseOfPie: 'Base of Pie',
-    crust: 'Crust',
-    timeToBake: 'Time to Bake',
-    servings: 'Servings',
-    rating: 'Rating'
+    nameOfPie : 'Apple',
+    baseOfPie : 'Delicious Apples',
+    crust : 'Pastry',
+    timeToBake : '45 Minutes',
+    servings : '12',
+    rating : '4 Stars'
   },
   {
     nameOfPie: 'Cherry',
@@ -55,6 +55,16 @@ class Pies extends React.Component {
     })
     return(
       <table>
+      <thead>
+          <tr>
+              <td>Name of Pie</td>
+              <td>Base of Pie</td>
+              <td>Crust</td>
+              <td>Time To Bake</td>
+              <td>Servings</td>
+              <td>Rating</td>
+          </tr>
+      </thead>
         <tbody>
           {pieRows}
         </tbody>
