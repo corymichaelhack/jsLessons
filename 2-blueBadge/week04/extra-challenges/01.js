@@ -1,4 +1,6 @@
 /*
+    Date Object, Typechecking, Time based math
+
     Write a function that takes in two dates, and returns the number of minutes passed between them.
 
     Function should return an string message if it's arguments are not instances of the Date type.
