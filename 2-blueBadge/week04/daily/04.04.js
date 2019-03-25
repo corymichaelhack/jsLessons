@@ -89,4 +89,4 @@ let arrOfObjs = [
 
 const arrReducer
 
-// * Pie Client Walkthrough Part Four
+// * React Component LifeCycle Demo

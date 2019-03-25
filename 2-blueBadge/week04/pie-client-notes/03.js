@@ -3,50 +3,49 @@ PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
 **************************/
 
 /*
-//let's begin by further building out our folder structure:
+let's begin by further building out our folder structure:
 components
   Auth
   Navbar
-  Pies
-    Pies.js
-    Pies.css
-    Pie
-      Pie.js
-      Pie.css
+* Pies
+*   Pies.js
+*   Pies.css
+*   Pie
+*     Pie.js
 
-//next, let's add the following code to our Pies.js:
+next, let's add the following code to our Pies.js:
 import React, {Component} from 'react';
 
-import Pie from './Pie/Pie';
 import './Pies.css';
 
-class Pies extends Component {
-  testData = [
-    {
-      nameOfPie: 'Name of Pie',
-      baseOfPie: 'Base of Pie',
-      crust: 'Crust',
-      timeToBake: 'Time to Bake',
-      servings: 'Servings',
-      rating: 'Rating'
-    },
-    {
-      nameOfPie: 'Cherry',
-      baseOfPie: 'Fruit Filling',
-      crust: 'Pastry',
-      timeToBake: '30 mins',
-      servings: 97,
-      rating: 5 stars
-    }, 
-    {
-      nameOfPie: 'Pecan',
-      baseOfPie: 'Sugary Goodness',
-      crust: 'Graham Cracker',
-      timeToBake: '40 mins',
-      servings: 2,
-      rating: 3 stars
-    }
-  ]
+const testData = [
+  {
+    nameOfPie: 'Name of Pie',
+    baseOfPie: 'Base of Pie',
+    crust: 'Crust',
+    timeToBake: 'Time to Bake',
+    servings: 'Servings',
+    rating: 'Rating'
+  },
+  {
+    nameOfPie: 'Cherry',
+    baseOfPie: 'Fruit Filling',
+    crust: 'Pastry',
+    timeToBake: '30 mins',
+    servings: 97,
+    rating: 5 stars
+  },
+  {
+    nameOfPie: 'Pecan',
+    baseOfPie: 'Sugary Goodness',
+    crust: 'Graham Cracker',
+    timeToBake: '40 mins',
+    servings: 2,
+    rating: 3 stars
+  }
+];
+
+class Pies extends React.Component {
 
   render(){
     let pieRows = testData.map(pie => {
@@ -66,20 +65,28 @@ class Pies extends Component {
 
 export default Pies;
 
-//reiterate what React, {Component} imports are doing at top of file
-//observe that we're pulling in another component, Pie, and a CSS file
-//draw their attention to the fact that we're using a class component rather than a function component ->
-//we will eventually have this component changing information internally (fetch through componentDidMount)
-//explain use of dummy data
-//explain pieRows use of .map() inside render method--take every el from the array, output value to new array
-//explain how React needs a key to correctly update components
-//discuss how {} allow React to read any JavaScript expression as long as it is output as JSX
+? What are the imports doing here? 
+ observe that we're pulling in another component, Pie, and a CSS file
 
-//let's build out Pie.js as follows:
+ * draw their attention to the fact that we're using a class component rather than a function component and we're also accessing the React Component in a way we haven't before
+
+
+* explain use of dummy data - we will pull this data through an API later
+
+*explain pieRows use of .map() inside render method--take every el from the array, output value to new array
+
+* explain how React needs a key to correctly update components
+
+* discuss how {} allow React to read any JavaScript expression as long as it is output as JSX
+
+*/
+
+// * let's build out Pie.js as follows:
+/*
 import React from 'react';
 
 const Pie = (props) => {
-  return(
+  return (
     <tr>
       <td>{props.pie.nameOfPie}</td>
       <td>{props.pie.baseOfPie}</td>
@@ -93,34 +100,45 @@ const Pie = (props) => {
 
 export default Pie;
 
-//discuss our use of props--the prop comes from the JSX attributes in the component call, hence, key & pie are props
-//we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie.whatev in Pie.js
-//and get a data value back
-//draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
-//this can be demonstrated with the React extension
+* discuss our use of props--the prop comes from the JSX attributes in the component call, hence, key & pie are props
+* we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie.whatev in Pie.js and get a data value back
 
-//let's add the following to our Pies.css:
-table, td{
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+* draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
+* this can be demonstrated with the React extension
+*/
 
-table{
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%)
-}
+// * Adding CSS
 
-//finally, let's update App.js to look like the following:
-//add Pies import to top of file:
+/*
+
+* let's add the following to our Pies.css:
+    table, td {
+        padding: 10px;
+        border-collapse : collapse;
+    }
+
+    thead {
+        background-color : whitesmoke;
+        border-bottom: 2px solid darkslategray;
+    }
+
+    tr {
+        border-bottom: 1px solid lightgray;
+    }
+
+    table {
+        margin: 25vh auto;
+    }
+
+* finally, let's update App.js to look like the following:
 import Pies from './components/Pies/Pies';
 
-//fill in inside of App component:
+* fill in inside of App component:
   state = {
     sessionToken: undefined
   }
 
+ * Add viewConductor()
   viewConductor(){
     return this.state.sessionToken !== undefined ? <Pies/> : <Auth tokenHandler={this.storeSessionToken}/>
   }
@@ -128,9 +146,13 @@ import Pies from './components/Pies/Pies';
   render(){
     return(
       <div className="App">
-        <Navbar logout={this.removeSessionToken}/>
-        {this.viewConductor()}
+*       <Navbar logout={this.removeSessionToken}/>
+*       {this.viewConductor()}
       </div>
     )
   }
 */
+
+// * Go back and forth between having an undefined/defined token to demonstrate
+
+// * GitBook Chapters 6 - 7

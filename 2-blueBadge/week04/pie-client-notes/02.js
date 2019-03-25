@@ -57,11 +57,9 @@ export default Auth;
     .card-like {
         padding : 1em;
         background-color : whitesmoke;
-        border-radius : 15px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform : translate(-50%, -50%);
+        border-radius : 15px; 
+        width: 10vw;
+        margin: 25vh auto;
     }
 
     .display-block {
@@ -75,7 +73,7 @@ export default Auth;
 
 // * Talk about differences between Class and Functional Components & some benefits of reach
 
-// ! Note - The app won't do anything yet since the click handles are don't exist - Apps will refresh when buttons are clicked - that is expected
+// ! Note - The app won't do anything yet since the click handlers don't exist - Apps will refresh when buttons are clicked - that is expected
 
 // * Update Auth to toggle login / sign up
 /*
