@@ -14,7 +14,7 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
   create-react-app pie-client
 
-     cd intro pie-client and
+    cd intro pie-client and
 
     code .
 
@@ -25,23 +25,23 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
 /*
  pie-client
- node_modules => explain how npm made this
- public
-       favicon.ico => small icon on browser tab
-       index.html => only html file in app
-      manifest.json => for mobile
-      src
-      App.css => css for app.js
-      App.js => root component
-      App.test.js => for testing (DELETE, but not yet)
-      index.css => styling for entire project
-      index.js => middleman between index.html and App.js
-      logo.svg => (DELETE, but not yet)
-      ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
-    .gitignore => hides from git to prevent pushing to GitHub
-    package-lock.json => more secure and detailed package.json
-    package.json => lists dependencies in app
-    README.md
+   node_modules => explain how npm made this
+*  public
+    favicon.ico => small icon on browser tab
+    index.html => only html file in app
+    manifest.json => for mobile
+*  src
+    App.css => css for app.js
+    App.js => root component
+    App.test.js => for testing (DELETE, but not yet)
+    index.css => styling for entire project
+    index.js => middleman between index.html and App.js
+    logo.svg => (DELETE, but not yet)
+    ServiceWorker.js => for holding data off app for faster access (DELETE, but not yet)
+  .gitignore => hides from git to prevent pushing to GitHub
+  package-lock.json => more secure and detailed package.json
+  package.json => lists dependencies in app
+  README.md
 */
 
 // * Explain React flow to browser

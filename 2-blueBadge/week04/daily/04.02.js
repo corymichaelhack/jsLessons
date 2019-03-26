@@ -61,31 +61,32 @@ console.log(arrMultiplier(arrOne, arrTwo)); // passes
  
 // * Modify the challenge answer
 
-const arrMultiplier = (arrOne, arrTwo) => {
-  if(arrOne.length < 1 && arrTwo.length < 1) return 'Arrays need values';
+// const arrMultiplier = (arrOne, arrTwo) => {
+//   if(arrOne.length < 1 && arrTwo.length < 1) return 'Arrays need values';
 
-  // * Add Here
-  if(typeof arrOne != 'object' && typeof arrTwo != 'object') return "Arguments must be of type 'object'"
+//   // * Add Here
+//   if(typeof arrOne != 'object' && typeof arrTwo != 'object') return "Arguments must be of type 'object'"
 
-  if(!arrOne instanceof Array && !arrTwo instanceof Array) return 'Arguments must be arrays.';
+//   if(!arrOne instanceof Array && !arrTwo instanceof Array) return 'Arguments must be arrays.';
   
-  const limit = arrOne.length > arrTwo.length ? arrTwo.length : arrOne.length;
-  console.log(limit)
-  let newArr = [];
+//   const limit = arrOne.length > arrTwo.length ? arrTwo.length : arrOne.length;
 
-  for(i = 0; i < limit; i++) {
-      newArr.push(arrOne[i] * arrTwo[i]);
-  }
+//   console.log(limit)
+//   let newArr = [];
 
-  return newArr;
-}
+//   for(i = 0; i < limit; i++) {
+//       newArr.push(arrOne[i] * arrTwo[i]);
+//   }
+
+//   return newArr;
+// }
 
 /*
-  Are both necessary?  No, but it is better safe than sorry to include them.  
+    Are both necessary?  No, but it is better safe than sorry to include them.  
 
-  So by including both typeof and instanceof, we are checking the type to make sure it is nothing other than an array in multiple ways.  Again, is this necessary?  No, but helpful.
+    So by including both typeof and instanceof, we are checking the type to make sure it is nothing other than an array in multiple ways.  Again, is this necessary?  No, but helpful.
  */
 
 // * React Concept Talk Two ( JSX & Create React App )
 
-// * Pie Client Walkthrough Part Two
+// * Pie Client Walkthrough Part One

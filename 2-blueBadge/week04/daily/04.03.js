@@ -51,4 +51,4 @@ console.log(fixedString);
 
 // * React Concept Talk Four ( Class Components and State )
 
-// * Pie Client Walkthrough Part Three
+// * Pie Client Walkthrough Part Two
