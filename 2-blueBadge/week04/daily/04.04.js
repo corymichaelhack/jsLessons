@@ -5,11 +5,6 @@ ICE BREAKER CHALLENGE
 //pair students to solve the below challenge.  random pairs will present their solutions
 
 /* 
-  Write a function that takes an object as input.  The function should return the total length of 
-  all the characters in the keys of the object by alternately adding and subtracting the length of
-  each key.  Don't mutate(change) the original object.
-  
-
     BRONZE :: 
       Write a function that takes an object as a parameter. Return the total number of keys in the object.
 
