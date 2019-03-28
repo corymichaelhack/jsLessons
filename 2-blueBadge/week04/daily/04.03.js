@@ -3,49 +3,67 @@ CODE CHALLENGE 3 - STRINGS
 **************************/
 // * Give Students about 30/40 Minutes then go over solutions - Get students to Slack their own solutions after giving instructor solution
 /*
-Given the string -> 'Welcome to eleven fifty'
+  BRONZE ::
+    Create a function that takes in the string
 
-Create a function that accepts a string. 
-    
-In the function check to see if the value of the string is: 
-- of type string
-- has a length greater than zero
-- has a length less than 30
+    const stringCheck = '  Welcome to eleven fifty   ';
 
-If any of these are invalid send it to the else condition and show the message -> 'String must not be empty, null, or exceed 30 characters'
+    The function should remove extra whitespace before or after 
+    the characters is trimmed, and should change the string so that the 
+    the first 'e' and 'f' in 'eleven fifty' is capitalized. 
 
-If the string is valid, change the string so that the 'e' and the first 'f' in 'eleven fifty' is capitalized
+  SILVER ::
+    Add typechecking and make sure the string parameter is a string.
+    Also check to make sure the length is greater than zero, but less than
+    30. If the string is invalid, return a message for an invalid argument.
 
-Make sure that trailing whitespace is trimmed off of the string. 
-
-If finished, add a second param to the function for a callback function and instead of returning the data, place it inside of the callback arguments
+  GOLD ::
+    Create a callback function that prints a parameter to the console.
+    Add a second parameter to the string function from Silver and Bronze for a callback function.
+    Instead of returning the data, pass it callback function, and log it to the console.
 */
 
-const stringCheck = '    Welcome to eleven fifty     ';
+const stringCheck = '  Welcome to eleven fifty   ';
 
-const findTheCompany = (str, callback) => {
-  str = typeof (str) == 'string' && str.trim().length > 0 && str.trim().length < 30 ? str.trim() : false;
-  
-  if (str) {
-    str = str.replace('eleven fifty', 'Eleven Fifty');
-    return callback(false, str);
-  } else {
-    return callback(true, 'Error: String must not be empty and must be a string type');
-  }
+// * Bronze
+
+const bronze = str => {
+  return str.replace('eleven fifty', 'Eleven Fifty').trim();
 }
 
-const fixedString = findTheCompany(stringCheck, (err, message) => {
-  if (!err && message) {
-    return message;
-  } else {
-    return {
-      error: err,
-      message: message
-    }
-  }
-})
+console.log(bronze(stringCheck));
 
-console.log(fixedString);
+// * Silver
+
+const silver = str => {
+  if (typeof str !== 'string' || str.length < 1 || str.length > 30) {
+    return 'Invalid argument';
+  };
+
+  return str.replace('eleven fifty', 'Eleven Fifty').trim();
+};
+
+console.log(silver(stringCheck));
+
+// * Gold
+
+const logger = (data) => {
+  console.log(data);
+}
+
+const gold = (str, callback) => {
+  if (typeof str !== 'string' || str.length < 1 || str.length > 30) {
+    callback('Invalid argument');
+    return
+  };
+
+  let formattedString = str.replace('eleven fifty', 'Eleven Fifty').trim()
+  callback(formattedString);
+};
+
+
+gold(stringCheck, logger);
+
 
 // * React Concept Talk Three ( Functional Components )
 

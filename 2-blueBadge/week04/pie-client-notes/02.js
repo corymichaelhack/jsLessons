@@ -10,7 +10,7 @@ PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
  Components connecting to App.js are branches
  And Components connecting to our 'branch' components are leaves
 
- And everything is rendered through App.js, and bootrapped to the browser
+ And everything is rendered through App.js, and bootstrapped to the browser
  */
 
 // * cd into pie-client
@@ -57,7 +57,7 @@ export default Auth;
     .card-like {
         padding : 1em;
         background-color : whitesmoke;
-        border-radius : 15px; 
+        border-radius : 15px;
         width: 10vw;
         margin: 25vh auto;
     }
@@ -88,12 +88,12 @@ export default Auth;
   let title = this.state.login ? "Login" : "Signup";
 let signupFields = !this.state.login
   ? (
-    <>
-      <label htmlFor="firstName">First Name:</label><br/>
-      <input type="text" name="firstName" /><br/>
-      <label htmlFor="lastName">Last Name:</label><br/>
-      <input type="text" name="lastName" /><br/>
-    </>
+    <div>
+      <label className="display-block" htmlFor="firstName">First Name :</label>
+      <input className="display-block" type="text" name="firstName" />
+      <label className="display-block" htmlFor="lastName">Last Name :</label>
+      <input className="display-block" type="text" name="lastName" />
+  </div>
   )
   : null
 
@@ -111,7 +111,7 @@ lastName: '',
 email: '',
 password: '',
 
-let's have every input tag grab the value from state.  
+let's have every input tag grab the value from state.
 
 * add the following to each <input/>:
 value={this.state.whatever}
@@ -127,9 +127,9 @@ handleChange = (event) => {
 * and let's add our onChange handler to each input:
 onChange={this.handleChange}
 
-* reiterate what's happening here: 
+* reiterate what's happening here:
 
-user input (change) => state updated => Dom changes  
+user input (change) => state updated => Dom changes
 
 * finally add loginToggle method and use it:
 
