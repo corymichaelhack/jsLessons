@@ -28,10 +28,20 @@ const stringCheck = '  Welcome to eleven fifty   ';
 // * Bronze
 
 const bronze = str => {
-  return str.replace('eleven fifty', 'Eleven Fifty').trim();
+  let trimmedString = str.trim();
+
+  let replacedString = trimmedString.replace('eleven fifty', 'Eleven Fifty')
+
+  return replacedString;
 }
 
 console.log(bronze(stringCheck));
+
+const sleekerBronze = str => {
+  return str.replace('eleven fifty', 'Eleven Fifty').trim();
+}
+
+console.log(sleekerBronze(stringCheck));
 
 // * Silver
 

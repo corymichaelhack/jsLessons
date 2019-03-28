@@ -18,6 +18,11 @@ import React, {Component} from 'react';
 
 import './Pies.css';
 
+* We are going to 'mock' data here -
+* eventually this array will be removed,
+* but to make sure out table displays the 
+* way we want, we can mock it so see how it looks
+
 const testData = [
   {
     nameOfPie : 'Apple',
@@ -111,9 +116,11 @@ const Pie = (props) => {
 export default Pie;
 
 * discuss our use of props--the prop comes from the JSX attributes in the component call, hence, key & pie are props
+
 * we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie.whatev in Pie.js and get a data value back
 
 * draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
+
 * this can be demonstrated with the React extension
 */
 
