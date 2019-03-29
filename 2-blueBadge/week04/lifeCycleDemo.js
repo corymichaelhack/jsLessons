@@ -7,10 +7,12 @@ javaScriptLibrary
   4-ReactFundamentals
     pieclient
     react-gitbook
-    lifecycle-demo
+*   lifecycle-demo
 
-let's go ahead and take out App.js code
-let's make our render() method look like the following:
+* Tear out boiler plate
+
+* Make render look like this
+
 render() {
     console.log('[App.js] inside render()')
     return (
@@ -18,58 +20,63 @@ render() {
       </div>
     );
   }
+
 reiterate the job of render
 
-let's make our constructor look like the following:
+* set up the constructor
 constructor(props){
   console.log('[App.js] inside constructor()')
   super(props);
   this.state = {
-    name: 'Alecx Moritz',
-    swapiPeople: {}
+    name: 'Calcifer',
+    ghibliFilms: {}
   }
 }
 
 reiterate the role of the constructor, discuss how we now have 2 lifecycle methods we're using
 
-run npm start on the app, discuss the console.logs we see
+* run npm start on the app, discuss the console.logs we see
 
-let's next add a componentDidMount() lifecycle method:
-componentDidMount(){
-  console.log('[App.js] inside componentDidMount()');
-  fetch('https://swapi.co/api/people')
-    .then(res => res.json())
-    .then(json => this.setState({swapiPeople: json.results}, () => console.log(this.state)))
-    .catch(err => console.log(err));
-}
+* add a componentDidMount() lifecycle method:
+  componentDidMount = () => {
+    fetch('https://ghibliapi.herokuapp.com/films')
+      .then(response => response.json())
+      .then(filmData => {
+        this.setState({
+          ghibliFilms : filmData
+        }, () => console.log(this.state))
+      })
+      .catch(err => console.log(err));
+  }
 
 discuss the purpose of fetch, how we handle the results.  touch on promises
 mention again that setState allows us to update a single value inside our state object,
 we don't have to update everything.
-/tell them about how setState allows a callback function, ask them to find the callback function
 
-break the swapi url we use to connect so they can see .catch in action
+* tell them about how setState allows a callback function, ask them to find the callback function
 
-let's finish by adding the below inside our componentDidMount():
-setInterval(() => console.log('this output is from our interval'), 10000)
-discuss how this is created on the window object, and is thus not monitored by react
-that means that if the App component is no longer mounted, the timer continues to run
-we need to account for this to avoid memory leaks!
+! break the swapi url we use to connect so they can see .catch in action
 
-let's add the following inside our render:
-<button onClick={this.changeName}>Name Changer</button>
+! Skip setInterval stuff
 
-let's build out a changeName method:
-changeName = () => {
-  let currentName = this.state.name;
-  currentName = this.state.name === 'Alecx Moritz' ? 'David Whitt' : 'Alecx Moritz';
-  this.setState({name: currentName}, () => console.log(this.state))
-}
+* build out a change name method
+
+  changeName = () => {
+    let currentName = this.state.name === 'Calcifer' ? 'Cat Bus' : 'Calcifer';
+    this.setState({
+      name : currentName
+    });
+  };
+
 discuss how this method works
 have them pay attention to the fact that render() fires every time the changeName method works
 why is that?
 
-finally, have them build out shouldComponentUpdate():
+* add the following inside our render's return
+<button onClick={this.changeName}>Name Changer</button>
+
+
+* finally, have them build out shouldComponentUpdate():
 shouldComponentUpdate(){
   console.log('[App.js] inside shouldComponentUpdate()');
   return true;
@@ -77,12 +84,38 @@ shouldComponentUpdate(){
 
 have them pay attention to the fact that constructor() and componentDidMount() are no longer firing
 in the console.  we're alternating between shouldComponentUpdate() and render().
-build out componentWillUnmount() to clear intervals:
+
+* Add Components folder to src & create Message.js
+
+* Build Message component
+
+import React from 'react';
+
+class Message extends React.Component {
+    render() {
+        return (
+            <p>Hi Calcifer!</p>
+        )
+    }
+}
+
+export default Message;
+
+* build out componentWillUnmount()
 
 componentWillUnmount(){
-  console.log('[App.js] inside componentWillUnmount()')
-  clearInterval();
+  console.log('[Message.js] inside componentWillUnmount()')
 }
+
+* import Message into App.js
+
+* create JSX expression to toggle between showing/hiding message -right- under the render
+const messageToggle = this.state.name === 'Calcifer' ? <Message /> : null
+
+* below the button, add messageToggle to the return
+{ messageToggle }
+
+Hit the button to show the Message component disappearing and to see the componentWillUnmount() fire
 */
 
 // * GitBook Chapter 8, especially the NYT app + Any other Apps
