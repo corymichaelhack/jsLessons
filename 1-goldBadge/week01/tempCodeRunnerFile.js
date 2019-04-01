@@ -1,10 +1,6 @@
-function hoistTest(){
-  console.log(first, second, third);
-  if (true){
-    var first = 1;
-    let second = 2;
-    const third = 3;
-  }
-  console.log(first, second, third);
-}
-hoistTest();
+var x = 10;
+var x = 5;
+
+let y = 7;
+// let y = 12;
+console.log(x,y);

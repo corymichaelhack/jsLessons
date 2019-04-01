@@ -48,11 +48,13 @@
       Make button toggle between red and blue using DOM
       */
       document.getElementById('clickThisButton').addEventListener('click', (details) => {
-        if (details.target.style.backgroundColor == 'red') {
-          details.target.style.backgroundColor = 'blue';
+        console.log(details, details.target.style.background);
+        if (details.target.style.background == "red") {
+          details.target.style.background = "blue";
         } else {
-        details.target.style.backgroundColor = 'red';
+        details.target.style.background = "red";
         }
+        console.log(details, details.target.style.background);
       });
 
       // 5

@@ -173,19 +173,22 @@ ARROW FUNCTIONS
   09-arrowFunctions.js
 **************************/
 
-// Normal
+// Normal function declaration
 function coffee() {
-  console.log('coffee is good');
+  return 'coffee is good';
 }
 
-// Fat Arrow
-let coffee = () => { 
-  console.log('something') 
+//normal function expression
+let tea = function(){
+  return 'tea is healthy';
 }
 
-coffee();//notice that arrow functions are anonymous
+// Fat Arrow function expression
+let hotChocoloate = () => { 
+  return 'hot chocolate is king!';
+}
 
-var cats = (kitten, puppy) => {console.log(`I have ${kitten} cat(s) and ${puppy} dog(s)`)} //does this function get hoisted?  demonstrate that it doesn't
+var cats = (kitten, puppy) => {return `I have ${kitten} cat(s) and ${puppy} dog(s)`} //does this function get hoisted?  demonstrate that it doesn't
 
 cats(1, 12);
 

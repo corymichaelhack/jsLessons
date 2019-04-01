@@ -9,13 +9,10 @@ Check installs
   Git
   GitHub
   VS.Code
-    node exec
+    code runner/node exec
     open-in-browser
-  SIS => LMS
-
-  JS Pretest (as they come in) - this just needs to be made visible to them through the sis
-
-Slack out 3 week calendar from Google Drive -- https://docs.google.com/document/d/1M_uaSHksc2Y-GGuiNtOA8E8AD8Q-rotNEgzzT6laV2k/edit?usp=sharing
+  Canvas
+  Zoom
 
 Folder Structure:
   javascriptMay2018 (or whatever)
@@ -29,7 +26,7 @@ Folder Structure:
 Introduction to Class Assignment:
 Students will pair with a partner to do the following:
 Design a static webpage that explains who you and your partner are, why you each decided to attend 
-1150 Academy, what your experience is with coding, and a picture of your favorite Marvel character.
+1150 Academy, what your experience is with coding, and a picture of your favorite tv show character.
 
 Your site must include an h1 tag, p tags, div tags, and img tags.
 Your site needs to be styled using CSS.

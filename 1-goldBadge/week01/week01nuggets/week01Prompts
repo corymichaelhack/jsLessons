@@ -5,7 +5,7 @@ Save the user input in 3 separate variables.  Once the user has input their info
 console.log a sentence using those 3 variables.  For example: 'I shopped at *Target* for *5* *apples*' may be
 output to the console.  
 
-Finally, ask for more input from the user that requests an array.  Save this array in a variable and
+Finally, ask for more input from the user that requests an array*****.  Save this array in a variable and
 console.log that variable.  If you console.log(typeof <your array here>), what does the console show?
 What does that teach you?
 
@@ -35,10 +35,11 @@ For instance, if sampleObject.sampleKey is a string, it will console.log 'the va
 sampleObject.sampleKey is a number, it will console.log 'the value is a number'.  Make sure your conditional
 works for objects too!
 
-If you have successfully solved this challenge with if-elseif statement, try it with a ternary.
+If you have successfully solved this challenge with an if-elseif statement, try it with a ternary.
 
-Third challenge:
+Third challenge*****:
 Submit a text response that explains the below for the sample JavaScript code provided:
+*****how many times does the play function get called
 1)  Why does the first console.log in the function output 'a' for first, but 'middleName' for second?
 2)  Why does the final console.log in the function output 'middleName' for second, but '3' for third?
 3)  Why does the first console.log in the function output 'undefined' for third?

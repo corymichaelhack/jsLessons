@@ -1,18 +1,21 @@
 First challenge:
+******give them the array (danger of using an array of 1, 2, etc. numbers)
 Write an array of numbers.  Write a for loop that console.logs 'your number is even' if the number is even
 and 'your number is odd' if your number is odd.
 
-Once you've solved this with a for loop, solve this with a for-of loop.  Finally, solve this with a 
+Once you've solved this with a for loop, solve this with a for-of loop ****for-in.  Finally, solve this with a 
 forEach loop.
 
-Second challenge:
-Write a function that accepts an object as input.  Your function should return an array that has
+Second challenge:******consider using a for loop to solve this, to avoid googling Object.keys/values
+Write a function that accepts an object ****give the object as input.  Your function should return 
+an array that has
 four elements inside: a)  an array of all the keys in the object,
 b)  an array of all the values in the object, c)  the number of key-value pairs in the object
 
 Make sure to console.log what your function returns so you can see it!
 
-Third challenge:
+Third challenge:******clarity
+******make the second function have a more specific job
 Write a function that has a loop.  The loop should run 10 times and call a second function.  Every time
 the second function is called, it should add a little bit more to a variable passed to it from the first
 function.  Once the loop is finished, return the variable within the first function.
@@ -29,4 +32,4 @@ Inside first function:
   return the variable
 
 Outside first function:
-  console.log the returned variable
+  console.log the returned variable *****make use of console.log outside function more explicit
