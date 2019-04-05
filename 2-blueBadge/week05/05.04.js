@@ -6,8 +6,7 @@ DAY THREE REACT CHALLENGE
 
   Use the DayThreeComp to build a component that lets the user type into an input field.
   Make sure that your input field's value is stored in state, and that state shows the value
-  in the input field (2-way data binding).  Include an image of your choice above the input
-  field.  Style this component however you would like.
+  in the input field (2-way data binding).  
 
     SILVER CHALLENGE
   
@@ -23,8 +22,7 @@ DAY THREE REACT CHALLENGE
   
   Do the Silver Challenge, but make the image from the bronze challenge display through a 
   functional component.  Pass the image to be displayed to the functional component as a prop
-  (containing a url, meaning that the picture isn't saved locally).  Every time the user types 
-  into one of the input fields, make the image change in this functional component.
+  (containing a url, meaning that the picture isn't saved locally).  
 */
 
 /**************************
@@ -36,7 +34,7 @@ sequelize
 postgres
 pgAdmin
 bodyParser
-CRUD
+* CRUD
 */
 /*
 In your models folder, create a new file called user.js
@@ -81,7 +79,7 @@ app.use('/auth', user)
 
 /* 
 If you run it, it will throw an error because userconroller is empty
-Create models folder with headers.js inside:
+Create middleware folder with headers.js inside:
 */
 
 module.exports = (req, res, next) => {
@@ -97,7 +95,14 @@ app.use(require('./middleware/headers'))
 
 // In usercontroller.js:
 // Delete app.use('/auth', user)
+// npm install bcryptjs
+// npm install jsonwebtoken
+
+
 // Then add:
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
+
 router.post('/signup', (req, res) => {
   User.create({
     firstName: req.body.firstName,
@@ -123,19 +128,15 @@ module.exports = router
 
 /*
 In .env file, add JWT_SECRET
-npm install bcrypt (might have to install bcryptjs)
-npm install jsonwebtoken
 Run code and see if you add a user to your db
 In usercontroller.js (above module.exports = router): 
 */
-const bcrypt = require('bcryptjs') // or bcrypt (whichever you installed)
-const jwt = require('jsonwebtoken')
+
 // signup code here
 
 router.post('/signin', (req, res) => {
   User.findOne({ where: { email: req.body.email }})
-    .then(
-      user => {
+    .then(user => {
         if (user) {
           bcrypt.compare(req.body.password, user.password, (err, matches) => {
             if (matches) {
@@ -177,7 +178,7 @@ const validateSession = (req, res, next) => {
         .catch(err => next(err))
     } else {
       req.errors = err
-      return next()
+      return res.status(500).send('Authorized');
     }
   })
 }
