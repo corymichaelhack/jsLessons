@@ -37,6 +37,27 @@ make sure validate-session works by testing the dummy /animal/test-route endpoin
 React WorkoutLog Client Day 2
 */
 
+// * Blue Badge Project Planning Meeting Two
+
 /*
-Pie Client-Server Connection
+  * Iron out :: 
+    - CRUD tables - what data is needed, how do they related to users? Any foreseeable problems?
+
+    - Third Party APIs - have we investigated them? To they use CORS? How do we interact with this API?
+
+    - Key features & Functionality - Make sure we're getting full CRUD
+
+    - Stretch Goals - Things to save until the end, or ways for students to push themselves?
+    
+    - Foreseeable Challenges - Anything they need to knock out right away? Do they want/have the capability to to work with images?
+
+  ! For next Planning Meeting
+    - Consider different end points needed to get core functionality
+    - CRUD & User table column names & types
+    - What views will the client have? 
+    - How does the App flow when being used?
+    - 
+    
+    - If they want images, how do they want to do it ( saving URLS or multer )
+
 */
