@@ -1,8 +1,12 @@
-// Create, Update and Delete
+// Create, Read, Update and Delete
 
 // * Route needs to be added to index.js
 
+// var animal = require('./controllers/animal-controller');
 
+// app.use('/animal', animal);
+
+// * router
 
 var express = require('express');
 var router = express.Router();
@@ -26,6 +30,12 @@ router.post('/create', (req, res) => {
             }
         );
 });
+
+router.get('/', (req, res) => {
+    Animal.findAll()
+        .then(animals => res.status(200).json(animals))
+        .catch(err => res.status(500).json({ error : err }))
+})
 
 // Silver
 router.delete('/:id', (req, res) => {
@@ -63,6 +73,5 @@ router.put('/:id', (req, res) => {
             }
         )
 })
-
 
 module.exports = router;

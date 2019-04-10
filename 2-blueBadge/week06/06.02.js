@@ -1,18 +1,7 @@
 /**********************************************
-DAY 2 EXPRESS, SEQUELIZE, NODE SERVER CHALLENGE
+Node Challenge 2 - Unauthorized CRUD 
+( Sequelize, Express, CRUD )
 **********************************************/
-
-/*
-have students update the following files:
-validate-session.js (middleware)
-animal.js (models)
-index.js
-animal-controller (controllers)
-
-make sure students have deleted old users from the database, created new, and tested login
-
-make sure validate-session works by testing the dummy /animal/test-route endpoint
-*/
 
 /*
   BRONZE CHALLENGE:
@@ -20,6 +9,7 @@ make sure validate-session works by testing the dummy /animal/test-route endpoin
   from the animal model to the database, including # of legs, boolean predator value, and its name.
   If the animal is correctly saved in the database, inform the user.  Otherwise, alert the user if 
   there's an error.
+  Make another '/' endpoint that will return all the animals created in the database. Like the others, send appropriate statuses based on if the request succeeds or not.
 
   SILVER CHALLENGE:
   Complete the bronze challenge, then make a new '/delete' endpoint that will delete an animal from

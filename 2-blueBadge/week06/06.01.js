@@ -76,7 +76,8 @@
 // * Node Challenge
 
 /**********************************************
-DAY 1 EXPRESS, SEQUELIZE, NODE SERVER CHALLENGE
+Node Challenge 2 - User Auth
+( Sequelize, Express, jsonwebtoken, bcrypt )
 **********************************************/
 
 /*
