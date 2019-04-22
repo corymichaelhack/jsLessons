@@ -392,12 +392,12 @@ let sent = 'This sentence will be split into individual parts ';
  * 
  * Null
  * ********
- * Has no value but exists
+ * Value has been intentionally set to nothing - Empty Box
  * let isnt = null;
  * 
  * Undefined
  * **********
- * Does not exist yet
+ * Value begins as nothing - Unbuilt box
  * let wont = undefined; 
  * 
  * Numbers

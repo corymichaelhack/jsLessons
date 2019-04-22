@@ -35,7 +35,7 @@ git is how we keep track of different versions of our code on our machine with t
 
 /*
 Folder structure setup:
-  javascriptMay2018 (or whatever)
+  javascriptMay2019 (or whatever)
     javascriptLibrary
       0-prework
         1-htmlBasics

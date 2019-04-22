@@ -304,7 +304,7 @@ var json = {
 
 // Object.keys() and Object.values()
 
-spa
+
 
 console.log(Object.keys(spaceJam.toonSquad)); // ['human', 'rabbit1', 'rabbit2', ...]
 console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] => (Just gives the index numbers of 'Daffy Duck')
