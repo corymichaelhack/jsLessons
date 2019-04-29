@@ -45,14 +45,16 @@ VARIABLES
   02-declarations.js
 **************************/
 // What is a variable?
-var a = 1; 
-var b = 2; 
+// Variables are containers for storing data values (words, sentences, numbers, objects, etc)
+let a = 1; 
+let b = 2; 
 console.log(a + b); // 3
 
 //notes on variables:
 //1)  a variable must begin with a letter, underscore, or dollar sign
 //2)  numbers may follow the above characters, but cannot come first
 //3)  JavaScript is case sensitive-- 'hello' and 'HeLlo' are different variables
+//4)  variables must be identified with unique names
 
 /**************************
 DECLARATIONS
@@ -66,9 +68,10 @@ Declarations are the LEFT SIDE of a variable
 Initializations are the RIGHT SIDE of a variable
   It sets the value of the variable
   It incorporates the variable name (x), the assignment operator (=), and the value (10) => x = 10
+  (=) assignment operator is NOT the same as the equal operator (== or ===)
 */
 
-var x;
+let x;
 console.log('Declaration:', x); // Declaration: undefined
 
 x = 10;
@@ -77,7 +80,7 @@ console.log('Initialization 1:', x); // Initialization 1: 10
 x = 33;
 console.log('Initialization 2:', x); // Initialization 2: 33
 
-var y = 'Hello';
+let y = 'Hello';
 console.log('Both:',x, y); // Both: 33 hello
 
 /*
