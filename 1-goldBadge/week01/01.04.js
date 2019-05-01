@@ -10,6 +10,7 @@ For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
 For any other number, console.log the value
 */
 
+
 function fizzBuzz() {  
   for (var i = 0; i <= 100; i++) {
     if ( i % 15 == 0 ) {

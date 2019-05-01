@@ -30,26 +30,35 @@ Talk about "Think Like a Programmer", chapters 1-3, 8
     progress
 
 
-    Write a function that checks to see if a word is a palindrome. A palindrome is a word that is spelled the same backwards and foward
+Farmer Jebb has brought his produce to the farmers market! He is excited because he has a new system to keep track of all the produce he sells to hipster vegans like Ronan and Kayden. He is a tech savy farmer, so hes made an array of his produce. 
+
+let veggAmounts = [{name:'Sweet Potatoes',amount:4},{name:'Heirloom Tomatoes',amount:15},{name:'Kolrabi',amount:2},{name:'Honey Combs',amount:1}]
+
+He also has an array of the prices for each one :
+let veggPrices = [{name:'Sweet Potatoes',price:2},{name:'Heirloom Tomatoes',price:1.50},{name:'Kolrabi',price:4},{name:'Honey Combs',price:10}]
+
+Oh no! Farmer Jebb needs both the amount and the prices to be in the same array of objects. Write a function that makes checks to see if for each object in the veggAmount array has a matching veggie in the veggPrices. If they match, add that price to correct object in the veggAmounts array. Console log the new array
+
 
     Tools:
     function 
     if statement
-    method reverse for arrays
-    .split('') to turn string into array
-    might need one more tool to mush array back together... 
-    need to give a boolean value
-    
+    for loop 
+    way to add new key/pair values to an object
+
 */
-function checker(palidrome){
-let rev = palidrome.split('').reverse().join('');
 
-console.log(rev);
+let veggAmounts = [{name:'Sweet Potatoes',amount:4},{name:'Heirloom Tomatoes',amount:15},{name:'Kolrabi',amount:2},{name:'Honey Combs',amount:1}]
 
-  if(palindrome == rev){
-    console.log(true);
-  } else {
-    console.log(false);
+let veggPrices = [{name:'Sweet Potatoes',price:2},{name:'Heirloom Tomatoes',price:1.50},{name:'Kolrabi',price:4},{name:'Honey Combs',price:10}]
+
+function veggPricePairing(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    if(arr1[i].name == arr2[i].name){
+      arr1[i].price = arr2[i].price;
+    }
   }
+return arr1;
 }
-checker('bob');
+
+console.log(veggPricePairing(veggAmounts, veggPrices));

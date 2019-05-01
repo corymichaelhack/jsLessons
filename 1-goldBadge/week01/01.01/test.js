@@ -8,7 +8,7 @@ function main(){
 }
 
 function mystery(w,z,y) {
-console.log(y + "+" + w + "=" + z )
+console.log(`${y} + ${w} = ${z}`);
 }
 
 main();

@@ -535,6 +535,53 @@ function tipCalc(bill) {
 let totalTip = tipCalc(19.88);
 console.log(totalTip);
 
+
+//**********************/
+//Constructor Function 
+//**********************/
+
+//Functions are terific ways to, using parameters, create a unique solution for different circumstances. Say we needed several different objects, all with the same keys but different values. I could do this one of two different ways
+ //1
+ let person1 = {
+   name:'Macy', 
+   age: 24, 
+   canVote: true
+ };
+
+ let person2 = {
+  name:'Jeremy', 
+  age: 15, 
+  canVote: false
+ };
+
+ let person3 = {
+  name:'Felicity', 
+  age: 38, 
+  canVote: true
+ };
+
+ //Thats a lot of repetitive coding! There has to be a better way to be able to create multiple objects that have the same structures with different values? Yes! And theyre called constructor functions!
+
+ function Person(name,age,canVote){
+// (1)      (2)       (3)
+   this.name = name;
+// (4)  (5)    (6)
+   this.age = age;
+   this.canVote = canVote;
+ }
+
+ let person4 = new Person('James',80,true); 
+ //            (7)   (8)
+
+
+
+/*
+1- fu
+
+
+
+ */
+
 /**************************
 Git Stuff for 1-jsFundamentals
 **************************/
