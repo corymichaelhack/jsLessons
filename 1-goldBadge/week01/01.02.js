@@ -27,6 +27,15 @@ javascriptLibrary
   1-jsFundamentals (git repo here)
 **************************/
 
+/* 
+
+GIT is a revision control system, a tool to manage your source code history. 
+GITHUB is a hosting service for Git repositories. 
+
+So they are not the same thing: Git is the tool, GitHub is the service for projects that use Git.
+
+*/
+
 /*
 git init
 git status
@@ -43,6 +52,12 @@ SCOPE
 
 /*
 What is scope?
+
+    JavaScript has function scope: Each function creates a new scope.
+
+    Scope determines the accessibility (visibility) of these variables.
+
+    Variables defined inside a function are not accessible (visible) from outside the function.
 
 JS has both LOCAL and GLOBAL scope
 
@@ -172,6 +187,13 @@ LITERALS
 1-grammarAndTypes
   06-literals.js
 **************************/
+
+/* 
+  The JavaScript syntax defines two types of values: Fixed values and variable values.
+
+  Fixed values are called literals. 
+  Variable values are called variables.
+*/
 
 let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 console.log(days.toString()); //Monday, Tuesday, Wednesday, Thursday, Friday
@@ -309,7 +331,7 @@ If it is your name, console.log 'Hello, my name is <your name>';
 If the name does not match, console.log 'Hello, what is your name?'
 */
 
-var name = 'Tyler';
+let name = 'Tyler';
 
 if ('Tyler' == name) {
   console.log('Hello, my name is', name);
@@ -323,7 +345,7 @@ if ('Tyler' == name) {
  Capitalize the FIRST LETTER of name ONLY
 */
 
-var name = 'tyleR';
+let name = 'tyleR';
 
 if (name[0] == name[0].toUpperCase()) {
   firstLetter = name[0] + name.slice(1).toLowerCase()
@@ -348,7 +370,7 @@ If the age is at least 21, console.log 'Yay! You can drink!'
 If the age is at least 25, console.log 'Yay! You can rent a car!'
 */
 
-var age = 30;
+let age = 30;
 
 if (age >= 25) {
 	console.log("Yay! You can rent a car!");
@@ -365,7 +387,7 @@ if (age >= 25) {
 SWITCH
 **************************/
 
-var friend;
+let friend;
 
 switch (friend) {
   case "Tom":
@@ -381,6 +403,8 @@ switch (friend) {
     console.log(`I'm sorry, ${friend}, but do I know you?`); // EXPLAIN STRING INTERPOLATION
 }
 
+// String interpolation allows us to create a placeholder for the value of a variable that we choose to assign.
+
 /*
 Challenge:
 Write a dessert menu;
@@ -390,7 +414,7 @@ If the dessert is ice cream, console.log 'I scream for ice cream!'
 Otherwise, have your switch statement console.log 'Not on the menu.'
 */
 
-var dessert = 'carrots';
+let dessert = 'carrots';
 
 switch (dessert) {
   case 'pie':
@@ -408,7 +432,7 @@ switch (dessert) {
 
 // Switches with multiple conditions:
 
-var yep = -8;
+let yep = -8;
 
 switch (true) {
   case (yep < 0 && yep > -10): 
@@ -418,7 +442,7 @@ switch (true) {
     console.log('worked!');
     break;
   default: 
-    console.log('didnt work');
+    console.log('didn\'t work');
 }
 
 
@@ -429,9 +453,9 @@ TERNARIES
   03-ternaries.js
 **************************/
 
-//What is a ternary?
+//What is a ternary? Shorthand version of an if statement.
 
-var x = 6;
+let x = 6;
 
 //Ternary:
 
@@ -477,7 +501,7 @@ if (age >= 25) {
 
 */
 
-var age = 10;
+let age = 10;
 
 
 (age >= 25) ? console.log('Yay! You can rent a car!') : (age >= 21) ? console.log('Yay! You can drink!') : (age >= 18 ) ? console.log('Yay! You can vote!') : console.log("Sorry, you're too young to do anything fun.");
@@ -485,7 +509,7 @@ var age = 10;
 
 // And with multiple conditions (like the switch statement):
 
-var yep = -8;
+let yep = -8;
 
 switch (true) {
   case (yep < 0 && yep > -10): 
@@ -526,4 +550,5 @@ Conditionals
 Ternaries
 */
 
-// Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+// Challenge 1 - DUE BY THURSDAY MORNING
+// Quiz in canvas called OPERATORS - DUE BY 10PM

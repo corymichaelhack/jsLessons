@@ -46,8 +46,8 @@ VARIABLES
 **************************/
 // What is a variable?
 // Variables are containers for storing data values (words, sentences, numbers, objects, etc)
-let a = 1; 
-let b = 2; 
+var a = 1; 
+var b = 2; 
 console.log(a + b); // 3
 
 //notes on variables:
@@ -71,7 +71,7 @@ Initializations are the RIGHT SIDE of a variable
   (=) assignment operator is NOT the same as the equal operator (== or ===)
 */
 
-let x;
+var x;
 console.log('Declaration:', x); // Declaration: undefined
 
 x = 10;
@@ -80,7 +80,7 @@ console.log('Initialization 1:', x); // Initialization 1: 10
 x = 33;
 console.log('Initialization 2:', x); // Initialization 2: 33
 
-let y = 'Hello';
+var y = 'Hello';
 console.log('Both:',x, y); // Both: 33 hello
 
 /*
@@ -91,7 +91,7 @@ Let = 'new' keyword for variables (introduced with ES6)
 Const = also 'new'; declares unchangeable variables
 */
 
-let today = 'great!';
+var today = 'great!';
 const elevenFifty = 'Wonderful!';
 console.log(today, elevenFifty); // great! Wonderful!
 
@@ -125,7 +125,7 @@ Null = empty value (not 0; not undefined)
 It is like an empty container; nothing is in it, but it still exists as a space to fill
 */
 
-var empty = null;
+let empty = null;
 console.log(empty); // null
 
 // Undefined
@@ -135,7 +135,7 @@ Undefined = no value assigned (not even an empty container)
 UNDEFINED IS NOT AN ERROR
 */
 
-var undef = undefined;
+let undef = undefined;
 console.log(undef); // undefined
 
 let grass;
@@ -149,19 +149,19 @@ undefined packages are packages that have nothing in them, but have not yet been
 */
 
 // Numbers
-var degrees = 90;
+let degrees = 90;
 console.log(degrees);
 
-var precise = 999999999999999; // 15 9's
+let precise = 999999999999999; // 15 9's
 console.log(precise); // 999999999999999
 
-var rounded = 9999999999999999; // (One more 9)
+let rounded = 9999999999999999; // (One more 9)
 console.log(rounded); // 10000000000000000
 
-var notQuite = 0.2 + 0.1;
+let notQuite = 0.2 + 0.1;
 console.log(notQuite); // 0.30000000000000004
 
-var numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
+let numbersAreHard = (0.2 * 10 + 0.1 * 10) / 10;
 console.log(numbersAreHard); // 0.3
 
 // Quickly discuss number objects (in GitBook Javascript Fundies 6.1)

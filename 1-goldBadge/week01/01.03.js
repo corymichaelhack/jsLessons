@@ -1,6 +1,9 @@
 /**************************
 RECAP
 **************************/
+// PEER CODING CHALLENGE!!! 1 computer with 1 person driving.
+// Create 3 conditional operators to check the type of the conditional example.
+
 let stringExample = 'string';
 let numberExample = 0;
 let boolExample = true;
@@ -29,7 +32,7 @@ switch (typeof conditionExample) {
 }
 
 //Ternary solution
-var day3 = (typeof conditionExample == 'string') ? "Good thing he was just a red shirt." : (typeof conditionExample == 'number') ? "I SAID NUMBERS ARE COOL!" : (typeof conditionExample == 'boolean') ? "is the bestest way." : "Error"
+let day3 = (typeof conditionExample == 'string') ? "Good thing he was just a red shirt." : (typeof conditionExample == 'number') ? "I SAID NUMBERS ARE COOL!" : (typeof conditionExample == 'boolean') ? "is the bestest way." : "Error"
 
 console.log(day3)
 
@@ -45,7 +48,7 @@ Prints out "Buzz" if the number is divisible by 5
 Prints out "Fizz Buzz" if the number is divisible by BOTH 3 and 5
 */
 
-var FB = 15;
+let FB = 15;
 
 if (FB % 3 === 0 && FB % 5 === 0) {
   console.log('Fizz Buzz');
@@ -55,7 +58,7 @@ if (FB % 3 === 0 && FB % 5 === 0) {
   console.log('Fizz');
 }
 
-var FB = 30;
+let FB = 30;
 
 switch (true) {
   case (FB % 3 === 0 && FB % 5 === 0):
@@ -69,7 +72,7 @@ switch (true) {
   break;  
 }
 
-var FB = 30;
+let FB = 30;
 
 (FB % 3 === 0 && FB % 5 === 0) ? console.log('Fizz Buzz') : (FB % 5 === 0) ? console.log('Buzz') : (FB % 3 === 0) ? console.log('Fizz') : FB;
 
@@ -85,6 +88,10 @@ FOR LOOPS
 **************************/
 /*
 Loops offer a quick and easy way to do something repeatedly
+  A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
+
+  EXAMPLE 1: hungry => eat => check if still hunger => no? => keep eating => check if still hunger => full? YES!
+  EXAMPLE 2: const vacationSpots = ['Florence', 'Copenhagen', 'Istanbul']; now how do I console.log each item? (console.log(vacationSpots[])). What if I had 100's of items in my list?
 
 There are many different kinds of loops but they all do roughly the same thing:
   For statement
@@ -98,8 +105,8 @@ There are many different kinds of loops but they all do roughly the same thing:
 
 NOTE: There is a danger of infinite loops => explain
 */
-
-for (var i = 0; i < 10; i++) {
+//  (initialization ; stopping condition; iteration statement)
+for (let i = 0; i < 10; i++) {
 	console.log(i); // 0 1 2 3 4 5 6 7 8 9
 }
 
@@ -119,9 +126,9 @@ for (i = 0; i >= -25; i -= 2) {
 }
 
 // Challenge: using a for loop, go through a name and display each letter individually
-var name = "Kenn";
+let name = "Kenn";
 
-for (var i = 0; i < name.length; i++) {
+for (let i = 0; i < name.length; i++) {
 	console.log(name[i]); // K e n n
 }
 
@@ -129,9 +136,9 @@ for (var i = 0; i < name.length; i++) {
 Challenge: 
 Make a for loop where you add up all the numbers from 1 to 50 (should equal 1275)
 */
-var sum = 0;
+let sum = 0;
 
-for (var i = 1; i <= 50; i++) {
+for (let i = 1; i <= 50; i++) {
    sum += i;
 }
 
@@ -144,15 +151,20 @@ FOR IN LOOPS
 Great for iterating over values in an object
 */
 
-var student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
+let student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
 for (item in student) {
   console.log(item); // name awesome degree week
   console.log(student[item]); // Peter true JavaScript 1
 }
 
-var catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
+let catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
 for (cat in catArray){
   console.log(cat);
+}
+
+let dogArray = ['collie', 'pitbull', 'newfoundlander', 'st bernard', 'dachshund'];
+for (dog in dogArray){
+  console.log(dog);
 }
 
 /*
@@ -160,9 +172,9 @@ Challenge:
 Write a for in loop that capitalizes the first letter of a student's name
 */
 
-var studentName = 'pAul';
-var capName;
-for (var n in studentName) {
+let studentName = 'pAul';
+let capName;
+for (let n in studentName) {
   if (n == 0) {
     capName = studentName[n].toUpperCase();
   } else {
@@ -179,12 +191,12 @@ EXPLAIN difference between for in and for of loops
 */
 
 //the below doesn't work--object properties are not 'iterable'
-var student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
+let student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
 for (item of student) {
   console.log(item); // name awesome degree week
 }
 
-var catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
+let catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
 
 for (cat of catArray){
   console.log(cat, 'says meow'); // tabby, brittish shorthair, burmese, maine coon, rag doll ...says meow
@@ -209,7 +221,7 @@ function hi() {
 EXPRESSIONS
 **************************/
 
-var hi = function hi() {
+let hi = function hi() {
   console.log('HI')
 }
 
