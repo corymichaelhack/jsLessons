@@ -87,6 +87,7 @@ LOOPS
 FOR LOOPS
 **************************/
 /*
+Performs logic over data.
 Loops offer a quick and easy way to do something repeatedly
   A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
 
@@ -148,13 +149,15 @@ console.log(sum) //1275
 FOR IN LOOPS
 **************************/
 /*
-Great for iterating over values in an object
+Great for iterating over values in an object [objects]
+The for...in statement iterates a specified variable over all the enumerable properties of an object.
+Enumerable means you can reference by some sort of order (by key or by index).
 */
 
 let student = { name:"Peter", awesome: true, degree: "JavaScript", week: 1 };
 for (item in student) {
-  console.log(item); // name awesome degree week
-  console.log(student[item]); // Peter true JavaScript 1
+  console.log('item => ', item); // name awesome degree week
+  console.log('student[item] => ', student[item]); // Peter true JavaScript 1
 }
 
 let catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
@@ -188,6 +191,8 @@ FOR OF LOOPS
 **************************/
 /*
 EXPLAIN difference between for in and for of loops
+The for...of statement creates a loop Iterating over iterable objects, meaning it can numberically look over these items.
+Use for of to iterate over ARRAYS
 */
 
 //the below doesn't work--object properties are not 'iterable'
@@ -197,6 +202,7 @@ for (item of student) {
 }
 
 let catArray = ['tabby', 'british shorthair', 'burmese', 'maine coon', 'rag doll'];
+// console.table(catArray)
 
 for (cat of catArray){
   console.log(cat, 'says meow'); // tabby, brittish shorthair, burmese, maine coon, rag doll ...says meow
@@ -209,6 +215,8 @@ FUNCTIONS
   01-declarations.js, 02-expressions.js, 03-callingFunctions.js
 **************************/
 
+// A block of code that performs/logic task. Oven
+
 /**************************
 DECLARATIONS
 **************************/
@@ -220,8 +228,15 @@ function hi() {
 /**************************
 EXPRESSIONS
 **************************/
-
+// set a variable to be a function
 let hi = function hi() {
+  console.log('HI')
+}
+
+/**************************
+ANONOYMOUS FUNCTIONS
+**************************/
+let hi = function () {
   console.log('HI')
 }
 
@@ -239,15 +254,17 @@ function hi() {
   console.log('HI')
 }
 
-hi // nothing
-hi() // HI
-console.log(hi); // [function = hi]
-console.log(hi()); // HI    undefined
-
+// hi // nothing
+// hi() // HI
+// console.log(hi); // [function = hi]
+console.group(hi()); // HI    undefined
+//no return 
 /*
 Why is the second value undefined when we console.log hi() but not when we console.log hi?  What are the parentheses doing?
 
 The parenths after a function IMMEDIATELY INVOKE said function.
+
+Invoking or calling is like pushing the start button on a machine. Example: an oven does not work until you turn it on.
 */
 
 /*
@@ -293,7 +310,8 @@ Parameters are like empty storage boxes that we can name whatever we want. It on
 
 You can have multiple parameters for a single function
 
-You give the value that you want to put in that storage box (parameter) when you call the function
+You give the value that you want to put in that storage box (parameter) when you call the function.
+Example: To create coffee in a coffeemachine things need to go in: ground coffee, water, a filter. The coffeemachine performs/runs the function.
 */
 
 function pet(animal) {
@@ -343,7 +361,7 @@ var cats = (kitten, puppy) => {console.log(`I have ${kitten} cat(s) and ${puppy}
 cats(1, 12);
 
 // Concise vs. Block Bodies
-// Concise Body
+// Concise Body does not need parantheses, unless you have more than one parameter.
 let apples = x => console.log(`There are ${x} apples.`);
 apples(10);
 
@@ -376,6 +394,8 @@ RETURN
 Functions are like the engines of JS where they will perform a specific function and produce a desired effect.  With the return keyword, we are pulling away from using console.log to show the output of a function in the terminal, and spitting out a value that we can then grab and place in another part of your code => we can effect change on your actual website with the return keyword, where console.log would only work in the dev tools (for example).
 
 It is like Chicken Run where the people create a huge machine that takes in chickens (like a parameter) and spits out chicken pot pies.  The return keyword is the chicken pot pie.  The function is doing all of the cutting, pie making, gravy filling, etc. and the return is simply giving the pie.  We can then take the pie and put it in something else...
+
+Example: Coffeemachine where we pass in coffee grounds. The machine runs the function and returns a lovely delicious caffeinated beverage. 
 */
 
 function captializeName(name) {
@@ -412,6 +432,9 @@ function tipCalc(bill) {
 
 let totalTip = tipCalc(19.88);
 console.log(totalTip);
+
+/* write new challenge with coffee */
+
 
 /**************************
 Git Stuff for 1-jsFundamentals

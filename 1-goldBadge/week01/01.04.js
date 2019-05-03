@@ -11,7 +11,7 @@ For any other number, console.log the value
 */
 
 function fizzBuzz() {  
-  for (var i = 0; i <= 100; i++) {
+  for (let i = 0; i <= 100; i++) {
     if ( i % 15 == 0 ) {
       console.log('FizzBuzz');
     }
@@ -29,17 +29,19 @@ function fizzBuzz() {
 
 fizzBuzz();
 
-var fb = 10;
 
-if (fb % 15 == 0) {
-  console.log('fizzbuzz');
-} else if (fb % 5 == 0) {
-  console.log('fizz');
-} else if (fb % 3 == 0) {
-  console.log('buzz');
-} else {
-  console.log('nothing');
-}
+
+// let fb = 10;
+
+// if (fb % 15 == 0) {
+//   console.log('fizzbuzz');
+// } else if (fb % 5 == 0) {
+//   console.log('fizz');
+// } else if (fb % 3 == 0) {
+//   console.log('buzz');
+// } else {
+//   console.log('nothing');
+// }
 
 /**************************
 GIT REVIEW
@@ -97,20 +99,43 @@ let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
 for (f in food) {
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
+  console.log(f) // 0 1 2 3 4 
 }
 food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
 food.splice(2, 0, 'Sweet Potato Pie') //Adds Sweet Potato Pie in position 2 but doesn't remove anything
 food.pop();  // Removes Pizza
+food.shift();  //
+food.unshift()  //
 
 for (f of food) {
   console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
 }
 
+
 // Iterating
 
+// forEach() method executes a provided function once for each array element.
+
+// forEach() has three arguments: currentValue, the index, and the entire array.
+//  currentValue = the current element being processed in the array
+//  index = the index of the current element being processed 
+//  array = the array the forEach method was called upon
+
+let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 food.forEach(f => { console.log(f); }) // Pecan pie, Bananas, Sweet Potato Pie, Quesadilla, Cheesecake, Hotdog
-food.forEach((food, number) => { console.log(number); console.log(food) }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
+food.forEach((food, number) => { console.log(number); console.log(food); }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
+food.forEach((food, number, array) => { console.log(number); console.log(food); console.log(array) })
+
+let foodFunction = () => {
+  for (f in food) {
+    console.log(f),
+    console.log(food[f]),
+    console.log(food)
+  }
+}
+
+foodFunction()
 
 /*
 Challenge:
@@ -163,8 +188,10 @@ OBJECTS
 
 11-objects
 **************************/
+//BUILD OUT MORE NETFLIX
+// Store multiple objects that are similar in structor with is great for our JS logic
 
-var netflix = {
+let netflix = {
   id: 9,
   name: "Super Store",
     season1: {
@@ -204,7 +231,7 @@ Using dot notation, walk through the netflix object and print off both the episo
 
 
 // JSON
-
+// data comes back as a long string. Why do we JSONify?
 var json = {
   "workbench.colorTheme": "One Dark+ (Sublime)",
   "window.zoomLevel": 3,
@@ -237,8 +264,17 @@ var json = {
   "[javascriptreact]": {}
 }
 
+/*
+Object.keys() and Object.values()
+--------------------------------
 
-// Object.keys() and Object.values()
+    Object.keys() is a method that returns an array of a given objects own property names
+
+    Object.values() is a method that returns an array of a given object's own enumerable property values, in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well).
+
+    filtering over one side over the other.
+
+*/
 
 let spaceJam = {
   toonSquad: {
@@ -268,14 +304,14 @@ let spaceJam = {
 }
 
 console.log(Object.keys(spaceJam.toonSquad)); // ['human', 'rabbit1', 'rabbit2', ...]
-console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] => (Just gives the index numbers of 'Daffy Duck')
+console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] => (Just gives the index numbers of 'Daffy Duck', the numbers correlate with the letters that make up the string 'Daffy Duck')
 console.log(Object.keys(spaceJam.toonSquad).toString()); // human, rabbit1, rabbit2, ...
 
 console.log(Object.values(spaceJam.toonSquad)); // ['Michael Jordan', 'Bugs Bunny', 'Lola Bunny', ...]
 
 
 // Square Bracket Notation
-
+// LOOK THIS UP
 let garden = {
   vegetable: 'zucchini',
   flower: 'sun flower',
@@ -298,7 +334,7 @@ baking['zucchini'] = 'better make some bread!';
 
 console.log(baking[garden['vegetable']]); // 'better make some bread!'
 
-
+// tree example: dot notation assumes the branch you are going to leap exists and is there. Square bracket notation checks if it exists before leaping. That's why we get undefined back.
 
 let key = 'water';
 
@@ -333,11 +369,11 @@ Folder Structure:
   javascriptMay2018
     javascriptLibrary
     projects
-      storeFront (Git repo here)
+      staticLayout (Git repo here)
 */
 
 /**************************
-REPL.IT ASSESSMENT 2
+CHALLENGE ASSESSMENT 2
 **************************/
 
 /**************************

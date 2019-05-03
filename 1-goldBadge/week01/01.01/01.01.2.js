@@ -195,7 +195,8 @@ console.log(third); // 1050100
 console.log(typeof third); // string
 
 /*
-With the plus operator, if 1 string and 1 number are given to the plus sign, it returns a string
+With the plus operator, if 1 string and 1 number are given to the plus sign, it returns a string.
+Coersion!!!! Write a note.
 */
 
 /* 
@@ -228,7 +229,7 @@ console.log(firstName, lastName + ',', houseNumber, street + ',', city + ',', st
 // Objects
 /*
 What is an object?
-
+A collection of key-value pairings.
 A container that can hold multiple datatypes
 
 Denoted by {}
@@ -261,7 +262,7 @@ console.log(typeof burritos); // OBJECT
 WHAT?? Why is typeof coming back with an object, and not array??
 
 What is the definition of objects again? A container that can hold multiple datatypes
-
+keys counts as indexes
 Notice that arrays, too, are a container that can hold multiple datatypes.  Therefore, JS has classified arrays as objects and not a datatype of their own
 */
 

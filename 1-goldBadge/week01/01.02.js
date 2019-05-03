@@ -177,9 +177,12 @@ console.log(scissors); //blue
 var scissors;
 
 /*
-Hoisting does not exist--it is an illusion
+Hoisting does not exist--it is an illusion - code doesn't actually get moved.
 
 JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
+
+When JS reads over the code twice, the first time, it remembers the declarations and stores it in its memory bank. 
+Scanning a party, the one that it knows/recognizes, already knows what its going to talk about with that person.
 
 /**************************
 LITERALS
@@ -453,7 +456,7 @@ TERNARIES
   03-ternaries.js
 **************************/
 
-//What is a ternary? Shorthand version of an if statement.
+//What is a ternary? Shorthand version of an if else if statement.
 
 let x = 6;
 
