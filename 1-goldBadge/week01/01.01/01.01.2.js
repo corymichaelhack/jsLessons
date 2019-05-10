@@ -107,7 +107,7 @@ TYPES
 1-grammarAndTypes
   05-types.js
 **************************/
-
+// * types allow us to specify what kind of data these variables are storing.
 // Booleans
 // What is a boolean?
 var on = true;

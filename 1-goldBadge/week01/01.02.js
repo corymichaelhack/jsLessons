@@ -346,6 +346,7 @@ if ('Tyler' == name) {
 /*
  Challenge: 
  Capitalize the FIRST LETTER of name ONLY
+ Use an if else condition to check each letter of a name. If it's the first letter, uppercase it. Else, lowercase it.
 */
 
 let name = 'tyleR';

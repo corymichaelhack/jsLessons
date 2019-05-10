@@ -174,9 +174,9 @@ Using a method only, print the values of the newly arranged array
 */
 
 //Example array:
-// let arr = [1,2,3,4,5]
-let arr = new Array(1,2,3,4,5)
-// console.log(arr)
+let arr = [1,2,3,4,5]
+// let arr = new Array(1,2,3,4,5)
+//console.log(arr)
 
 if (arr instanceof Array === true) {
   let revArr = arr.reverse()

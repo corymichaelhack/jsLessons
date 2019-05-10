@@ -225,6 +225,18 @@ function hi() {
   console.log('HI')
 }
 
+//A chunk of code that performs a set action when called, or 'invoked'.
+
+function  hi()   {
+  (1)      (2)  (3)
+  console.log('HI')
+}
+//1- Keyword 
+//2- Name of the function, and parenthesis for parameter
+//3- Curly Brace, where the opperations of our function happens
+
+
+
 /**************************
 EXPRESSIONS
 **************************/
@@ -232,6 +244,15 @@ EXPRESSIONS
 let hi = function hi() {
   console.log('HI')
 }
+
+var hey = function hi() {
+  (1)
+  console.log('HI')
+}
+
+//1- The variable 'hey' is now representative of the function 'hi()'
+
+
 
 /**************************
 ANONOYMOUS FUNCTIONS
@@ -326,7 +347,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
-console.log 'Hello, my name is Tom McClellan'
+console.log 'Hello, my name is Ingeborg Slegers'
 Call your function 
 */
 
