@@ -1,16 +1,12 @@
 /**************************
 ASSIGNMENT 1 PRESENTATIONS
 **************************/
-/*
-CSS Creature presentations:
-Submit through Google Sheet https://docs.google.com/spreadsheets/d/1iU9MweMTh2Tuz8GTvG9Eig5d7C0BIQKt2u_XjCdkqQ8/edit?usp=sharing
-Volunteers to walk us through their creature
-*/
-
-/**************************
-ASSIGNMENT 2 - Tutorial Webpage - https://docs.google.com/document/d/1ah0z5vubgaG2Fb0nrERABXvnlG31DMJ7Zk-KRABWzXM/edit?usp=sharing
-
-**************************/
+/**
+ * 
+ * CSS CREATURES DUE!
+ * 
+ *https://drive.google.com/drive/folders/1BqScvEx1F32hDKnBYLHPKKNj_ZM1Qmes
+ */
 
 /*
 Overviews for Today
@@ -48,7 +44,7 @@ Folder Structure:
 GIT LESSON
 
 javascriptLibrary
-  1-jsFundamentals (git repo here)
+  1-jsFundamentals (GIT REPO HERE!!!)
  
   GitHub- signup if you havent yet
   Make a repo, copy repo
@@ -313,7 +309,8 @@ COMPARISON OPERATORS
 5-expressionsAndOperators
   02-comparisonOperators.js
 **************************/
-//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' These are values that are considered not true or just not, but they are not technically the same as false
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
+//fThese are values that are considered not true or just not, but they are not technically the same as false
 
 // Equal 
 '3' == 3;
@@ -551,6 +548,15 @@ switch (true) {
     console.log('didnt work');
 }
 
+
+switch (key) {
+  case value:
+    
+    break;
+
+  default:
+    break;
+}
 //Self Practice:
 //Try to rewrite the age challenge from earlier with a switch
 

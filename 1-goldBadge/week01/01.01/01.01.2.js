@@ -11,6 +11,7 @@ Give out CSS Creature Assignment
  Comments
  Variables
  Declarations
+ Initialization
  Datatypes
 */
 

@@ -150,6 +150,9 @@ food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
 food.splice(2, 0, 'Sweet Potato Pie') //Adds Sweet Potato Pie in position 2 but doesn't remove anything
 food.pop();  // Removes Pizza
+food.shift();
+food.unshift();
+
 
 for (f of food) {
   console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog

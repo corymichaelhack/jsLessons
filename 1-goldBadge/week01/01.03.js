@@ -1,5 +1,6 @@
 /**************************
 RECAP
+Peer coding challenge - One person drives/types  other person decides what to type, then switch
 **************************/
 let stringExample = 'string';
 let numberExample = 0;
@@ -256,7 +257,7 @@ function  hi()   {
 */
 
 function hi() {
-  console.log('HI')
+  console.log('HI');
 }
 
 /************************
@@ -276,8 +277,10 @@ var hey = function hi() {
 */
 
 var hi = function hi() {
-  console.log('HI')
-}
+  console.log('HI');
+};
+
+
 
 /*
 Difference between declaration and expression:
@@ -391,7 +394,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
-console.log 'Hello, my name is Tom McClellan'
+console.log 'Hello, my name is Autumn McClellan'
 Call your function 
 */
 
@@ -449,7 +452,7 @@ cats(1, 12);
 // Concise Body
 let apples = x => console.log(`There are ${x} apples.`);
 apples(10);
-
+// More than one parameter will require parenthesis
 // Return (if one-line fat arrow function) is implied
 
 // Block Body
@@ -509,15 +512,15 @@ function captializeName(name) {
       capName += name[l].toLowerCase();
     }
   }
-   console.log(capName) // Tom
+   console.log(capName) // Autumn
    return capName
 }
 
 // console.log(capName) // Error, not defined
 
-const myName = captializeName('tom')
+const myName = captializeName('autumn');
 
-console.log(myName + ' how are you doing?') // Tom how are you doing?
+console.log(myName + ' how are you doing?'); // Autumn how are you doing?
 
 /*
 Challenge:
@@ -576,12 +579,28 @@ console.log(totalTip);
 
 
 /*
-1- fu
+1 - The function keyword
+2 - The function name. For Constructor functions, the name should be capitolized. 
+3 - The parameters. These will be the values of the object once this function is in use. 
+4 - The 'this' keyword. 'this' gives us the ability to refer back to whatever called, or activates it. In this case, 'this' refers to 'Person'. 
+5 - This will be the key of the new object we will create. This is NOT refering to the parameter
+6 - This is refering to the parameter we pass through our constructor function 
+7 - The new keyword is calling our 
+
 
 
 
  */
-
+function people(name,age,canVote){
+  let people  = {}; 
+     people.name = name;
+     people.age = age;
+     people.canVote = canVote;
+     return people;
+   }
+  
+   let people4 = new people('James',80,true); 
+   console.table(people4);
 /**************************
 Git Stuff for 1-jsFundamentals
 **************************/
