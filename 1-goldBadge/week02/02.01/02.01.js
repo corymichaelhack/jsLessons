@@ -17,6 +17,36 @@ What is Pig Latin?
     * If the word begins with a vowel, simply add an 'ay' at the end of the word
 */
 
+function piggie(str) {
+    switch (str[0]) {
+        case 'a':
+            console.log(`${str}ay`);
+            break;
+        case 'e':
+            console.log(`${str}ay`);
+            break;
+        case 'i':
+            console.log(`${str}ay`);
+            break;
+        case 'o':
+            console.log(`${str}ay`);
+            break;
+        case 'u':
+            console.log(`${str}ay`);
+            break;
+        default:
+       let newArr = str.split('');
+       console.log(`${newArr.splice(1).join('')}${str[0]}ay`);         
+            break;
+    }
+}
+piggie('Hey');
+
+/*
+Store Front Submission to LMS and Presentations?
+*/
+
+
 /*
 Portfolio Build
 

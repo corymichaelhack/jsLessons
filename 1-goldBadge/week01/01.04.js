@@ -10,6 +10,7 @@ For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
 For any other number, console.log the value
 */
 
+
 function fizzBuzz() {  
   for (let i = 0; i <= 100; i++) {
     if ( i % 15 == 0 ) {
@@ -43,8 +44,26 @@ fizzBuzz();
 //   console.log('nothing');
 // }
 
+for(let FB = 0; FB<=100;FB++){
+
+  switch (true) {
+    case (FB % 3 === 0 && FB % 5 === 0):
+    console.log('Fizz Buzz');
+    break;
+    case (FB % 5 === 0):
+    console.log('Buzz');
+    break;
+    case (FB % 3 === 0):
+    console.log('Fizz');
+    break; 
+    default :
+    console.log(FB); 
+  }
+  
+}
+
 /**************************
-GIT REVIEW
+GIT REVIEW - Why git? 
 **************************/
 /*
 Git init
@@ -53,6 +72,17 @@ Git add .
 Git commit -m "<message>"
 */
 
+/*
+Overviews for today
+********************
+Arrays
+Objects
+Git with GitHub
+*/
+
+
+
+
 /**************************
 ARRAYS
 
@@ -60,8 +90,22 @@ ARRAYS
   02-populating&Referring.js, 03-length.js, 04-iterating.js, 05-methods.js
 **************************/
 /*
-(IF DISCUSSED DURING DATA TYPES):
-Remember what happens when I call a 'typeof' for arrays?  What comes back?  Object.
+/*
+Arrays
+************
+Arrays are containers that hold lists of items
+
+let list =  [  'item1',   'item2',    'item3'];
+    (1)    (2)   (3)
+
+1- name of the Array, or list; 
+2- The Array is inside of these square brackets
+3- each item, regardless of datatype, is separated by commas
+
+Denoted by []
+Has values ('blue', 'green', 'yellow'), separated with commas
+
+console.log(typeof list);
 
 Why is that?  The definition of an object is a container that can hold multiple datatypes.  Arrays fit under that category.
 
@@ -71,9 +115,13 @@ What is an array?
   Great for listing 
 */
 
+let list = ['orange', 'banana', 'oreos']
+
+console.log(list[1])
+
 // Overview/Calling
 
-let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha']]
+let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha', 'Amira']]
 
 console.log(typeof students); //object
 console.log(students instanceof Array); //true
@@ -90,14 +138,14 @@ Go into the nested array and get 'Amira'
 print out "Hello Amira, you look nice today"
 */
 
-let name = students[6][1];
+let name = students[6][2];
 console.log(`Hello ${name}, you look nice today.`);
 
 // Populating/Referring
 
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
-for (f in food) {
+for (f in food) { 
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
   console.log(f) // 0 1 2 3 4 
 }
@@ -105,8 +153,9 @@ food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
 food.splice(2, 0, 'Sweet Potato Pie') //Adds Sweet Potato Pie in position 2 but doesn't remove anything
 food.pop();  // Removes Pizza
-food.shift();  //
-food.unshift()  //
+food.shift();
+food.unshift();
+
 
 for (f of food) {
   console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
@@ -138,7 +187,7 @@ let foodFunction = () => {
 foodFunction()
 
 /*
-Challenge:
+Challenge (Go look at MDN docs to remind you):
 Create a list (with an array) of movies
 Use .forEach() to list your movies
 Add another movie at the end 
@@ -185,6 +234,23 @@ if (arr instanceof Array === true) {
 
 /**************************
 OBJECTS
+***********************
+An object is a data type that constists of key/value pairs. 
+
+let name = {
+    (1)    (2)
+  key   :   'value';
+  (3)  (4)    (5)
+}
+1- Name of the object, how its identified
+2- All of the data for an object is contained in curly braces
+3- this is the name of the specific data inside the object
+4- The data name and value are separated by a colon
+5- The value of the data. Each key/value pairing ends with a comma 
+
+
+
+
 
 11-objects
 **************************/
@@ -276,32 +342,7 @@ Object.keys() and Object.values()
 
 */
 
-let spaceJam = {
-  toonSquad: {
-    human: 'Michael Jordan',
-    rabbit1: 'Bugs Bunny',
-    rabbit2: 'Lola Bunny',
-    duck: 'Daffy Duck',
-    tDevil: 'Tasmanian Devil',
-    bird: 'Tweety',
-    cat: 'Sylvester',
-    pig: 'Porky Pig'
-  },
-  monstars: {
-    0: 'Bupkus',
-    1: 'Bang',
-    2: 'Nawt',
-    3: 'Pound',
-    4: 'Blanko'
-  },
-  nbaPlayers: {
-    phoenixSuns: 'Charles Barkley',
-    newJerseyNets: 'Shawn Bradley',
-    newYorkNicks: 'Patrick Ewing',
-    charlotteHornets1: 'Larry Johnson',
-    charlotteHornets2: 'Muggsy Bogues'
-  }
-}
+
 
 console.log(Object.keys(spaceJam.toonSquad)); // ['human', 'rabbit1', 'rabbit2', ...]
 console.log(Object.keys(spaceJam.toonSquad.duck)); // ['0', '1', '2', ... '9'] => (Just gives the index numbers of 'Daffy Duck', the numbers correlate with the letters that make up the string 'Daffy Duck')
@@ -311,28 +352,37 @@ console.log(Object.values(spaceJam.toonSquad)); // ['Michael Jordan', 'Bugs Bunn
 
 
 // Square Bracket Notation
-// LOOK THIS UP
+//Square bracket notation can help us be able to find a value in an object. This way can be 
+//handy if we need to set a key to a variable and then use that variable to parse through an object
+//It works simply bc of the fact that all property keys( before the colon) are strings
+
 let garden = {
   vegetable: 'zucchini',
   flower: 'sun flower',
   fruit: 'grape',
-  water: true,
+  "water": true,
   sun: true,
   size: 10
 };
 
-console.log(garden.vegetable); // 'zucchini'
+console.log(garden.water); // 'zucchini'
+//This is standard dot notation for parsing through an object. with this way, we are assuming that there is a key named vegitables
 
-let x = 'vegetable';
+let x = 'vegetable';// what if we have a variable that contains our 'supposed key'? 
+//can we use square brackets to reach into our object to find this data!
 
 console.log(garden.x, garden[x]); // undefined 'zucchini'
 
 let baking = {};
 baking['zucchini'] = 'better make some bread!';
+//we can also set a key/value pairing with square brackets, just like we can with dot 
 
 // console.log(baking.garden.vegetable);
+// Will this work? No, bc were assuming that there is an a key called vegetable inside of an obj called garden inside of an obj called baking. 
 
 console.log(baking[garden['vegetable']]); // 'better make some bread!'
+// Using square brackets is a good idea when you may not be able to directly dot notate through the obj, and we can use variables or a string instead
+
 
 // tree example: dot notation assumes the branch you are going to leap exists and is there. Square bracket notation checks if it exists before leaping. That's why we get undefined back.
 
@@ -343,7 +393,8 @@ Object.keys(garden).forEach(g => {
   if (key === g) {
     console.log(garden[key]); // true
   }
-})
+});
+//great example of needing to use a variable to substitute for a different key, search for that key, and then, using square bracket notation bc its a variable and not part of the object, console.log it
 
 /**************************
 GIT PUSH

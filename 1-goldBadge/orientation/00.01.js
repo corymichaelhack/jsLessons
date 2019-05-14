@@ -18,7 +18,8 @@ Node.js / npm
 
 Check install success with terminal => node -v / npm -v
 
-Explain that node was created to run JS locally (not just online) and npm is instalation tool for third party packages
+Explain that node was created to run JS locally (not just online) and npm(node package manager) is instalation tool for third party packages
+*node helps us compile js on our machine to mach.lang. send it to the internet and back into js to be read online* look into this
 */
 
 /*
@@ -27,13 +28,14 @@ Git
 Check install success with terminal => git --version
 
 Explain that git packages code to send to GitHub (git and GitHub ARE DIFFERENT)
+git is how we keep track of different versions of our code on our machine with the ability to send that code to other places
 */
 
 // GitHub setup
 
 /*
 Folder structure setup:
-  javascriptMay2018 (or whatever)
+  javascriptMay2019 (or whatever)
     javascriptLibrary
       0-prework
         1-htmlBasics
@@ -78,9 +80,12 @@ RECAP AND ENCOURAGEMENT
 **************************/
 
 /*
-Explain to them that they now have everything they need to work through the Prework and first couple weeks of 1150
+Explain to them that they now have everything they need to work through the Prework 
+and first couple weeks of 1150
 
-Encourage them that they have already learned some coding and that they are able to write code and see how it interacts with browsers
+Encourage them that they have already learned some coding and that they are able to write code 
+and see how it interacts with browsers
 
-Encourage them that they will be able to make actual websites within a week and that they should be excited at the adventure they are about to embark on
+Encourage them that they will be able to make actual websites within a week 
+and that they should be excited at the adventure they are about to embark on
 */

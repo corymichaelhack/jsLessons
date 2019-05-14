@@ -7,20 +7,23 @@ Given 2 arrays:
 [10,20,30,40,50,70]
 [5,3,2,5]
 
-Create a function that multiplies 'like' indexes (0 with 0, 1 with 1, etc.) together then place the value in a new array. 
+Create a function that multiplies 'like' indexes ([0] with [0], [1] with [1], etc.) together then place the value in a new array. 
 
 The function you create should return [50, 60, 60, 200] based on the arrays above.
 
 Make sure the values given to the function are an array type and they have data inside of them.
 
 If the first array has more values than the second, return that same number
+
+
 */
 
 const tensArray = [10,20,30,40,50,70];
 const onesArray = [5,3,2,5];
 
-const multiplyValues = (arr1 = [], arr2 = []) => {
+const multiplyValues = (arr1, arr2) => {
   // is an expression that checks the value and type of the arr1 given, then puts that value in that param
+  
   arr1 = typeof arr1 == 'object' && arr1 instanceof Array && arr1.length > 0 ? arr1: false;
   arr2 = typeof arr2 == 'object' && arr2 instanceof Array && arr2.length > 0 ? arr2: false;
   

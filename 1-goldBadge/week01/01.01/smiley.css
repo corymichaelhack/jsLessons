@@ -1,0 +1,39 @@
+body{
+    background-color: #99d6ff;
+    margin: 0%;
+}
+
+.sunset{
+    width:25em;
+    height:25em;
+    background-color: orangered;
+    position: relative;
+    margin:auto;
+    top: 10em;
+    border-radius: 25em;
+}
+
+.beach {
+    width: 100%;
+    height: 26em;
+    top:0em;
+    position: relative;
+    background-color: sandybrown;
+}
+.water {
+    width: 100%;
+    height: 2em;
+    background-color: aqua;
+    top:0em;
+    position: relative;
+}
+.bird{
+    width: 5em;
+    height: 5em;
+    border-radius: 5em 0em transparent 0em 0em;
+    border: solid black;
+    top:2em;
+    right: 2em;
+    position: absolute;
+    transform: rotate(35deg)
+}

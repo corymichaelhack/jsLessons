@@ -123,6 +123,11 @@ let netflix = {
 
 /**************************
 API RECAP
+// Application Programming Interface- Basically a set of standards and methods by which we can access certain data
+// 
+JSON- JavaScript Object Notation
+
+
 **************************/
 
 /**************************
@@ -135,12 +140,13 @@ Where JS is single string (line by line), asynchronous programming allows for si
 /*
 Though a promise can happen simultaneously with other functions (async), within the promise, you can set synchronous execution, allowing JS to wait for data to come back before the next stage of execution occurs
 
-It is similar to ordering concert tickets.  I am promised that I can go to the concert, but I don't have to sit and do nothing until the concert.  However, I can't go to the concert unless I have the tickets.  So I first need the tickets before I can get in.
+It is similar to a burger place. I go into the restaurant, give the person at the counter my order and then i can go sit down or whatever. The person taking my order sends it to the kitchen, it gets made, and set back out to the cashier who gives it to me. I have a promise, based on the fact that i gave the cashier my order and my money, that i would get a burger. It may take a certain amount of time, sometimes quicker sometimes slower, but i should get a burger back. 
 */
 
 // Callbacks
 /*
 Functions executed by other functions.
+Can also be considered a function that is passed as a parameter to another function
 
 You can have nested functions or call a separate function within another.
 */
