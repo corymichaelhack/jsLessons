@@ -37,6 +37,9 @@
       // 3
       console.log(document.querySelectorAll('p.sampleClass'));
       // Explain difference between innerText and innerHTML
+      // innerText: Specifies the text content of the specified node
+      // innerHTML: Specifies the HTML content of an element
+
       // document.querySelectorAll('p.sampleClass')[0].innerText = 'My text has changed!!!';
       //querySelector p tags, set as a variable, loop over each element and console.log innertext
       //for in or for of? 
@@ -52,6 +55,7 @@
       Make button toggle between red and blue using DOM
       */
       document.getElementById('clickThisButton').addEventListener('click', (details) => {
+        //console.log(details.target)
         if (details.target.style.backgroundColor == 'red') {
           details.target.style.backgroundColor = 'blue';
          } else {

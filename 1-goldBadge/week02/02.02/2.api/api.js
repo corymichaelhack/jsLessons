@@ -1,7 +1,7 @@
 const baseURL = 'https://api.spacexdata.com/v2/rockets';
 
 const searchForm = document.querySelector('form');
-const spaceShips = document.querySelector('ul');
+const spaceShips = document.querySelector('table');
 
 searchForm.addEventListener('submit', fetchSpace);
 
@@ -30,11 +30,19 @@ function fetchSpace(e) {
 }
 
 function displayRockets(json) {
-  // console.log('Results:', json);
+  console.log('Results:', json);
   let rockets = json.forEach(r => {
-    let rocket = document.createElement('li');
-    rocket.innerText = r.name;
+    let rocket = document.createElement('tr');
+    let rocketName = document.createElement('td');
+    let rocketCost = document.createElement('td');
+
+    rocketName.innerText = r.name;
+    rocketCost.innerText = r.cost_per_launch;
+    
     spaceShips.appendChild(rocket);
+    rocket.appendChild(rocketName);
+    rocket.appendChild(rocketCost);
+
   })
 }
 // Challenge! First, find cost per rocket in the object. Then, format both responses into a data table with the headers name and cost. Each rocket should have its own row. 
