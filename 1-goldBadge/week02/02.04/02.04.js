@@ -36,6 +36,19 @@ function checker(obj){
   }
 }
 
+let exampleObj = {
+  color: 'green',
+  smashes: true,
+  name: 'Hulk'
+}
+
+console.log(objChecker(exampleObj, 'silly'));
+
+function objChecker(obj, key){
+  let objKeys = Object.keys(obj);
+  return (objKeys.includes(key)) ? true : false;
+}
+
 /*
 NYT Walk Through
 

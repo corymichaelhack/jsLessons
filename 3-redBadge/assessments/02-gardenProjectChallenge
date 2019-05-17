@@ -18,7 +18,12 @@ Presentations for the 'client' will be tomorrow after lunch
 Credentials:
 Products: https://efa-gardenapp-backend.herokuapp.com/api/product
 Admin: https://efa-gardenapp-backend.herokuapp.com/api/auth/login
-Admin Username: wer@odikepki.pr
+Admin Email (Options): 
+  atyler@gmail.com
+  mcook@gmail.com
+  mhowell@gmail.com
+  twest@gmail.com
+  vray@gmai.com
 Admin Password: test
 
 This does not need to be deployed.

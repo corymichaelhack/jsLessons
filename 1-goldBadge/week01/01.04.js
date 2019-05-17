@@ -13,13 +13,13 @@ For any other number, console.log the value
 
 function fizzBuzz() {  
   for (var i = 0; i <= 100; i++) {
-    if ( i % 15 == 0 ) {
+    if (i % 15 == 0) {
       console.log('FizzBuzz');
     }
-    else if ( i % 3 == 0 ) {
+    else if (i % 3 == 0) {
       console.log('Fizz');
     }
-    else if ( i % 5 == 0 ) {
+    else if (i % 5 == 0) {
       console.log('Buzz');
     }
     else {
@@ -155,7 +155,7 @@ food.unshift();
 
 
 for (f of food) {
-  console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
+  console.log(f)
 }
 
 // Iterating
@@ -171,10 +171,10 @@ Add another movie at the end
 And replace one of your existing movies with another one 
 */
 
-let movies = ['Phantom Menance*','Attack of the Clones','Revenge of the Sith','Solo','Rogue One','A New Hope','The Empire Strikes Back','Return of the Jedi'];
+let movies = ['Phantom Menance', 'Attack of the Clones', 'Revenge of the Sith', 'Solo', 'Rogue One', 'A New Hope', 'The Empire Strikes Back', 'Return of the Jedi'];
 
 movies.push('Force Awakens')
-movies.splice(3,1,'Obi Wan')
+movies.splice(3, 1, 'Obi Wan')
 
 movies.forEach(f => { console.log(f) })
 
@@ -183,7 +183,7 @@ movies.forEach(f => { console.log(f) })
 let long = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 console.log(long.length); // 10
 
-let colors = ['blue','green','yellow','red','orange','purple'];
+let colors = ['blue', 'green', 'yellow', 'red', 'orange', 'purple'];
 // console.log(colors.length) // 6
 // console.log(colors.toString()) // blue, green, yellow, red, orange, purple
 
@@ -232,29 +232,29 @@ let name = {
 11-objects
 **************************/
 
-var netflix = {
+let netflix = {
   id: 9,
   name: "Super Store",
-    season1: {
-      seasonInfo: {
-        episodeInfo : [
-          { episode: 1, episodeName: "Pilot"},
-          { episode: 2, episodeName: "Magazine Profile"},
-          { episode: 3, episodeName: "Shots and Salsa"},
-          { episode: 4, episodeName: "Mannequin"},
-          { episode: 5, episodeName: "Shoplifter"},
-          { episode: 6, episodeName: "Secret Shopper"},
-          { episode: 7, episodeName: "Color Wars"},
-          { episode: 8, episodeName: "Wedding Day Sale"},
-          { episode: 9, episodeName: "All-Nighter"},
-          { episode: 10, episodeName: "Demotion"},
-          { episode: 11, episodeName: "Labor"}
-        ]
-      }
-    },
-    season2: {},
-    season3: {}
-  };
+  season1: {
+    seasonInfo: {
+      episodeInfo: [
+        { episode: 1, episodeName: "Pilot" },
+        { episode: 2, episodeName: "Magazine Profile" },
+        { episode: 3, episodeName: "Shots and Salsa" },
+        { episode: 4, episodeName: "Mannequin" },
+        { episode: 5, episodeName: "Shoplifter" },
+        { episode: 6, episodeName: "Secret Shopper" },
+        { episode: 7, episodeName: "Color Wars" },
+        { episode: 8, episodeName: "Wedding Day Sale" },
+        { episode: 9, episodeName: "All-Nighter" },
+        { episode: 10, episodeName: "Demotion" },
+        { episode: 11, episodeName: "Labor" }
+      ]
+    }
+  },
+  season2: {},
+  season3: {}
+};
 
 /*
 How do we access data with objects?  Where arrays used the [value] appended to the end of it, objects use dot notation.

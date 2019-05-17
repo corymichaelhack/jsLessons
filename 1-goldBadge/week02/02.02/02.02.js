@@ -1,4 +1,6 @@
 /*
+Submit tutorial page to LMS
+
 Challenge (Arrays):
 Color List:
 
@@ -18,6 +20,17 @@ function colorNums(color,sufx){
    }
 }
 colorNums(colors,suf);
+
+let colorArr = ['red', 'blue', 'green', 'yellow', 'purple', 'white', 'black', 'orange', 'teal', 'brown'];
+let suffArr = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th'];
+
+function colorPlacement(colors, suffixes){
+  colors.forEach((element, index) => {
+    console.log(`${index+1}${suffixes[index]} is ` + `${colors[index]}`);
+  });
+}
+
+colorPlacement(colorArr, suffArr);
 
 /*
 DOM Walk Through 

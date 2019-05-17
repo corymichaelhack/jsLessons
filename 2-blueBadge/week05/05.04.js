@@ -1,234 +1,222 @@
 /**************************
-NODE CHALLENGE 2
+DAY THREE REACT CHALLENGE
 **************************/
 
+/*  BRONZE CHALLENGE
+
+  Use the DayThreeComp to build a component that lets the user type into an input field.
+  Make sure that your input field's value is stored in state, and that state shows the value
+  in the input field (2-way data binding).  
+
+    SILVER CHALLENGE
+  
+  Do the Bronze Challenge, but add a second input field.  Make sure that its value is also
+  managed by state using 2-way binding.  Make an h1 tag below these input fields that shows
+  the value of the input field which has the longer text.  Your page may look like the below:
+
+  [this is some text]
+  [this is some longer text]
+  <h1>this is some longer text</h1>
+
+    GOLD CHALLENGE
+  
+  Do the Silver Challenge, but make the image from the bronze challenge display through a 
+  functional component.  Pass the image to be displayed to the functional component as a prop
+  (containing a url, meaning that the picture isn't saved locally).  
+*/
 
 /**************************
-PIE API WALKTHROUGH 4 - CONNECT WITH CLIENT
+PIE API WALKTHROUGH 3 - AUTH
 **************************/
 /*
-We are now going to connect the database we created here with the pieclient app that we created last week (React with Node Server)
-
-Go to Pies.js in pieclient/src/components/layout
-
-You should currently see the following:
+RECAP:
+sequelize
+postgres
+pgAdmin
+bodyParser
+* CRUD
+*/
+/*
+In your models folder, create a new file called user.js
 */
 
-import React, { Component } from 'react';
-import PieTable from './PieTable';
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define ('user', {
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false 
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true 
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false 
+    }
+  })
 
-class Pies extends Component {
-  
-  render() {
-    return (
-      <div>
-        <PieTable/>
-      </div>
-    )
-  }
+  return User;
 }
 
-export default Pies;
+// Now make a usercontroller.js file:
+
+const router = require('express').Router()
+const User = require('../db').import('../models/user')
 
 /* 
-Add a constructor:
-
-constructor() {
-  super() 
-  this.state = {
-    pies: []
-  }
-}
+Now go to your index.js and add the following:
 */
 
-/*
-In the state, we are simply adding an array that will catch the various json objects of pies from the server
+const user = require('./controllers/usercontroller')
+// More code here
+app.use('/auth', user)
 
-We will fetch them inside a componentDidMount lifecycle method (this is a great place to fetch due to the fact that it happens BEFORE the final render of the component)
+/* 
+If you run it, it will throw an error because userconroller is empty
+Create middleware folder with headers.js inside:
+*/
 
-Add the following below your constructor:
+module.exports = (req, res, next) => {
+  res.header('access-control-allow-origin', '*');
+  res.header('access-control-allow-methods', 'GET, POST, PUT, DELETE');
+  res.header('access-control-allow-headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
-componentDidMount() {
-  fetch('http://localhost:3000/pies') // Make sure both the server and client are running
-    .then(res => res.json())
-    .then(json => {
-      this.setState({
-        pies: json
-      })
-    })
-}
+  next();
+};
 
-What does .map() do again?
+// In index.js:
+app.use(require('./middleware/headers'))
 
-What more do we have to put in to our fetch if we want to do more than a GET?:
+// In usercontroller.js:
+// Delete app.use('/auth', user)
+// npm install bcryptjs
+// npm install jsonwebtoken
 
-fetch('http://localhost:3000/pies', {
-  method: 'POST',
-  body: JSON.stringify(<something>),
-  headers: new Headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'sessionToken'
-  },
-  etc.
+
+// Then add:
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
+
+router.post('/signup', (req, res) => {
+  User.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 10)
+  })
+    .then(
+      createSuccess = (user) => {
+        let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
+
+        res.json({
+          user: user,
+          message: 'user created',
+          sessionToken: token
+        })
+      },
+      createError = err => res.send(500, err)
+    )
 })
 
-Lastly in this component, we have to pass props down to PieTable in order to display the data.  Add the following to the link inside the JSX:
+module.exports = router
 
-<div>
-  <PieTable pies={this.state.pies}/>
-</div>
-
-What is JSX again?
-
-How do we pass props from one component to the next?
-
-Now, go to PieTable.js
-
-You should see the following:
+/*
+In .env file, add JWT_SECRET
+Run code and see if you add a user to your db
+In usercontroller.js (above module.exports = router): 
 */
 
-import React from 'react'
+// signup code here
 
-const PieTable = () => {
-  
-  return(
-    <div>
-      <h3>Pie List</h3>
-      <table border='1' className='pies'>
-        <thead>
-          <tr>
-            <th>Name of Pie</th>
-            <th>Base of Pie</th>
-            <th>Crust</th>
-            <th>Time to Bake</th>
-            <th>Servings</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Apple</td>
-            <td>Fruit</td>
-            <td>Sourdough</td>
-            <td>50 min</td>
-            <td>8</td>
-            <td>5 stars</td>
-          </tr>
-          <tr>
-            <td>Peach</td>
-            <td>Fruit</td>
-            <td>Sourdough</td>
-            <td>50 min</td>
-            <td>8</td>
-            <td>5 stars</td>
-          </tr>
-          <tr>
-            <td>Chocolate Cream</td>
-            <td>Cream</td>
-            <td>Oreo</td>
-            <td>50 min</td>
-            <td>8</td>
-            <td>5 stars</td>
-          </tr>
-          <tr>
-            <td>Chicken Pot Pie</td>
-            <td>Gravy</td>
-            <td>Hot Water Crust</td>
-            <td>50 min</td>
-            <td>8</td>
-            <td>5 stars</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> 
-  )
+router.post('/signin', (req, res) => {
+  User.findOne({ where: { email: req.body.email }})
+    .then(user => {
+        if (user) {
+          bcrypt.compare(req.body.password, user.password, (err, matches) => {
+            if (matches) {
+              let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
+              res.json({
+                user: user,
+                message: 'successfully authenticated',
+                sessionToken: token 
+              })
+            } else {
+              res.status(502).send({ error: 'bad gateway' })
+            }
+          })
+        } else {
+          res.status(500).send({ error: 'failed to authenticate' })
+        }
+      },
+      err => res.status(501).send({ error: 'failed to process'})
+    )
+})
+
+/*
+Now add validation-session.js in middleware folder:
+*/
+
+const jwt = require('jsonwebtoken')
+const User = require('../db').import('../models/user')
+
+const validateSession = (req, res, next) => {
+  const token = req.headers.authorization
+  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    if (!err && decodedToken) {
+      User.findOne({ where: { id: decodedToken.id }})
+        .then(user => {
+          if (!user) throw 'err'
+          req.user = user
+          return next()
+        })
+        .catch(err => next(err))
+    } else {
+      req.errors = err
+      return res.status(500).send('Authorized');
+    }
+  })
 }
 
-export default PieTable;
+module.exports = validateSession
 
 /*
-Prune the JSX down to this:
-
-<div>
-  <h3>Pie List</h3>
-  <table border='1' className='pies'>
-    <thead>
-      <tr>
-        <th>Name of Pie</th>
-        <th>Base of Pie</th>
-        <th>Crust</th>
-        <th>Time to Bake</th>
-        <th>Servings</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td> min</td>
-        <td></td>
-        <td> stars</td>
-      </tr>
-    </tbody>
-  </table>
-</div> 
-
-We now need to grab the props
-
-How do we grab props in a class component vs. a functional component?:
-
-A class component grabs props via the super() inside the constructor(); a functional component grabs props via paramters within the function (inside the parentheses)
-
-Add the word 'props' inside your paramter of this component:
+Go to piecontroller.js file:
 */
 
-const PieTable = (props) => {}
+const validateSession = require('../middleware/validate-session')
+
+// add validateSession as additional parameter after path ('/') for every endpoint that is not a GET; example:
+
+//                    vvv
+router.post('/', validateSession, (req, res) => {
+  if (!req.errors) {
+    const pieFromRequest = {
+      nameOfPie: req.body.nameOfPie,
+      baseOfPie: req.body.baseOfPie,
+      crust: req.body.crust,
+      timeToBake: req.body.timeToBake,
+      servings: req.body.servings,
+      rating: req.body.rating
+    }
+
+    Pie.create(pieFromRequest)
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json(req.errors))
+  } else {
+    res.status(500).json(req.errors)
+  }
+})
 
 /*
-Under the closing thead tag, we will be adding a .map() to filter through the pies objects and place them inside the JSX accordingly:
-
-<div>
-  <h3>Pie List</h3>
-  <table border='1' className='pies'>
-    <thead>
-      <tr>
-        <th>Name of Pie</th>
-        <th>Base of Pie</th>
-        <th>Crust</th>
-        <th>Time to Bake</th>
-        <th>Servings</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    {
-      props.pies.map((pie, id) => {
-        return (
-        <tbody>
-          <tr key={ id }>
-            <td>{ pie.nameOfPie }</td>
-            <td>{ pie.baseOfPie }</td>
-            <td>{ pie.crust }</td>
-            <td>{ pie.timeToBake } min</td>
-            <td>{ pie.servings }</td>
-            <td>{ pie.rating } stars</td>
-          </tr>
-        </tbody>
-        )
-      })
-    }
-  </table>
-</div> 
-
-NOTE: you will get an error for the key attribute in your <tr>; that's ok for this walk through
-
-Notice what we are doing: 
-  We are mapping through the pies, which we store in our state and pass via props from Pies to PieTable; 
-
-  We grab each individual pie object, calling it pie, and its corresponding id;
-
-  We set the individual id accordingly to each row of the table, otherwise it would duplicate id numbers (bad);
-  
-  We display each column of the table into the table of the front end
+Test in Postman:
+  create or signin as a user
+  Grab token from output
+  Go to headers and create Authorization with the token as the value
+  Toggle between on and off to see if functionality is based on auth
 */

@@ -1,221 +1,158 @@
-/**************************
-NODE CHALLENGE 1
-**************************/
-
-
-/**************************
-PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
-**************************/
 /*
-RECAP:
-npm
-package.json/package.lock.json/node_modules
-nodemon
-express (node index.js, npm run dev, nodemon)
-how internet works
-.env file
-.gitignore file
-ran a server (express)
-ran on Postman
-parsed into controller file
-*/
-/*
-In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented)
-
-npm install sequelize (explain => link between server and db)
-npm install pg (explain => for access to postgres)
-npm install body-parser (explain => allows us to use req.body)
-
-Create db.js file and add:
-*/
-
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
-  host: 'localhost', 
-  dialect: 'postgres'
-})
-
-sequelize.authenticate() 
-  .then(() => console.log('postgres db is connected'))
-  .catch(err => console.log(err))
-
-module.exports = sequelize;
+/*******************
+DAY ONE REACT CHALLENGE
+*******************/
 
 /*
-Tell them to add NAME and PASS to .env file
-
-create models folder and add pie.js file:
-*/
-
-module.exports = (sequelize, DataTypes) => {
-  const Pie = sequelize.define('pie', {
-    nameOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    baseOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    crust: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    timeToBake: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    servings: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
-  })
-
-  return Pie;
-}
-
-/*
-Explain how model is structure for table
-
-Now go to index.js and add the following:
-*/
-
-const sequelize = require('./db');
-const bodyParser = require('body-parser')
-
-sequelize.sync();
-// sequelize.sync({ force: true }); // explain use here
-app.use(bodyParser.json())
-
-/*
-Go to piecontroller.js
-*/
-
-//Change this:
-const express = require('express');
-const router = express.Router();
-// to
-const router = require('express').Router();
-
-// and add:
-const sequelize = require('../db')
-const Pie = sequelize.import('../models/pie')
-// and then change to
-const Pie = require('../db').import('../models/pie');
-
-//-----------------
-
-// SO you should ONLY see:
-const router = require('express').Router();
-const Pie = require('../db').import('../models/pie');
-
-// comment out the existing router.gets and add the following:
-router.get('/', (req, res) => {
-  Pie.findAll()
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
-})
-
-/*
-Explain how the GET works; note that if you run it, you should see only an empty array ([])
-
-Now build out the POST:
-*/
-
-router.post('/', (req, res) => {
-  if (!req.errors) {
-    const pieFromRequest = {
-      nameOfPie: req.body.nameOfPie,
-      baseOfPie: req.body.baseOfPie,
-      crust: req.body.crust,
-      timeToBake: req.body.timeToBake,
-      servings: req.body.servings,
-      rating: req.body.rating
-    }
-
-    Pie.create(pieFromRequest)
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
-
-/*
-Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
-
-We then use the .create() to build a new instance from the model
-
-Run and use the post and in the body section of Postman, type out:
+BRONZE LEVEL:
+Convert the 'StatePropsChallenge' component to a class component.
+Use the constructor method to initialize state for
+this component.  State should hold 3 key-value pairs:
 
 {
-	"nameOfPie":"peach",
-	"baseOfPie":"fruit",
-	"crust": "graham",
-	"timeToBake": 50,
-	"servings": 8,
-	"rating": 5
-}
+            console : 'Playstation',
+            version : 4,
+            maker : 'Sony'
+        }
 
-It should show in the output and persist in PGAdmin
+Inside the render method, build a button.  This button should
+console.log() the state object when it gets clicked.  Good luck!
 
-If you then run the GET, you should see it show up there as well.
+SILVER LEVEL:
+Do all of the above, but make a new functional component called
+'PropDisplay' (careful with folder stucture!).  Call this component
+three times inside the 'StatePropsChallenge' render method.  Each 'PropDisplay'
+component call should be passed a prop, the first is passed 'console',
+the second 'version', and the third 'maker'.  Each PropDisplay should 
+display the prop it gets passed.  Good luck!
 
-Have the students build out multiple pies
+GOLD LEVEL:
+Do all of the above, but refactor your render so that instead of calling
+PropDisplay three times, you create an array of jsx inside of render.
+
+Find a way to iterate over the state object, with each iteration, create a PropDisplay component, and pass the values in the state one by one. Each PropDisplay component
+should have its prop defined dynamically.  You shouldn't have to make a 'console',
+'version', and 'maker' prop by hard-coding the their names.  Add the array of JSX to the render
 */
 
 /**************************
-PIE API DEBUGGING CHALLENGE
+PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
+/*
 
-// Broken code:
-// router.get('/name', (req, res) => {
-//   Pie.findone({ where: { nameOfPie: req.params.nameOfPie }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.status(500).json({ error: err}))
-// })
+Inside JavaScript Library, make a new folder called Pie-Project
 
-// router.put('/:id', (req, res) => {
-// if (!req.errors) {
-//   pie.update(req.body, { where: { id: req.body.id }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.json(req.errors))
-// } else {
-//     res.status(500).json(req.errors)
-//   }
-// })
+Add the react pie-client to the folder
 
-// Good code:
-router.get('/:name', (req, res) => {
-  Pie.findOne({ where: { nameOfPie: req.params.name }})
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err}))
-})
+And make a server folder
 
-router.put('/:id', (req, res) => {
-  if (!req.errors) {
-    Pie.update(req.body, { where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
 
-/**************************
-PIE API DELETE CHALLENGE
-**************************/
-// Challenge students to add DELETE functionality:
-router.delete('/:id', (req, res) => {
-  if (!req.errors) {
-    Pie.destroy({ where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
-})
+Folder Structure:
+  pie-Project
+    pie-client
+    server
+Navigate to server
+npm init => explain what package.json is doing 
+Will see this in package.json (add start and dev to scripts): 
+{
+  "name": "pieapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    // New code below
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC"
+}
+Explain what start script does (npm start) and what dev does (nodemon)
+Go ahead and npm install --save-dev nodemon  (will create a devDependencies key with nodemon inside)
+Explain what nodemon does 
+npm install express
+Explain difference between opening a file path vs. running a server
+  Server has hot reloading
+  
+  More importantly:
+    Explain how the internet works
+      client <=> server <=> db
+      req and res (recall API interaction)
+Create index.js file at root level of server
+*/
+
+const express = require('express')
+const app = express()
+
+app.listen(3000, () => console.log('App is listening on 3000'))
+
+/*
+Now create .env file and add PORT = 3000
+npm install dotenv
+Change index.js to following
+*/
+require('dotenv').config()
+
+app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
+
+/*
+Create .gitignore file and add following:
+  node_modules/
+  *.env
+Build out own server
+Add the following to the folder structure:
+server
+  public
+    index.html
+In index.html, add:
+<h1>This is working with a web server!</h1>
+In index.js, add:
+*/
+
+app.use(express.static(__dirname + '/public'))
+console.log(__dirname)
+
+app.get('/', (req, res) => res.render('index'))
+
+/*
+Open index.html in both local path and server (npm run dev)
+In Postman, run to see html in output section
+In index.js, add:
+*/
+
+app.get('/pies', (req, res) => res.send('I love pie!'))
+
+/*
+Run in Postman
+Now add a controllers folder with piecontroller.js
+In piecontroller.js add:
+*/
+
+const express = require('express')
+const router = express.Router()
+
+// copy from index.js:
+app.get('/pies', (req, res) => res.send('I love pie!'))
+// change app to router
+router.get('/', (req, res) => res.send('I love pie!'))
+// explain what the '/' does (localhost:3000/pies/)
+
+// and add to bottom:
+module.exports = router
+
+//In index.js, change: 
+
+app.get('/pies', (req, res) => res.send('I love pie!'))
+// to
+app.use('/pies', pies)
+// add add at time of index.js:
+const pies = require('./controllers/piecontroller')
+
+// Run in postman
+
+/*********************
+ALECX'S NYT WALKTHROUGH
+*********************/
+
+/* Node server gitbook Chs. 0-4 */

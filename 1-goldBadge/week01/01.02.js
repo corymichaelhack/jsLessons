@@ -356,6 +356,8 @@ CONDITIONALS
 IF
 **************************/
 
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
+
 let isOn = true;
 
 if (isOn == true) {
@@ -366,9 +368,9 @@ if (isOn) {
   console.log('The light is on, yay!');
 };
 
-let isOff = false;
+let isOn = false;
 
-if (isOff == false){
+if (isOn == false){
   console.log('The light is off!');
 }
 
@@ -669,3 +671,8 @@ Comparison Operators
 Conditionals
 Ternaries
 */
+
+// Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+
+let test = 5;
+console.log(test.toString());

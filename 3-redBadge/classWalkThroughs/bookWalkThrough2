@@ -208,7 +208,7 @@ In the display-books.component.ts file, let's add a ratings array at the top of 
 
   ratings = ['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐']
 
-Next, we need to do some conversion while this component is rendering.  So we need an OnInit lifecycle hook in this component as well.  Under the ratins array, add:
+Next, we need to do some conversion while this component is rendering.  So we need an OnInit lifecycle hook in this component as well.  Under the ratings array, add:   
 
   ngOnInit() {
 

@@ -1,3 +1,11 @@
+/*
+PROJECTS TUTORIAL
+*/
+//show students their folder structure 
+//JavaScriptSept2018
+//  javascriptLibrary
+//  projects
+
 /**************************
 RECAP
 Peer coding challenge - One person drives/types  other person decides what to type, then switch
@@ -394,7 +402,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
-console.log 'Hello, my name is Autumn McClellan'
+console.log 'Hello, my name is Autumn Henderson'
 Call your function 
 */
 

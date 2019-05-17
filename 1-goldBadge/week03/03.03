@@ -1,3 +1,6 @@
+Today's Notes:
+1)  Talk to Jeremy about uploading the gold badge rubric
+
 Firebase Deploy for Assignment 4
 
 firebase.google.com
@@ -16,12 +19,29 @@ npm install -g firebase-tools
 firebase login => google creds
 
 firebase init
+  wish to proceed? = y
   hosting only 
+  add new project
   public = ./
   rewrite = n
   override = n 
 
-Show two files added in app
+firebase use --add => select new project
+
+Show new files added in app
+  .firebaserc
+  404.html
+  firebase.json:
+    {
+      "hosting": {
+        "public": "./",
+        "ignore": [
+          "firebase.json",
+          "**/.*",
+          "**/node_modules/**"
+        ]
+      }
+    }
 
 git add .
 git commit -m "message"
