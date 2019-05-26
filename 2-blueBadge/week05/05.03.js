@@ -101,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   return Pie;
-}
+}; 
 
 /*
 Explain how model is structure for table

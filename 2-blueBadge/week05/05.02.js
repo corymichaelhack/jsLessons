@@ -33,7 +33,7 @@ PropDisplay three times, you create an array of jsx inside of render.
 Find a way to iterate over the state object, with each iteration, create a PropDisplay component, and pass the values in the state one by one. Each PropDisplay component
 should have its prop defined dynamically.  You shouldn't have to make a 'console',
 'version', and 'maker' prop by hard-coding the their names.  Add the array of JSX to the render
-*/
+*/ 
 
 /**************************
 PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
@@ -82,19 +82,19 @@ Explain difference between opening a file path vs. running a server
 Create index.js file at root level of server
 */
 
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-app.listen(3000, () => console.log('App is listening on 3000'))
+app.listen(3000, () => console.log('App is listening on 3000'));
 
 /*
 Now create .env file and add PORT = 3000
 npm install dotenv
 Change index.js to following
 */
-require('dotenv').config()
+require('dotenv').config();
 
-app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
+app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)); // BACK TICS!
 
 /*
 Create .gitignore file and add following:
@@ -147,7 +147,7 @@ app.get('/pies', (req, res) => res.send('I love pie!'))
 // to
 app.use('/pies', pies)
 // add add at time of index.js:
-const pies = require('./controllers/piecontroller')
+const pies = require('./pieApi/controllers/piecontroller')
 
 // Run in postman
 
