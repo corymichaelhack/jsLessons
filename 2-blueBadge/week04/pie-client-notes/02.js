@@ -1,5 +1,5 @@
 /**************************
-PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
+PIE CLIENT WALKTHROUGH 2 - Internal State, Conditional Rendering, and Data Binding
 **************************/
 
 // * Review React path to browser,
@@ -11,7 +11,7 @@ PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
  And Components connecting to our 'branch' components are leaves
 
  And everything is rendered through App.js, and bootstrapped to the browser
- */
+*/
 
 // * cd into pie-client
 // * npm start
@@ -26,7 +26,6 @@ components
 */
 
 // * Build out Auth.js
-
 /*
               import React, {Component} from 'react';
               import './Auth.css';
@@ -46,10 +45,9 @@ components
               }
 
               export default Auth;
-              */
-
+*/
+             
 // * Build out Auth CSS
-
 /*
               .card-like {
                 padding : 1em;
@@ -62,8 +60,9 @@ components
                 flex-direction: column;
               }
 
-  * discuss how the shorthand margin property is positioning the div
 */
+
+//* discuss how the shorthand margin property is positioning the div
 
 // * Add Auth to the App, right under the <Navbar />
 
@@ -76,11 +75,9 @@ components
 
             let [ login, setLogin ] = useState(true);
 
-
   * Then modify <h1> to render a different title based on what the value of login is
 
             <h1>{ login ? 'Login' : 'Sign Up ' }</h1>
-
 
   * Add ability to toggle additional fields for sign up - also using ternary - add these under the title
 
@@ -93,7 +90,6 @@ components
                 <input type="text" name="lastName" />
                 </React.Fragment>
             }
-
 
             Explain the React.Fragment is a clever way to wrap JSX in one parent, without adding additional HTML bloat
 
@@ -120,6 +116,7 @@ app data -> browser
 * Add Change handlers to each input, relying on the set[value] methods from the useState() calls
 
 * and let's add our onChange handler to each input:
+
             onChange={(e) => setValue(e.target.value)}
 
 Leave default values and go test - you can now type in all of the inputs
@@ -132,7 +129,6 @@ The app is updating in real time! That's why we can even see the input's values 
 * reiterate what's happening here - as this is the basic flow of React
 
 user input (change) => state updated => Dom updated
-
 
 * Remove default values from useState() calls
 
@@ -151,7 +147,6 @@ user input (change) => state updated => Dom updated
 
 ? What are we doing here by setting all the values to empty strings?
 ? What is the !login doing?
-
 
 recap what's been built out, and how dynamic content can be created with React
 mention to students that the data submission depends upon our server, which we have yet to connect
