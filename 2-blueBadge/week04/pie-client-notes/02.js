@@ -1,5 +1,5 @@
 /**************************
-PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
+PIE CLIENT WALKTHROUGH 2 - Internal State, Conditional Rendering, and Data Binding
 **************************/
 
 // * Review React path to browser,
@@ -11,7 +11,7 @@ PIE CLIENT WALKTHROUGH 2 - FUNCTIONAL COMPONENTS
  And Components connecting to our 'branch' components are leaves
 
  And everything is rendered through App.js, and bootstrapped to the browser
- */
+*/
 
 // * cd into pie-client
 // * npm start
@@ -26,131 +26,131 @@ components
 */
 
 // * Build out Auth.js
-
 /*
-import React, {Component} from 'react';
+              import React, {Component} from 'react';
+              import './Auth.css';
 
-import './Auth.css';
+              const Auth = () => {
+                  return(
+                    <form className="card">
+                      <h1>Sign In</h1>
+                      <label className="display-block" htmlFor="email">Email:</label>
+                      <input className="display-block" type="text" name="email" />
+                      <label className="display-block" htmlFor="password">Password:</label>
+                      <input className="display-block" type="password" name="password" />
+                      <buttonLogin/Signup</button>
+                      <button type="submit">Submit</button>
+                    </form>
+                  )
+              }
 
-class Auth extends Component {
-    render(){
-    return(
-      <form className="card-like" onSubmit={this.handleSubmit} >
-        <h1>Sign In</h1>
-        <label className="display-block" htmlFor="email">Email:</label>
-        <input className="display-block" type="text" name="email" />
-        <label className="display-block" htmlFor="password">Password:</label>
-        <input className="display-block" type="password" name="password" />
-        <button onClick={this.loginToggle}>Login/Signup</button>
-        <button type="submit">Submit</button>
-      </form>
-    )
-  }
-}
-
-export default Auth;
+              export default Auth;
 */
-
+             
 // * Build out Auth CSS
-
 /*
-    .card-like {
-        padding : 1em;
-        background-color : whitesmoke;
-        border-radius : 15px;
-        width: 10vw;
-        margin: 25vh auto;
-    }
+              .card-like {
+                padding : 1em;
+                background-color : whitesmoke;
+                border-radius : 15px;
+                width: 10vw;
+                margin: 25vh auto;
+                text-align : center;
+                display : flex;
+                flex-direction: column;
+              }
 
-    .display-block {
-        display : block;
-    }
-
-  * discuss what absolute position is doing, top, left, and transform
 */
 
-// * Adding Auth to the App
+//* discuss how the shorthand margin property is positioning the div
 
-// * Talk about differences between Class and Functional Components & some benefits of reach
-
-// ! Note - The app won't do anything yet since the click handlers don't exist - Apps will refresh when buttons are clicked - that is expected
+// * Add Auth to the App, right under the <Navbar />
 
 // * Update Auth to toggle login / sign up
+
+
 /*
-  * add to Auth.js class - right before declaration
+  * add to Auth.js - right before declaration
 
-  state = {
-    login: true
-  }
+    Initialize state of login with an initial value of false
 
-  * add this just inside render
+            let [ login, setLogin ] = useState(true);
 
-  let title = this.state.login ? "Login" : "Signup";
-let signupFields = !this.state.login
-  ? (
-    <div>
-      <label className="display-block" htmlFor="firstName">First Name :</label>
-      <input className="display-block" type="text" name="firstName" />
-      <label className="display-block" htmlFor="lastName">Last Name :</label>
-      <input className="display-block" type="text" name="lastName" />
-  </div>
-  )
-  : null
+  * Then modify <h1> to render a different title based on what the value of login is
 
-* replaced Sign In! h1 with the below:
-<h1>{title}</h1>
+            <h1>{ login ? 'Login' : 'Sign Up ' }</h1>
 
-* add signupFields below password input:
-{signupFields}
+  * Add ability to toggle additional fields for sign up - also using ternary - add these under the title
+
+            {
+                login ? null 
+                : <React.Fragment>
+                <label htmlFor="firstName">First Name :</label>
+                <input type="text" name="firstName" />
+                <label htmlFor="lastName">Last Name :</label>
+                <input type="text" name="lastName" />
+                </React.Fragment>
+            }
+
+            Explain the React.Fragment is a clever way to wrap JSX in one parent, without adding additional HTML bloat
 
 ? What happens if we change login to false?
 
-* discuss 2-way binding, and add the following inside of state:
-firstName:'',
-lastName: '',
-email: '',
-password: '',
+* discuss 2-way binding, and add the following below the login state
+
+            let [ firstName, setFirstName ] = useState('');
+            let [ lastName, setLastName ] = useState('');
+            let [ email, setEmail ] = useState('');
+            let [ password, setPassword ] = useState('');
 
 let's have every input tag grab the value from state.
 
 * add the following to each <input/>:
-value={this.state.whatever}
+
+            value={ firstName/lastName/email/password }
 
 ? why are the inputs locked?
 
+Take a moment to modify the calls to useState() give them some default values and recheck the browser - we have values in the inputs, but we cant change them - this is one way data binding
+app data -> browser
 
-* let's add a changeHandler method inside the class so we can change the values in our state
-handleChange = (event) => {
-  this.setState({[event.target.id]: event.target.value})
-}
+* Add Change handlers to each input, relying on the set[value] methods from the useState() calls
 
 * and let's add our onChange handler to each input:
-onChange={this.handleChange}
 
-* reiterate what's happening here:
+            onChange={(e) => setValue(e.target.value)}
 
-user input (change) => state updated => Dom changes
+Leave default values and go test - you can now type in all of the inputs
+Explain that -this- is TWO way data binding, 
+app data <- browser ( specifically user input )
+app data -> browser
+
+The app is updating in real time! That's why we can even see the input's values changing
+
+* reiterate what's happening here - as this is the basic flow of React
+
+user input (change) => state updated => Dom updated
+
+* Remove default values from useState() calls
 
 * finally add loginToggle method and use it:
 
-loginToggle = (event) => {
-  event.preventDefault();
-  const login = this.state.login;
-  this.setState({
-    login: !login,
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
-  })
-}
+            const loginToggle = (event) => {
+                event.preventDefault();
+                setLogin(!login);
 
-? What are we doing here by setting all the strings to empty strings?
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+            };
+
+
+? What are we doing here by setting all the values to empty strings?
 ? What is the !login doing?
 
-
 recap what's been built out, and how dynamic content can be created with React
-mention to students that the data submission depends upon a server, which has yet to be built out
+mention to students that the data submission depends upon our server, which we have yet to connect
 */
 
 // * GitBook Chapters 4 - 5
