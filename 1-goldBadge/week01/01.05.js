@@ -1,11 +1,11 @@
 /*
-Talk about "Think Like a Programmer", chapters 1-3, 8
+"Think Like a Programmer", chapters 1-3, 8
   Always have a plan
     -Making a plan gives you structure, helps to give you a path to take. Even if it quickly becomes \
     clear it is not the right path, its a way to get yourself jumpstarted 
   Restate the problem
     -This is a great way to make the problem clear, and concise. Also a great way to figure out what
-    is being asked and what is needed. Rubberducking
+    is being asked and what is needed. Rubberducking - Talking to an inanimate object might be a good way to help you restate the problem to yourself better. 
   Divide the problem
     - Break the problem up into smaller sections, this can help with the mental block that may come 
     from how large a problem may seem. You may not know how to get from A to C, but you can walk 
@@ -30,6 +30,10 @@ Talk about "Think Like a Programmer", chapters 1-3, 8
     progress
 
 
+
+    
+    
+
 Farmer Jebb has brought his produce to the farmers market! He is excited because he has a new system to keep track of all the produce he sells to hipster vegans like Ronan and Kayden. He is a tech savy farmer, so hes made an array of his produce. 
 
 let veggAmounts = [{name:'Sweet Potatoes',amount:4},{name:'Heirloom Tomatoes',amount:15},{name:'Kolrabi',amount:2},{name:'Honey Combs',amount:1}]
@@ -39,12 +43,28 @@ let veggPrices = [{name:'Sweet Potatoes',price:2},{name:'Heirloom Tomatoes',pric
 
 Oh no! Farmer Jebb needs both the amount and the prices to be in the same array of objects. Write a function that makes checks to see if for each object in the veggAmount array has a matching veggie in the veggPrices. If they match, add that price to correct object in the veggAmounts array. Console log the new array
 
-
+Gathering tools is a great way to start planning your solution! Re-read the problem and see why i gathered the tools i did! 
     Tools:
     function 
     if statement
     for loop 
     way to add new key/pair values to an object
+
+    Make your plan here. State what needs to happen first. Make sure the steps are small enough that the goal is clear. 
+
+    1)
+    2)
+    3)
+    4)
+    5)
+    ....make more steps if you need them!
+
+Now I have the solution at the bottom of this page, but try to see if you can follow your own steps to come up with a solution yourself!
+
+
+
+
+  
 
 */
 

@@ -310,7 +310,6 @@ Notice that arrays, too, are a container that can hold multiple datatypes.  Ther
 */
 
 /*
-
 Addition vs. Concatenation
 **************************
 When JS sees combining two or more numbers, it adds the values together using the built-in math functionality;

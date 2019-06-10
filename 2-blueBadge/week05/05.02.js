@@ -35,6 +35,62 @@ should have its prop defined dynamically.  You shouldn't have to make a 'console
 'version', and 'maker' prop by hard-coding the their names.  Add the array of JSX to the render
 */
 
+
+
+/**************************
+CODE CHALLENGE 1 - OBJECTS
+**************************/
+
+/*
+Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
+Your function may have 3 parameters, the original object, property1, property2
+*/
+
+// Option 1 (Not Quite Right)
+const person = {
+  fName: 'Tom',
+  lName: 'McClellan'
+}
+
+function changePerson(obj, param1, param2) {
+  
+  let temp = obj.param1;
+  obj.param1 = obj.param2;
+  obj.param2 = temp;
+
+  return obj
+}
+
+newObj = changePerson(person, 'fName', 'lName');
+
+console.log(newObj);
+
+// Option 2 (Better)
+const person = {
+  fName: 'Tom',
+  lName: 'McClellan'
+}
+
+const food = {
+  food1: 'Steak',
+  food2: 'Tacos'
+}
+
+const changePerson = (obj, prop1, prop2) => {
+  let newObj = Object.assign({}, obj);
+  // let newObj = obj;
+
+  let temp = newObj[prop1];
+  newObj[prop1] = newObj[prop2];
+  newObj[prop2] = temp;
+
+  return newObj;
+}
+const newObject = changePerson(food, 'food1', 'food2');
+console.log(food, "Unchanged Object");
+console.log(newObject, 'Changed Object');
+
+
 /**************************
 PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
@@ -155,4 +211,4 @@ const pies = require('./controllers/piecontroller')
 ALECX'S NYT WALKTHROUGH
 *********************/
 
-/* Node server gitbook Chs. 0-4 */
+/* Node server gitbook Chs. 0-4 */  

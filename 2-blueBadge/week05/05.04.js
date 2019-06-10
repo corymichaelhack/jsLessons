@@ -39,7 +39,7 @@ bodyParser
 /*
 In your models folder, create a new file called user.js
 */
-
+//sequelize is allowing us to create a table called user, with 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define ('user', {
     firstName: {

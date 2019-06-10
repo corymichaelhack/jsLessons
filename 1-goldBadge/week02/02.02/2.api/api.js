@@ -26,7 +26,7 @@ function fetchSpace(e) {
 
       // Explain callbacks
       displayRockets(json);
-    })
+    });
 }
 
 function displayRockets(json) {
@@ -35,6 +35,6 @@ function displayRockets(json) {
     let rocket = document.createElement('li');
     rocket.innerText = r.name;
     spaceShips.appendChild(rocket);
-  })
+  });
 }
 // Challenge! First, find cost per rocket in the object. Then, format both responses into a data table with the headers name and cost. Each rocket should have its own row. 
