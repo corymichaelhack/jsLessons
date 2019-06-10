@@ -100,9 +100,9 @@ export default Navbar;
 * Explain that we can apply styling to JSX with 'CSS in JS'
 * Explain we can also import assets like they were JavaScript
 * All components need to return JSX
-* Explain that since functional components are simply components, we can pass props as a parameter
+* Explain that since functional components are really just functions, we can pass parameters
 
-? Ask students about Props - Check understanding and fill gaps
+* Explain the ideas behind props - students haven't seen them yet
 */
 
 // * Set up Assets
@@ -185,7 +185,7 @@ components
     import './Logout.css';
     import logoutPic from '../../../assets/logout.png';
 
-    const Logout = (props) => {
+    const Logout = () => {
     return (
         <img className="logout-img" src={LogoutPic} alt="Logout" onClick={props.logout} />
     );
@@ -219,17 +219,3 @@ components
 */
 
 // * Explain how this Logout component is attempting to access a logout method thats being passed as a prop - it will not work yet - more on this later
-
-// * Assign GitBook 
-
-/*
-  Slack out to instructor code - pin to channel
-  
-  clone repo and show how to add to folder:
-  
-  4-reactFundamentals
-*   (clone here)
-    my-react-app
-*/
-
-// * GitBook parts 1-3, or continuing to move forward in the GitBook if past Ch 3

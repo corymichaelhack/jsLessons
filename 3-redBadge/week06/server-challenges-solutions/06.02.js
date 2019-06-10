@@ -16,9 +16,9 @@ var Animal = sequelize.import('../models/animal');
 // Bronze
 router.post('/create', (req, res) => {
     Animal.create({
-        name: req.body.name,
-        legNumber: req.body.legNumber,
-        predator: req.body.predator
+        name : req.body.name,
+        legNumber : req.body.legNumber,
+        predator : req.body.predator
     })
         .then(
             createSuccess = animal => {
@@ -26,7 +26,7 @@ router.post('/create', (req, res) => {
             },
 
             createFail = err => {
-                res.status(500).json({ error: err });
+                res.status(500).json({ error : err });
             }
         );
 });
@@ -42,11 +42,11 @@ router.delete('/:id', (req, res) => {
     Animal.destroy({ where: { id: req.params.id } })
         .then(
             deleteSuccess = recordsChanged => {
-                res.status(200).json({ message: `${recordsChanged} record(s) deleted.` })
+                res.status(200).json({ message : `${recordsChanged} record(s) deleted.` })
             },
 
             deleteFail = err => {
-                res.status(500).json({ message: 'Failed to delete', error: err })
+                res.status(500).json({ message : 'Failed to delete', error: err })
             }
         );
 });
@@ -54,22 +54,22 @@ router.delete('/:id', (req, res) => {
 // Gold
 router.put('/:id', (req, res) => {
     Animal.update({
-        name: req.body.name,
-        legNumber: req.body.legNumber,
-        predator: req.body.predator
+        name : req.body.name,
+        legNumber : req.body.legNumber,
+        predator : req.body.predator
     },
         {
-            where: {
+            where : {
                 id : req.params.id
             }
         })
         .then(
             updateSuccess = recordsChanged => {
-                res.status(200).json({ message: 'Animal Updated' })
+                res.status(200).json({ message : 'Animal Updated' })
             },
 
             updateFail = err => {
-                res.status(500).json({ message: 'Update failed', error: err })
+                res.status(500).json({ message : 'Update failed', error: err })
             }
         )
 })
