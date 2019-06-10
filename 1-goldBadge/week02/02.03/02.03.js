@@ -165,7 +165,7 @@ function one(x) {
 }
 
 function two(dataFromOne) {
-  return `I have ${dataFromOne} chickens.`
+  return `I have ${dataFromOne} chickens.`;
 }
 
 console.log(two(one(10)));

@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
   const Pie = sequelize.define('pie', {
     nameOfPie: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false    
     }, 
     baseOfPie: {
       type: DataTypes.STRING,
@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     crust: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false   
     },
     timeToBake: {
       type: DataTypes.INTEGER,
@@ -101,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   return Pie;
-}; 
+};    
 
 /*
 Explain how model is structure for table

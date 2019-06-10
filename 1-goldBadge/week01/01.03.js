@@ -203,7 +203,7 @@ Challenge:
 Write a for in loop that capitalizes the first letter of a student's name
 */
 
-var studentName = 'pAul';
+var studentName = 'auTuMNul';
 var capName;
 for (var n in studentName) {
   if (n == 0) {
@@ -400,7 +400,7 @@ pet('cat');
 Challenge:
 Write a function that takes two parameters:
 One parameter is for a first name,
-The other paramter is for a last name;
+The other parameter is for a last name;
 Have them come together in a variable inside the function.
 console.log 'Hello, my name is Autumn Henderson'
 Call your function 
@@ -631,8 +631,8 @@ function checker (str){
   let str = str.toLowerCase();
   let rev = str.split('').reverse().join('').toLowerCase();
   if(str == rev) {
-    console.log("It's a palindrome")
+    console.log("It's a palindrome");
   } else {
-    console.log(`${str} is not a palindrome`)
+    console.log(`${str} is not a palindrome`);
   }
 }
