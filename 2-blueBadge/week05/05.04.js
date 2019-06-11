@@ -20,9 +20,7 @@ DAY THREE REACT CHALLENGE
 
     GOLD CHALLENGE
   
-  Do the Silver Challenge, but make the image from the bronze challenge display through a 
-  functional component.  Pass the image to be displayed to the functional component as a prop
-  (containing a url, meaning that the picture isn't saved locally).  
+  Create a way for the header tag to alert some one that they need to type something into the inputs to engage with out logic, while keeping the ability to show the value of the longer input in the <h2>. You may need to tear out the initial set up for the conditional rendering it make this work. 
 */
 
 /**************************

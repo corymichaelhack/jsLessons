@@ -112,19 +112,6 @@ const DayOne = () => {
     )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**************************
 PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
