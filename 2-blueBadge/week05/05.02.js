@@ -5,35 +5,125 @@ DAY ONE REACT CHALLENGE
 
 /*
 BRONZE LEVEL:
-Convert the 'StatePropsChallenge' component to a class component.
-Use the constructor method to initialize state for
-this component.  State should hold 3 key-value pairs:
+Inside the DayOne component, initialize three state values ( using useState() ), platform, generation, and maker, as well as the methods to update them. Give them a default value of 'Playstation', 3, and 'Sony' respectively. 
 
-{
-            console : 'Playstation',
-            version : 4,
-            maker : 'Sony'
-        }
+Add a button to the return of this component. When this button is clicked, it should fire off a function to print all three values to the console.
 
-Inside the render method, build a button.  This button should
-console.log() the state object when it gets clicked.  Good luck!
 
 SILVER LEVEL:
+
+Add onto the Bronze Level challenge.
+
 Do all of the above, but make a new functional component called
-'PropDisplay' (careful with folder stucture!).  Call this component
-three times inside the 'StatePropsChallenge' render method.  Each 'PropDisplay'
+'PropDisplay' (careful with folder structure!).  Call this component
+three times inside the 'DayOne' return.  Each 'PropDisplay'
 component call should be passed a prop, the first is passed 'console',
 the second 'version', and the third 'maker'.  Each PropDisplay should 
 display the prop it gets passed.  Good luck!
 
 GOLD LEVEL:
-Do all of the above, but refactor your render so that instead of calling
-PropDisplay three times, you create an array of jsx inside of render.
 
-Find a way to iterate over the state object, with each iteration, create a PropDisplay component, and pass the values in the state one by one. Each PropDisplay component
-should have its prop defined dynamically.  You shouldn't have to make a 'console',
-'version', and 'maker' prop by hard-coding the their names.  Add the array of JSX to the render
-*/
+Reset the initial values of the calls to useState() with empty strings, so platform, generation, and maker are all empty when the component is created.
+
+Add three inputs, use data binding to allow the values of platform, generation, and maker to change when a user types into those inputs.
+
+* Bronze
+
+const DayOne = () => {
+    const [ platform, setPlatform  ] = useState('Playstation');
+    const [ generation, setGeneration ] = useState(3);
+    const [ maker, setMaker ] = useState('Sony');
+
+    const logState = () => {
+        console.log(`Platform : ${platform} - Generation : ${ generation } - Maker : ${ maker }`);
+    };
+
+    return (
+        <Container>
+            <h1>Day One Challenge</h1>
+            <Badge color="primary">Props</Badge>
+            <Badge color="secondary">useState()</Badge>
+            <hr />
+            <Button onClick={ logState }>Log State</Button>
+        </Container>
+    )
+}
+
+* Silver
+
+const PropDisplay = (props) => {
+    return (
+        <h4>{ props.string }</h4>
+    )
+}
+
+const DayOne = () => {
+    const [ platform, setPlatform  ] = useState('Playstation');
+    const [ generation, setGeneration ] = useState(3);
+    const [ maker, setMaker ] = useState('Sony');
+
+    const logState = () => {
+        console.log(`Platform : ${platform} - Generation : ${ generation } - Maker : ${ maker }`);
+    };
+
+    return (
+        <Container>
+            <h1>Day One Challenge</h1>
+            <Badge color="primary">Props</Badge>
+            <Badge color="secondary">useState()</Badge>
+            <hr />
+            <PropDisplay string={ platform } />
+            <PropDisplay string={ generation } />
+            <PropDisplay string={ maker } />
+            <Button onClick={ logState }>Log State</Button>
+        </Container>
+    )
+}
+
+* Gold
+
+const DayOne = () => {
+    const [ platform, setPlatform  ] = useState('Playstation');
+    const [ generation, setGeneration ] = useState(3);
+    const [ maker, setMaker ] = useState('Sony');
+
+    const logState = () => {
+        console.log(`Platform : ${platform} - Generation : ${ generation } - Maker : ${ maker }`);
+    };
+
+    return (
+        <Container>
+            <h1>Day One Challenge</h1>
+            <Badge color="primary">Props</Badge>
+            <Badge color="secondary">useState()</Badge>
+            <hr />
+            <Button onClick={ logState }>Log State</Button>
+            <PropDisplay string={ platform } />
+            <PropDisplay string={ generation } />
+            <PropDisplay string={ maker } />
+            <hr />
+            <Label>Platform</Label>
+            <Input value={ platform } onChange={(e) => setPlatform(e.target.value)} />
+            <Label>Generation</Label>
+            <Input value={ generation } onChange={(e) => setGeneration(e.target.value)} />
+            <Label>Maker</Label>
+            <Input value={ maker } onChange={(e) => setMaker(e.target.value)} />
+        </Container>
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**************************
 PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN

@@ -3,74 +3,79 @@
 /*
   * build token handler method in App.js
     
-  storeSessionToken = (token) => {
-    this.setState({
-        sessionToken : token
-    })
-  }
+  const storeToken = (token) => {
+    setToken(token);
+  };
+
+  * pass as prop to <Auth />
+  - you will likely need to add props to the Auth component's declaration
+
 
   * connect signup & login in Auth.js
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        let url = this.state.login ? 'http://localhost:3005/auth/signin' : 'http://localhost:3005/auth/signup';
+        let url = login ? 'http://localhost:4000/auth/signin' : 'http://localhost:4000/auth/signup';
+
+        let reqBody = {
+            firstName : firstName,
+            lastName : lastName,
+            email : email,
+            password : passwordcon
+        }
 
         fetch(url, {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
             },
-            body : JSON.stringify(this.state)
+            body : JSON.stringify(reqBody)
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            this.props.tokenHandler(data.sessionToken)
-        })
-        .catch(err => console.log(err));
-    }
+        .then(data => props.storeToken(data.sessionToken))
+        .catch(err => console.log(err))
+    };
 
-  complete pie fetch & replace mock data
-  * add contructor to Pies.js and add empty array called 'pies'
-
+  * complete pie fetch & replace mock data
+  
+    add call to useState and create any empty array for Pies
+    create a call to useEffect as well - you will need to import this - use state should call fetchPies(), and the second arg should be an empty array
 
     * First new additions
 
-    constructor() {
-        super();
-
-        this.state = {
-            pies : []
-        }
-    }
-
-    componentDidMount = () => {
-        this.fetchPies();
-    }
-
-    fetchPies = () => {
-
-    }
+    const [ pies, setPies ] = useState([]);
+    
+    useEffect(() => fetchPies(), []);
 
     * flesh out fetchPies
-    fetchPies = () => {
-        let url = 'http://localhost:3005/pies';
+
+    const fetchPies = () => {
+        let url = 'http://localhost:4000/pies';
 
         fetch(url)
             .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    pies: data
-                })
-            })
+            .then(data => setPies(data))
             .catch(err => console.log(err));
     }
 
-    * adjust pieRows to .map() over this.state.pies
-
-    * Tear out testData
+    * adjust pieRows to .map() over pies
 
  */
+
+/* Add Logout Functionality
+
+* Back in App.js
+
+Create a clearToken method and pass it to the Navbar as a prop
+
+      const clearToken = () => {
+        setToken(undefined);
+    }
+
+* In Navbar - add props as a parameter of the component - pass the clearToken prop to Logout
+
+* In Logout - add props as a parameter of the component - add an onClick handler to the logout <img />
+*/
 
 
 // * Node Challenge
