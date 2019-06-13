@@ -8,7 +8,7 @@ DAY 2 REACT CHALLENGE
 
     Bronze--
     
-    The the DayTwo component the ability to use a .fetch() to reach out to the studio ghibli api and return information about people.  Store that information in a 'people' state value, and print it to the console.
+    The the DayTwo component the ability to use a .fetch() to reach out to the studio ghibli api and return information about people.  Store that information in a 'people' state value, and print it to the console. This should all take place in a call to useEffect OR a callback passed to useEffect().
 
     Add an <h2></h2> and use a style prop to style the <h2></h2>.
 
@@ -25,7 +25,7 @@ DAY 2 REACT CHALLENGE
 
     Gold--
     Have your Display Functional Component passed a second prop, this time for the person's gender.
-    Add a button inside the functional component that will toggle between name and description
+    Add a button inside the functional component that will toggle between name and gender
     to be displayed.  
  */
 
