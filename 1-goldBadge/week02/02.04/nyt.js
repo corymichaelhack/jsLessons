@@ -1,8 +1,8 @@
 // Group 4
 //Dont forget to make comments! They will help alot!
 // Control/Cmd + ? to comment!
-const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json';
-const key = 'b2e02612e179494c9f1f57577b582a0a';
+const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+const key = 'S0iwMsrXcgsXcoHQY6IEPYMcGX7NmMMU';
 let url;
 
 const searchTerm = document.querySelector('.search');

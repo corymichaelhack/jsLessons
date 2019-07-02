@@ -44,7 +44,7 @@ fizzBuzz();
 //   console.log('nothing');
 // }
 
-for(let FB = 0; FB<=100;FB++){
+for(let FB = 0; FB <= 100; FB++){
 
   switch (true) {
     case (FB % 3 === 0 && FB % 5 === 0):
@@ -267,17 +267,22 @@ let netflix = {
           { episode: 2, episodeName: "Magazine Profile"},
           { episode: 3, episodeName: "Shots and Salsa"},
           { episode: 4, episodeName: "Mannequin"},
-          { episode: 5, episodeName: "Shoplifter"},
-          { episode: 6, episodeName: "Secret Shopper"},
-          { episode: 7, episodeName: "Color Wars"},
-          { episode: 8, episodeName: "Wedding Day Sale"},
-          { episode: 9, episodeName: "All-Nighter"},
-          { episode: 10, episodeName: "Demotion"},
-          { episode: 11, episodeName: "Labor"}
+          { episode: 5, episodeName: "Shoplifter"}
         ]
       }
     },
-    season2: {},
+    season2: {
+      seasonInfo: {
+        episodeInfo : [
+          { episode: 1, episodeName: "Secret Shopper"},
+          { episode: 2, episodeName: "Color Wars"},
+          { episode: 3, episodeName: "Wedding Day Sale"},
+          { episode: 4, episodeName: "All-Nighter"},
+          { episode: 5, episodeName: "Demotion"},
+          { episode: 6, episodeName: "Labor"}
+        ]
+      }
+    },
     season3: {}
   };
 
@@ -352,9 +357,8 @@ console.log(Object.values(spaceJam.toonSquad)); // ['Michael Jordan', 'Bugs Bunn
 
 
 // Square Bracket Notation
-//Square bracket notation can help us be able to find a value in an object. This way can be 
-//handy if we need to set a key to a variable and then use that variable to parse through an object
-//It works simply bc of the fact that all property keys( before the colon) are strings
+// Square bracket notation can help us be able to find a value in an object. This way can be handy if we need to set a key to a variable and then use that variable to parse through an object
+// It works simply because of the fact that all property keys( before the colon) are strings
 
 let garden = {
   vegetable: 'zucchini',

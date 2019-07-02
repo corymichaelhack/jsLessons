@@ -25,16 +25,21 @@ exampleObj = {
   name: 'Hulk'
 }
 
-function checker(obj){
-  let list = Object.keys(exampleObj);
-  for(l in list){
-    if(l == "color"){
+function checker(obj) {
+  let list = Object.keys(obj); //spits out an array
+  console.log('list => ', list)
+  for(l of list){ //use for of to loop through array. For in will give you indices.
+    console.log('l =>', l)
+    if(l == 'color'){
       if(obj.color == 'green'){
-        return true;
+        console.log(true);
       }
     }
   }
 }
+
+checker(exampleObj);
+
 
 /*
 NYT Walk Through

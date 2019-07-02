@@ -107,33 +107,33 @@ LOOPS
 FOR LOOPS
 **************************/
 /*
-Performs logic over data.
-Loops offer a quick and easy way to do something repeatedly
-  A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
+* Performs logic over data.
+* Loops offer a quick and easy way to do something repeatedly
+  *A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
 
-  EXAMPLE 1: hungry => eat => check if still hunger => no? => keep eating => check if still hunger => full? YES!
-  EXAMPLE 2: const vacationSpots = ['Florence', 'Copenhagen', 'Istanbul']; now how do I console.log each item? (console.log(vacationSpots[])). What if I had 100's of items in my list?
+  * EXAMPLE 1: hungry => eat => check if still hunger => no? => keep eating => check if still hunger => full? YES!
+  * EXAMPLE 2: const vacationSpots = ['Florence', 'Copenhagen', 'Istanbul']; now how do I console.log each item? (console.log(vacationSpots[])). What if I had 100's of items in my list?
 
-There are many different kinds of loops but they all do roughly the same thing:
-  For statement
-  Do while statement
-  While statement
-  Labeled statement
-  Break statement
-  Continue statement
-  For in statement
-  For of statement
+* There are many different kinds of loops but they all do roughly the same thing:
+  *For statement
+  *Do while statement
+  *While statement
+  *Labeled statement
+  *Break statement
+  *Continue statement
+  *For in statement
+  *For of statement
 
-NOTE: There is a danger of infinite loops. There are three main parts to a loop. 
-1) The 'for' keyword
-2) A variable initialization and declaration. 
-3) The condition that needs to be met in order to end the loop.
-4) This is where the number is going to update. This one is saying each time this loop runs, update i by one. 
-5) Inside of the code block for the loop, refers to the current value of the variable for that loop 
+* NOTE: There is a danger of infinite loops. There are three main parts to a loop. 
+* 1) The 'for' keyword
+* 2) A variable initialization and declaration. 
+* 3) The condition that needs to be met in order to end the loop.
+* 4) This is where the number is going to update. This one is saying each time this loop runs, update i by one. 
+* 5) Inside of the code block for the loop, refers to the current value of the variable for that loop 
 */
 //  (initialization ; stopping condition; iteration statement)
 for (let i = 0; i < 10; i++) {
-//(1)     (2)    (3)     (4)
+//*(1)     (2)    (3)     (4)
   console.log(i); // 0 1 2 3 4 5 6 7 8 9
 //           (5)
 }

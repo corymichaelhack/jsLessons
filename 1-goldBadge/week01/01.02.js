@@ -80,27 +80,24 @@ SCOPE
 Scope
 *********
 
-Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context
-theyre speaking basically when variables are and arent accessible in your code.
+* Today were going to start by talking about Scope. When someone mentions "scope" in a javascript context they're speaking basically when variables are and aren't accessible in your code.
 
-Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis,
-which could be considerd our local scope. Just because someone lives on earth does not mean they live 
-in indianapolis, but residents of indianapolis are on planet earth. 
+* Think about javascript as the planet earth. This would be considered the global scope. WE live in indianapolis, which could be considerd our local scope. Just because someone lives on earth does not mean they live in indianapolis, but residents of indianapolis are on planet earth. 
 
-Refers to where a variable is defined and accessable. Variables defined out
+* Refers to where a variable is defined and accessable.
 
-    JavaScript has function scope: Each function creates a new scope.
+    * JavaScript has function scope: Each function creates a new scope.
 
-    Scope determines the accessibility (visibility) of these variables.
+    * Scope determines the accessibility (visibility) of these variables.
 
-    Variables defined inside a function are not accessible (visible) from outside the function.
+    * Variables defined inside a function are not accessible (visible) from outside the function.
 
-JS has both LOCAL and GLOBAL scope
+* JS has both LOCAL and GLOBAL scope
 
-Local = like Indianapolis
-Global = like Earth
+* Local = like Indianapolis
+* Global = like Earth
 
-Can still be on the world when you are in Indy, but you are not necessarily in Indy when you are on the planet
+* Can still be on the world when you are in Indy, but you are not necessarily in Indy when you are on the planet
 
 NO CODING - JUST WATCH PLEASE!
 */
@@ -332,7 +329,7 @@ COMPARISON OPERATORS
   02-comparisonOperators.js
 **************************/
 //teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
-//fThese are values that are considered not true or just not, but they are not technically the same as false
+//These are values that are considered not true or just not, but they are not technically the same as false
 
 // Equal 
 '3' == 3;
