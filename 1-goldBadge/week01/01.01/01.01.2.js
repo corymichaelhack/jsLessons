@@ -1,30 +1,18 @@
 /*(HTML FIRST)
 
 Overview for Today
- HTML
- CSS
-CSS Walthrough
-Intro to CodePen
-Intro to Smiley Gitbook
-Give out CSS Creature Assignment
+  HTML
+  CSS
+  Intro to CodePen
+  Intro to Smiley Gitbook
+  Give out CSS Creature Assignment
  
- Comments
- Variables
- Declarations
- Initialization
- Datatypes
-*/
+  Comments
+  Variables
+  Declarations
+  Initialization
+  Datatypes
 
-/*
-
-Smiley GitBook
-****************
-  Lunch
-****************
-CSS Mini Lesson
-************
-By 3!
-************
 JS
 
 */ 
@@ -443,3 +431,27 @@ Declarations
 Datatypes
 
 */
+
+
+/* 
+ * Lightning Round Questions 
+
+ * HTML/CSS Q's
+
+ * Create a list of 5 places you want to visit.
+ * What is in the <head> tag?
+ * Provide an example of a self-closing tag.
+ * What CSS property creates a circle?
+ * Write out the syntax to style the background color of the body of a website.
+ 
+ * JS Q's 
+
+ * What are the keywords reserved for variables?
+ * Write out a multi-line comment with 4 colors.
+ * Declare a variable and on a separate line, initialize that variable.
+ * Create an array that contains 3 of your favorite foods.
+ * Create an object that store 2 key/value pairs.
+*/
+
+// TODO Quiz in canvas called VARIABLES - DUE BY MIDNIGHT
+// TODO CSS CREATURE                    - DUE BY TOMORROW 9AM
