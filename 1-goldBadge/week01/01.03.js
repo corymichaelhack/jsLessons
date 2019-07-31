@@ -8,6 +8,8 @@ Peer coding challenge - One person drives/types  other person decides what to ty
 let stringExample = 'string';
 let numberExample = 0;
 let boolExample = true;
+
+
 let conditionExample = 0;
 
 
