@@ -145,7 +145,7 @@ console.log(`Hello ${name}, you look nice today.`);
 
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
-for (f in food) { 
+for (f in food) {  // ES5
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
   console.log(f) // 0 1 2 3 4 
 }
@@ -153,8 +153,8 @@ food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
 food.splice(2, 0, 'Sweet Potato Pie') //Adds Sweet Potato Pie in position 2 but doesn't remove anything
 food.pop();  // Removes Pizza
-food.shift();
-food.unshift();
+food.shift();  //
+food.unshift();  //
 
 
 for (f of food) {
@@ -164,7 +164,7 @@ for (f of food) {
 
 // Iterating
 
-// forEach() method executes a provided function once for each array element.
+// forEach() method executes a provided function once for each array element. ES6
 
 // forEach() has three arguments: currentValue, the index, and the entire array.
 //  currentValue = the current element being processed in the array
@@ -173,8 +173,8 @@ for (f of food) {
 
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 food.forEach(f => { console.log(f); }) // Pecan pie, Bananas, Sweet Potato Pie, Quesadilla, Cheesecake, Hotdog
-food.forEach((food, number) => { console.log(number); console.log(food); }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
-food.forEach((food, number, array) => { console.log(number); console.log(food); console.log(array) })
+food.forEach((food, number) => { console.log(food); console.log(number); }) // 0 Pecan pie 1 bananas 2 sweet potato pie...
+food.forEach((food, number, array) => { console.log(food); console.log(number); console.log(array) })
 
 let foodFunction = () => {
   for (f in food) {
@@ -418,7 +418,7 @@ Explain why GitHub is important
 */
 
 /*
-Create local and remote repo for Store Front App
+Create local and remote repo for Static Layout
 
 Folder Structure:
   javascriptMay2018
@@ -427,9 +427,6 @@ Folder Structure:
       staticLayout (Git repo here)
 */
 
-/**************************
-CHALLENGE ASSESSMENT 2
-**************************/
 
 /**************************
 RECAP
@@ -442,6 +439,20 @@ Objects
 Git with GitHub
 */
 
-//Repl.it Assessment 2 - DUE BY TOMORROW MORNING
+/* 
+ * Lightning Round Questions 
 
-// Lab time
+ * What is the starting index of an array?
+ * How do we access elements in an array?
+ * Name 2 ways I can perform a specific set of instructions/functions for every element in an array.
+ * Write out the syntax for those 2 methods.
+ * How can I check for the number of elements in an array?
+ * Which method(s) can I use to add items to an existing array?
+ * Write out an example of an object.
+ * What do I use to access items in an object?
+ * What method can I use to get an array of values from an object?
+ * SWAPI: Write out how I would access the value for Luke Skywalker's name
+ * SWAPI: Write out how I would access the value of the Model of the SnowSpeeder
+*/
+
+// TODO Quiz in canvas called OPERATORS - DUE BY MIDNIGHT
