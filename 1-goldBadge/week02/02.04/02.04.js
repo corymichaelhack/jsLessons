@@ -19,10 +19,13 @@ output: true
 
 
 */
-exampleObj = {
-  color: 'green',
-  smashes: true,
-  name: 'Hulk'
+hipsterObj = {
+  occupation: 'liberal arts barrista',
+  age: 28,
+  transport: 'unicycle',
+  vegan: true,
+  hairStyle: 'manbun',
+  favoriteHangout: 'kombucha bar',
 }
 
 function checker(obj) {
@@ -30,15 +33,15 @@ function checker(obj) {
   console.log('list => ', list)
   for(l of list){ //use for of to loop through array. For in will give you indices.
     console.log('l =>', l)
-    if(l == 'color'){
-      if(obj.color == 'green'){
+    if(l == 'hairStyle'){
+      if(obj.hairStyle == 'manbun'){
         console.log(true);
       }
     }
   }
 }
 
-checker(exampleObj);
+checker(hipsterObj);
 
 
 /*
