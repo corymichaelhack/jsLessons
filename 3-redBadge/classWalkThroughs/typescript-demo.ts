@@ -13,12 +13,13 @@
 /* Explain that TypeScript is strongly typed and we need to declare the types with our variables if we want to take advantage of type safety with TypeScript
 
 */
-let framework : string = 'Angular';
+let framework : string = 'Angular'; 
 let age : number = 25;
 let rainy : boolean = true;
 let instructors : string[] = [ 'Dave', 'Autumn', 'Alecx' ];
+let anyKind: any[] = [12, 'yes', true]
 
-// Part 2 :: Functions
+// Part 2 :: Functionsharry
 
 /* Show how functions are written nearly the same way, but we can put type safety on our parameters */
 
@@ -71,7 +72,7 @@ interface Villain {
 };
 
 class voldemort implements Villain {
-    constructor(name : string,plot : string) {
+    constructor(name : string, plot : string) {
         this.name = name;
         this.plot = plot;
     }

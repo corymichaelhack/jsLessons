@@ -16,6 +16,6 @@ https://swapi.co/api/people/?search=r2
 
 Make the dropdown values (people, ships, films) fit into the api with on click, and the r2 as the search term in the box
 
-Show the data that comes back from the api as a list
+Show the data that comes back from the api as a card
 
 This does not need to be deployed.

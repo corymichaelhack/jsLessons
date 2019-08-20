@@ -1,224 +1,201 @@
-/*********************
-DAY 2 REACT CHALLENGE
-*********************/
+/**********************************************
+Node Challenge 3 - Authorized CRUD 
+( Sequelize, Express, Jsonwebtoken< validateSession )
+**********************************************/
 
-/* 
-    REACT CHALLENGE DAY TWO
-    TOPICS HIT:: FETCH() MAP() AND STYLE PROPS
+/*
+  BRONZE CHALLENGE:
+  Implement a validate-session.js. Use the validateSession to protect every route in the animal-controller.js. They should block any request that does not have an authorization header that bears a token. This token should be one returned from the login or sign up methods.
 
-    Bronze--
-    Refactor the ReactAPIChallenge component to be a class component.
-    That component should use a .fetch() to reach out to the studio ghibli api and return 
-    information about people.  Store that information in the component's state, 
-    then have it print to the console when state has updated with the studio ghibli data.
+  
+  SILVER CHALLENGE:
+  Add a new column named 'userId' to the animal model. This column should take integers, and rows and this column should not be null. Reset your database.
 
-    Add an <h2></h2> and use a style prop to style the <h2></h2>.
+  Modify the '/create' endpoint to save the user from the request's id into the userId column.
 
-    Note that styling and grabbing api data function independently!
+  Make sure you sign up a new user and add your authorization header before you test.
 
-    use this url for accessing the ghibli api:
-    https://ghibliapi.herokuapp.com/people/
+  GOLD CHALLENGE:
+  Taking advantage of the new userId column that links the row of the animal table to the user that posted it from the Silver level challenge, modify the delete endpoint to only allow users to delete only their own animals from the database. You will need to use an options object similar to open used in the Sequelize update() method.
 
-    Silver-- 
-    Create a functional component called Display
-    Use .map() to call your Display component multiple times, 
-    with each Display responsible for showing the name from a peron to the webpage.
-    Use a styling prop to style Display's appearance
+  Similarly, modify the get to return only animals the requesting user has posted.
+*/
 
-    Gold--
-    Have your Display Functional Component passed a second prop, this time for the perons's description.
-    Add a button inside the functional component that will toggle between name and description
-    to be displayed.  Note this may require changing Display's component type!
- */
+
 
 /**************************
-PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
+PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
 **************************/
-/*
-RECAP:
-npm
-package.json/package.lock.json/node_modules
-nodemon
-express (node index.js, npm run dev, nodemon)
-how internet works
-.env file
-.gitignore file
-ran a server (express)
-ran on Postman
-parsed into controller file
-*/
-/*
-In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented)
-npm install sequelize (explain => link between server and db)
-npm install pg (explain => for access to postgres)
-npm install body-parser (explain => allows us to use req.body)
-Create db.js file and add:
-*/
-
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
-  host: 'localhost', 
-  dialect: 'postgres'
-})
-
-sequelize.authenticate() 
-  .then(() => console.log('postgres db is connected'))
-  .catch(err => console.log(err))
-
-module.exports = sequelize;
 
 /*
-Tell them to add NAME and PASS to .env file
-create models folder and add pie.js file:
-*/
+let's begin by further building out our folder structure:
+components
+  Auth
+  Navbar
+* Pies
+*   Pies.js
+*   Pies.css
+*   Pie
+*     Pie.js
 
-module.exports = (sequelize, DataTypes) => {
-  const Pie = sequelize.define('pie', {
-    nameOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false    
-    }, 
-    baseOfPie: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    crust: {
-      type: DataTypes.STRING,
-      allowNull: false   
+* We are going to 'mock' data here -
+* eventually this array will be removed,
+* but to make sure out table displays the 
+* way we want, we can mock it so see how it looks
+
+next, let's add the following code to our Pies.js:
+import React, {Component} from 'react';
+
+import './Pies.css';
+
+import React, { useState } from 'react';
+import './Pies.css';
+
+const testData = [
+    {
+      nameOfPie : 'Apple',
+      baseOfPie : 'Delicious Apples',
+      crust : 'Pastry',
+      timeToBake : '45 Minutes',
+      servings : '12',
+      rating : 4
     },
-    timeToBake: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    {
+      nameOfPie: 'Cherry',
+      baseOfPie: 'Fruit Filling',
+      crust: 'Pastry',
+      timeToBake: '30 mins',
+      servings: 97,
+      rating: 5
     },
-    servings: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    {
+      nameOfPie: 'Pecan',
+      baseOfPie: 'Sugary Goodness',
+      crust: 'Graham Cracker',
+      timeToBake: '40 mins',
+      servings: 2,
+      rating: 3
     }
-  })
+  ];
 
-  return Pie;
-};    
+const Pies = () => {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <td>Name of Pie</td>
+                    <td>Base of Pie</td>
+                    <td>Crust</td>
+                    <td>Time to Bake</td>
+                    <td>Servings</td>
+                    <td>Rating</td>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    testData.map((pie, index) => {
+                        return <tr key={index}>{ pie.nameOfPie }</tr>
+                    })
+                }
+            </tbody>
+        </table>
+    );
+};
 
-/*
-Explain how model is structure for table
-Now go to index.js and add the following:
-*/
 
-const sequelize = require('./db');
-const bodyParser = require('body-parser')
+* Add CSS
 
-sequelize.sync();
-// sequelize.sync({ force: true }); // explain use here
-app.use(bodyParser.json())
-
-/*
-Go to piecontroller.js
-*/
-
-//Change this:
-const express = require('express');
-const router = express.Router();
-// to
-const router = require('express').Router();
-
-// and add:
-const sequelize = require('../db')
-const Pie = sequelize.import('../models/pie')
-// and then change to
-const Pie = require('../db').import('../models/pie');
-
-//-----------------
-
-// SO you should ONLY see:
-const router = require('express').Router();
-const Pie = require('../db').import('../models/pie');
-
-// comment out the existing router.gets and add the following:
-router.get('/', (req, res) => {
-  Pie.findAll()
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
-})
-
-/*
-Explain how the GET works; note that if you run it, you should see only an empty array ([])
-Now build out the POST:
-*/
-
-router.post('/', (req, res) => {
-    const pieFromRequest = {
-      nameOfPie: req.body.nameOfPie,
-      baseOfPie: req.body.baseOfPie,
-      crust: req.body.crust,
-      timeToBake: req.body.timeToBake,
-      servings: req.body.servings,
-      rating: req.body.rating
+    table, td {
+        padding: 10px;
+        border-collapse : collapse;
     }
 
-    Pie.create(pieFromRequest)
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
-})
+    thead {
+        background-color : whitesmoke;
+        border-bottom: 2px solid darkslategray;
+    }
 
+    tr {
+        border-bottom: 1px solid lightgray;
+    }
+
+    table {
+        margin: 25vh auto;
+    }
+
+
+? What are the imports doing here? 
+ observe that we're pulling in another component, Pie, and a CSS file
+
+* Add import of Pies to App, comment out Auth for a bit so we can see the Pies component in the browser
+
+* explain use of dummy data - we will pull this data through an API later
+
+* explain how .map() is iterating over the array we created to mock some data - and creating a new <tr> each time, AND returning the JSX to the DOM
+
+* explain how React needs a key to correctly update components
+
+* discuss how {} allow React to read any JavaScript expression as long as it's output as JSX
+
+*/
+
+// * let's build out Pie.js as follows:
 /*
-Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
-We then use the .create() to build a new instance from the model
-Run and use the post and in the body section of Postman, type out:
-{
-	"nameOfPie":"peach",
-	"baseOfPie":"fruit",
-	"crust": "graham",
-	"timeToBake": 50,
-	"servings": 8,
-	"rating": 5
+import React from 'react';
+
+const Pie = (props) => {
+  return (
+    <tr>
+      <td>{ props.pie.nameOfPie }</td>
+      <td>{ props.pie.baseOfPie }</td>
+      <td>{ props.pie.crust }</td>
+      <td>{ props.pie.timeToBake }</td>
+      <td>{ props.pie.servings }</td>
+      <td>{ props.pie.rating }</td>
+    </tr>
+  )
 }
-It should show in the output and persist in PGAdmin
-If you then run the GET, you should see it show up there as well.
-Have the students build out multiple pies
+
+export default Pie;
+
+* discuss our use of props--the prop comes from the JSX attributes in the component call, hence pie is a prop
+
+* we know each pie prop is a pie object with nameOfPie, baseOfPie, etc. keys, so we can write props.pie[property] in Pie.js and get a data value back
+
+* draw their attention to the fact that we're really just outputting rows in a table with this Pie.js component
+
+* this can be demonstrated with the React extension
 */
 
-/**************************
-PIE API DEBUGGING CHALLENGE
-**************************/
+// * Next we're going to make App.js able to toggle between views
 
-// * Group Students in Pods
+/*
+- remove both <Auth /> & <Pies /> from the return ( ) in App.js
 
-// Broken code:
-// router.get('/name', (req, res) => {
-//   Pie.findone({ where: { nameOfPie: req.params.nameOfPie }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.status(500).json({ error: err}))
-// })
+- we need to add an import to useState to our React import
 
-// router.put('/:id', (req, res) => {
-//   pie.update(req.body, { where: { id: req.body.id }})
-//     .then(pie => res.status(200).json(pie))
-//     .catch(err => res.json(req.errors))
-// })
+- create a state value for the token
 
-// Good code:
-router.get('/:name', (req, res) => {
-  Pie.findOne({ where: { nameOfPie: req.params.name }})
-    .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
-});
+        const [ token, setToken] = useState(undefined);
 
-router.put('/:id', (req, res) => {
-    Pie.update(req.body, { where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json({ error : err }))
-});
+- Add a ternary to allow App.js to toggle between Pies and Auth
 
-/**************************
-PIE API DELETE CHALLENGE
-**************************/
-// Challenge students to add DELETE functionality:
-router.delete('/:id', (req, res) => {
-    Pie.destroy({ where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json({ error : err }))
-});
+        return (
+          <div className="app">
+            <Navbar />
+            
+            {
+              token ? <Pies /> : <Auth />
+            }
+
+          </div>
+        );
+
+
+*/
+
+// * Go back and forth between having an undefined/defined token to demonstrate
+
+// * GitBook Chapters 6 - 7
+
+// Wham bam ya did it

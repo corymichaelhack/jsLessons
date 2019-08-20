@@ -18,6 +18,8 @@ class NotCoolGuy extends Person{
     }
 }
 
+let a = new Person("Autumn"); 
+console.log(a.hello())
 const maker = (name) =>{
     const nameIt = new Person(name);
     const tryer = nameIt.hello();

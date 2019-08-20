@@ -1,214 +1,184 @@
-/*
-/*******************
-DAY ONE REACT CHALLENGE
-*******************/
+/**********************************************
+Node Challenge 2 - Unauthorized CRUD 
+( Sequelize, Express, CRUD )
+**********************************************/
 
 /*
-BRONZE LEVEL:
-Convert the 'StatePropsChallenge' component to a class component.
-Use the constructor method to initialize state for
-this component.  State should hold 3 key-value pairs:
+  BRONZE CHALLENGE:
+  Make a new '/create' endpoint in the animal-controller file.  It should save all the data
+  from the animal model to the database, including # of legs, boolean predator value, and its name.
+  If the animal is correctly saved in the database, inform the user.  Otherwise, alert the user if 
+  there's an error.
+  Make another '/' endpoint that will return all the animals created in the database. Like the others, send appropriate statuses based on if the request succeeds or not.
 
-{
-            console : 'Playstation',
-            version : 4,
-            maker : 'Sony'
-        }
+  SILVER CHALLENGE:
+  Complete the bronze challenge, then make a new '/delete' endpoint that will delete an animal from
+  the database.  However you complete this challenge, a request must be able to specify which animal
+  needs to be deleted.  If the delete was successful, inform the user, otherwise alert the user to 
+  an error.
 
-Inside the render method, build a button.  This button should
-console.log() the state object when it gets clicked.  Good luck!
-
-SILVER LEVEL:
-Do all of the above, but make a new functional component called
-'PropDisplay' (careful with folder stucture!).  Call this component
-three times inside the 'StatePropsChallenge' render method.  Each 'PropDisplay'
-component call should be passed a prop, the first is passed 'console',
-the second 'version', and the third 'maker'.  Each PropDisplay should 
-display the prop it gets passed.  Good luck!
-
-GOLD LEVEL:
-Do all of the above, but refactor your render so that instead of calling
-PropDisplay three times, you create an array of jsx inside of render.
-
-Find a way to iterate over the state object, with each iteration, create a PropDisplay component, and pass the values in the state one by one. Each PropDisplay component
-should have its prop defined dynamically.  You shouldn't have to make a 'console',
-'version', and 'maker' prop by hard-coding the their names.  Add the array of JSX to the render
+  GOLD CHALLENGE:
+  Complete the silver challenge, but make a new '/update' endpoint that will let a request update
+  animal data in the database.  Like with the silver challenge, the request must be able to specify
+  which animal needs to be updated.  On success, inform the user, on failure, alert appropriately.
 */
-
 
 
 /**************************
-CODE CHALLENGE 1 - OBJECTS
+PIE CLIENT WALKTHROUGH 2 - Internal State, Conditional Rendering, and Data Binding
 **************************/
 
-/*
-Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
-Your function may have 3 parameters, the original object, property1, property2
-*/
-
-// Option 1 (Not Quite Right)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
-
-function changePerson(obj, param1, param2) {
-  
-  let temp = obj.param1;
-  obj.param1 = obj.param2;
-  obj.param2 = temp;
-
-  return obj
-}
-
-newObj = changePerson(person, 'fName', 'lName');
-
-console.log(newObj);
-
-// Option 2 (Better)
-const person = {
-  fName: 'Tom',
-  lName: 'McClellan'
-}
-
-const food = {
-  food1: 'Steak',
-  food2: 'Tacos'
-}
-
-const changePerson = (obj, prop1, prop2) => {
-  let newObj = Object.assign({}, obj);
-  // let newObj = obj;
-
-  let temp = newObj[prop1];
-  newObj[prop1] = newObj[prop2];
-  newObj[prop2] = temp;
-
-  return newObj;
-}
-const newObject = changePerson(food, 'food1', 'food2');
-console.log(food, "Unchanged Object");
-console.log(newObject, 'Changed Object');
-
-
-/**************************
-PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
-**************************/
-/*
-
-Inside JavaScript Library, make a new folder called Pie-Project
-
-Add the react pie-client to the folder
-
-And make a server folder
-
-
-Folder Structure:
-  pie-Project
-    pie-client
-    server
-Navigate to server
-npm init => explain what package.json is doing 
-Will see this in package.json (add start and dev to scripts): 
-{
-  "name": "pieapi",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    // New code below
-    "start": "node index.js",
-    "dev": "nodemon"
-  },
-  "author": "",
-  "license": "ISC"
-}
-Explain what start script does (npm start) and what dev does (nodemon)
-Go ahead and npm install --save-dev nodemon  (will create a devDependencies key with nodemon inside)
-Explain what nodemon does 
-npm install express
-Explain difference between opening a file path vs. running a server
-  Server has hot reloading
-  
-  More importantly:
-    Explain how the internet works
-      client <=> server <=> db
-      req and res (recall API interaction)
-Create index.js file at root level of server
-*/
-
-const express = require('express')
-const app = express()
-
-app.listen(3000, () => console.log('App is listening on 3000'))
+// * Review React path to browser,
+// * Explain how React Apps can be thought of as 'trees'
 
 /*
-Now create .env file and add PORT = 3000
-npm install dotenv
-Change index.js to following
-*/
-require('dotenv').config()
+ App js is the Trunk of the tree
+ Components connecting to App.js are branches
+ And Components connecting to our 'branch' components are leaves
 
-app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
+ And everything is rendered through App.js, and bootstrapped to the browser
+*/
+
+// * cd into pie-client
+// * npm start
+
+// * Add Auth directory and files to pie-client
 
 /*
-Create .gitignore file and add following:
-  node_modules/
-  *.env
-Build out own server
-Add the following to the folder structure:
-server
-  public
-    index.html
-In index.html, add:
-<h1>This is working with a web server!</h1>
-In index.js, add:
+components
+* Auth
+*   Auth.js
+*   Auth.css
 */
 
-app.use(express.static(__dirname + '/public'))
-console.log(__dirname)
+// * Build out Auth.js
+/*
+              import React, {Component} from 'react';
+              import './Auth.css';
 
-app.get('/', (req, res) => res.render('index'))
+              const Auth = () => {
+                  return(
+                    <form className="card-like">
+                      <h1>Sign In</h1>
+                      <label className="display-block" htmlFor="email">Email:</label>
+                      <input className="display-block" type="text" name="email" />
+                      <label className="display-block" htmlFor="password">Password:</label>
+                      <input className="display-block" type="password" name="password" />
+                      <buttonLogin/Signup</button>
+                      <button type="submit">Submit</button>
+                    </form>
+                  )
+              }
+
+              export default Auth;
+*/
+             
+// * Build out Auth CSS
+/*
+              .card-like {
+                padding : 1em;
+                background-color : whitesmoke;
+                border-radius : 15px;
+                width: 10vw;
+                margin: 25vh auto;
+                text-align : center;
+                display : flex;
+                flex-direction: column;
+              }
+
+*/
+
+//* discuss how the shorthand margin property is positioning the div
+
+// * Add Auth to the App, right under the <Navbar />
+
+// * Update Auth to toggle login / sign up
+
 
 /*
-Open index.html in both local path and server (npm run dev)
-In Postman, run to see html in output section
-In index.js, add:
+  * add to Auth.js - right before declaration
+
+    Initialize state of login with an initial value of false
+
+            let [ login, setLogin ] = useState(true);
+
+  * Then modify <h1> to render a different title based on what the value of login is
+
+            <h1>{ login ? 'Login' : 'Sign Up ' }</h1>
+
+  * Add ability to toggle additional fields for sign up - also using ternary - add these under the title
+
+            {
+                login ? null 
+                : <React.Fragment>
+                <label htmlFor="firstName">First Name :</label>
+                <input type="text" name="firstName" />
+                <label htmlFor="lastName">Last Name :</label>
+                <input type="text" name="lastName" />
+                </React.Fragment>
+            }
+
+            Explain the React.Fragment is a clever way to wrap JSX in one parent, without adding additional HTML bloat
+
+? What happens if we change login to false?
+
+* discuss 2-way binding, and add the following below the login state
+
+            let [ firstName, setFirstName ] = useState('');
+            let [ lastName, setLastName ] = useState('');
+            let [ email, setEmail ] = useState('');
+            let [ password, setPassword ] = useState('');
+
+let's have every input tag grab the value from state.
+
+* add the following to each <input/>:
+
+            value={ firstName/lastName/email/password }
+
+? why are the inputs locked? 
+
+Oh no! bc we added a value to each one of these fields, and we set those values with use state, were giving a permanent value of blank. The field is locked!
+
+Take a moment to modify the calls to useState() give them some default values and recheck the browser - we have values in the inputs, but we cant change them - this is one way data binding
+app data -> browser
+
+* Add Change handlers to each input, relying on the set[value] methods from the useState() calls
+
+* and let's add our onChange handler to each input:
+
+            onChange={(e) => setValue(e.target.value)}
+
+Leave default values and go test - you can now type in all of the inputs
+Explain that -this- is TWO way data binding, 
+app data <- browser ( specifically user input )
+app data -> browser
+
+The app is updating in real time! That's why we can even see the input's values changing
+
+* reiterate what's happening here - as this is the basic flow of React
+
+user input (change) => state updated => Dom updated
+
+* Remove default values from useState() calls
+
+* finally add loginToggle method and use it:
+
+            const loginToggle = (event) => {
+                event.preventDefault();
+                setLogin(!login);
+
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+            };
+
+
+? What are we doing here by setting all the values to empty strings?
+? What is the !login doing?
+
+recap what's been built out, and how dynamic content can be created with React
+mention to students that the data submission depends upon our server, which we have yet to connect
 */
 
-app.get('/pies', (req, res) => res.send('I love pie!'))
-
-/*
-Run in Postman
-Now add a controllers folder with piecontroller.js
-In piecontroller.js add:
-*/
-
-const express = require('express')
-const router = express.Router()
-
-// copy from index.js:
-app.get('/pies', (req, res) => res.send('I love pie!'))
-// change app to router
-router.get('/', (req, res) => res.send('I love pie!'))
-// explain what the '/' does (localhost:3000/pies/)
-
-// and add to bottom:
-module.exports = router
-
-//In index.js, change: 
-
-app.get('/pies', (req, res) => res.send('I love pie!'))
-// to
-app.use('/pies', pies)
-// add add at time of index.js:
-const pies = require('./controllers/piecontroller')
-
-// Run in postman
-
-/*********************
-ALECX'S NYT WALKTHROUGH
-*********************/
-
-/* Node server gitbook Chs. 0-4 */  
+// * GitBook Chapters 4 - 5

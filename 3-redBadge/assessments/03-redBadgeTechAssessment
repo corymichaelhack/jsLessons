@@ -2,7 +2,7 @@
 RED BADGE TECHNICAL ASSESSMENT
 **************************
 
-Using the Yelp API, build an angular application that allows a user to find a random restaurant based on their location and price point. The restaurant that is returned must be opened at the time of the search, if not the user should not see it.
+Using the Yelp API, build an angular application that allows a user to find a random restaurant based on their chosen location and price point. The restaurant that is returned must be opened at the time of the search, if not the user should not see it.
 
 The restaurant details that is shown in the app should be:
 image

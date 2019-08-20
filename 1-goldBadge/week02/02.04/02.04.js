@@ -46,7 +46,16 @@ console.log(objChecker(exampleObj, 'silly'));
 
 function objChecker(obj, key){
   let objKeys = Object.keys(obj);
-  return (objKeys.includes(key)) ? true : false;
+  if(objKeys.includes(key)){
+    if(obj[key] == val){
+      return true
+    } else{
+      return false
+    }
+  } else {
+    return false
+  }
+  // return (objKeys.includes(key)) ? true : false;
 }
 
 /*

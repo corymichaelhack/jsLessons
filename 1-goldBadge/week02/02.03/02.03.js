@@ -170,13 +170,26 @@ function two(dataFromOne) {
 
 console.log(two(one(10)));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //callback function with a promise
 let promise = new Promise ((resolve, reject) => {
   setTimeout(() => {
-    (true) ? resolve('it worked!') : reject('it didn\'t work...');
-  }, 3000);
+    (false) ? resolve('it worked!') : reject('it didn\'t work...');
+  }, 10000);
 })
-
+console.log(promise); 
 promise
   .then(testResult => {
     console.log(testResult);
@@ -184,6 +197,40 @@ promise
   .catch(err => {
     console.log(err);
   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**************************
 REST
@@ -197,3 +244,97 @@ Rules of REST:
   Layered
   Specified identification for each resource
 */
+
+
+
+
+
+
+
+
+function main(){
+	let a =1;
+	let b=2;
+	let c=-3;
+  mystery(a,b,c);
+}
+
+function mystery(w,z,y) {
+console.log(`${y} + ${w} = ${z}`);
+}
+
+main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function main(){
+	let a =1;
+	let b=2;
+	let c=-3;
+  mystery(c,4,a);
+}
+
+function mystery(w,z,y) {
+console.log(`${y} + ${w} = ${z}`);
+}
+
+main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function main(){
+	let a =1;
+	let b=2;
+	let c=-3;
+  mystery(a+b,b+c,c+a);
+}
+
+
+function mystery(w,z,y) {
+console.log(`${y} + ${w} = ${z}`);
+}
+
+main();

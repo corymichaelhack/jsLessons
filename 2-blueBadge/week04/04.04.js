@@ -61,320 +61,198 @@ runThemAll();
 
 
 
-
-
 /**************************
-PIE CLIENT WALKTHROUGH 4 - ROUTER
+PIE API WALKTHROUGH 3 - AUTH
 **************************/
 /*
-Recap differences between functional and class components
-
-Quickly recap what state and props are
-
-npm install react-router-dom
-
-Make new files:
-
-components
-  layout
-    AuthForm.js
-    Footer.js
-    Home.js (new)
-    Main.js (new)
-    Navbar.js
-    Pies.js (new)
-
-Go to index.js:
+RECAP:
+sequelize
+postgres
+pgAdmin
+bodyParser
+* CRUD
 */
-
-import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'; // new
-import './index.css';
-import App from './App';
-
-render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root'));
-
 /*
-Talk about why we would add BrowserRouter here (links to whole site)
-
-Go to Main.js:
+In your models folder, create a new file called user.js
 */
+//sequelize is allowing us to create a table called user, with 
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define ('user', {
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false 
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true 
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false 
+    }
+  })
 
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Pies from './Pies';
-
-const Main = () => (
-  <main>
-    <Switch>
-      <Route exact path='/' component={ Home }/>
-      <Route path='/pies' component={ Pies }/>
-    </Switch>
-  </main>
-)
-
-export default Main;
-
-// Now, go to App.js:
-
-import Main from './components/layout/Main'
-// Code omitted
-{ this.authViewShow() }
-<Main/> // new
-
-// In Home.js:
-
-import React, { Component } from 'react'
-import Login from '../auth/Login'
-import Signup from '../auth/Signup'
-
-class Home extends Component {
-  
-
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
+  return User;
 }
 
-export default Home;
+// Now make a usercontroller.js file:
 
-/*
-Now go to App.js and cut the following out and paste in Home.js:
+const router = require('express').Router()
+const User = require('../db').import('../models/user')
+
+/* 
+Now go to your index.js and add the following:
 */
 
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-// import Login from './components/auth/Login'; // DELETE
-// import Signup from './components/auth/Signup'; // DELETE
-import Main from './components/layout/Main'
+const user = require('./controllers/usercontroller')
+// More code here
+//remeber app.use allows us to use some middleware. This one needs the parameter for the url and the router that this parameter will lead to 
+app.use('/auth', user)
 
-class App extends Component {
-  // CUT content below
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
+/* 
+If you run it, it will throw an error because userconroller is empty
+Create middleware folder with headers.js inside:
+*/
 
-  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
+module.exports = (req, res, next) => {
+  res.header('access-control-allow-origin', '*');
+  res.header('access-control-allow-methods', 'GET, POST, PUT, DELETE');
+  res.header('access-control-allow-headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        <Login toggleForm={ this.changeUserStatus }/>
-      )
+  next();
+};
+//requests come with something called a header. These are like headers for an essay, they give you the context of what will be in our request. We need to know the origin of the request, where did the request come from? asterik means it allows requests from anywhere for now. the allowed methods are the methods this server is allowed to accept. We only want CRUD for now but there are 38 total http methods we can use as well. And the headers are the just which headers we are allowed to use when sending a request. These headers indicate what is inside of our request, and can include the content type - usually a json - and the authorization of our request. 
+
+// In index.js:
+app.use(require('./middleware/headers'))
+
+// npm install bcryptjs
+// npm install jsonwebtoken
+
+
+// In usercontroller.js:
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
+
+router.post('/signup', (req, res) => {
+  User.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 10)
+  })
+    .then(
+      createSuccess = (user) => {
+        let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
+
+        res.json({
+          user: user,
+          message: 'user created',
+          sessionToken: token
+        })
+      },
+      createError = err => res.send(500, err)
+    )
+})
+
+module.exports = router
+
+/*
+In .env file, add JWT_SECRET
+Run code and see if you add a user to your db
+In usercontroller.js (above module.exports = router): 
+*/
+
+// signup code here
+
+router.post('/signin', (req, res) => {
+  User.findOne({ where: { email: req.body.email }})
+    .then(user => {
+        if (user) {
+          bcrypt.compare(req.body.password, user.password, (err, matches) => {
+            if (matches) {
+              let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
+              res.json({
+                user: user,
+                message: 'successfully authenticated',
+                sessionToken: token 
+              })
+            } else {
+              res.status(502).send({ error: 'bad gateway' })
+            }
+          })
+        } else {
+          res.status(500).send({ error: 'failed to authenticate' })
+        }
+      },
+      err => res.status(501).send({ error: 'failed to process'})
+    )
+})
+
+/*
+Now add validation-session.js in middleware folder:
+*/
+
+const jwt = require('jsonwebtoken')
+const User = require('../db').import('../models/user')
+
+const validateSession = (req, res, next) => {
+  const token = req.headers.authorization
+  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    if (!err && decodedToken) {
+      User.findOne({ where: { id: decodedToken.id }})
+        .then(user => {
+          if (!user) throw 'err'
+          req.user = user
+          return next()
+        })
+        .catch(err => next(err))
     } else {
-      return (
-        <Signup toggleForm={ this.changeUserStatus }/>
-      )
+      req.errors = err
+      return res.status(500).send('Authorized');
     }
-  }
-  // CUT content above
-
-  render() {
-    return (
-      <div className="App">
-        <Navbar/>
-        <Main/>
-        {/* { this.authViewShow() } => CUT */}
-        <Footer/>
-      </div>
-    );
-  }
+  })
 }
 
-export default App;
-
-// App.js should now look like:
-
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import Main from './components/layout/Main'
-
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <Navbar/>
-        <Main/>
-        <Footer/>
-      </div>
-    );
-  }
-}
-
-export default App;
-
-// And Home.js should now look like:
-
-import React, { Component } from 'react';
-import Login from '../auth/Login';
-import Signup from '../auth/Signup';
-
-export default class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
-
-  changeUserStatus = () => this.setState({ isUser: !this.state.isUser })
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        <Login toggleForm={ this.changeUserStatus }/>
-      )
-    } else {
-      return (
-        <Signup toggleForm={ this.changeUserStatus }/>
-      )
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        { this.authViewShow() }
-      </div>
-    );
-  }
-}
-
-// Now, add the following to Pies.js:
-
-import React, { Component } from 'react';
-
-class PieTable extends Component {
-
-  render() {
-    return (
-      <div>
-        <h3>Pie List</h3>
-        <table border='1' className='pies'>
-          <thead>
-            <tr>
-              <th>Name of Pie</th>
-              <th>Base of Pie</th>
-              <th>Crust</th>
-              <th>Time to Bake</th>
-              <th>Servings</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Apple</td>
-              <td>Fruit</td>
-              <td>Sourdough</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Peach</td>
-              <td>Fruit</td>
-              <td>Sourdough</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Chocolate Cream</td>
-              <td>Cream</td>
-              <td>Oreo</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-            <tr>
-              <td>Chicken Pot Pie</td>
-              <td>Gravy</td>
-              <td>Hot Water Crust</td>
-              <td>50 min</td>
-              <td>8</td>
-              <td>5 stars</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-}
-
-export default PieTable;
+module.exports = validateSession
 
 /*
-Go to the App.css and add the following for moving the table to the middle:
-
-.pies {
-  margin: auto;
-}
-
-Now, plug it in to Pies component:
+Go to piecontroller.js file:
 */
 
-import React, { Component } from 'react';
-import PieTable from './PieTable';
+const validateSession = require('../middleware/validate-session')
 
-class Pies extends Component {
+// add validateSession as additional parameter after path ('/') for every endpoint that is not a GET; example:
 
-  render() {
-    return (
-      <div>
-        <PieTable/>
-      </div>
-    )
+//                    vvv
+router.post('/', validateSession, (req, res) => {
+  if (!req.errors) {
+    const pieFromRequest = {
+      nameOfPie: req.body.nameOfPie,
+      baseOfPie: req.body.baseOfPie,
+      crust: req.body.crust,
+      timeToBake: req.body.timeToBake,
+      servings: req.body.servings,
+      rating: req.body.rating
+    }
+
+    Pie.create(pieFromRequest)
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json(req.errors))
+  } else {
+    res.status(500).json(req.errors)
   }
-}
-
-export default Pies;
+})
 
 /*
-Run it and see what happens when you adjust the link from localhost:3000 to localhost:3000/pies
-
-Discuss what routing is doing
-
-Now, go to Navbar.js; change a tags to Link tags and add necessary 'to' links:
-*/
-
-import React from 'react';
-import { Link } from 'react-router-dom'; // new
-
-const Navbar = () => {
-  return (
-    <div className="navbar">
-      <nav>
-        <ul className="nav-ul">
-          <li className="nav-li home"><Link to='/pies'>PIES</Link></li>
-          <li className="nav-li"><Link to='/'>Sign Up/Login</Link></li>
-        </ul>
-      </nav>
-    </div>
-  )
-}
-
-export default Navbar
-
-/*
-Discuss how css styling still is the same even though we now have Link tags instead of a tags => react-router-dom holds to the basic structure of a tags for this attribute
-
-Run it and link to other pages based on navbar clicks
+Test in Postman:
+  create or signin as a user
+  Grab token from output
+  Go to headers and create Authorization with the token as the value
+  Toggle between on and off to see if functionality is based on auth
 */

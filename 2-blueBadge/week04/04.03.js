@@ -52,291 +52,207 @@ console.log(fixedString);
 
 
 /**************************
-PIE CLIENT WALKTHROUGH 3 - CLASS COMPONENTS AND STATE
+PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
+**************************/
+/*
+RECAP:
+npm
+package.json/package.lock.json/node_modules
+nodemon
+express (node index.js, npm run dev, nodemon)
+how internet works
+.env file
+.gitignore file
+ran a server (express)
+served up a static file
+ran on Postman
+parsed into controller file
+*/
+/*
+In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented) 
+pgadmin is the gui(graphical user interface) for our db (postgres)
+
+npm install sequelize (explain => link between server and db)
+
+Sequelize is an ORM, an object relational mapper. This is a tool that allows us to write SQL (db language) commands and interact with that db in javaScript
+
+npm install pg ( gives us the ability to connect to our postgres database)
+Allows us to connect to a postgres database. When we give sequelize a dialect, we will need a package that helps us connect to that dialect
+
+
+app.use(express.json()) ( allows us to read a request body by dealing with the json format that the request comes in as)
+
+
+Create db.js file and add:
+*/
+
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
+  host: 'localhost', 
+  dialect: 'postgres'
+})
+
+sequelize.authenticate() 
+  .then(() => console.log('postgres db is connected'))
+  .catch(err => console.log(err))
+
+module.exports = sequelize;
+
+/*
+Tell them to add NAME and PASS to .env file
+create models folder and add pie.js file:
+*/
+
+module.exports = (sequelize, DataTypes) => {
+  const Pie = sequelize.define('pie', {
+    nameOfPie: {
+      type: DataTypes.STRING,
+      allowNull: false    
+    }, 
+    baseOfPie: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    crust: {
+      type: DataTypes.STRING,
+      allowNull: false   
+    },
+    timeToBake: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    servings: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
+  })
+
+  return Pie;
+};    
+
+/*
+Explain how model is structure for table
+Now go to index.js and add the following:
+*/
+
+const sequelize = require('./db');
+const bodyParser = require('body-parser')
+
+sequelize.sync();
+// sequelize.sync({ force: true }); // explain use here
+app.use(bodyParser.json())
+
+/*
+Go to piecontroller.js
+*/
+
+//Change this:
+const express = require('express');
+const router = express.Router();
+// to
+const router = require('express').Router();
+
+// and add:
+const sequelize = require('../db')
+const Pie = sequelize.import('../models/pie')
+// and then change to
+const Pie = require('../db').import('../models/pie');
+
+//-----------------
+
+// SO you should ONLY see:
+const router = require('express').Router();
+const Pie = require('../db').import('../models/pie');
+
+// comment out the existing router.gets and add the following:
+router.get('/', (req, res) => {
+  Pie.findAll()
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.status(500).json({ error: err }))
+})
+
+/*
+Explain how the GET works => the GET is the http request that will trigger this router action. If we send a request to this endpoint with another request we havent specified, nothing will happen. Inside of the request, were using Sequelize to create a new sql command to find all pies in the pie table; 
+
+note that if you run it, you should see only an empty array ([])
+
+Now build out the POST:
+*/
+
+router.post('/', (req, res) => {
+    const pieFromRequest = {
+      nameOfPie: req.body.nameOfPie,
+      baseOfPie: req.body.baseOfPie,
+      crust: req.body.crust,
+      timeToBake: req.body.timeToBake,
+      servings: req.body.servings,
+      rating: req.body.rating
+    }
+
+    Pie.create(pieFromRequest)
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json(req.errors))
+})
+
+/*
+Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
+We then use the .create() to build a new instance from the model
+Run and use the post and in the body section of Postman, type out:
+{
+	"nameOfPie":"peach",
+	"baseOfPie":"fruit",
+	"crust": "graham",
+	"timeToBake": 50,
+	"servings": 8,
+	"rating": 5
+}
+It should show in the output and persist in PGAdmin
+If you then run the GET, you should see it show up there as well.
+Have the students build out multiple pies
+*/
+
+/**************************
+PIE API DEBUGGING CHALLENGE
 **************************/
 
-/*
-Run through making a functional component for a footer (recap) => make with functional keyword instead of fat arrow for variety
+// * Group Students in Pods
 
-Discuss differences between functional components and class components => class discussion on which is better
+// Broken code:
+// router.get('/name', (req, res) => {
+//   Pie.findone({ where: { nameOfPie: req.params.nameOfPie }})
+//     .then(pie => res.status(200).json(pie))
+//     .catch(err => res.status(500).json({ error: err}))
+// })
 
-Change folder structure (change paths accordingly):
-  src
-    components
-      layout
-        AuthForm.js (new file)
-        Footer.js
-        Navbar.js
-      auth
-        Login.js (new file)
-        Signup.js (new file)
-    ...
-  
-Talk about making login/signup form
-*/
+// router.put('/:id', (req, res) => {
+//   pie.update(req.body, { where: { id: req.body.id }})
+//     .then(pie => res.status(200).json(pie))
+//     .catch(err => res.json(req.errors))
+// })
 
-/*
-Go to layout/AuthForm.js 
- 
-Add the following:
-*/
+// Good code:
+router.get('/:name', (req, res) => {
+  Pie.findOne({ where: { nameOfPie: req.params.name }})
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.status(500).json({ error: err }))
+});
 
-import React from 'react';
+router.put('/:id', (req, res) => {
+    Pie.update(req.body, { where: { id: req.params.id }})
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json({ error : err }))
+});
 
-const AuthForm = (props) => {
-  return (
-    <div>
-      <form>
-        {/* <h1>{ props.formName }</h1> */}
-        <h1>Sign Up</h1>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input 
-            type="text" 
-            id="emailField" 
-            name="email" 
-            className="input-field" 
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input 
-            type="text"
-            id="passwordField"
-            name="password"
-            className="input-field"
-            onChange={ props.changeInputs }
-          />
-        </div>
-        <input type="button" value="Submit"/>
-      </form>
-    </div>
-  )
-}
-
-export default AuthForm;
-
-/*
-Now, go to App.js and add the following:
-*/
-
-import AuthForm from './components/layout/AuthForm';
-
-// render() {
-//   return (
-//     <div className="App">
-//       <Navbar/>
-//       <AuthForm/> {/* New file here */}
-//       <Footer/>
-//     </div>
-//   );
-// }
-
-// Run your code and see the form
-// Notice that it only works for Sign Up.  Let's change that
-
-/*
-Add following in App.js file:
-
-Add constructor and super and state:
-  constructor() {
-    super();
-    this.state = {
-      isUser: false
-    }
-  }
-
-Explain what this is doing
-  Constructor not necessary, but common for OOP classes => contains and, well, constructs the class => 
-  if constructor only has super(), you will get a warning telling you that you have a useless constructor
-
-  super() is something that brings data in from the parent component => do not go too deep
-
-  state is something that all browsers have (the only thing without is HTTP requests => 
-    statelessness [rest]). It is like setting data that the whole site can use => 
-    remember in NYT app, nav.style.display = 'none' set that the app would start off as hiding its navbar?  
-    State is like this on a grander level.
-  
-  https://daveceddia.com/why-not-modify-react-state-directly/?utm_campaign=0601modify
-*/
-
-/*
-Get rid of the AuthForm import.  Add to App.js:
-
-  import Login from './components/auth/Login';
-  import Signup from './components/auth/Signup';
-
-  ...
-
-  authViewShow = () => {
-    if (this.state.isUser) {
-      return (
-        Login
-      )
-    } else {
-      return (
-        Signup
-      )
-    }
-  }
-
-  ...
-
-  <Navbar/> 
-    { this.authViewShow() }
-    (Get rid of <AuthForm />)
-  <Footer/>
-
-BRIEFLY explain 'this'.
-
-Explain what we are doing.
-*/
-
-// Go to Signup.js and add the following:
-
-import React from 'react';
-import AuthForm from '../layout/AuthForm';
-
-class Signup extends React.Component {
-
-  handleChange = (e) => {
-    console.log(e)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
-      </div>
-    )
-  }
-}
-
-export default Signup;
-
-// Explain what we are doing
-// Now, go to Login.js:
-
-import React, { Component } from 'react';
-import AuthForm from '../layout/AuthForm';
-
-export default class Login extends Component {
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <AuthForm changeInputs={ this.handleChange }/>
-      </div>
-    )
-  }
-}
-
-/*
-Explain the difference with Component and export default 
-
-Now add the following in Login.js:
-*/
-
-// render() {
-//   return (
-//     <div>
-//       <AuthForm
-//         formName="Login" {/* New */}
-//         changeInputs={ this.handleChange }
-//       />
-//     </div>
-//   )
-// }
-
-// Add the same for Signup (with "Sign Up" instead of "Login")
-
-// Add the following to App.js:
-
-changeUserStatus = () => this.setState({ isUser: !this.state.isUser }) // New
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login/> // New
-    )
-  } else {
-    return (
-      <Signup/> // New
-    )
-  }
-}
-
-// Change the state of isUser from false to true and you should see it go between Sign Up and Login
-
-// Now let's toggle between both forms!
-// Change the state back to where isUser is false
-
-authViewShow = () => {
-  if (this.state.isUser) {
-    return (
-      <Login toggleForm={ this.changeUserStatus }/> // New
-    )
-  } else {
-    return (
-      <Signup toggleForm={ this.changeUserStatus }/> // New
-    )
-  }
-}
-
-/* Now go to Signup.js and add the following under the <AuthForm/>:
-
-<h6>Login <button onClick={ this.props.toggleForm }>HERE</button> if you have an account</h6>
-
-And add the following for Login.js:
-
-<h6>Register <button onClick={this.props.toggleForm }>HERE</button> if you don't have an account</h6>
-
-The button should toggle between Login and Signup!
-
-Now, go to AuthForm.js:
-*/
-
-// const AuthForm = (props) => { // add props
-//   return (
-//     <div>
-//       <form>
-//         <h1>{ props.formName }</h1> // new 
-//         <div className="input-group">
-//           <label htmlFor="email">Email</label>
-//           <input 
-//             type="text" 
-//             id="emailField" 
-//             name="email" 
-//             className="input-field" 
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label htmlFor="password">Password</label>
-//           <input 
-//             type="text"
-//             id="passwordField"
-//             name="password"
-//             className="input-field"
-//             onChange={ props.changeInputs } // new
-//           />
-//         </div>
-//         <input type="button" value="Submit"/>
-//       </form>
-//     </div>
-//   )
-// }
-//
-
-
-// Hey look to tomorrow teacher! Make new netflix object
+/**************************
+PIE API DELETE CHALLENGE
+**************************/
+// Challenge students to add DELETE functionality:
+router.delete('/:id', (req, res) => {
+    Pie.destroy({ where: { id: req.params.id }})
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json({ error : err }))
+});

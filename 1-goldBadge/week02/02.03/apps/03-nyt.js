@@ -17,10 +17,10 @@ nav.style.display = 'none';
 
 let pageNumber = 0;
 
-let displayNav = false;
+ let displayNav = false;
 
 searchForm.addEventListener('submit', fetchResults);
-nextBtn.addEventListener('click', next Page);
+nextBtn.addEventListener('click', nextPage);
 previousBtn.addEventListener('click', previousPage);
 
 function fetchResults(e) {
