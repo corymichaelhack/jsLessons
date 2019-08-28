@@ -1,6 +1,3 @@
-// Group 4
-//Dont forget to make comments! They will help alot!
-// Control/Cmd + ? to comment!
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'S0iwMsrXcgsXcoHQY6IEPYMcGX7NmMMU';
 let url;
@@ -18,7 +15,6 @@ const section = document.querySelector('section');
 nav.style.display = 'none';
 
 let pageNumber = 0;
-// console.log('PageNumber:', pageNumber);
 let displayNav = false;
 
 searchForm.addEventListener('submit', fetchResults);
@@ -52,23 +48,17 @@ function fetchResults(e) {
     })
 }
 
-// Group 5
 function displayResults(json) {
-  // console.log('Display Results', json);
-  // console.log(json.response.docs);
-
   while (section.firstChild) {
     section.removeChild(section.firstChild);
   }
 
   let articles = json.response.docs;
-  // console.log(articles);
 
   if (articles.length === 0) {
     console.log('No results');
   } else {
     for (let i = 0; i < articles.length; i++) {
-      // console.log(i);
       let article = document.createElement('article');
       let heading = document.createElement('h2');
       let link = document.createElement('a');
@@ -80,11 +70,11 @@ function displayResults(json) {
       console.log('Current:', current);
 
       link.href = current.web_url;
+      console.log(link);
       link.textContent = current.headline.main;
 
       para.textContent = 'Keywords: ';
 
-      // Group 6
       for (let j = 0; j < current.keywords.length; j++) {
         let span = document.createElement('span');
         span.textContent += current.keywords[j].value + ' ';
@@ -115,14 +105,12 @@ function displayResults(json) {
 }
 
 function nextPage(e) {
-  // console.log('Next button clicked');
   pageNumber++;
   fetchResults(e);
   console.log('Page Number:', pageNumber);
 }
 
 function previousPage(e) {
-  // console.log('Previous button clicked');
   if (pageNumber > 0) {
     pageNumber--;
     fetchResults(e);

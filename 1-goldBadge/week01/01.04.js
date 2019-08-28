@@ -121,7 +121,7 @@ console.log(list[1])
 
 // Overview/Calling
 
-let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Ryan', 'Iesha', 'Amira']]
+let students = ['Tony', 'Marshall', 'Rhys', 'Ray', 23, true, ['Josh', 'Eric', 'Sam']]
 
 console.log(typeof students); //object
 console.log(students instanceof Array); //true
@@ -134,8 +134,8 @@ Notice how we pull a value out of an array?  We append a [] with the index numbe
 
 /*
 Challenge:
-Go into the nested array and get 'Amira'
-print out "Hello Amira, you look nice today"
+Go into the nested array and get 'Sam'
+print out "Hello Sam, how are you today?"
 */
 
 let name = students[6][2];
@@ -300,6 +300,7 @@ Pick an episode to show.
 Using dot notation, walk through the netflix object and print off both the episode and the episode name.
 */
 
+//! We can set values in objects using dotNotation. Write out a lesson on that.
 
 // JSON
 // data comes back as a long string. Why do we JSONify?
@@ -369,7 +370,7 @@ let garden = {
   size: 10
 };
 
-console.log(garden.water); // 'zucchini'
+console.log(garden.vegetable); // 'zucchini'
 //This is standard dot notation for parsing through an object. with this way, we are assuming that there is a key named vegitables
 
 let x = 'vegetable';// what if we have a variable that contains our 'supposed key'? 
@@ -455,4 +456,4 @@ Git with GitHub
  * SWAPI: Write out how I would access the value of the Model of the SnowSpeeder
 */
 
-// TODO Quiz in canvas called OPERATORS - DUE BY MIDNIGHT
+// TODO Repl Challenge on Loops, Functions, and Conditionals - DUE BY MIDNIGHT

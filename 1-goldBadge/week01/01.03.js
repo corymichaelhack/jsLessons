@@ -277,7 +277,7 @@ function  hi()   {
 }
 //1- Keyword 
 //2- Name of the function, and parenthesis for parameter
-//3- Curly Brace, where the opperations of our function happens
+//3- Curly Brace, where the operations of our function happens
 
 
 
@@ -431,7 +431,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
-console.log 'Hello, my name is Ingeborg Slegers'
+console.log 'Hello, my name is <YOUR NAME>'
 Call your function 
 */
 

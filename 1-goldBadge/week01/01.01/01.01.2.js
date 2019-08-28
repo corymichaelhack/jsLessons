@@ -372,6 +372,10 @@ console.log(home.includes('indianapolis')); // method that checks if a certain s
 
 let sent = 'This sentence will be split into individual parts ';
 
+console.log(sent.split())
+console.log(sent.split(''))
+console.log(sent.split(' '))
+
 
 
 /**
