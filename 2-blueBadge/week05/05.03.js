@@ -1,180 +1,153 @@
-/**************************
-REACT CHALLENGE 2
-**************************/
+/*********************
+DAY 2 REACT CHALLENGE
+*********************/
 
+/* 
+    REACT CHALLENGE DAY TWO
+    TOPICS HIT:: FETCH() MAP() AND STYLE PROPS
+
+    Bronze--
+    
+    The the DayTwo component the ability to use a .fetch() to reach out to the studio ghibli api and return information about people.  Store that information in a 'people' state value, and print it to the console. This should all take place in a call to useEffect OR a callback passed to useEffect().
+
+    Add an <h2></h2> and use a style prop to style the <h2></h2>.
+
+    Note that styling and grabbing api data function independently!
+
+    use this url for accessing the ghibli api:
+    https://ghibliapi.herokuapp.com/people/
+
+    Silver-- 
+    Create a functional component called Display
+    Use .map() to call your Display component multiple times, 
+    with each Display responsible for showing the name from a peron to the webpage.
+    Use a styling prop to style Display's appearance
+
+    Gold--
+    Have your Display Functional Component passed a second prop, this time for the person's gender.
+    Add a button inside the functional component that will toggle between name and gender
+    to be displayed.  
+ */
 
 /**************************
-PIE API WALKTHROUGH 3 - AUTH
+PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
 **************************/
 /*
 RECAP:
-sequelize
-postgres
-pgAdmin
-bodyParser
-CRUD
+npm
+package.json/package.lock.json/node_modules
+nodemon
+express (node index.js, npm run dev, nodemon)
+how internet works
+.env file
+.gitignore file
+ran a server (express)
+ran on Postman
+parsed into controller file
 */
 /*
-In your models folder, create a new file called user.js
+In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented)
+npm install sequelize (explain => link between server and db)
+npm install pg (explain => for access to postgres)
+npm install body-parser (explain => allows us to use req.body)
+Create db.js file and add:
+*/
+
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
+  host: 'localhost', 
+  dialect: 'postgres'
+})
+
+sequelize.authenticate() 
+  .then(() => console.log('postgres db is connected'))
+  .catch(err => console.log(err))
+
+module.exports = sequelize;
+
+/*
+Tell them to add NAME and PASS to .env file
+create models folder and add pie.js file:
 */
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define ('user', {
-    firstName: {
+  const Pie = sequelize.define('pie', {
+    nameOfPie: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    baseOfPie: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    crust: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false 
-    },
-    email: {
-      type: DataTypes.STRING,
+    timeToBake: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true 
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false 
+    servings: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
   })
 
-  return User;
+  return Pie;
 }
 
-// Now make a usercontroller.js file:
-
-const router = require('express').Router()
-const User = require('../db').import('../models/user')
-
-/* 
-Now go to your index.js and add the following:
+/*
+Explain how model is structure for table
+Now go to index.js and add the following:
 */
 
-const user = require('./controllers/usercontroller')
-// More code here
-app.use('/auth', user)
+const sequelize = require('./db');
+const bodyParser = require('body-parser')
 
-/* 
-If you run it, it will throw an error because userconroller is empty
-
-Create models folder with headers.js inside:
-*/
-
-module.exports = (req, res, next) => {
-  res.header('access-control-allow-origin', '*');
-  res.header('access-control-allow-methods', 'GET, POST, PUT, DELETE');
-  res.header('access-control-allow-headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-
-  next();
-};
-
-// In index.js:
-app.use(require('./middleware/headers'))
-
-// In usercontroller.js:
-// Delete app.use('/auth', user)
-// Then add:
-router.post('/signup', (req, res) => {
-  User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 10)
-  })
-    .then(
-      createSuccess = (user) => {
-        let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
-
-        res.json({
-          user: user,
-          message: 'user created',
-          sessionToken: token
-        })
-      },
-      createError = err => res.send(500, err)
-    )
-})
-
-module.exports = router
+sequelize.sync();
+// sequelize.sync({ force: true }); // explain use here
+app.use(bodyParser.json())
 
 /*
-In .env file, add JWT_SECRET
-
-npm install bcrypt (might have to install bcryptjs)
-npm install jsonwebtoken
-
-Run code and see if you add a user to your db
-
-In usercontroller.js (above module.exports = router): 
+Go to piecontroller.js
 */
-const bcrypt = require('bcryptjs') // or bcrypt (whichever you installed)
-const jwt = require('jsonwebtoken')
-// signup code here
 
-router.post('/signin', (req, res) => {
-  User.findOne({ where: { email: req.body.email }})
-    .then(
-      user => {
-        if (user) {
-          bcrypt.compare(req.body.password, user.password, (err, matches) => {
-            if (matches) {
-              let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 60 * 60 * 24 })
-              res.json({
-                user: user,
-                message: 'successfully authenticated',
-                sessionToken: token 
-              })
-            } else {
-              res.status(502).send({ error: 'bad gateway' })
-            }
-          })
-        } else {
-          res.status(500).send({ error: 'failed to authenticate' })
-        }
-      },
-      err => res.status(501).send({ error: 'failed to process'})
-    )
+//Change this:
+const express = require('express');
+const router = express.Router();
+// to
+const router = require('express').Router();
+
+// and add:
+const sequelize = require('../db')
+const Pie = sequelize.import('../models/pie')
+// and then change to
+const Pie = require('../db').import('../models/pie');
+
+//-----------------
+
+// SO you should ONLY see:
+const router = require('express').Router();
+const Pie = require('../db').import('../models/pie');
+
+// comment out the existing router.gets and add the following:
+router.get('/', (req, res) => {
+  Pie.findAll()
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.status(500).json({ error: err }))
 })
 
 /*
-Now add validation-session.js in middleware folder:
+Explain how the GET works; note that if you run it, you should see only an empty array ([])
+Now build out the POST:
 */
 
-const jwt = require('jsonwebtoken')
-const User = require('../db').import('../models/user')
-
-const validateSession = (req, res, next) => {
-  const token = req.headers.authorization
-  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-    if (!err && decodedToken) {
-      User.findOne({ where: { id: decodedToken.id }})
-        .then(user => {
-          if (!user) throw 'err'
-          req.user = user
-          return next()
-        })
-        .catch(err => next(err))
-    } else {
-      req.errors = err
-      return next()
-    }
-  })
-}
-
-module.exports = validateSession
-
-/*
-Go to piecontroller.js file:
-*/
-
-const validateSession = require('../middleware/validate-session')
-
-// add validateSession as additional parameter after path ('/') for every endpoint that is not a GET; example:
-
-//                    vvv
-router.post('/', validateSession, (req, res) => {
-  if (!req.errors) {
+router.post('/', (req, res) => {
     const pieFromRequest = {
       nameOfPie: req.body.nameOfPie,
       baseOfPie: req.body.baseOfPie,
@@ -187,15 +160,63 @@ router.post('/', validateSession, (req, res) => {
     Pie.create(pieFromRequest)
       .then(pie => res.status(200).json(pie))
       .catch(err => res.json(req.errors))
-  } else {
-    res.status(500).json(req.errors)
-  }
 })
 
 /*
-Test in Postman:
-  create or signin as a user
-  Grab token from output
-  Go to headers and create Authorization with the token as the value
-  Toggle between on and off to see if functionality is based on auth
+Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
+We then use the .create() to build a new instance from the model
+Run and use the post and in the body section of Postman, type out:
+{
+	"nameOfPie":"peach",
+	"baseOfPie":"fruit",
+	"crust": "graham",
+	"timeToBake": 50,
+	"servings": 8,
+	"rating": 5
+}
+It should show in the output and persist in PGAdmin
+If you then run the GET, you should see it show up there as well.
+Have the students build out multiple pies
 */
+
+/**************************
+PIE API DEBUGGING CHALLENGE
+**************************/
+
+// * Group Students in Pods
+
+// Broken code:
+// router.get('/name', (req, res) => {
+//   Pie.findone({ where: { nameOfPie: req.params.nameOfPie }})
+//     .then(pie => res.status(200).json(pie))
+//     .catch(err => res.status(500).json({ error: err}))
+// })
+
+// router.put('/:id', (req, res) => {
+//   pie.update(req.body, { where: { id: req.body.id }})
+//     .then(pie => res.status(200).json(pie))
+//     .catch(err => res.json(req.errors))
+// })
+
+// Good code:
+router.get('/:name', (req, res) => {
+  Pie.findOne({ where: { nameOfPie: req.params.name }})
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.status(500).json({ error: err }))
+});
+
+router.put('/:id', (req, res) => {
+    Pie.update(req.body, { where: { id: req.params.id }})
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json({ error : err }))
+});
+
+/**************************
+PIE API DELETE CHALLENGE
+**************************/
+// Challenge students to add DELETE functionality:
+router.delete('/:id', (req, res) => {
+    Pie.destroy({ where: { id: req.params.id }})
+      .then(pie => res.status(200).json(pie))
+      .catch(err => res.json({ error : err }))
+});

@@ -1,3 +1,11 @@
+/*
+BEFORE WHITEBOARDING
+
+--move the dry erase boards, markers into the cafeteria
+--print off copies of the white boarding questions
+--help students to deploy their portfolio websites (username.github.io)
+--resubmit tutorial page link to lms
+
 /**************************
 WHITEBOARD 3 - WHITE BOARDING ASSESSMENT
 **************************/
@@ -151,6 +159,7 @@ Can also be considered a function that is passed as a parameter to another funct
 You can have nested functions or call a separate function within another.
 */
 
+//the below are not callback functions -- they are nested functions
 function one(x) {
   return x
 }
@@ -160,6 +169,21 @@ function two(dataFromOne) {
 }
 
 console.log(two(one(10)));
+
+//callback function with a promise
+let promise = new Promise ((resolve, reject) => {
+  setTimeout(() => {
+    (true) ? resolve('it worked!') : reject('it didn\'t work...');
+  }, 3000);
+})
+
+promise
+  .then(testResult => {
+    console.log(testResult);
+  })
+  .catch(err => {
+    console.log(err);
+  })
 
 /**************************
 REST

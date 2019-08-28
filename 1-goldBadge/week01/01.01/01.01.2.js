@@ -434,6 +434,7 @@ Variables
 Declarations
 Datatypes
 
+<<<<<<< HEAD
 */
 
 
@@ -459,3 +460,7 @@ Datatypes
 
 // TODO Quiz in canvas called VARIABLES - DUE BY MIDNIGHT
 // TODO CSS CREATURE                    - DUE BY TOMORROW 9AM
+=======
+REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
+*/
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121

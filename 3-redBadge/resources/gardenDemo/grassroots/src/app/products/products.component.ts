@@ -20,5 +20,4 @@ export class ProductsComponent implements OnInit {
     this.dbService.getProducts().subscribe(Product => this.products = Product)
     console.log(this.products)
   }
-
 }

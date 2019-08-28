@@ -324,9 +324,13 @@ r **= 1; // r = r ** 1
 
 5-expressionsAndOperators
   02-comparisonOperators.js
+<<<<<<< HEAD
 ************************* */
 //teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
 //These are values that are considered not true or just not, but they are not technically the same as false
+=======
+**************************/
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
 
 // Equal 
 '3' == 3;
@@ -373,6 +377,8 @@ console.log('3' != 3);
 ? IF CONDITIONAL
 ************************* */
 
+//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false'
+
 let isOn = true;
 
 if (isOn == true) {
@@ -383,9 +389,9 @@ if (isOn) {
   console.log('The light is on, yay!');
 };
 
-let isOff = false;
+let isOn = false;
 
-if (isOff == false){
+if (isOn == false){
   console.log('The light is off!');
 }
 
@@ -428,7 +434,11 @@ If it is not your name, console log 'Hello, is your name <name here> ?'
 
 var name = 'Jenny';
 
+<<<<<<< HEAD
 if ('Autumn' == name) {
+=======
+if (name == 'Tyler') {
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
   console.log('Hello, my name is', name);
 } else {
   console.log('Hello, is your name',name);
@@ -660,7 +670,11 @@ switch (true) {
 
 
 
+<<<<<<< HEAD
 (yes < 0 && yes > -10) ? console.log('worked') : (yes > 0) ? console.log('worked!') : console.log('did\'t work');
+=======
+(yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('didn\'t work');
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
 
 /*
 ? Ternaries, unlike conditionals, require the default/else catch all. 
@@ -704,4 +718,11 @@ switch (true) {
  * Convert the switch case into a ternary.
 */
 
+<<<<<<< HEAD
 // TODO Quiz in canvas called OPERATORS - DUE BY MIDNIGHT
+=======
+// Repl.it Assessment 1 - DUE BY THURSDAY MORNING
+
+let test = 5;
+console.log(test.toString());
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121

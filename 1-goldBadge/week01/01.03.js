@@ -1,3 +1,11 @@
+/*
+PROJECTS TUTORIAL
+*/
+//show students their folder structure 
+//JavaScriptSept2018
+//  javascriptLibrary
+//  projects
+
 /**************************
 RECAP
 Peer coding challenge - One person drives/types  other person decides what to type, then switch
@@ -289,8 +297,13 @@ let hi = function hi() {
   console.log('HI')
 }
 
+<<<<<<< HEAD
 var hey = function hi() {
   (1)
+=======
+
+let hi = function hi() {
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
   console.log('HI')
 }
 
@@ -431,7 +444,11 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other paramter is for a last name;
 Have them come together in a variable inside the function.
+<<<<<<< HEAD
 console.log 'Hello, my name is <YOUR NAME>'
+=======
+console.log 'Hello, my name is Tyler Shelton'
+>>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
 Call your function 
 */
 
