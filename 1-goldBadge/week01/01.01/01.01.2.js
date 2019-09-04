@@ -300,7 +300,6 @@ Notice that arrays, too, are a container that can hold multiple datatypes.  Ther
 */
 
 /*
-
 Addition vs. Concatenation
 **************************
 When JS sees combining two or more numbers, it adds the values together using the built-in math functionality;
@@ -435,6 +434,7 @@ Declarations
 Datatypes
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 */
 
 
@@ -462,5 +462,7 @@ Datatypes
 // TODO CSS CREATURE                    - DUE BY TOMORROW 9AM
 =======
 REMINDER: your CSS Creature is DUE BY TOMORROW MORNING!
+=======
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 */
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121

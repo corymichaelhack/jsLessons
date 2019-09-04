@@ -42,7 +42,7 @@ function fetchSpace(e) {
       // ? A callback function in its simplest terms is a function that is passed to another function, as a parameter. The callback function then gets executed inside the function where it is passed and the final result is returned to the caller.
       // ? This is an immensely useful feature of functional programming as callbacks lets us handle code asynchronously without us have to wait for a response.
       displayRockets(json);
-    })
+    });
 }
 
 function displayRockets(json) {
@@ -56,9 +56,13 @@ function displayRockets(json) {
     rocketCost.innerText = r.cost_per_launch;
     
     spaceShips.appendChild(rocket);
+<<<<<<< HEAD
     rocket.appendChild(rocketName);
     rocket.appendChild(rocketCost);
 
   })
+=======
+  });
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 }
 // Challenge! First, find cost per rocket in the object. Then, format both responses into a data table with the headers name and cost. Each rocket should have its own row. 

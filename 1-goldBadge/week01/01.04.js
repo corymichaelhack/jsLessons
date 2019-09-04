@@ -11,12 +11,17 @@ For any other number, console.log the value
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 function fizzBuzz() {  
   for (let i = 0; i <= 100; i++) {
     if ( i % 15 == 0 ) {
 =======
 function fizzBuzz() {
+=======
+
+function fizzBuzz() {  
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
   for (var i = 0; i <= 100; i++) {
     if (i % 15 == 0) {
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
@@ -37,7 +42,21 @@ function fizzBuzz() {
 fizzBuzz();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+var fb = 10;
+
+if (fb % 15 == 0) {
+  console.log('fizzbuzz');
+} else if (fb % 5 == 0) {
+  console.log('fizz');
+} else if (fb % 3 == 0) {
+  console.log('buzz');
+} else {
+  console.log('nothing');
+}
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 
 // let fb = 10;
 
@@ -69,8 +88,11 @@ for(let FB = 0; FB <= 100; FB++){
   
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
+=======
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 /**************************
 GIT REVIEW - Why git? 
 **************************/
@@ -155,6 +177,7 @@ console.log(`Hello ${name}, you look nice today.`);
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 for (f in food) {  // ES5
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
   console.log(f) // 0 1 2 3 4 
@@ -162,6 +185,10 @@ for (f in food) {  // ES5
 for (f of food) {
   console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
+=======
+for (f in food) { 
+  console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 }
 food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)

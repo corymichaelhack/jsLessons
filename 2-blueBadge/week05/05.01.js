@@ -1,78 +1,27 @@
-// * JavaScript Challenge
-
-// ***************************************************************************
 /**************************
-CODE CHALLENGE 1 - OBJECTS
+REACT CHALLENGE 1
 **************************/
 
-/*
-Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
-Your function may have 3 parameters, the original object, property1, property2
-*/
 
-// Option 1 (Not Quite Right)
-const person = {
-    fName: 'Tom',
-    lName: 'McClellan'
-  }
-  
-  function changePerson(obj, param1, param2) {
-    
-    let temp = obj.param1;
-    obj.param1 = obj.param2;
-    obj.param2 = temp;
-  
-    return obj
-  }
-  
-  newObj = changePerson(person, 'fName', 'lName');
-  
-  console.log(newObj);
-  
-  // Option 2 (Better)
-  const person = {
-    fName: 'Tom',
-    lName: 'McClellan'
-  }
-  
-  const food = {
-    food1: 'Steak',
-    food2: 'Tacos'
-  }
-  
-  const changePerson = (obj, prop1, prop2) => {
-    let newObj = Object.assign({}, obj);
-    // let newObj = obj;
-  
-    let temp = newObj[prop1];
-    newObj[prop1] = newObj[prop2];
-    newObj[prop2] = temp;
-  
-    return newObj;
-  }
-  const newObject = changePerson(food, 'food1', 'food2');
-  console.log(food, "Unchanged Object");
-  console.log(newObject, 'Changed Object');
-  
-  
+
+/**************************
+POSTGRES AND PGADMIN INSTALL
+**************************/
+
 /**************************
 PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
 **************************/
 /*
-
-Inside JavaScript Library, make a new folder called Pie-Project
-
-Add the react pie-client to the folder
-
-And make a server folder
-
-
 Folder Structure:
-  pie-Project
-    pie-client
+  pieApi
     server
+    client
+
 Navigate to server
-npm init => explain what package.json is doing 
+
+npm stands for node package manager. Its used for managing packages that we use to build our api, our Node.js application. 
+
+npm init => 
 Will see this in package.json (add start and dev to scripts): 
 {
   "name": "pieapi",
@@ -81,38 +30,53 @@ Will see this in package.json (add start and dev to scripts):
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    // New code below
+    // ADD THIS CODE BELOW! 
     "start": "node index.js",
     "dev": "nodemon"
   },
   "author": "",
   "license": "ISC"
 }
+
 Explain what start script does (npm start) and what dev does (nodemon)
+npm start is what script or file will be run first when this command is entered. 
+dev indidates running the server in dev mode, and with what tool. Nodemon allows us to make changes to our server without having to restart the server everytime
+
 Go ahead and npm install --save-dev nodemon  (will create a devDependencies key with nodemon inside)
-Explain what nodemon does 
-npm install express
+
+Explain what nodemon does - restarts our server whenever changes are made
+
+npm install express 
+Express is a framework we use to get a node.js server up and running really quickly. 
+Express is to node as react is to vanilla js
+
+
 Explain difference between opening a file path vs. running a server
-  Server has hot reloading
+a file path that is sent to the browser to run shows up as it was saved. If you change and save the file, the changes dont register in the browser. 
+  Server has hot reloading- meaning if you change and save the file, you dont need to refresh the page to recieve the changes
   
   More importantly:
     Explain how the internet works
-      client <=> server <=> db
+    Our 'client', the machine we are using, goes to an address, like www.google.come. That address is actually  a request to a domain name server(DNS). Then they send a response back to the client with the ip address of the server. Then the client send the request to the server       client <=> server <=> db
       req and res (recall API interaction)
+
 Create index.js file at root level of server
 */
 
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-app.listen(3000, () => console.log('App is listening on 3000'))
+app.listen(3000, () => console.log('App is listening on 3000'));
 
 /*
 Now create .env file and add PORT = 3000
+
 npm install dotenv
+dotenv is a package that allows us to parse through the .env file and add it to the file
+
 Change index.js to following
-*/
-require('dotenv').config()
+*/  
+require('dotenv').config();
 
 app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}.`)) // BACK TICS!
 
@@ -120,24 +84,25 @@ app.listen(process.env.PORT, () => console.log(`App is listening on ${process.en
 Create .gitignore file and add following:
   node_modules/
   *.env
+
 Build out own server
+
 Add the following to the folder structure:
 server
   public
     index.html
+
 In index.html, add:
 <h1>This is working with a web server!</h1>
+
 In index.js, add:
 */
-
-app.use(express.static(__dirname + '/public'))
-console.log(__dirname)
-
-app.get('/', (req, res) => res.render('index'))
-
+ 
 /*
 Open index.html in both local path and server (npm run dev)
+
 In Postman, run to see html in output section
+
 In index.js, add:
 */
 
@@ -145,7 +110,9 @@ app.get('/pies', (req, res) => res.send('I love pie!'))
 
 /*
 Run in Postman
+
 Now add a controllers folder with piecontroller.js
+
 In piecontroller.js add:
 */
 
@@ -170,9 +137,3 @@ app.use('/pies', pies)
 const pies = require('./controllers/piecontroller')
 
 // Run in postman
-
-/*********************
-ALECX'S NYT WALKTHROUGH
-*********************/
-
-/* Node Server Modules  */

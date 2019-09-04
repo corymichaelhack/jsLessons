@@ -214,9 +214,15 @@ Challenge:
 Write a for in loop that capitalizes the first letter of a student's name
 */
 
+<<<<<<< HEAD
 let studentName = 'pAul';
 let capName;
 for (let n in studentName) {
+=======
+var studentName = 'auTuMNul';
+var capName;
+for (var n in studentName) {
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
   if (n == 0) {
     capName += studentName[n].toUpperCase();
   } else {
@@ -279,9 +285,16 @@ function  hi()   {
 
 //A chunk of code that performs a set action when called, or 'invoked'.
 
+<<<<<<< HEAD
 function  hi()   {
   (1)      (2)  (3)
   console.log('HI')
+=======
+*/
+
+function hi() {
+  console.log('HI');
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 }
 //1- Keyword 
 //2- Name of the function, and parenthesis for parameter
@@ -300,10 +313,13 @@ let hi = function hi() {
 <<<<<<< HEAD
 var hey = function hi() {
   (1)
+<<<<<<< HEAD
 =======
 
 let hi = function hi() {
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
+=======
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
   console.log('HI')
 }
 
@@ -442,13 +458,17 @@ pet('cat');
 Challenge:
 Write a function that takes two parameters:
 One parameter is for a first name,
-The other paramter is for a last name;
+The other parameter is for a last name;
 Have them come together in a variable inside the function.
+<<<<<<< HEAD
 <<<<<<< HEAD
 console.log 'Hello, my name is <YOUR NAME>'
 =======
 console.log 'Hello, my name is Tyler Shelton'
 >>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
+=======
+console.log 'Hello, my name is Autumn Henderson'
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 Call your function 
 */
 
@@ -676,4 +696,18 @@ Parameters
 Fat Arrow Functions
 Return
 Git Recap
+<<<<<<< HEAD
   */
+=======
+*/
+
+function checker (str){
+  let str = str.toLowerCase();
+  let rev = str.split('').reverse().join('').toLowerCase();
+  if(str == rev) {
+    console.log("It's a palindrome");
+  } else {
+    console.log(`${str} is not a palindrome`);
+  }
+}
+>>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
