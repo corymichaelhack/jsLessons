@@ -80,12 +80,12 @@ RECAP AND ENCOURAGEMENT
 **************************/
 
 /*
-Explain to them that they now have everything they need to work through the Prework 
+Explain to them that they now have everything they need to work through the Prework
 and first couple weeks of 1150
 
-Encourage them that they have already learned some coding and that they are able to write code 
+Encourage them that they have already learned some coding and that they are able to write code
 and see how it interacts with browsers
 
-Encourage them that they will be able to make actual websites within a week 
+Encourage them that they will be able to make actual websites within a week
 and that they should be excited at the adventure they are about to embark on
 */
