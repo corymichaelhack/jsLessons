@@ -44,9 +44,7 @@ components
 * way we want, we can mock it so see how it looks
 
 next, let's add the following code to our Pies.js:
-import React, {Component} from 'react';
 
-import './Pies.css';
 
 import React, { useState } from 'react';
 import './Pies.css';

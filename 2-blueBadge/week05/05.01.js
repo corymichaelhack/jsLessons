@@ -55,8 +55,8 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
 /*
   Inside javaScriptPrework add new folder
-  4-react-fundamentals
-  Inside the terminal, in the 4-react-fundamentals directory
+  5-react-fundamentals
+  Inside the terminal, in the 5-react-fundamentals directory
   create-react-app pie-client
     cd intro pie-client and
     code .
@@ -92,6 +92,7 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
 //  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
 
+// ReactDOM.render is cool js manipulation! underneath all of that code is document.createElement! And we make elements! tada!
 // npm start to run app. Look at how fast it compiles! Neato~!
 
 // * Tear our boiler App.js
@@ -185,7 +186,8 @@ const Navbar = (props) => {
   )
 }
 export default Navbar;
-* Draw attention to 'className' in JSX vs. 'class' in normal HTML
+* Draw attention to 'className' in JSX vs. 'class' in normal HTML. Class is a reserved word in JavaScript, so we cant use that
+remember jsx is javascript
 */
 
 // * Add Navbar to App.js - Should display a plain navbar with a pie in the top left corner and 'Pie Client' on far right

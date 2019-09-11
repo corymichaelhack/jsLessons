@@ -108,7 +108,7 @@ components
 
   * Add ability to toggle additional fields for sign up - also using ternary - add these under the title
 
-            {
+            {x`
                 login ? null 
                 : <React.Fragment>
                 <label htmlFor="firstName">First Name :</label>
@@ -122,7 +122,7 @@ components
 
 ? What happens if we change login to false?
 
-* discuss 2-way binding, and add the following below the login state
+* discuss 2-way binding, and add the following below the login state - as a value changes in the input field, it changes in the state. array destructuring 
 
             let [ firstName, setFirstName ] = useState('');
             let [ lastName, setLastName ] = useState('');
