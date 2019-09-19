@@ -1,10 +1,14 @@
 /*
-Static Webpage Layout Submission to Canvas and Presentations
+* Static Webpage Layout Submission to Canvas and Presentations
+
+Deploying to github pages:
+    1)  make sure students have index.html file as their first html webpage
+    2)  once students have set up a github repo, they need to choose a source for deployment (should be master)
 */
 
 
 /*
-Challenge (Strings):
+* Challenge (Strings):
 Pig Latin:
 
 Create a function that takes in strings
@@ -59,17 +63,22 @@ function piggie(str) {
 }
 piggie('Hey');
 
-/*
-Tutorial Page Submission to LMS and Presentations? --this needs to be deployed to github pages
 
-deploying to github pages:
-    1)  make sure students have index.html file as their first html webpage
-    2)  once students have set up a github repo, they need to choose a source for deployment (should be master)
-*/
-
+/*******************
+ * Portfolio Build *
+*******************/
 
 /*
-Portfolio Build
+  Folder Structure:
+    JSMonth2019
+      javascriptLibrary
+        0-prework
+        1-jsFundamentals
+      projects
+        staticLayout
+        portfolio (new folder)
+*/        
+/*
 mine below:
 https://docs.google.com/document/d/12bxXGWWdHp7dJ5A_KqXtebbbI9Qj6UOEzQqkvQn1Vgk/edit?usp=sharing
 tom's below:

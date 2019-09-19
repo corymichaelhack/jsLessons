@@ -1,6 +1,21 @@
 /* *****************
   DOM manipulation
 *******************/
+/*
+  Folder Structure:
+    JSMonth2019
+      javascriptLibrary
+        0-prework
+        1-jsFundamentals
+        2-domFundamentals (new folder)
+      projects
+      
+        clone HP_DOM repo
+        
+        cd into HP_DOM
+        
+        open in default browers
+*/
 
 // https://github.com/IngeborgSlegers/HP_DOM_Manipulation
 
@@ -14,18 +29,18 @@
 //Let's start by accessing a single element from our HTML file. 
 
 // the method below selects the element with the id of listTitle
-let Newt = document.getElementById('listTitle');
-console.log(Newt);
+let listTitle = document.getElementById('listTitle');
+console.log(listTitle);
 
 //the code below selects the first li element inside the first ul
-let NewtItem = document.querySelector('ul li');
-console.log(NewtItem);
+let listItem = document.querySelector('ul li');
+console.log(listItem);
 
 /* Extra code */
 // centers the title
-Newt.style.textAlign = 'center';
+listTitle.style.textAlign = 'center';
 // this changes the color to red
-NewtItem.style.color = 'red';
+listItem.style.color = 'red';
 
 // Accessing Multiple Elements;
 // ---------------------------

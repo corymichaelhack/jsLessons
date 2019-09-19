@@ -329,19 +329,14 @@ r **= 1; // r = r ** 1
 ************************* */
 //teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
 //These are values that are considered not true or just not, but they are not technically the same as false
-=======
-**************************/
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-**************************/
+
 //teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
 //fThese are values that are considered not true or just not, but they are not technically the same as false
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 
 // Equal 
 '3' == 3;
 /* 
-? JavaScript does a nice thing called coersion, where it assumes that when youre comparing the integer 3 and the string '3', 
+? JavaScript does a nice thing called coersion, where it assumes that when you're comparing the integer 3 and the string '3', 
 ? you must think they're supposed to be the same thing  */
 
 // Strict equal- This overrides javascripts coersion
@@ -438,17 +433,9 @@ If it is not your name, console log 'Hello, is your name <name here> ?'
 
 */
 
-var name = 'Jenny';
+let name = 'Jenny';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-if ('Autumn' == name) {
-=======
-if (name == 'Tyler') {
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-if ('Autumn' == name) {
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
+if (name == 'Jenny') {
   console.log('Hello, my name is', name);
 } else {
   console.log('Hello, is your name',name);
@@ -456,11 +443,8 @@ if ('Autumn' == name) {
 
 
 /*
-<<<<<<< HEAD
+
 ? Challenge: 
-=======
-Challenge: 
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 **********
 ? Use this string - let name = 'aUTuMN';
 
@@ -684,15 +668,10 @@ switch (true) {
 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-(yes < 0 && yes > -10) ? console.log('worked') : (yes > 0) ? console.log('worked!') : console.log('did\'t work');
-=======
+
 (yep < 0 && yep > -10) ? console.log('worked') : (yep > 0) ? console.log('worked!') : console.log('didn\'t work');
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-(yes < 0 && yes > -10) ? console.log('worked') : (yes > 0) ? console.log('worked!') : console.log('did\'t work');
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
+
+
 
 /*
 ? Ternaries, unlike conditionals, require the default/else catch all. 
@@ -736,14 +715,7 @@ switch (true) {
  * Convert the switch case into a ternary.
 */
 
-<<<<<<< HEAD
+
 // TODO Quiz in canvas called OPERATORS - DUE BY MIDNIGHT
-=======
 // Repl.it Assessment 1 - DUE BY THURSDAY MORNING
 
-let test = 5;
-console.log(test.toString());
-<<<<<<< HEAD
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc

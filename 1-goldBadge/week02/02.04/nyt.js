@@ -12,14 +12,11 @@ const previousBtn = document.querySelector('.prev');
 const nav = document.querySelector('nav');
 const section = document.querySelector('section');
 
-nav.style.display = 'none'; //
+nav.style.display = 'none';
 
 let pageNumber = 0;
-<<<<<<< HEAD
 let displayNav = false;
-=======
 // console.log('PageNumber:', pageNumber); 
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
 
 searchForm.addEventListener('submit', fetchResults);
 nextBtn.addEventListener('click', nextPage);
@@ -78,18 +75,7 @@ function displayResults(json) {
       link.textContent = current.headline.main;
 
       para.textContent = 'Keywords: ';
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-=======
       // Group 3
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-      // Group 6
-=======
-      // Group 3
->>>>>>> 295ad17d2f19669068f718d7ddb6e994cffd0ae7
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
       for (let j = 0; j < current.keywords.length; j++) {
         let span = document.createElement('span');
         span.textContent += current.keywords[j].value + ' ';
@@ -135,5 +121,3 @@ function previousPage(e) {
   fetchResults(e);
   console.log('Page:', pageNumber);
 }
-
-

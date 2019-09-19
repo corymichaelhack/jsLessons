@@ -6,26 +6,40 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
 /*
 
-  Inside javaScriptPrework add new folder
+  npm install -g create-react-app
 
-  4-react-fundamentals
-
-  Inside the terminal, in the 4-react-fundamentals directory
-
-  create-react-app pie-client
-
-    cd intro pie-client and
-
-    code .
-
-    npm start
+  Folder Structure:
+    JSMonth2019
+      javascriptLibrary
+        0-prework
+        1-jsFundamentals
+        2-domFundamentals
+        3-apiFundamentals
+        4-nodeFundamentals
+        5-reactFundamentals 
+      projects
+        gold
+        blue
+          pieProject
+            server
+            **pieclient**
+        
+        cd into pieProject
+        
+        create-react-app pieclient
+        
+        cd into pieclient
+        
+        npm start
 */
-
-// * Show folder structure
 
 /*
  pie-client
    node_modules => explain how npm made this
+            npm puts various things on your computer. That’s its job. 
+            Local install (default): puts stuff in ./node_modules of the current package root. 
+            Packages are dropped into the node_modules folder under the prefix. When installing locally, this means that you can require("packagename") to load its main module, or require("packagename/lib/path/to/sub/module") to load other modules.
+            We can "download" packages into our project and access them with a local pathway to use them.
 *  public
     favicon.ico => small icon on browser tab
     index.html => only html file in app
@@ -48,18 +62,18 @@ PIE CLIENT WALKTHROUGH 1 - CREATE-REACT-APP, JSX, COMPONENTS
 
 //  browser (chrome) <= index.html (<div id="root"></div>) <= index.js (ReactDOM.render(<App />, document.getElementById('root'))) <= App.js (return (JSX)) <= other components
 
-// * Tear our boiler App.js
-// Delete the import of logo in App.js
+// * Tear out boiler App.js
+// * Delete the import of logo in App.js
 
 // * Add new JSX to Return
 
 /*
-Add this in the return
-*    return (
-    *       <div className="app">
-    *          <h1>Pies</h1>
-    *        </div>
-      )
+Add this in the return: 
+*  return (
+*    <div className="app">
+*      <h1>Pies</h1>
+*    </div>
+*  )
 
 ? Ask class about JSX - Check understanding and fill in gaps
 
@@ -72,11 +86,11 @@ Delete import of service worker and registerServiceWorker() in index.js
 
 // * Setup files and folders for Navbar:
 /*
-*  Components
-*   Navbar
-*     Navbar.js
-*     Navbar.css
-*/
+ *  Components
+ *   Navbar
+ *     Navbar.js
+ *     Navbar.css
+ */
 
 // * Build NavBar Component
 
@@ -163,6 +177,9 @@ export default Navbar;
 // * Add Navbar to App.js - Should display a plain navbar with a pie in the top left corner and 'Pie Client' on far right
 
 // * Discuss Component imports and exports
+/*
+  The files/components in this project don't inherently have the ability to speak to one another. We have to specify who is related to whom. Just like with DOM manipulation, we can establish relationships between components. We use imports and exports to do that. Imports and exporting files is not specific to React. This is something that we can use thanks to JavaScript.
+*/
 
 // * Create Logout Component Folder Structure
 
@@ -196,7 +213,7 @@ components
 
 // * Flesh out Logout CSS
 
-  /*
+/*
     .logout-img {
     height : 100%;
   }

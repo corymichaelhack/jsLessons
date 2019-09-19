@@ -46,19 +46,8 @@ Show new files added in app
 git add .
 git commit -m "message"
 git push
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 firebase use --add
-
 firebase deploy 
 
 Repl.it Assessment 5 - DUE BY TOMORROW MORNING
-<<<<<<< HEAD
-=======
-firebase deploy
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
+

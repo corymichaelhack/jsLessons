@@ -27,6 +27,6 @@ Node Challenge 2 - Unauthorized CRUD
 
 // ***************************************************************************
 
-// * React Concept Talk Two ( JSX & Create React App )
+// * React Concept Talk O1 ( JSX & Create React App )
 
 // * Pie Client Walkthrough Part One

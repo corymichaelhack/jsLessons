@@ -4,7 +4,7 @@ PROJECTS TUTORIAL
 //show students their folder structure 
 //JavaScriptSept2018
 //  javascriptLibrary
-//  projects
+//  projects (new folder)
 
 /**************************
 RECAP
@@ -214,15 +214,10 @@ Challenge:
 Write a for in loop that capitalizes the first letter of a student's name
 */
 
-<<<<<<< HEAD
 let studentName = 'pAul';
 let capName;
+
 for (let n in studentName) {
-=======
-var studentName = 'auTuMNul';
-var capName;
-for (var n in studentName) {
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
   if (n == 0) {
     capName += studentName[n].toUpperCase();
   } else {
@@ -285,17 +280,10 @@ function  hi()   {
 
 //A chunk of code that performs a set action when called, or 'invoked'.
 
-<<<<<<< HEAD
 function  hi()   {
   (1)      (2)  (3)
   console.log('HI')
-=======
-*/
 
-function hi() {
-  console.log('HI');
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
-}
 //1- Keyword 
 //2- Name of the function, and parenthesis for parameter
 //3- Curly Brace, where the operations of our function happens
@@ -306,21 +294,9 @@ function hi() {
 EXPRESSIONS
 **************************/
 // set a variable to be a function
-let hi = function hi() {
-  console.log('HI')
-}
 
-<<<<<<< HEAD
-var hey = function hi() {
+let hey = function hi() {
   (1)
-<<<<<<< HEAD
-=======
-
-let hi = function hi() {
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
-  console.log('HI')
 }
 
 //1- The variable 'hey' is now representative of the function 'hi()'
@@ -460,15 +436,7 @@ Write a function that takes two parameters:
 One parameter is for a first name,
 The other parameter is for a last name;
 Have them come together in a variable inside the function.
-<<<<<<< HEAD
-<<<<<<< HEAD
-console.log 'Hello, my name is <YOUR NAME>'
-=======
-console.log 'Hello, my name is Tyler Shelton'
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-console.log 'Hello, my name is Autumn Henderson'
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
+console.log 'Hello, my name is <YOUR NAME>';
 Call your function 
 */
 
@@ -549,7 +517,7 @@ let func = ()
 */
 
 
-/**************************
+/**************
 RETURN
 ***************
 
@@ -681,8 +649,34 @@ function people(name,age,canVote){
    let people4 = new people('James',80,true); 
    console.table(people4);
 /**************************
-Git Stuff for 1-jsFundamentals
+Git Recap for 1-jsFundamentals
 **************************/
+
+
+/**************************
+Static Layout 
+**************************/ 
+// If there is enough time today, assign static layout project in Canvas. If not, push it to tomorrow.
+/*
+Folder Structure:
+  javascriptMay2018
+    javascriptLibrary
+    projects (new folder)
+      gold (new folder)  
+        staticLayout (new folder - Git repo here)
+          index.html
+          main.css
+*/
+
+// Create local and remote repo for static layout project.
+  /*
+  Git add .
+  Git commit -m "message"
+  Set up repo in GitHub
+  Copy both lines and paste in terminal => run code
+  Refresh page
+  */
+// Deploy with Github pages.
 
 /**************************
 RECAP
@@ -696,10 +690,9 @@ Parameters
 Fat Arrow Functions
 Return
 Git Recap
-<<<<<<< HEAD
-  */
-=======
+Static Layout Assignment
 */
+
 
 function checker (str){
   let str = str.toLowerCase();
@@ -710,4 +703,3 @@ function checker (str){
     console.log(`${str} is not a palindrome`);
   }
 }
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc

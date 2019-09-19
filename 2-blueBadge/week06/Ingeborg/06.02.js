@@ -17,7 +17,7 @@ DAY 2 REACT CHALLENGE
     Note that styling and grabbing api data function independently!
 
     use this url for accessing the ghibli api:
-    https://ghibliapi.herokuapp.com/people/
+    
 
     Silver-- 
     Create a functional component called Display
@@ -30,6 +30,73 @@ DAY 2 REACT CHALLENGE
     Add a button inside the functional component that will toggle between name and gender
     to be displayed.  
  */
+
+ /*
+ * BRONZE *
+ IN DAYTWO COMPONENT
+  const [ people, setPeople ] = useState([]);
+
+  let fetchPeople = () => {
+      fetch('https://ghibliapi.herokuapp.com/people/')
+          .then(res => res.json())
+          .then((data) => {
+              console.log(data);
+              setPeople(data);
+          })
+  }
+
+  useEffect(() => {
+      fetchPeople() }
+      , []
+  );
+
+  *******************
+
+  npm install styled-components;
+
+  import styled from 'styled-components';
+
+  const Header = styled.h2`
+      background-color: navy;
+      color: white;
+      height: 3em;
+      padding: 0.7em;
+      text-align: center;
+  `;
+
+  <Header>People</Header>
+
+
+  * SILVER *
+
+    CREATE DISPLAY COMPONENT
+    import React from 'react';
+
+    const Display = (props) => {
+
+      return(
+        <div>
+          <h2>{props.displayPerson.name}</h2>
+        </div>
+      );
+    };
+
+    export default Display;
+
+    IN DAYTWO COMPONENT
+  { 
+    people.map(person => {
+      // console.log(person)
+      return <Display key={person.id} displayPerson={person} />
+    })
+
+  }
+
+
+
+
+
+  */
 
 /*
 React WorkoutLog Client Day 2

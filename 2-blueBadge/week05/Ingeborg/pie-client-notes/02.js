@@ -27,24 +27,24 @@ components
 
 // * Build out Auth.js
 /*
-              import React, {Component} from 'react';
-              import './Auth.css';
+    import React, {Component} from 'react';
+    import './Auth.css';
 
-              const Auth = () => {
-                  return(
-                    <form className="card">
-                      <h1>Sign In</h1>
-                      <label className="display-block" htmlFor="email">Email:</label>
-                      <input className="display-block" type="text" name="email" />
-                      <label className="display-block" htmlFor="password">Password:</label>
-                      <input className="display-block" type="password" name="password" />
-                      <buttonLogin/Signup</button>
-                      <button type="submit">Submit</button>
-                    </form>
-                  )
-              }
+    const Auth = () => {
+        return(
+          <form className="card">
+            <h1>Sign In</h1>
+            <label className="display-block" htmlFor="email">Email:</label>
+            <input className="display-block" type="text" name="email" />
+            <label className="display-block" htmlFor="password">Password:</label>
+            <input className="display-block" type="password" name="password" />
+            <buttonLogin/Signup</button>
+            <button type="submit">Submit</button>
+          </form>
+        )
+    }
 
-              export default Auth;
+    export default Auth;
 */
              
 // * Build out Auth CSS

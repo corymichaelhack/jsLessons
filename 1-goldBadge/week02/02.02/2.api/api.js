@@ -1,3 +1,22 @@
+/* *****************
+  API Fundamentals
+*******************/
+/*
+  Folder Structure:
+    JSMonth2019
+      javascriptLibrary
+        0-prework
+        1-jsFundamentals
+        2-domFundamentals 
+        3-apiFundamentals(new folder)
+      projects
+
+        create index.html plus boilerplate
+        create index.js and include script tag in index.html
+
+        open in default browser
+*/
+
 const baseURL = 'https://api.spacexdata.com/v2/rockets';
 
 const searchForm = document.querySelector('form');
@@ -56,13 +75,10 @@ function displayRockets(json) {
     rocketCost.innerText = r.cost_per_launch;
     
     spaceShips.appendChild(rocket);
-<<<<<<< HEAD
     rocket.appendChild(rocketName);
     rocket.appendChild(rocketCost);
 
   })
-=======
-  });
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 }
-// Challenge! First, find cost per rocket in the object. Then, format both responses into a data table with the headers name and cost. Each rocket should have its own row. 
+
+// Challenge! First, find cost per rocket in the object. Then, format both responses into a data table with the headers name and cost. Each rocket should have its own row.

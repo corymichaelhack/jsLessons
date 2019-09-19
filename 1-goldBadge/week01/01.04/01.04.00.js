@@ -10,21 +10,9 @@ For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
 For any other number, console.log the value
 */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 function fizzBuzz() {  
   for (let i = 0; i <= 100; i++) {
     if ( i % 15 == 0 ) {
-=======
-function fizzBuzz() {
-=======
-
-function fizzBuzz() {  
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
-  for (var i = 0; i <= 100; i++) {
-    if (i % 15 == 0) {
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
       console.log('FizzBuzz');
     }
     else if (i % 3 == 0) {
@@ -41,11 +29,8 @@ function fizzBuzz() {
 
 fizzBuzz();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-var fb = 10;
+let fb = 10;
 
 if (fb % 15 == 0) {
   console.log('fizzbuzz');
@@ -56,19 +41,6 @@ if (fb % 15 == 0) {
 } else {
   console.log('nothing');
 }
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
-
-// let fb = 10;
-
-// if (fb % 15 == 0) {
-//   console.log('fizzbuzz');
-// } else if (fb % 5 == 0) {
-//   console.log('fizz');
-// } else if (fb % 3 == 0) {
-//   console.log('buzz');
-// } else {
-//   console.log('nothing');
-// }
 
 for(let FB = 0; FB <= 100; FB++){
 
@@ -88,11 +60,7 @@ for(let FB = 0; FB <= 100; FB++){
   
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
+
 /**************************
 GIT REVIEW - Why git? 
 **************************/
@@ -176,19 +144,10 @@ console.log(`Hello ${name}, you look nice today.`);
 
 let food = ['Pecan pie', 'Shrimp', 'Quesadilla', 'Cheese cake', 'Hotdog'];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 for (f in food) {  // ES5
   console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
   console.log(f) // 0 1 2 3 4 
-=======
-for (f of food) {
-  console.log(f) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
-=======
-for (f in food) { 
-  console.log(food[f]) // Pecan pie, Shrimp, Quesadilla, Cheese cake, Hotdog
->>>>>>> fd2111485bca119207979816d2f979f6dcf9f2dc
 }
 food.push('Pizza'); // Appends Pizza to end of array
 food.splice(1, 1, 'Bananas') // Removes Shrimp and adds Bananas => (position, how many to cut, what to add in that location)
@@ -201,7 +160,6 @@ food.unshift();  //
 for (f of food) {
   console.log(f)
 }
-
 
 // Iterating
 
@@ -273,7 +231,7 @@ if (arr instanceof Array === true) {
   revArr.forEach(a => console.log(a))
 }
 
-/**************************
+/**********************
 OBJECTS
 ***********************
 An object is a data type that constists of key/value pairs. 
@@ -295,69 +253,77 @@ let name = {
 
 11-objects
 **************************/
-//BUILD OUT MORE NETFLIX
 // Store multiple objects that are similar in structor with is great for our JS logic
 
 let netflix = {
   id: 9,
-  name: "Super Store",
-<<<<<<< HEAD
+  likes: 932,
+  name: "The Good Place", 
+  seasonInfo: {
     season1: {
-      seasonInfo: {
-        episodeInfo : [
-          { episode: 1, episodeName: "Pilot"},
-          { episode: 2, episodeName: "Magazine Profile"},
-          { episode: 3, episodeName: "Shots and Salsa"},
-          { episode: 4, episodeName: "Mannequin"},
-          { episode: 5, episodeName: "Shoplifter"}
-        ]
-      }
+      numberOfEpisodes: 5,
+      episodeInfo : [
+        { episode: 1, episodeName: "Pilot"},
+        { episode: 2, episodeName: "Flying"},
+        { episode: 3, episodeName: "Tahani Al-Jamil"},
+        { episode: 4, episodeName: "Jason Mendoza"},
+        { episode: 5, episodeName: "Category 55 Emergency Doomsday Crisis"}
+      ]
     },
     season2: {
-      seasonInfo: {
-        episodeInfo : [
-          { episode: 1, episodeName: "Secret Shopper"},
-          { episode: 2, episodeName: "Color Wars"},
-          { episode: 3, episodeName: "Wedding Day Sale"},
-          { episode: 4, episodeName: "All-Nighter"},
-          { episode: 5, episodeName: "Demotion"},
-          { episode: 6, episodeName: "Labor"}
-        ]
-      }
+      numberOfEpisodes: 6,
+      episodeInfo : [
+        { episode: 1, episodeName: "Everything is Great!"},
+        { episode: 2, episodeName: "Dance Dance Resolution"},
+        { episode: 3, episodeName: "Team Cockroach"},
+        { episode: 4, episodeName: "Existential Crisis"},
+        { episode: 5, episodeName: "The Trolley Problem"},
+        { episode: 6, episodeName: "Janet and Michael"}
+      ]
     },
-    season3: {}
-  };
-=======
-  season1: {
-    seasonInfo: {
-      episodeInfo: [
-        { episode: 1, episodeName: "Pilot" },
-        { episode: 2, episodeName: "Magazine Profile" },
-        { episode: 3, episodeName: "Shots and Salsa" },
-        { episode: 4, episodeName: "Mannequin" },
-        { episode: 5, episodeName: "Shoplifter" },
-        { episode: 6, episodeName: "Secret Shopper" },
-        { episode: 7, episodeName: "Color Wars" },
-        { episode: 8, episodeName: "Wedding Day Sale" },
-        { episode: 9, episodeName: "All-Nighter" },
-        { episode: 10, episodeName: "Demotion" },
-        { episode: 11, episodeName: "Labor" }
+    season3: {
+      numberOfEpisodes: 5,
+      episodeInfo : [
+        { episode: 1, episodeName: "Everything Is Bonzer!"},
+        { episode: 2, episodeName: "The Brainy Bunch"},
+        { episode: 3, episodeName: "The Snowplow"},
+        { episode: 4, episodeName: "Jeremy Bearimy"},
+        { episode: 5, episodeName: "The Ballad of Donkey Doug"}
       ]
     }
   },
-  season2: {},
-  season3: {}
+  description: "Four people and their otherworldly frienemy struggle in the afterlife to define what it means to be good."
 };
->>>>>>> 649f7ef397f1806d577d6fe0031443b39f450121
+
 
 /*
 How do we access data with objects?  Where arrays used the [value] appended to the end of it, objects use dot notation.
 */
 
-console.log("All data:", netflix); // All data: { id: 9, name: 'Super Store', season1: { seasonInfo: { episodeInfo: [Object] } }, season2: {}, season3: {} }
-console.log("Just season info: ", netflix.season1.seasonInfo); // Just season info: { episodeInfo: [{ episode: 1, episodeName: 'Pilot' }, ...]}
-console.log("Episode Number: ", netflix.season1.seasonInfo.episodeInfo[4].episodeName); // Shoplifter
-
+console.log("All data:", netflix); 
+/* All data: { id: 9,
+  likes: 932,
+  name: 'The Good Place',
+  seasonInfo:
+   { season1: { numberOfEpisodes: 5, episodeInfo: [Array] },
+     season2: { numberOfEpisodes: 6, episodeInfo: [Array] },
+     season3: { numberOfEpisodes: 5, episodeInfo: [Array] } },
+  description:
+   'Four people and their otherworldly frienemy struggle in the afterlife to define what it means to be good.' }
+*/
+console.log("Just the name of the show: ", netflix.name); 
+  // Just the name of the show:  The Good Place
+console.log("Season I: ", netflix.seasonInfo.season1); 
+/*
+Season I:  { numberOfEpisodes: 5,
+  episodeInfo:
+   [ { episode: 1, episodeName: 'Pilot' },
+     { episode: 2, episodeName: 'Flying' },
+     { episode: 3, episodeName: 'Tahani Al-Jamil' },
+     { episode: 4, episodeName: 'Jason Mendoza' },
+     { episode: 5,
+       episodeName: 'Category 55 Emergency Doomsday Crisis' } ] }
+*/
 /*
 Challenge:
 Pick an episode to show.
@@ -466,31 +432,8 @@ Object.keys(garden).forEach(g => {
 //great example of needing to use a variable to substitute for a different key, search for that key, and then, using square bracket notation bc its a variable and not part of the object, console.log it
 
 /**************************
-GIT PUSH
+PUSH NEW CODE TO GITHUB
 **************************/
-/*
-Git add .
-Git commit -m "message"
-Set up repo in GitHub
-Copy both lines and paste in terminal => run code
-Refresh page
-
-DEPLOY - GitHub Pages
-*/
-
-/*
-Explain why GitHub is important
-*/
-
-/*
-Create local and remote repo for Static Layout
-
-Folder Structure:
-  javascriptMay2018
-    javascriptLibrary
-    projects
-      staticLayout (Git repo here)
-*/
 
 
 /**************************
@@ -501,7 +444,7 @@ RECAP
 Fizz Buzz Team Exercise
 Arrays
 Objects
-Git with GitHub
+Git
 */
 
 /* 

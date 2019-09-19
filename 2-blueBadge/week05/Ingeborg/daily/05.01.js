@@ -49,17 +49,14 @@ GOLD DESCRIPTION:
 
 // ***************************************************************************
 
-// * React Concept Talk One ( Intro to React )
+// * React Concept Talk 00 ( Intro to React )
 
-// * Assign GitBook 
-// https://eleven-fifty-academy.gitbook.io/javascript-301-reactfundamentals/
+// * Assign Canvas Modules 
 
 /*
-  Slack out to instructor code - pin to channel
-  
   clone repo and show how to add to folder:
   
-  4-reactFundamentals
+  5-reactFundamentals
 *   (clone here)
     my-react-app
 */

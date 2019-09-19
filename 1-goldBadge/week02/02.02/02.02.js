@@ -33,12 +33,11 @@ function colorPlacement(colors, suffixes){
 colorPlacement(colorArr, suffArr);
 
 /*
-DOM Walk Through 
-Assign API Gitbook
 
-Go through gitbook with class
+DOM Manipulation Tutorial - HP To Do List Walk Through
+API Tutorial - SpaceX Rockets WalkThrough
+Assign API Modules
+Lab Time
+Repl. Challenge
 
-API Walk Through
-
-Rest of day work through book
 */

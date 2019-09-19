@@ -1,9 +1,8 @@
 // * JavaScript Challenge
 
-// ***************************************************************************
 /**************************
-CODE CHALLENGE 1 - OBJECTS
-**************************/
+ CODE CHALLENGE 1 - OBJECTS
+ **************************/
 
 /*
 Create a function that swaps the value of any 2 specified properties in a object, make sure you don't mutate (change) the original object. 
@@ -14,65 +13,75 @@ Your function may have 3 parameters, the original object, property1, property2
 const person = {
     fName: 'Tom',
     lName: 'McClellan'
-  }
-  
-  function changePerson(obj, param1, param2) {
+}
+
+function changePerson(obj, param1, param2) {
     
     let temp = obj.param1;
     obj.param1 = obj.param2;
     obj.param2 = temp;
-  
+    
     return obj
-  }
-  
-  newObj = changePerson(person, 'fName', 'lName');
-  
-  console.log(newObj);
-  
-  // Option 2 (Better)
-  const person = {
+}
+
+newObj = changePerson(person, 'fName', 'lName');
+
+console.log(newObj);
+
+// Option 2 (Better)
+const person = {
     fName: 'Tom',
     lName: 'McClellan'
-  }
-  
-  const food = {
+}
+
+const food = {
     food1: 'Steak',
     food2: 'Tacos'
-  }
-  
-  const changePerson = (obj, prop1, prop2) => {
+}
+
+const changePerson = (obj, prop1, prop2) => {
     let newObj = Object.assign({}, obj);
     // let newObj = obj;
-  
+    
     let temp = newObj[prop1];
     newObj[prop1] = newObj[prop2];
     newObj[prop2] = temp;
-  
+    
     return newObj;
-  }
-  const newObject = changePerson(food, 'food1', 'food2');
-  console.log(food, "Unchanged Object");
-  console.log(newObject, 'Changed Object');
-  
-  
+}
+const newObject = changePerson(food, 'food1', 'food2');
+console.log(food, "Unchanged Object");
+console.log(newObject, 'Changed Object');
+
+// ***************************************************************************
+
 /**************************
-PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
+POSTGRES AND PGADMIN INSTALL
 **************************/
+
+/**************************
+ PIE API WALKTHROUGH 1 - NPM, EXPRESS, POSTMAN
+ **************************/
 /*
+  Folder Structure:
+    JSMonth2019
+      javascriptLibrary
+        0-prework
+        1-jsFundamentals
+        2-domFundamentals
+        3-apiFundamentals
+        4-nodeFundamentals
+        5-reactFundamentals 
+      projects
+        gold
+        blue (new folder)
+          pieProject (new folder)
+            server 
+        
+          cd into server
+          npm init => explain what package.json is doing 
 
-Inside JavaScript Library, make a new folder called Pie-Project
 
-Add the react pie-client to the folder
-
-And make a server folder
-
-
-Folder Structure:
-  pie-Project
-    pie-client
-    server
-Navigate to server
-npm init => explain what package.json is doing 
 Will see this in package.json (add start and dev to scripts): 
 {
   "name": "pieapi",
@@ -170,9 +179,5 @@ app.use('/pies', pies)
 const pies = require('./controllers/piecontroller')
 
 // Run in postman
-
-/*********************
-ALECX'S NYT WALKTHROUGH
-*********************/
 
 /* Node Server Modules  */
