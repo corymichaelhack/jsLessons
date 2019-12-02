@@ -77,57 +77,72 @@ if (typeof arr1 == 'object && arr1 instanceof Array == true && arr1.length > 0) 
 
 // ***************************************************************************
 
-/**************************
-PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
-**************************/
+/************************************************************************
+ PIE API WALKTHROUGH 2 - MODELS, SEQUELIZE, POSTGRESQL, PGADMIN, AND CRUD
+ ************************************************************************/
+
 /*
-RECAP:
-npm
-package.json/package.lock.json/node_modules
-nodemon
-express (node index.js, npm run dev, nodemon)
-how internet works
-.env file
-.gitignore file
-ran a server (express)
-ran on Postman
-parsed into controller file
-*/
-/*
-In PGAdmin, create new database => call it pieApi (make sure your postgreSQL password is implemented)
-npm install sequelize (explain => link between server and db)
-npm install pg (explain => for access to postgres)
-npm install body-parser (explain => allows us to use req.body)
-Create db.js file and add:
+************
+  PGADMIN
+************
+    - in PGAdmin, create a new database called 'pieApi'
+************
+NPM INSTALLATIONS
+************
+  - in terminal, navigate to server folder and install sequelize and pg
+    sequelize: npm install sequelize
+      - sequelize is a JavaScript library that we'll use to *manage our postgreSQL database*. Sequelize is an object relational mapper (ORM) - meaning that *it sends our data to our database using JavaScript's object syntax*.
+      - sequelize is all about models. Models are how we shape the data we'll be sending to our database. Our models are both the objects that we'll interact with in our application as well as the primary tables that we'll create and manage in our database.
+    pg: npm install pg
+      - the pg package allows us to write the dialect that sequelize needs to speak to our PostgreSQL database.
+      - you don't need to worry too much about what this package does. We don't need to reference/import it to our code anywhere, it simply just allows us to write the dialect sequelize needs to talk to our database.
 */
 
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
-  host: 'localhost', 
+/*
+************
+   DB.JS      - CREATE db.js file at root level of server directory
+************
+*/
+
+// add the following code to db.js:
+
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, { // add NAME and PASS to .env
+  host: 'localhost',
   dialect: 'postgres'
 })
 
-sequelize.authenticate() 
+sequelize.authenticate()
   .then(() => console.log('postgres db is connected'))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
 
 module.exports = sequelize;
 
+// be sure to add NAME and PASS to .env file.
+// NAME is the database name and PASS is your PGAdmin password
+
+
 /*
-Tell them to add NAME and PASS to .env file
-create models folder and add pie.js file:
+************
+  MODELS      - CREATE models folder at root level of server directory. Inside of models, create pie.js.
+************
+server
+  models
+    pie.js
 */
+
+// add the following code to pie.js
 
 module.exports = (sequelize, DataTypes) => {
   const Pie = sequelize.define('pie', {
     nameOfPie: {
       type: DataTypes.STRING,
       allowNull: false
-    }, 
+    },
     baseOfPie: {
       type: DataTypes.STRING,
       allowNull: false
-    }, 
+    },
     crust: {
       type: DataTypes.STRING,
       allowNull: false
@@ -145,93 +160,121 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   })
-
   return Pie;
-}
+};
+
+// a model represents a table in the database. Here we are creating a table of pie, with table headers of nameOfPie, baseOfPie, crust, timeToBake, servings, rating.
+
+// We use the define method to define mappings between a model and a table. Sequelize will then automatically add the attributes createdAt and updatedAt to it. So you will be able to know when the database entry went into the db and when it was updated the last time. Mapping refers to "The act of determining how objects and their relationships are persisted in permanent data storage, in this case relational databases."
+
 
 /*
-Explain how model is structure for table
-Now go to index.js and add the following:
+************
+  APP.JS
+************
 */
+
+// add the following code to app.js
 
 const sequelize = require('./db');
-const bodyParser = require('body-parser')
 
 sequelize.sync();
-// sequelize.sync({ force: true }); // explain use here
-app.use(bodyParser.json())
+app.use(express.json());
 
 /*
-Go to piecontroller.js
+- express.json() is a method built into express to recognize the incoming Request Object as a JSON Object.
+  - express.json() returns middleware that only parses json
+  What is middleware?
+    - Middleware is the methods, functions, and operations that are called between processing the Request and sending the Response in your application method
+    - think specifically about POST and PUT requests when talking about express.json()
+      - you DO NOT NEED express.json() for GET requests or DELETE requests
+      - you NEED express.json() for POST and PUT requests, because in both of those requests you are sending data to the server, and asking the server to accept or store that data (object), which is enclosed in the body (req.body) of that (PUT or POST) request
 */
 
-//Change this:
+/*
+************
+PIE CONTROLLER
+************
+*/
+
+// go to piecontroller.js
+
+// change this:
 const express = require('express');
 const router = express.Router();
 // to
 const router = require('express').Router();
 
-// and add:
-const sequelize = require('../db')
-const Pie = sequelize.import('../models/pie')
-// and then change to
+// add:
 const Pie = require('../db').import('../models/pie');
 
-//-----------------
-
-// SO you should ONLY see:
+// you should ONLY see:
 const router = require('express').Router();
 const Pie = require('../db').import('../models/pie');
 
-// comment out the existing router.gets and add the following:
+// comment out existing router.get request and add the following:
 router.get('/', (req, res) => {
   Pie.findAll()
     .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
+    .catch(err => res.status(500).json({
+      error: err
+    }))
 })
 
-/*
-Explain how the GET works; note that if you run it, you should see only an empty array ([])
-Now build out the POST:
-*/
+// The res object represents the HTTP response that an Express app sends back to us when it receives an HTTP request.
+// findAll() is a sequelize query method we can use to GET all objects stored in a table from the database.
 
+// run in postman - you should receive '[]' in the response.
+
+// a GET request is used to request data from a specified resource. In this example, we're using the sequelize query method of findAll() and attaching it to our Pie variable that's importing our pie model. Note that our pie variable is also requiring our db.js file. This is to make sure we are successfully authenticated and granted access to the database.
+
+
+// build the post route. Add the following code:
 router.post('/', (req, res) => {
-    const pieFromRequest = {
-      nameOfPie: req.body.nameOfPie,
-      baseOfPie: req.body.baseOfPie,
-      crust: req.body.crust,
-      timeToBake: req.body.timeToBake,
-      servings: req.body.servings,
-      rating: req.body.rating
-    }
+  const pieFromRequest = {
+    nameOfPie: req.body.nameOfPie,
+    baseOfPie: req.body.baseOfPie,
+    crust: req.body.crust,
+    timeToBake: req.body.timeToBake,
+    servings: req.body.servings,
+    rating: req.body.rating
+  }
 
-    Pie.create(pieFromRequest)
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json(req.errors))
+  Pie.create(pieFromRequest)
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.json(req.errors))
 })
 
-/*
-Note that the pieFromRequest object is building off of the model => THEY HAVE TO MATCH!
-We then use the .create() to build a new instance from the model
-Run and use the post and in the body section of Postman, type out:
-{
-	"nameOfPie":"peach",
-	"baseOfPie":"fruit",
-	"crust": "graham",
-	"timeToBake": 50,
-	"servings": 8,
-	"rating": 5
-}
-It should show in the output and persist in PGAdmin
-If you then run the GET, you should see it show up there as well.
-Have the students build out multiple pies
+// Our pieFromRequest object is building off of the model we created and that we're grabbing with our Pie variable. THESE NEED TO MATCH.
+
+// we then use the sequelize method of create() and pass in our pieFromRequest object. This builds a new instance of our model and is expecting the values of our keys to be sent through the request body.
+
+// req.body allows you to access the JSON data that was sent in the request. Generally used in POST/PUT requests to send arbitrary-length JSON to the server.
+
+
+/* make a post request in postman as follows:
+ {
+    "nameOfPie": "peach",
+    "baseOfPie": "fruit",
+    "crust": "graham",
+    "timeToBake": 50,
+    "servings": 8,
+    "rating": 5
+ }
 */
 
-/**************************
-PIE API DEBUGGING CHALLENGE
-**************************/
+// The output in postman should show that we successfully created a pie. Our data should now persist in our PGAdmin database as well.
 
-// * Group Students in Pods
+// take the time to build 3 or 4 more pies on your own to get used to sending information through postman and testing routes.
+
+// After building our 3 or 4 more pies, run your get request to query the database for all of the pies that are currently stored.
+
+/*
+************
+PIE API DEBUGGING CHALLENGE
+************
+* Group Students in Pods
+*/
 
 // Broken code:
 // router.get('/name', (req, res) => {
@@ -246,25 +289,70 @@ PIE API DEBUGGING CHALLENGE
 //     .catch(err => res.json(req.errors))
 // })
 
+// 3 breaks in each
+
 // Good code:
 router.get('/:name', (req, res) => {
-  Pie.findOne({ where: { nameOfPie: req.params.name }})
+  Pie.findOne({
+      where: {
+        nameOfPie: req.params.name
+      }
+    })
     .then(pie => res.status(200).json(pie))
-    .catch(err => res.status(500).json({ error: err }))
+    .catch(err => res.status(500).json({
+      error: err
+    }))
+    console.log(req);
 });
+
+/*
+- req.params searches the URL path for the specified parameter
+- above, a request "pies/Peach" to route "pies/:name" has the URL path params of { name: Peach}
+- 'where' is telling us where or what parameter we want to query. Here, we're doing the following:
+  1. referencing our Pie variable thats importing our pie model
+  2. using the sequelize query method findOne()
+  3. using 'where' to specify what value we want to reference when querying
+  4. since we're searching for a pie based off of it's name, we're grabbing our nameOfPie key (or table header), and then req.params to search the endpoint we're hitting for a name that matches.
+*/
 
 router.put('/:id', (req, res) => {
-    Pie.update(req.body, { where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json({ error : err }))
+  Pie.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.json({
+      error: err
+    }))
 });
 
-/**************************
+/*
+- req.params searches the URL path for the specified parameter
+- above, a request "pies/1" to route "pies/:id" has the URL path params of { id: 1}
+- 'where' is telling us where or what parameter we want to query. Here, we're doing the following:
+  1. referencing our Pie variable thats importing our pie model
+  2. using the sequelize query method update()
+  3. by using 'req.body', we are telling our postgres to update our pie with whatever and however many key-value pairs we send in our request's body (currently the grey box in Postman). If we specified an object just as we did in the POST, we would have to update/send the whole object we want to update. The 'req.body' allows us to change one(1) key-value pair if we choose to.
+  4. using 'where' to specify what value we want to reference when querying
+  5. since we're searching for a pie based off of it's id, we're grabbing our id key (or table header), and then req.params to search the endpoint we're hitting for an id that matches.
+*/
+
+/*
+************
 PIE API DELETE CHALLENGE
-**************************/
-// Challenge students to add DELETE functionality:
+************
+*/
+
+// add delete functionality
 router.delete('/:id', (req, res) => {
-    Pie.destroy({ where: { id: req.params.id }})
-      .then(pie => res.status(200).json(pie))
-      .catch(err => res.json({ error : err }))
+  Pie.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(pie => res.status(200).json(pie))
+    .catch(err => res.json({
+      error: err
+    }))
 });

@@ -16,135 +16,373 @@ PIE CLIENT WALKTHROUGH 2 - Internal State, Conditional Rendering, and Data Bindi
 // * cd into pie-client
 // * npm start
 
-// * Add Auth directory and files to pie-client
-
 /*
-components
-* Auth
-*   Auth.js
-*   Auth.css
+ANCHOR Auth
+AUTHORIZATION
+************
+    Folder Structure:
+        pie-client
+            src
+                components <-------- CREATE: in VSCode
+                    Auth <-------- CREATE: in VSCode
+                        - Auth.js <-------- CREATE: in VSCode
+                        - Auth.css <-------- CREATE: in VSCode
+    - our Auth file (or component) will allow users to change data in input fields of a signup form
+        - eventually, it will allow us to reach out and communicate with our backend (server)
 */
 
-// * Build out Auth.js
-/*
-    import React, {Component} from 'react';
-    import './Auth.css';
+import React, {useState} from 'react';
+import './Auth.css';
 
-    const Auth = () => {
-        return(
-          <form className="card">
-            <h1>Sign In</h1>
-            <label className="display-block" htmlFor="email">Email:</label>
-            <input className="display-block" type="text" name="email" />
-            <label className="display-block" htmlFor="password">Password:</label>
-            <input className="display-block" type="password" name="password" />
-            <buttonLogin/Signup</button>
-            <button type="submit">Submit</button>
-          </form>
-        )
+const Auth = () => {
+
+    return (
+        <div>
+            <form>
+                <h1>Login/Signup</h1>
+                <label htmlFor='email'>Email:</label>
+                <br/>
+                <input type='text' id='email' value='email' />
+                <br/>
+                <label htmlFor='password'>Password:</label>
+                <br/>
+                <input type='password' id='password' value='password' />
+                <br/>
+                <button>Login/Signup Toggle</button>
+                <br/>
+                <button type='submit'>Submit User Data</button>
+            </form>
+        </div>
+    )
+}
+
+export default Auth;
+
+//---------------------------------------------------------------------------------------------------------------------
+
+import React, {useState} from 'react';
+import './Auth.css';
+
+const Auth = () => {
+    // ! NEW CODE
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(true);
+
+    return (
+        <div>
+            <form>
+                <h1>Login/Signup</h1>
+                <label htmlFor='email'>Email:</label>
+                <br/>
+                <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                {/* !!! NEW CODE: ONCHANGE HANDLER
+                    - if we take out onChange handler, the value is locked because the value of email is an empty string.
+                    - if we change the value to 'test string', email input should say test string but the value is still locked. This is because we're not using setEmail anywhere. We're never letting the user change the value of email. If the value of the input field is the value of the email variable, it's always locked to test string
+                    - onChange handler takes a callback function. Here we're using an anonymous arrow function and passing it an 'event' parameter. It then calls our setEmail function from our state, and is changing our state variable 'email' to whatever the target value of our event is
+                    - this is whats known as two way data binding: the data comes in and changes the state variable via setEmail, and the state variable is tied to the input field via a value attribute. this is essentially a circuit. Input is the start of the circuit, the state change via setEmail is the midpoint, and the value of the state variable comes back to the input field after the state is changed
+                */}
+                <br/>
+                <label htmlFor='password'>Password:</label>
+                <br/>
+                <input type='password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br/>
+                {/* don't include login toggle in initial setup */}
+                <button>Login/Signup Toggle</button>
+                <br/>
+                <button type='submit'>Submit User Data</button>
+            </form>
+        </div>
+    )
+}
+
+export default Auth;
+
+// import and call in App.js
+
+// show off auth component in React Devtools - show state variables
+
+/*
+ANCHOR define title function
+************
+  title()
+************
+*/
+
+const title = () => {
+    return login ? 'Login' : 'Signup';
+    // if login is true, return 'Login'. If login is false, return Signup
+}
+
+/*
+    - Replace 'Login' string in <h1> with {title()}
+    - change useState value of login to false to check to see if the function is working
+*/
+
+//---------------------------------------------------------------------------------------------------------------------
+
+import React, {useState} from 'react';
+import './Auth.css';
+
+const Auth = () => {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(true); // toggle here!!!!
+
+    return (
+        <div>
+            <form>
+                {/* ! NEW CODE */}
+                <h1>{title()}</h1>
+                <label htmlFor='email'>Email:</label>
+                <br/>
+                <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br/>
+                <label htmlFor='password'>Password:</label>
+                <br/>
+                <input type='password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br/>
+                <button>Login/Signup Toggle</button>
+                <br/>
+                <button type='submit'>Submit User Data</button>
+            </form>
+        </div>
+    )
+}
+
+export default Auth;
+
+/*
+ANCHOR define loginToggle function
+************
+loginToggle()
+************
+*/
+
+const loginToggle = (event) => {
+    // takes an event parameter so we can stop the page from reloading on form submission
+    event.preventDefault();
+
+    // set login to the be opposite of it's current value by using our means of changing/updating our state variable
+    setLogin(!login);
+
+    // clear all current values when toggling between the login and signup forms
+    setEmail('');
+    setPassword('');
+    setFirstName('');
+    setLastName('');
+}
+
+// add onClick to login/signup toggle button
+
+//---------------------------------------------------------------------------------------------------------------------
+
+import React, {useState} from 'react';
+import './Auth.css';
+
+const Auth = () => {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(true); // toggle here!!!!
+
+    return (
+        <div>
+            <form>
+                <h1>{title()}</h1>
+                <label htmlFor='email'>Email:</label>
+                <br/>
+                <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br/>
+                <label htmlFor='password'>Password:</label>
+                <br/>
+                <input type='password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br/>
+                {/* !! NEW CODE !! */}
+                <button onClick={loginToggle}>Login/Signup Toggle</button>
+                <br/>
+                <button type='submit'>Submit User Data</button>
+            </form>
+        </div>
+    )
+}
+
+export default Auth;
+
+/*
+ANCHOR define signupFields function
+************
+signupFields()
+************
+*/
+
+const signupFields = () => !login ?
+// if login is false, we also want to show additional input fields. If login is true, show null (or nothing)
+// since React uses JSX, we can include our HTML lookalike code right in functions, ternaries, etc, to show additional code based on certain values
+    (
+        <div>
+            <label htmlFor='firstName'>First Name:</label>
+            <br/>
+            <input type='text' id='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <br/>
+            <label htmlFor='lastName'>Last Name:</label>
+            <br/>
+            <input type='text' id='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        </div>
+    ) : null;
+
+// call signupFields() under <h1> using interpolation
+
+//---------------------------------------------------------------------------------------------------------------------
+
+import React, {useState} from 'react';
+import './Auth.css';
+
+const Auth = () => {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(true);
+
+    return (
+        <div>
+            <form>
+                <h1>{title()}</h1>
+                {/* !! NEW CODE !! */}
+                {signupFields()}
+                <label htmlFor='email'>Email:</label>
+                <br/>
+                <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br/>
+                <label htmlFor='password'>Password:</label>
+                <br/>
+                <input type='password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br/>
+                <button onClick={loginToggle}>Login/Signup Toggle</button>
+                <br/>
+                <button type='submit'>Submit User Data</button>
+            </form>
+        </div>
+    )
+}
+
+export default Auth;
+
+//---------------------------------------------------------------------------------------------------------------------
+/* ANCHOR end result Auth.js
+************
+ AUTH.JS
+************
+*/
+import React, {useState} from 'react';
+import './Auth.css';
+
+const Auth = () => {
+  // Storing values
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState(true);
+
+  // writing logic
+  const title = () => {
+    return login ? 'Login' : 'Signup';
+  }
+
+  const loginToggle = (event) => {
+    event.preventDefault();
+
+    setLogin(!login);
+
+    setEmail('');
+    setPassword('');
+    setFirstName('');
+    setLastName('');
+  }
+
+  const signupFields = () => !login ?
+    (
+      <div>
+        <label htmlFor='firstName'>First Name:</label>
+        <br/>
+        <input type='text' id='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        <br/>
+        <label htmlFor='lastName'>Last Name:</label>
+        <br/>
+        <input type='text' id='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+      </div>
+    ) : null;
+
+
+  return (
+    <div>
+      <form>
+        <h1>{title()}</h1>
+        {signupFields()}
+        <label htmlFor='email'>Email:</label>
+        <br/>
+        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <br/>
+        <label htmlFor='password'>Password:</label>
+        <br/>
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <br/>
+        <button onClick={loginToggle}>Login/Signup Toggle</button>
+        <br/>
+        <button type="submit">Submit User Data</button>
+      </form>
+    </div>
+  );
+};
+
+export default Auth;
+
+/*
+ANCHOR Auth component CSS
+************
+ AUTH.CSS
+************
+    input {
+        border: none;
+        border-radius: 5px;
+        background-color: lightgrey;
+        height: 40px;
+        width: 300px;
+        text-indent: 5px;
+        margin-bottom: 1em;
+        margin-top: 1em;
+        font-size: 18px;
     }
-
-    export default Auth;
+    input:focus {
+        outline: none;
+        background-color: grey;
+        color: white;
+    }
+    button {
+        margin-top: 1em;
+        border: none;
+        height: 50px;
+        width: 200px;
+        background-color: lightslategray;
+        color: white;
+        cursor: pointer;
+    }
+    button:focus {
+        outline: none;
+    }
 */
-             
-// * Build out Auth CSS
-/*
-              .card-like {
-                padding : 1em;
-                background-color : whitesmoke;
-                border-radius : 15px;
-                width: 10vw;
-                margin: 25vh auto;
-                text-align : center;
-                display : flex;
-                flex-direction: column;
-              }
-
-*/
-
-//* discuss how the shorthand margin property is positioning the div
-
-// * Add Auth to the App, right under the <Navbar />
-
-// * Update Auth to toggle login / sign up
-
 
 /*
-  * add to Auth.js - right before declaration
-
-    Initialize state of login with an initial value of false
-
-            let [ login, setLogin ] = useState(true);
-
-  * Then modify <h1> to render a different title based on what the value of login is
-
-            <h1>{ login ? 'Login' : 'Sign Up ' }</h1>
-
-  * Add ability to toggle additional fields for sign up - also using ternary - add these under the title
-
-            {
-                login ? null 
-                : <React.Fragment>
-                <label htmlFor="firstName">First Name :</label>
-                <input type="text" name="firstName" />
-                <label htmlFor="lastName">Last Name :</label>
-                <input type="text" name="lastName" />
-                </React.Fragment>
-            }
-
-            Explain the React.Fragment is a clever way to wrap JSX in one parent, without adding additional HTML bloat
-
-? What happens if we change login to false?
-
-* discuss 2-way binding, and add the following below the login state
-
-            let [ firstName, setFirstName ] = useState('');
-            let [ lastName, setLastName ] = useState('');
-            let [ email, setEmail ] = useState('');
-            let [ password, setPassword ] = useState('');
-
-let's have every input tag grab the value from state.
-
-* add the following to each <input/>:
-
-            value={ firstName/lastName/email/password }
-
-? why are the inputs locked?
-
-Take a moment to modify the calls to useState() give them some default values and recheck the browser - we have values in the inputs, but we cant change them - this is one way data binding
-app data -> browser
-
-* Add Change handlers to each input, relying on the set[value] methods from the useState() calls
-
-* and let's add our onChange handler to each input:
-
-            onChange={(e) => setValue(e.target.value)}
-
-Leave default values and go test - you can now type in all of the inputs
-Explain that -this- is TWO way data binding, 
-app data <- browser ( specifically user input )
-app data -> browser
-
-The app is updating in real time! That's why we can even see the input's values changing
-
-* reiterate what's happening here - as this is the basic flow of React
-
-user input (change) => state updated => Dom updated
-
-* Remove default values from useState() calls
-
-* finally add loginToggle method and use it:
-
-            const loginToggle = (event) => {
-                event.preventDefault();
-                setLogin(!login);
-
-                setFirstName('');
-                setLastName('');
-                setEmail('');
-                setPassword('');
-            };
-
 
 ? What are we doing here by setting all the values to empty strings?
 ? What is the !login doing?
@@ -153,4 +391,4 @@ recap what's been built out, and how dynamic content can be created with React
 mention to students that the data submission depends upon our server, which we have yet to connect
 */
 
-// * GitBook Chapters 4 - 5
+// * Canvas Modules JSX, useState, and useEffect.

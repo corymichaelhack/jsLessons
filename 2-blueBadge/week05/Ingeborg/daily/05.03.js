@@ -25,8 +25,8 @@ Node Challenge 3 - Authorized CRUD
 
 // ***************************************************************************
 
-// * React Concept Talk Three ( Functional Components )
+// * React Concept Talk 02 ( Functional Components )
 
-// * React Concept Talk Four ( Class Components and State )
+// * React Concept Talk 03 ( Class Components and State )
 
 // * Pie Client Walkthrough Part Two

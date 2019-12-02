@@ -61,4 +61,4 @@ GOLD DESCRIPTION:
     my-react-app
 */
 
-// * GitBook parts 1-3, or continuing to move forward in the GitBook if past Ch 3
+// * Canvas Modules React Intro and Functional Components

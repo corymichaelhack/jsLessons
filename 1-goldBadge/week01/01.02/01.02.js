@@ -223,7 +223,7 @@ var scissors;
 /*
 ? Hoisting does not exist--it is an illusion - code doesn't actually get moved.
 
-? JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. We call it 'hoisting'  because js keeps those variables stored in memory, for qiucker reference  later. 
+? JS actually reads through your code twice, the first, it simply reads through, looking for the LEFT HAND SIDE of variables and functions; the declarations. We call it 'hoisting'  because js keeps those variables stored in memory, for quicker reference  later. 
 ? Then, the second pass through, it reads through the RIGHT HAND SIDE, assigning values and expressions.
 ? JS DOES grab things like functions */
 
@@ -324,14 +324,9 @@ r **= 1; // r = r ** 1
 
 5-expressionsAndOperators
   02-comparisonOperators.js
-<<<<<<< HEAD
-<<<<<<< HEAD
 ************************* */
 //teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
 //These are values that are considered not true or just not, but they are not technically the same as false
-
-//teaching note: falsey values--'undefined', 'null', 'NaN', '0', '', 'false' 
-//fThese are values that are considered not true or just not, but they are not technically the same as false
 
 // Equal 
 '3' == 3;

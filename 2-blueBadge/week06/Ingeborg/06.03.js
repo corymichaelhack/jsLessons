@@ -2,6 +2,7 @@
 DAY THREE REACT CHALLENGE
 **************************/
 /* 
+! Use clearer language on silver and gold (REWRITE THIS ING)
 BRONZE CHALLENGE
 
   Use the DayThreeComp to build a component that lets the user type into an input field.
@@ -9,7 +10,6 @@ BRONZE CHALLENGE
   in the input field (2-way data binding).  
 
 SILVER CHALLENGE
-  
   Do the Bronze Challenge, but add a second input field.  Make sure that its value is also
   managed by state using 2-way binding.  Make an h1 tag below these input fields that shows
   the value of the input field which has the longer text.  Your page may look like the below:

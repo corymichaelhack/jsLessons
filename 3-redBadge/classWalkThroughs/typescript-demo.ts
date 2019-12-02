@@ -88,4 +88,4 @@ let darkLord = new voldemort('The Dark Lord', 'Rule the world');
 darkLord.scheme();
 
 // Slack out book
-// https://app.gitbook.com/@eleven-fifty-academy/s/typescript-101-fundamentals/part-1-getting-started
+// https://eleven-fifty-academy.gitbook.io/typescript-101-fundamentals/

@@ -473,8 +473,6 @@ Variables
 Declarations
 Datatypes
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 */
 
 

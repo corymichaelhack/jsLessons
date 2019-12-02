@@ -3,7 +3,7 @@ WHITEBOARD 2 - FIZZ BUZZ TEAM EXERCISE (Conditionals and Loops)
 **************************/
 /*
 Challenge:
-Write a for loop running between the numbers 0 - 100
+Write a function that has a for loop running between the numbers 0 - 100
 For multiples of 3, instead of the number, console.log "Fizz"
 For multiples of 5 console.log "Buzz";
 For numbers which are multiples of BOTH 3 and 5, console.log "FizzBuzz".
@@ -188,9 +188,9 @@ foodFunction()
 /*
 Challenge (Go look at MDN docs to remind you):
 Create a list (with an array) of movies
-Use .forEach() to list your movies
 Add another movie at the end 
 And replace one of your existing movies with another one 
+Use .forEach() to list your movies
 */
 
 let movies = ['Phantom Menance', 'Attack of the Clones', 'Revenge of the Sith', 'Solo', 'Rogue One', 'A New Hope', 'The Empire Strikes Back', 'Return of the Jedi'];
@@ -295,6 +295,9 @@ let netflix = {
   description: "Four people and their otherworldly frienemy struggle in the afterlife to define what it means to be good."
 };
 
+netflix.seasonInfo.season1.episodeInfo.forEach(episode => console.log(episode))
+// season1Array.forEach(episode => console.log(episode))
+
 
 /*
 How do we access data with objects?  Where arrays used the [value] appended to the end of it, objects use dot notation.
@@ -330,7 +333,17 @@ Pick an episode to show.
 Using dot notation, walk through the netflix object and print off both the episode and the episode name.
 */
 
-//! We can set values in objects using dotNotation. Write out a lesson on that.
+//! We can set values in objects using dotNotation. 
+// We can also add more information to an object without directly typing in that object. We can use dot notation to assign that new data. 
+// Let's say that I want to specify how many seasons my netflix object has. Currently, it only has 3 seasons. 
+// First, I want to specify which object I want add data to. Then, using dot notation, I can step into my object until I have reached the location I want to add the data to. Next, I have to give the key a name. After which, I can assign it a value.
+
+netflix.seasonInfo.totalSeasons = 3;
+console.log(netflix.seasonInfo)
+
+let newEpisode = netflix.seasonInfo.season2.episodeInfo.push({episode: 7, episodeName: "Derek"})
+console.log(netflix.seasonInfo.season2);
+
 
 // JSON
 // data comes back as a long string. Why do we JSONify?
@@ -377,6 +390,33 @@ Object.keys() and Object.values()
     filtering over one side over the other.
 
 */
+
+let spaceJam = {
+  toonSquad: {
+    human: 'Michael Jordan',
+    rabbit1: 'Bugs Bunny',
+    rabbit2: 'Lola Bunny',
+    duck: 'Daffy Duck',
+    tDevil: 'Tasmanian Devil',
+    bird: 'Tweety',
+    cat: 'Sylvester',
+    pig: 'Porky Pig'
+  },
+  monstars: {
+    0: 'Bupkus',
+    1: 'Bang',
+    2: 'Nawt',
+    3: 'Pound',
+    4: 'Blanko'
+  },
+  nbaPlayers: {
+    phoenixSuns: 'Charles Barkley',
+    newJerseyNets: 'Shawn Bradley',
+    newYorkNicks: 'Patrick Ewing',
+    charlotteHornets1: 'Larry Johnson',
+    charlotteHornets2: 'Muggsy Bogues'
+  }
+}
 
 
 
